@@ -1,0 +1,6 @@
+/Users/issashu/Lessons/StrypesC/SDL project/build/CMakeFiles/rebuild_cache.dir
+/Users/issashu/Lessons/StrypesC/SDL project/build/CMakeFiles/edit_cache.dir
+/Users/issashu/Lessons/StrypesC/SDL project/build/CMakeFiles/SDL_game.dir
+/Users/issashu/Lessons/StrypesC/SDL project/build/utils/CMakeFiles/rebuild_cache.dir
+/Users/issashu/Lessons/StrypesC/SDL project/build/utils/CMakeFiles/edit_cache.dir
+/Users/issashu/Lessons/StrypesC/SDL project/build/utils/CMakeFiles/utils.dir
