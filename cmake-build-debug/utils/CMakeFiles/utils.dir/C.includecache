@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../utils/include/utils/containers/Vector.h
+stddef.h
+-
+stdbool.h
+-
+
+/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c
+utils/containers/Vector.h
+/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/utils/containers/Vector.h
+stdlib.h
+-
+

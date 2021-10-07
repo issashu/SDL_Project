@@ -1,0 +1,14 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" "/Users/issashu/Lessons/StrypesC/SDL project"
+CMake Error at sdl_utils/CMakeLists.txt:34 (target_include_directories):
+  Cannot specify include directories for target "sdl_utils" which is not
+  built by this project.
+
+
+CMake Error at sdl_utils/CMakeLists.txt:45 (target_link_libraries):
+  Cannot specify link libraries for target "sdl_utils" which is not built by
+  this project.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles/CMakeError.log".

@@ -6,6 +6,10 @@
 #include "include/defines.h"
 #include "utils/Log.h"
 
+void initSDL(){
+    //TODO Add this as main entry point for the SDL lib
+}
+
 int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface) {
     if (SDL_Init(SDL_INIT_VIDEO) != SUCCESS) {
         LOGERR("SDL_Init() failed! Reason: %s", SDL_GetError());
