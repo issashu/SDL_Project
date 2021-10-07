@@ -5,7 +5,7 @@
 //Misc 3rd party libs
 #include <SDL.h>
 
-//Own libs - CMAKE is FUCKED UP!!!!!!!!!!!
+//Own libs
 #include "Log.h"
 #include "defines.h"
 #include "sdl_methods.h"
