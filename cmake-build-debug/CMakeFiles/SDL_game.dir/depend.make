@@ -4,6 +4,7 @@
 CMakeFiles/SDL_game.dir/src/main.c.o: \
  ../utils/include/utils/Log.h \
  ../utils_sdl/include/defines.h \
+ ../utils_sdl/include/event_poll.h \
  ../utils_sdl/include/sdl_methods.h \
  ../src/main.c \
  /usr/local/include/SDL2/SDL.h \

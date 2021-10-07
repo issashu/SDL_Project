@@ -14,6 +14,16 @@ stdio.h
 
 ../utils_sdl/include/defines.h
 
+../utils_sdl/include/event_poll.h
+stdio.h
+-
+SDL.h
+-
+SDL_events.h
+-
+defines.h
+../utils_sdl/include/defines.h
+
 ../utils_sdl/include/sdl_methods.h
 stdint.h
 -
@@ -35,6 +45,8 @@ defines.h
 /Users/issashu/Lessons/StrypesC/SDL project/src/defines.h
 sdl_methods.h
 /Users/issashu/Lessons/StrypesC/SDL project/src/sdl_methods.h
+event_poll.h
+/Users/issashu/Lessons/StrypesC/SDL project/src/event_poll.h
 
 /usr/local/include/SDL2/SDL.h
 SDL_main.h

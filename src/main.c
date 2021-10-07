@@ -9,6 +9,7 @@
 #include "Log.h"
 #include "defines.h"
 #include "sdl_methods.h"
+#include "event_poll.h"
 
 int main() {
     const STRING ImagePath = "../assets/Images/hello.bmp";
@@ -17,6 +18,7 @@ int main() {
     SDL_Window *gWindow = NULL;
     SDL_Surface *gScreenSurface = NULL;
     SDL_Surface *gImage = NULL;
+    SDL_Event **gameEvent = NULL;
 
     gImage = SDL_LoadBMP(ImagePath);
     //TODO Take out all error checks in a separate function ot move that in the init
@@ -29,8 +31,10 @@ int main() {
         LOGERR("loadResources() failed.");
         //TODO Add info for file, line and path
     }
-    drawGraphics(&gWindow, &gScreenSurface, &gImage);
-   //getchar();
+
+    while (eventHandler(gameEvent) == 0){
+        drawGraphics(&gWindow, &gScreenSurface, &gImage);
+    }
     deinitGame(&gWindow, &gScreenSurface);
 
     return EXIT_SUCCESS;
