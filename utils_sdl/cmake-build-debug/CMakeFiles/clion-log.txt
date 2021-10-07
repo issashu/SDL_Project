@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" "/Users/issashu/Lessons/StrypesC/SDL project/sdl_utils"
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" "/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl"
 CMake Error at CMakeLists.txt:26 (find_package):
   By not providing "FindSDL2_image.cmake" in CMAKE_MODULE_PATH this project
   has asked CMake to find a package configuration file provided by
@@ -17,5 +17,5 @@ CMake Error at CMakeLists.txt:26 (find_package):
 
 
 -- Configuring incomplete, errors occurred!
-See also "/Users/issashu/Lessons/StrypesC/SDL project/sdl_utils/cmake-build-debug/CMakeFiles/CMakeOutput.log".
-See also "/Users/issashu/Lessons/StrypesC/SDL project/sdl_utils/cmake-build-debug/CMakeFiles/CMakeError.log".
+See also "/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/cmake-build-debug/CMakeFiles/CMakeError.log".

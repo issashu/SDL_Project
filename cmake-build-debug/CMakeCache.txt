@@ -309,10 +309,10 @@ SDL_project_BINARY_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/cmake-
 SDL_project_SOURCE_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project
 
 //Value Computed by CMake
-sdl_utils_BINARY_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/sdl_utils
+sdl_utils_BINARY_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl
 
 //Value Computed by CMake
-sdl_utils_SOURCE_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/sdl_utils
+sdl_utils_SOURCE_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl
 
 //Value Computed by CMake
 utils_BINARY_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils

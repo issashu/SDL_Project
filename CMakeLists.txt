@@ -24,11 +24,11 @@ target_include_directories(
 target_link_libraries(
         ${PROJECT_NAME}
         PRIVATE
-        sdl_utils
+        utils_sdl
 )
 
 add_subdirectory(utils)
-add_subdirectory(sdl_utils)
+add_subdirectory(utils_sdl)
 
 set_target_c_standard(${PROJECT_NAME} 11)
 enable_target_c_warnings(${PROJECT_NAME})

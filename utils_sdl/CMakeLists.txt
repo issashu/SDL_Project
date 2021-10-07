@@ -30,6 +30,16 @@ find_package(${SDL_mixer_name} REQUIRED)
 
 
 #We need to include SDL2 includes and libraries below too
+
+add_library(${PROJECT_NAME}
+        STATIC
+        ${_HEADERS_DIR}/sdl_methods.h
+        ${_HEADERS_DIR}/event_poll.h
+
+        ${_SOURCES_DIR}/sdl_methods.c
+        ${_SOURCES_DIR}/event_poll.c
+        )
+
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${_HEADERS_DIR}
@@ -50,15 +60,6 @@ target_link_libraries(${PROJECT_NAME}
         ${SDL2_TTF_LIBRARY}
         ${SDL2_MIXER_LIBRARY}
         )
-
-add_library(${PROJECT_NAME}
-        STATIC
-        ${_HEADERS_DIR}/sdl_methods.h
-        ${_HEADERS_DIR}/event_poll.h
-
-        ${_SOURCES_DIR}/sdl_methods.c
-        ${_SOURCES_DIR}/event_poll.c
-)
 
 set_target_c_standard(${PROJECT_NAME} 11)
 enable_target_c_warnings(${PROJECT_NAME})

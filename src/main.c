@@ -7,8 +7,7 @@
 
 //Own libs
 #include "utils/Log.h"
-#include "include/sdl_methods.h"
-#include "include/defines.h"
+#include "utils_sdl/event
 
 int main() {
     const STRING ImagePath = "../assets/Images/hello.bmp";
