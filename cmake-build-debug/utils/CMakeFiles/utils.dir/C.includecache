@@ -13,8 +13,8 @@ stdbool.h
 -
 
 /Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c
-utils/containers/Vector.h
-/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/utils/containers/Vector.h
+containers/Vector.h
+/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/containers/Vector.h
 stdlib.h
 -
 

@@ -14,7 +14,7 @@ set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../utils/include"
+  "../utils/include/utils"
   )
 
 # The set of dependency files which are needed:

@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SDL_game.dir/src/event_poll.c.o"
   "CMakeFiles/SDL_game.dir/src/main.c.o"
-  "CMakeFiles/SDL_game.dir/src/sdl_methods.c.o"
   "SDL_game"
   "SDL_game.pdb"
 )

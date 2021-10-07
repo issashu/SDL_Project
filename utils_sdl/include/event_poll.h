@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <SDL.h>
 #include <SDL_events.h>
-#include "include/defines.h"
+#include "defines.h"
 
 int8_t eventHandler(SDL_Event** gameEvent);
 

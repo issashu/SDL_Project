@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libsdl_utils.a CMakeFiles/sdl_utils.dir/src/sdl_methods.c.o CMakeFiles/sdl_utils.dir/src/event_poll.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libsdl_utils.a

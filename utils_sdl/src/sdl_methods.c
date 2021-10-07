@@ -2,9 +2,9 @@
 // Created by Iordan Tonchev on 6.10.21.
 //
 #include <SDL.h>
-#include "include/sdl_methods.h"
-#include "include/defines.h"
-#include "utils/Log.h"
+#include "sdl_methods.h"
+#include "defines.h"
+#include "Log.h"
 
 void initSDL(){
     //TODO Add this as main entry point for the SDL lib

@@ -5,7 +5,7 @@
 		<Option title="utils"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\cmake_helpers\;CMake Files\utils\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake_helpers\;CMake Files\cmake_helpers\find_modules\;CMake Files\utils_sdl\;CMake Files\utils\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils"/>
@@ -24,8 +24,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -46,8 +45,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -79,6 +77,21 @@
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/helpers_c.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2_image.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2_mixer.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2_ttf.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\utils_sdl\"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\utils\"/>

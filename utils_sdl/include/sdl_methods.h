@@ -5,7 +5,8 @@
 #ifndef SDL_GAME_SDL_METHODS_H
 #define SDL_GAME_SDL_METHODS_H
 #include <stdint.h>
-#include "include/defines.h"
+#include <SDL.h>
+#include "defines.h"
 
 struct SDLWindow{
     SDL_Window *Window;

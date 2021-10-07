@@ -64,15 +64,18 @@ CMAKE_BINARY_DIR = "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debu
 
 # The main recursive "all" target.
 all: CMakeFiles/SDL_game.dir/all
+all: utils_sdl/all
 all: utils/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
+preinstall: utils_sdl/preinstall
 preinstall: utils/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/SDL_game.dir/clean
+clean: utils_sdl/clean
 clean: utils/clean
 .PHONY : clean
 
@@ -92,18 +95,34 @@ utils/clean: utils/CMakeFiles/utils.dir/clean
 .PHONY : utils/clean
 
 #=============================================================================
+# Directory level rules for directory utils_sdl
+
+# Recursive "all" directory target.
+utils_sdl/all: utils_sdl/CMakeFiles/utils_sdl.dir/all
+.PHONY : utils_sdl/all
+
+# Recursive "preinstall" directory target.
+utils_sdl/preinstall:
+.PHONY : utils_sdl/preinstall
+
+# Recursive "clean" directory target.
+utils_sdl/clean: utils_sdl/CMakeFiles/utils_sdl.dir/clean
+.PHONY : utils_sdl/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/SDL_game.dir
 
 # All Build rule for target.
-CMakeFiles/SDL_game.dir/all:
+CMakeFiles/SDL_game.dir/all: utils_sdl/CMakeFiles/utils_sdl.dir/all
+CMakeFiles/SDL_game.dir/all: utils/CMakeFiles/utils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=1,2,3,4 "Built target SDL_game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=1,2 "Built target SDL_game"
 .PHONY : CMakeFiles/SDL_game.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SDL_game.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" 4
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SDL_game.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/SDL_game.dir/rule
@@ -118,13 +137,39 @@ CMakeFiles/SDL_game.dir/clean:
 .PHONY : CMakeFiles/SDL_game.dir/clean
 
 #=============================================================================
+# Target rules for target utils_sdl/CMakeFiles/utils_sdl.dir
+
+# All Build rule for target.
+utils_sdl/CMakeFiles/utils_sdl.dir/all: utils/CMakeFiles/utils.dir/all
+	$(MAKE) $(MAKESILENT) -f utils_sdl/CMakeFiles/utils_sdl.dir/build.make utils_sdl/CMakeFiles/utils_sdl.dir/depend
+	$(MAKE) $(MAKESILENT) -f utils_sdl/CMakeFiles/utils_sdl.dir/build.make utils_sdl/CMakeFiles/utils_sdl.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=5,6,7 "Built target utils_sdl"
+.PHONY : utils_sdl/CMakeFiles/utils_sdl.dir/all
+
+# Build rule for subdir invocation for target.
+utils_sdl/CMakeFiles/utils_sdl.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils_sdl/CMakeFiles/utils_sdl.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" 0
+.PHONY : utils_sdl/CMakeFiles/utils_sdl.dir/rule
+
+# Convenience name for target.
+utils_sdl: utils_sdl/CMakeFiles/utils_sdl.dir/rule
+.PHONY : utils_sdl
+
+# clean rule for target.
+utils_sdl/CMakeFiles/utils_sdl.dir/clean:
+	$(MAKE) $(MAKESILENT) -f utils_sdl/CMakeFiles/utils_sdl.dir/build.make utils_sdl/CMakeFiles/utils_sdl.dir/clean
+.PHONY : utils_sdl/CMakeFiles/utils_sdl.dir/clean
+
+#=============================================================================
 # Target rules for target utils/CMakeFiles/utils.dir
 
 # All Build rule for target.
 utils/CMakeFiles/utils.dir/all:
 	$(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/depend
 	$(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=5,6 "Built target utils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=3,4 "Built target utils"
 .PHONY : utils/CMakeFiles/utils.dir/all
 
 # Build rule for subdir invocation for target.

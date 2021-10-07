@@ -6,29 +6,35 @@
 
 #IncludeRegexTransform: 
 
-../include/defines.h
-
-../include/sdl_methods.h
-stdint.h
--
-include/defines.h
-../include/include/defines.h
-
 ../utils/include/utils/Log.h
 stdarg.h
 -
 stdio.h
 -
 
-/Users/issashu/Lessons/StrypesC/SDL project/src/sdl_methods.c
+../utils_sdl/include/defines.h
+
+../utils_sdl/include/sdl_methods.h
+stdint.h
+-
 SDL.h
 -
-include/sdl_methods.h
-/Users/issashu/Lessons/StrypesC/SDL project/src/include/sdl_methods.h
-include/defines.h
-/Users/issashu/Lessons/StrypesC/SDL project/src/include/defines.h
-utils/Log.h
-/Users/issashu/Lessons/StrypesC/SDL project/src/utils/Log.h
+defines.h
+../utils_sdl/include/defines.h
+
+/Users/issashu/Lessons/StrypesC/SDL project/src/main.c
+stdio.h
+-
+stdlib.h
+-
+SDL.h
+-
+Log.h
+/Users/issashu/Lessons/StrypesC/SDL project/src/Log.h
+defines.h
+/Users/issashu/Lessons/StrypesC/SDL project/src/defines.h
+sdl_methods.h
+/Users/issashu/Lessons/StrypesC/SDL project/src/sdl_methods.h
 
 /usr/local/include/SDL2/SDL.h
 SDL_main.h

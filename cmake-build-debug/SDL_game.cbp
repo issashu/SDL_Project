@@ -5,7 +5,7 @@
 		<Option title="SDL_game"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\cmake_helpers\;CMake Files\utils\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake_helpers\;CMake Files\cmake_helpers\find_modules\;CMake Files\utils_sdl\;CMake Files\utils\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug"/>
@@ -45,8 +45,10 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src"/>
 					<Add directory="/usr/local/include/SDL2"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -68,8 +70,10 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src"/>
 					<Add directory="/usr/local/include/SDL2"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -83,6 +87,54 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="utils_sdl">
+				<Option output="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl/libutils_sdl.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src"/>
+					<Add directory="/usr/local/include/SDL2"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 utils_sdl"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="utils_sdl/fast">
+				<Option output="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl/libutils_sdl.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src"/>
+					<Add directory="/usr/local/include/SDL2"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 utils_sdl/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/issashu/Lessons/StrypesC/SDL\ project/cmake-build-debug/utils_sdl/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="utils">
 				<Option output="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/libutils.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils"/>
@@ -90,8 +142,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -112,8 +163,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -128,22 +178,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/include/defines.h">
-			<Option target="SDL_game"/>
-		</Unit>
-		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/include/event_poll.h">
-			<Option target="SDL_game"/>
-		</Unit>
-		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/include/sdl_methods.h">
-			<Option target="SDL_game"/>
-		</Unit>
-		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/src/event_poll.c">
-			<Option target="SDL_game"/>
-		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/src/main.c">
-			<Option target="SDL_game"/>
-		</Unit>
-		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/src/sdl_methods.c">
 			<Option target="SDL_game"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils/ErrorCodes.h">
@@ -158,11 +193,38 @@
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c">
 			<Option target="utils"/>
 		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include/event_poll.h">
+			<Option target="utils_sdl"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include/sdl_methods.h">
+			<Option target="utils_sdl"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src/event_poll.c">
+			<Option target="utils_sdl"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src/sdl_methods.c">
+			<Option target="utils_sdl"/>
+		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/helpers_c.cmake">
 			<Option virtualFolder="CMake Files\cmake_helpers\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2_image.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2_mixer.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/cmake_helpers/find_modules/FindSDL2_ttf.cmake">
+			<Option virtualFolder="CMake Files\cmake_helpers\find_modules\"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\utils_sdl\"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\utils\"/>

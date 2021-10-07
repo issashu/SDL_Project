@@ -20,6 +20,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/Compiler/Clang.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/Compiler/GNU.cmake"
+  "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/FindPackageHandleStandardArgs.cmake"
+  "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/FindPackageMessage.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/Platform/Apple-AppleClang-C.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/Platform/Apple-Clang-C.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.20/Modules/Platform/Apple-Clang.cmake"
@@ -30,8 +32,13 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../CMakeLists.txt"
   "CMakeFiles/3.20.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.20.2/CMakeSystem.cmake"
+  "../cmake_helpers/find_modules/FindSDL2.cmake"
+  "../cmake_helpers/find_modules/FindSDL2_image.cmake"
+  "../cmake_helpers/find_modules/FindSDL2_mixer.cmake"
+  "../cmake_helpers/find_modules/FindSDL2_ttf.cmake"
   "../cmake_helpers/helpers_c.cmake"
   "../utils/CMakeLists.txt"
+  "../utils_sdl/CMakeLists.txt"
   )
 
 # The corresponding makefile is:
@@ -43,11 +50,13 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "utils_sdl/CMakeFiles/CMakeDirectoryInformation.cmake"
   "utils/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/SDL_game.dir/DependInfo.cmake"
+  "utils_sdl/CMakeFiles/utils_sdl.dir/DependInfo.cmake"
   "utils/CMakeFiles/utils.dir/DependInfo.cmake"
   )

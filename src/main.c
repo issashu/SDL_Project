@@ -5,13 +5,14 @@
 //Misc 3rd party libs
 #include <SDL.h>
 
-//Own libs
-#include "utils/Log.h"
-#include "utils_sdl/event
+//Own libs - CMAKE is FUCKED UP!!!!!!!!!!!
+#include "Log.h"
+#include "defines.h"
+#include "sdl_methods.h"
 
 int main() {
     const STRING ImagePath = "../assets/Images/hello.bmp";
-    struct SDLWindow AppWindow;
+    //struct SDLWindow AppWindow;
     //TODO replace globals with the local structure
     SDL_Window *gWindow = NULL;
     SDL_Surface *gScreenSurface = NULL;

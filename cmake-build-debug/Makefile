@@ -130,6 +130,19 @@ SDL_game/fast:
 .PHONY : SDL_game/fast
 
 #=============================================================================
+# Target rules for targets named utils_sdl
+
+# Build rule for target.
+utils_sdl: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils_sdl
+.PHONY : utils_sdl
+
+# fast build rule for target.
+utils_sdl/fast:
+	$(MAKE) $(MAKESILENT) -f utils_sdl/CMakeFiles/utils_sdl.dir/build.make utils_sdl/CMakeFiles/utils_sdl.dir/build
+.PHONY : utils_sdl/fast
+
+#=============================================================================
 # Target rules for targets named utils
 
 # Build rule for target.
@@ -141,30 +154,6 @@ utils: cmake_check_build_system
 utils/fast:
 	$(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/build
 .PHONY : utils/fast
-
-src/event_poll.o: src/event_poll.c.o
-.PHONY : src/event_poll.o
-
-# target to build an object file
-src/event_poll.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/event_poll.c.o
-.PHONY : src/event_poll.c.o
-
-src/event_poll.i: src/event_poll.c.i
-.PHONY : src/event_poll.i
-
-# target to preprocess a source file
-src/event_poll.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/event_poll.c.i
-.PHONY : src/event_poll.c.i
-
-src/event_poll.s: src/event_poll.c.s
-.PHONY : src/event_poll.s
-
-# target to generate assembly for a file
-src/event_poll.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/event_poll.c.s
-.PHONY : src/event_poll.c.s
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -190,30 +179,6 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/sdl_methods.o: src/sdl_methods.c.o
-.PHONY : src/sdl_methods.o
-
-# target to build an object file
-src/sdl_methods.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/sdl_methods.c.o
-.PHONY : src/sdl_methods.c.o
-
-src/sdl_methods.i: src/sdl_methods.c.i
-.PHONY : src/sdl_methods.i
-
-# target to preprocess a source file
-src/sdl_methods.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/sdl_methods.c.i
-.PHONY : src/sdl_methods.c.i
-
-src/sdl_methods.s: src/sdl_methods.c.s
-.PHONY : src/sdl_methods.s
-
-# target to generate assembly for a file
-src/sdl_methods.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/sdl_methods.c.s
-.PHONY : src/sdl_methods.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -224,15 +189,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... SDL_game"
 	@echo "... utils"
-	@echo "... src/event_poll.o"
-	@echo "... src/event_poll.i"
-	@echo "... src/event_poll.s"
+	@echo "... utils_sdl"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/sdl_methods.o"
-	@echo "... src/sdl_methods.i"
-	@echo "... src/sdl_methods.s"
 .PHONY : help
 
 

@@ -139,7 +139,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=sdl_utils
+CMAKE_PROJECT_NAME:STATIC=utils_sdl
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -213,10 +213,10 @@ SDL2_DIR:PATH=/usr/local/lib/cmake/SDL2
 SDL2_image_DIR:PATH=SDL2_image_DIR-NOTFOUND
 
 //Value Computed by CMake
-sdl_utils_BINARY_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/cmake-build-debug
+utils_sdl_BINARY_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/cmake-build-debug
 
 //Value Computed by CMake
-sdl_utils_SOURCE_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl
+utils_sdl_SOURCE_DIR:STATIC=/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl
 
 
 ########################
