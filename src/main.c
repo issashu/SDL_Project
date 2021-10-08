@@ -3,39 +3,27 @@
 #include <stdlib.h>
 
 //Misc 3rd party libs
-#include <SDL.h>
 
-//Own libs
-#include "Log.h"
-#include "defines.h"
-#include "sdl_methods.h"
-#include "event_poll.h"
+
+//Own libs and headers
+#include "sdl_command.h"
 
 int main() {
+    SDLLoader();
+    SDLUnloader();
+/*
     const STRING ImagePath = "../assets/Images/hello.bmp";
-    //struct SDLWindow AppWindow;
-    //TODO replace globals with the local structure
-    SDL_Window *gWindow = NULL;
-    SDL_Surface *gScreenSurface = NULL;
-    SDL_Surface *gImage = NULL;
-    SDL_Event **gameEvent = NULL;
+    Image = SDL_LoadBMP(ImagePath);
 
-    gImage = SDL_LoadBMP(ImagePath);
-    //TODO Take out all error checks in a separate function ot move that in the init
-    if (initScreen(&gWindow, &gScreenSurface) != SUCCESS) {
-        LOGERR("initScreen() failed.");
-        //TODO Add info for file, line and path
-    }
-
-    if (loadResources(&gImage, &ImagePath) != SUCCESS) {
+    if (loadResources(&Image, &ImagePath) != SUCCESS) {
         LOGERR("loadResources() failed.");
         //TODO Add info for file, line and path
     }
 
-    while (eventHandler(gameEvent) == 0){
-        drawGraphics(&gWindow, &gScreenSurface, &gImage);
+    while (eventHandler(&gameEvent) == 0){
+        drawGraphics(&Window, &screenSurface, &Image);
     }
-    deinitGame(&gWindow, &gScreenSurface);
-
+    deinitGame(&Window, &screenSurface);
+*/
     return EXIT_SUCCESS;
 }

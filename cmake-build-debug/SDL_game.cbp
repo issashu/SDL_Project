@@ -196,10 +196,16 @@
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include/event_poll.h">
 			<Option target="utils_sdl"/>
 		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include/sdl_command.h">
+			<Option target="utils_sdl"/>
+		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include/sdl_methods.h">
 			<Option target="utils_sdl"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src/event_poll.c">
+			<Option target="utils_sdl"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src/sdl_command.c">
 			<Option target="utils_sdl"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/src/sdl_methods.c">

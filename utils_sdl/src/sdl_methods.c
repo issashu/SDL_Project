@@ -1,18 +1,15 @@
 //
 // Created by Iordan Tonchev on 6.10.21.
 //
-#include <SDL.h>
+
+
 #include "sdl_methods.h"
 #include "defines.h"
 #include "Log.h"
 
-void initSDL(){
-    //TODO Add this as main entry point for the SDL lib
-}
-
 int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface) {
     if (SDL_Init(SDL_INIT_VIDEO) != SUCCESS) {
-        LOGERR("SDL_Init() failed! Reason: %s", SDL_GetError());
+        LOGERR("SDL_Init_VIDEO() failed! Reason: %s", SDL_GetError());
         //TODO Add filename, path and line number to the logger
         //TODO Why do we use a macro in LOGGER?
         return FAILURE;
@@ -36,14 +33,50 @@ int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface) {
     return EXIT_SUCCESS;
 }
 
-void deinitGame(SDL_Window **Window, SDL_Surface **WindowSurface) {
-    if (*WindowSurface != NULL) {
-        SDL_FreeSurface(*WindowSurface);
+int32_t initText(){
+    if (TTF_Init() != SUCCESS) {
+        LOGERR("TTF_Init() failed! Reason: %s", SDL_GetError());
+        //TODO Add filename, path and line number to the logger
+        //TODO Why do we use a macro in LOGGER?
+        return FAILURE;
     }
-    if (*Window != NULL) {
-        SDL_DestroyWindow(*Window);
+}
+
+int32_t initTextures(){
+    const int32_t imgFlags = IMG_INIT_PNG;
+
+    if (! (IMG_Init(imgFlags) & imgFlags)) {
+        LOGERR("SDL_image could not be initialised! SDL_image Error: %s",
+               IMG_GetError());
+        return FAILURE;
     }
-    SDL_Quit();
+}
+
+int32_t initTimers(){
+    if (SDL_Init(SDL_INIT_TIMER) != SUCCESS) {
+        LOGERR("SDL_Init_TIMER() failed! Reason: %s", SDL_GetError());
+        //TODO Add filename, path and line number to the logger
+        //TODO Why do we use a macro in LOGGER?
+        return FAILURE;
+    }
+}
+
+int32_t initSFX() {
+    if (SDL_Init(SDL_INIT_AUDIO) != SUCCESS) {
+        LOGERR("SDL_Init_AUDIO() failed! Reason: %s", SDL_GetError());
+        //TODO Add filename, path and line number to the logger
+        //TODO Why do we use a macro in LOGGER?
+        return FAILURE;
+    }
+
+    if (0 > Mix_OpenAudio(44100,      //sound frequency
+                          MIX_DEFAULT_FORMAT,  //sample format
+                          2,          //stereo hardware channels
+                          2048)) {   //chunk size
+        LOGERR("SDL_mixer could not be initialised! SDL Error: %s", Mix_GetError());
+        return FAILURE;
+    }
+
 }
 
 int32_t loadResources(SDL_Surface **Image, const STRING*ImagePath) {
@@ -63,4 +96,14 @@ void drawGraphics(SDL_Window **Window, SDL_Surface **WindowSurface, SDL_Surface 
     }
 
     SDL_Delay(10000);
+}
+
+void deinitGame(SDL_Window **Window, SDL_Surface **WindowSurface) {
+    if (*WindowSurface != NULL) {
+        SDL_FreeSurface(*WindowSurface);
+    }
+    if (*Window != NULL) {
+        SDL_DestroyWindow(*Window);
+    }
+    SDL_Quit();
 }

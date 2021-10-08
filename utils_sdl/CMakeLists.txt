@@ -32,16 +32,18 @@ add_library(${PROJECT_NAME}
         STATIC
         ${_HEADERS_DIR}/sdl_methods.h
         ${_HEADERS_DIR}/event_poll.h
+        ${_HEADERS_DIR}/sdl_command.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/event_poll.c
+        ${_SOURCES_DIR}/sdl_command.c
         )
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${_HEADERS_DIR}
         PUBLIC
-        #TODO MAke them private
+        #TODO Make 'em private
         ${_SOURCES_DIR}
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
