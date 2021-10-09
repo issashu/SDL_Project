@@ -91,6 +91,11 @@ int32_t loadResources(SDL_Surface **Image, const STRING*ImagePath) {
         LOGERR("SDL_LoadBMP failed! Reason: %s", SDL_GetError());
         return FAILURE;
     }
+    /*
+
+
+
+*/
 
     return EXIT_SUCCESS;
 }
@@ -100,13 +105,11 @@ void drawGraphics(SDL_Window **Window, SDL_Surface **WindowSurface, SDL_Surface 
     if (SDL_UpdateWindowSurface(*Window) != SUCCESS) {
         LOGERR("SDL_BlitSurface failed! Reason: %s", SDL_GetError());
     }
-
-    SDL_Delay(10000);
 }
 
-void deinitGame(SDL_Window **Window, SDL_Surface **WindowSurface) {
-    if (*WindowSurface != NULL) {
-        SDL_FreeSurface(*WindowSurface);
+void deinitGame(SDL_Window **Window, SDL_Surface **Image) {
+    if (*Image != NULL) {
+        SDL_FreeSurface(*Image);
     }
     if (*Window != NULL) {
         SDL_DestroyWindow(*Window);

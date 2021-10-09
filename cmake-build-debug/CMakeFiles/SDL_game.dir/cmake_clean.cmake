@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SDL_game.dir/src/gameLoop.c.o"
   "CMakeFiles/SDL_game.dir/src/main.c.o"
   "SDL_game"
   "SDL_game.pdb"

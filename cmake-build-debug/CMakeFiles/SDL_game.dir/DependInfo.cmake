@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/issashu/Lessons/StrypesC/SDL project/src/main.c" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles/SDL_game.dir/src/main.c.o"
+  "/Users/issashu/Lessons/StrypesC/SDLproject/src/gameLoop.c" "/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles/SDL_game.dir/src/gameLoop.c.o"
+  "/Users/issashu/Lessons/StrypesC/SDLproject/src/main.c" "/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles/SDL_game.dir/src/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
@@ -27,8 +28,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl/CMakeFiles/utils_sdl.dir/DependInfo.cmake"
-  "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/CMakeFiles/utils.dir/DependInfo.cmake"
+  "/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils_sdl/CMakeFiles/utils_sdl.dir/DependInfo.cmake"
+  "/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils/CMakeFiles/utils.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

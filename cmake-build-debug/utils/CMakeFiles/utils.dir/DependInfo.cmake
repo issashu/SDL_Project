@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/CMakeFiles/utils.dir/src/containers/Vector.c.o"
-  "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/vfx_tools/shapes.c" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o"
+  "/Users/issashu/Lessons/StrypesC/SDLproject/utils/src/containers/Vector.c" "/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils/CMakeFiles/utils.dir/src/containers/Vector.c.o"
+  "/Users/issashu/Lessons/StrypesC/SDLproject/utils/src/vfx_tools/shapes.c" "/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

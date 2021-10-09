@@ -1,9 +1,9 @@
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles/SDL_game.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl/CMakeFiles/rebuild_cache.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl/CMakeFiles/edit_cache.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils_sdl/CMakeFiles/utils_sdl.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/CMakeFiles/rebuild_cache.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/CMakeFiles/edit_cache.dir
-/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/CMakeFiles/utils.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles/SDL_game.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils_sdl/CMakeFiles/rebuild_cache.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils_sdl/CMakeFiles/edit_cache.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils_sdl/CMakeFiles/utils_sdl.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils/CMakeFiles/rebuild_cache.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils/CMakeFiles/edit_cache.dir
+/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils/CMakeFiles/utils.dir

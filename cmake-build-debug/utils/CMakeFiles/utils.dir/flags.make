@@ -4,7 +4,7 @@
 # compile C with /Library/Developer/CommandLineTools/usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I"/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils"
+C_INCLUDES = -I/Users/issashu/Lessons/StrypesC/SDLproject/utils/include/utils
 
-C_FLAGS =  -fsanitize=address -fsanitize-address-use-after-scope -g -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
+C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
 

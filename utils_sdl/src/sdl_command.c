@@ -14,16 +14,20 @@ struct SDLMethods{
     void (*deinitGame)(SDL_Window**, SDL_Surface**);
 };
 
+//TODO Make non-global and after fix the drawGame spaghetti below
+static struct SDLWindow AppWindow;
+
 int8_t SDLLoader(){
     //TODO Rethink the whole arhitecture to have SDL lib loader and then initialiser separetly
-    struct SDLWindow AppWindow;
     AppWindow.Window =NULL;
     AppWindow.ScreenSurface = NULL;
     AppWindow.Image = NULL;
 
     SDL_Event *gameEvent = NULL;
+    //TODO Fix the path abomination by possibly using path as param.
+    const STRING ImagePath = ASSETS_PATH "images/hello.bmp";
 
-    //TODO Take out all error checks in a separate function ot move that in the init
+    //TODO Take out all error checks in a separate function or move them in a common if
     if (initScreen(&AppWindow.Window, &AppWindow.ScreenSurface) != SUCCESS) {
         LOGERR("initScreen() failed.");
         //TODO Add info for file, line and path
@@ -54,11 +58,22 @@ int8_t SDLLoader(){
         return FAILURE;
     }
 
+    if (loadResources(&AppWindow.Image, &ImagePath) != SUCCESS) {
+        LOGERR("loadResources() failed.");
+        //TODO Add info  for file, line and path
+        return FAILURE;
+    }
+
     return SUCCESS;
+}
+
+void SDLdrawGame(){
+    drawGraphics(&AppWindow.Window,&AppWindow.ScreenSurface,&AppWindow.Image);
 }
 
 void SDLUnloader(){
     //TODO Rethink the whole arhitecture to have SDL lib unloader and then initialiser separetly
+    deinitGame(&AppWindow.Window, &AppWindow.Image);
     IMG_Quit();
     TTF_Quit();
     Mix_Quit();

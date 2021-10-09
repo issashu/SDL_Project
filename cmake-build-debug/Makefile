@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/issashu/Lessons/StrypesC/SDL project"
+CMAKE_SOURCE_DIR = /Users/issashu/Lessons/StrypesC/SDLproject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -155,6 +155,30 @@ utils/fast:
 	$(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/build
 .PHONY : utils/fast
 
+src/gameLoop.o: src/gameLoop.c.o
+.PHONY : src/gameLoop.o
+
+# target to build an object file
+src/gameLoop.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/gameLoop.c.o
+.PHONY : src/gameLoop.c.o
+
+src/gameLoop.i: src/gameLoop.c.i
+.PHONY : src/gameLoop.i
+
+# target to preprocess a source file
+src/gameLoop.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/gameLoop.c.i
+.PHONY : src/gameLoop.c.i
+
+src/gameLoop.s: src/gameLoop.c.s
+.PHONY : src/gameLoop.s
+
+# target to generate assembly for a file
+src/gameLoop.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SDL_game.dir/build.make CMakeFiles/SDL_game.dir/src/gameLoop.c.s
+.PHONY : src/gameLoop.c.s
+
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -190,6 +214,9 @@ help:
 	@echo "... SDL_game"
 	@echo "... utils"
 	@echo "... utils_sdl"
+	@echo "... src/gameLoop.o"
+	@echo "... src/gameLoop.i"
+	@echo "... src/gameLoop.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

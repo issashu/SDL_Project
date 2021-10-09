@@ -31,12 +31,16 @@ find_package(${SDL_mixer_name} REQUIRED)
 add_library(${PROJECT_NAME}
         STATIC
         ${_HEADERS_DIR}/sdl_methods.h
-        ${_HEADERS_DIR}/event_poll.h
+        ${_HEADERS_DIR}/sdl_event_handler.h
         ${_HEADERS_DIR}/sdl_command.h
 
         ${_SOURCES_DIR}/sdl_methods.c
-        ${_SOURCES_DIR}/event_poll.c
+        ${_SOURCES_DIR}/sdl_event_handler.c
         ${_SOURCES_DIR}/sdl_command.c
+        )
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+        ASSETS_PATH="${ASSETS_PATH}"
         )
 
 target_include_directories(${PROJECT_NAME}

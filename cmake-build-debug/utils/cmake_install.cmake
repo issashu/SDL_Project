@@ -1,4 +1,4 @@
-# Install script for directory: /Users/issashu/Lessons/StrypesC/SDL project/utils
+# Install script for directory: /Users/issashu/Lessons/StrypesC/SDLproject/utils
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

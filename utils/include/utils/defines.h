@@ -10,5 +10,6 @@
 #define STRING char*
 #define TRUE 1
 #define FALSE 0
+#define BOOL int8_t
 
 #endif //SDL_GAME_DEFINES_H

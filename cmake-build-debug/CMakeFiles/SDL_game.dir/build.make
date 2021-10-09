@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/issashu/Lessons/StrypesC/SDL project"
+CMAKE_SOURCE_DIR = /Users/issashu/Lessons/StrypesC/SDLproject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SDL_game.dir/depend.make
@@ -68,25 +68,40 @@ include CMakeFiles/SDL_game.dir/flags.make
 
 CMakeFiles/SDL_game.dir/src/main.c.o: CMakeFiles/SDL_game.dir/flags.make
 CMakeFiles/SDL_game.dir/src/main.c.o: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/SDL_game.dir/src/main.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SDL_game.dir/src/main.c.o -c "/Users/issashu/Lessons/StrypesC/SDL project/src/main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/SDL_game.dir/src/main.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SDL_game.dir/src/main.c.o -c /Users/issashu/Lessons/StrypesC/SDLproject/src/main.c
 
 CMakeFiles/SDL_game.dir/src/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SDL_game.dir/src/main.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/issashu/Lessons/StrypesC/SDL project/src/main.c" > CMakeFiles/SDL_game.dir/src/main.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/issashu/Lessons/StrypesC/SDLproject/src/main.c > CMakeFiles/SDL_game.dir/src/main.c.i
 
 CMakeFiles/SDL_game.dir/src/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SDL_game.dir/src/main.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/issashu/Lessons/StrypesC/SDL project/src/main.c" -o CMakeFiles/SDL_game.dir/src/main.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/issashu/Lessons/StrypesC/SDLproject/src/main.c -o CMakeFiles/SDL_game.dir/src/main.c.s
+
+CMakeFiles/SDL_game.dir/src/gameLoop.c.o: CMakeFiles/SDL_game.dir/flags.make
+CMakeFiles/SDL_game.dir/src/gameLoop.c.o: ../src/gameLoop.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/SDL_game.dir/src/gameLoop.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SDL_game.dir/src/gameLoop.c.o -c /Users/issashu/Lessons/StrypesC/SDLproject/src/gameLoop.c
+
+CMakeFiles/SDL_game.dir/src/gameLoop.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SDL_game.dir/src/gameLoop.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/issashu/Lessons/StrypesC/SDLproject/src/gameLoop.c > CMakeFiles/SDL_game.dir/src/gameLoop.c.i
+
+CMakeFiles/SDL_game.dir/src/gameLoop.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SDL_game.dir/src/gameLoop.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/issashu/Lessons/StrypesC/SDLproject/src/gameLoop.c -o CMakeFiles/SDL_game.dir/src/gameLoop.c.s
 
 # Object files for target SDL_game
 SDL_game_OBJECTS = \
-"CMakeFiles/SDL_game.dir/src/main.c.o"
+"CMakeFiles/SDL_game.dir/src/main.c.o" \
+"CMakeFiles/SDL_game.dir/src/gameLoop.c.o"
 
 # External object files for target SDL_game
 SDL_game_EXTERNAL_OBJECTS =
 
 SDL_game: CMakeFiles/SDL_game.dir/src/main.c.o
+SDL_game: CMakeFiles/SDL_game.dir/src/gameLoop.c.o
 SDL_game: CMakeFiles/SDL_game.dir/build.make
 SDL_game: utils_sdl/libutils_sdl.a
 SDL_game: utils/libutils.a
@@ -96,7 +111,7 @@ SDL_game: /usr/local/lib/libSDL2_image.dylib
 SDL_game: /usr/local/lib/libSDL2_ttf.dylib
 SDL_game: /usr/local/lib/libSDL2_mixer.dylib
 SDL_game: CMakeFiles/SDL_game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable SDL_game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable SDL_game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SDL_game.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +123,6 @@ CMakeFiles/SDL_game.dir/clean:
 .PHONY : CMakeFiles/SDL_game.dir/clean
 
 CMakeFiles/SDL_game.dir/depend:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/issashu/Lessons/StrypesC/SDL project" "/Users/issashu/Lessons/StrypesC/SDL project" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles/SDL_game.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/issashu/Lessons/StrypesC/SDLproject /Users/issashu/Lessons/StrypesC/SDLproject /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles/SDL_game.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SDL_game.dir/depend
 

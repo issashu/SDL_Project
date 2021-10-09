@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/issashu/Lessons/StrypesC/SDL project"
+CMAKE_SOURCE_DIR = /Users/issashu/Lessons/StrypesC/SDLproject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils//CMakeFiles/progress.marks"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" 0
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils//CMakeFiles/progress.marks
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/clean
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/preinstall
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/preinstall
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 utils/CMakeFiles/utils.dir/rule:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/CMakeFiles/utils.dir/rule
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/CMakeFiles/utils.dir/rule
 .PHONY : utils/CMakeFiles/utils.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ utils: utils/CMakeFiles/utils.dir/rule
 
 # fast build rule for target.
 utils/fast:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/build
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/build
 .PHONY : utils/fast
 
 src/containers/Vector.o: src/containers/Vector.c.o
@@ -135,7 +135,7 @@ src/containers/Vector.o: src/containers/Vector.c.o
 
 # target to build an object file
 src/containers/Vector.c.o:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/containers/Vector.c.o
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/containers/Vector.c.o
 .PHONY : src/containers/Vector.c.o
 
 src/containers/Vector.i: src/containers/Vector.c.i
@@ -143,7 +143,7 @@ src/containers/Vector.i: src/containers/Vector.c.i
 
 # target to preprocess a source file
 src/containers/Vector.c.i:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/containers/Vector.c.i
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/containers/Vector.c.i
 .PHONY : src/containers/Vector.c.i
 
 src/containers/Vector.s: src/containers/Vector.c.s
@@ -151,7 +151,7 @@ src/containers/Vector.s: src/containers/Vector.c.s
 
 # target to generate assembly for a file
 src/containers/Vector.c.s:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/containers/Vector.c.s
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/containers/Vector.c.s
 .PHONY : src/containers/Vector.c.s
 
 src/vfx_tools/shapes.o: src/vfx_tools/shapes.c.o
@@ -159,7 +159,7 @@ src/vfx_tools/shapes.o: src/vfx_tools/shapes.c.o
 
 # target to build an object file
 src/vfx_tools/shapes.c.o:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o
 .PHONY : src/vfx_tools/shapes.c.o
 
 src/vfx_tools/shapes.i: src/vfx_tools/shapes.c.i
@@ -167,7 +167,7 @@ src/vfx_tools/shapes.i: src/vfx_tools/shapes.c.i
 
 # target to preprocess a source file
 src/vfx_tools/shapes.c.i:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.i
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.i
 .PHONY : src/vfx_tools/shapes.c.i
 
 src/vfx_tools/shapes.s: src/vfx_tools/shapes.c.s
@@ -175,7 +175,7 @@ src/vfx_tools/shapes.s: src/vfx_tools/shapes.c.s
 
 # target to generate assembly for a file
 src/vfx_tools/shapes.c.s:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.s
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.s
 .PHONY : src/vfx_tools/shapes.c.s
 
 # Help Target
@@ -204,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

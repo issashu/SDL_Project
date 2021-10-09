@@ -7,7 +7,10 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "defines.h"
+
 int8_t SDLLoader();
 void SDLUnloader();
+void SDLdrawGame();
 
 #endif //SDL_GAME_SDL_COMMAND_H

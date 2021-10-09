@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/issashu/Lessons/StrypesC/SDL project"
+CMAKE_SOURCE_DIR = /Users/issashu/Lessons/StrypesC/SDLproject
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include utils/CMakeFiles/utils.dir/depend.make
@@ -68,29 +68,29 @@ include utils/CMakeFiles/utils.dir/flags.make
 
 utils/CMakeFiles/utils.dir/src/containers/Vector.c.o: utils/CMakeFiles/utils.dir/flags.make
 utils/CMakeFiles/utils.dir/src/containers/Vector.c.o: ../utils/src/containers/Vector.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object utils/CMakeFiles/utils.dir/src/containers/Vector.c.o"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/utils.dir/src/containers/Vector.c.o -c "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object utils/CMakeFiles/utils.dir/src/containers/Vector.c.o"
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/utils.dir/src/containers/Vector.c.o -c /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/containers/Vector.c
 
 utils/CMakeFiles/utils.dir/src/containers/Vector.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/utils.dir/src/containers/Vector.c.i"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c" > CMakeFiles/utils.dir/src/containers/Vector.c.i
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/containers/Vector.c > CMakeFiles/utils.dir/src/containers/Vector.c.i
 
 utils/CMakeFiles/utils.dir/src/containers/Vector.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/utils.dir/src/containers/Vector.c.s"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c" -o CMakeFiles/utils.dir/src/containers/Vector.c.s
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/containers/Vector.c -o CMakeFiles/utils.dir/src/containers/Vector.c.s
 
 utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o: utils/CMakeFiles/utils.dir/flags.make
 utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o: ../utils/src/vfx_tools/shapes.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o -c "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/vfx_tools/shapes.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o"
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o -c /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/vfx_tools/shapes.c
 
 utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/utils.dir/src/vfx_tools/shapes.c.i"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/vfx_tools/shapes.c" > CMakeFiles/utils.dir/src/vfx_tools/shapes.c.i
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/vfx_tools/shapes.c > CMakeFiles/utils.dir/src/vfx_tools/shapes.c.i
 
 utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/utils.dir/src/vfx_tools/shapes.c.s"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/issashu/Lessons/StrypesC/SDL project/utils/src/vfx_tools/shapes.c" -o CMakeFiles/utils.dir/src/vfx_tools/shapes.c.s
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && /Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/vfx_tools/shapes.c -o CMakeFiles/utils.dir/src/vfx_tools/shapes.c.s
 
 # Object files for target utils
 utils_OBJECTS = \
@@ -104,19 +104,19 @@ utils/libutils.a: utils/CMakeFiles/utils.dir/src/containers/Vector.c.o
 utils/libutils.a: utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o
 utils/libutils.a: utils/CMakeFiles/utils.dir/build.make
 utils/libutils.a: utils/CMakeFiles/utils.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libutils.a"
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && $(CMAKE_COMMAND) -P CMakeFiles/utils.dir/cmake_clean_target.cmake
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/utils.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C static library libutils.a"
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && $(CMAKE_COMMAND) -P CMakeFiles/utils.dir/cmake_clean_target.cmake
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/utils.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 utils/CMakeFiles/utils.dir/build: utils/libutils.a
 .PHONY : utils/CMakeFiles/utils.dir/build
 
 utils/CMakeFiles/utils.dir/clean:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" && $(CMAKE_COMMAND) -P CMakeFiles/utils.dir/cmake_clean.cmake
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils && $(CMAKE_COMMAND) -P CMakeFiles/utils.dir/cmake_clean.cmake
 .PHONY : utils/CMakeFiles/utils.dir/clean
 
 utils/CMakeFiles/utils.dir/depend:
-	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/issashu/Lessons/StrypesC/SDL project" "/Users/issashu/Lessons/StrypesC/SDL project/utils" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils" "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug/utils/CMakeFiles/utils.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/issashu/Lessons/StrypesC/SDLproject /Users/issashu/Lessons/StrypesC/SDLproject/utils /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils /Users/issashu/Lessons/StrypesC/SDLproject/cmake-build-debug/utils/CMakeFiles/utils.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : utils/CMakeFiles/utils.dir/depend
 

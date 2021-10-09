@@ -44,6 +44,6 @@ int32_t initTextures();
 int32_t initTimers();
 int32_t initSFX();
 void drawGraphics(SDL_Window **Window, SDL_Surface **WindowSurface, SDL_Surface **Image);
-void deinitGame(SDL_Window **Window, SDL_Surface **WindowSurface);
+void deinitGame(SDL_Window **Window, SDL_Surface **Image);
 
 #endif //SDL_GAME_SDL_METHODS_H

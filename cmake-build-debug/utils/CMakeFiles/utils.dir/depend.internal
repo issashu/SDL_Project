@@ -3,8 +3,8 @@
 
 utils/CMakeFiles/utils.dir/src/containers/Vector.c.o
  ../utils/include/utils/containers/Vector.h
- /Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c
+ /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/containers/Vector.c
 utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o
  ../utils/include/utils/defines.h
  ../utils/include/utils/vfx_tools/shapes.h
- /Users/issashu/Lessons/StrypesC/SDL project/utils/src/vfx_tools/shapes.c
+ /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/vfx_tools/shapes.c
