@@ -10,11 +10,30 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include "defines.h"
+#include "vfx_tools/shapes.h"
+
+//TODO Extract all struct objects in own header
+struct MonitorWindowCfg {
+    //Window modes:
+    //SDL_WINDOW_SHOWN - for windowed version
+    //SDL_WINDOW_FULLSCREEN_DESKTOP - for fullscreen
+    int32_t displayMode;
+    int32_t windowWidth;
+    int32_t windowHeight;
+    struct Point windowPos;
+    char *windowName;
+};
 
 struct SDLWindow{
     SDL_Window *Window;
     SDL_Surface *ScreenSurface;
     SDL_Surface *Image;
+};
+
+struct Display{
+    struct SDLWindow *Window;
+    struct MonitorWindowCfg *DisplayConfig;
+    struct Rectangle WindowShape;
 };
 
 void initSDL();

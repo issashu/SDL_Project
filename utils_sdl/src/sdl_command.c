@@ -16,13 +16,15 @@ struct SDLMethods{
 
 int8_t SDLLoader(){
     //TODO Rethink the whole arhitecture to have SDL lib loader and then initialiser separetly
-    SDL_Window *Window = NULL;
-    SDL_Surface *screenSurface = NULL;
-    SDL_Surface *Image = NULL;
+    struct SDLWindow AppWindow;
+    AppWindow.Window =NULL;
+    AppWindow.ScreenSurface = NULL;
+    AppWindow.Image = NULL;
+
     SDL_Event *gameEvent = NULL;
 
     //TODO Take out all error checks in a separate function ot move that in the init
-    if (initScreen(&Window, &screenSurface) != SUCCESS) {
+    if (initScreen(&AppWindow.Window, &AppWindow.ScreenSurface) != SUCCESS) {
         LOGERR("initScreen() failed.");
         //TODO Add info for file, line and path
         return FAILURE;

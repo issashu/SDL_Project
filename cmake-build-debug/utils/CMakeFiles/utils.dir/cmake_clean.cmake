@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/utils.dir/src/containers/Vector.c.o"
+  "CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o"
   "libutils.a"
   "libutils.pdb"
 )

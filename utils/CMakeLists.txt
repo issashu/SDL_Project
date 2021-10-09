@@ -12,9 +12,12 @@ add_library(
        ${_HEADERS_DIR}/Log.h
        ${_HEADERS_DIR}/ErrorCodes.h
        ${_HEADERS_DIR}/containers/Vector.h
+       ${_HEADERS_DIR}/vfx_tools/shapes.h
+       ${_HEADERS_DIR}/defines.h
 
        ${_SOURCES_DIR}/containers/Vector.c
-)
+       ${_SOURCES_DIR}/vfx_tools/shapes.c
+       )
 
 target_include_directories(
        ${PROJECT_NAME} PUBLIC

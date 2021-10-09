@@ -190,7 +190,16 @@
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils/containers/Vector.h">
 			<Option target="utils"/>
 		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils/defines.h">
+			<Option target="utils"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/include/utils/vfx_tools/shapes.h">
+			<Option target="utils"/>
+		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/src/containers/Vector.c">
+			<Option target="utils"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils/src/vfx_tools/shapes.c">
 			<Option target="utils"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDL project/utils_sdl/include/event_poll.h">

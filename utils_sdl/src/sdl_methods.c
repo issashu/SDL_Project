@@ -2,7 +2,6 @@
 // Created by Iordan Tonchev on 6.10.21.
 //
 
-
 #include "sdl_methods.h"
 #include "defines.h"
 #include "Log.h"
@@ -40,6 +39,8 @@ int32_t initText(){
         //TODO Why do we use a macro in LOGGER?
         return FAILURE;
     }
+
+    return SUCCESS;
 }
 
 int32_t initTextures(){
@@ -50,6 +51,8 @@ int32_t initTextures(){
                IMG_GetError());
         return FAILURE;
     }
+
+    return SUCCESS;
 }
 
 int32_t initTimers(){
@@ -59,6 +62,8 @@ int32_t initTimers(){
         //TODO Why do we use a macro in LOGGER?
         return FAILURE;
     }
+
+    return SUCCESS;
 }
 
 int32_t initSFX() {
@@ -77,6 +82,7 @@ int32_t initSFX() {
         return FAILURE;
     }
 
+    return SUCCESS;
 }
 
 int32_t loadResources(SDL_Surface **Image, const STRING*ImagePath) {

@@ -154,6 +154,30 @@ src/containers/Vector.c.s:
 	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/containers/Vector.c.s
 .PHONY : src/containers/Vector.c.s
 
+src/vfx_tools/shapes.o: src/vfx_tools/shapes.c.o
+.PHONY : src/vfx_tools/shapes.o
+
+# target to build an object file
+src/vfx_tools/shapes.c.o:
+	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o
+.PHONY : src/vfx_tools/shapes.c.o
+
+src/vfx_tools/shapes.i: src/vfx_tools/shapes.c.i
+.PHONY : src/vfx_tools/shapes.i
+
+# target to preprocess a source file
+src/vfx_tools/shapes.c.i:
+	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.i
+.PHONY : src/vfx_tools/shapes.c.i
+
+src/vfx_tools/shapes.s: src/vfx_tools/shapes.c.s
+.PHONY : src/vfx_tools/shapes.s
+
+# target to generate assembly for a file
+src/vfx_tools/shapes.c.s:
+	cd "/Users/issashu/Lessons/StrypesC/SDL project/cmake-build-debug" && $(MAKE) $(MAKESILENT) -f utils/CMakeFiles/utils.dir/build.make utils/CMakeFiles/utils.dir/src/vfx_tools/shapes.c.s
+.PHONY : src/vfx_tools/shapes.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -166,6 +190,9 @@ help:
 	@echo "... src/containers/Vector.o"
 	@echo "... src/containers/Vector.i"
 	@echo "... src/containers/Vector.s"
+	@echo "... src/vfx_tools/shapes.o"
+	@echo "... src/vfx_tools/shapes.i"
+	@echo "... src/vfx_tools/shapes.s"
 .PHONY : help
 
 

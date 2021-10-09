@@ -23,7 +23,6 @@ int main() {
     while (eventHandler(&gameEvent) == 0){
         drawGraphics(&Window, &screenSurface, &Image);
     }
-    deinitGame(&Window, &screenSurface);
 */
     return EXIT_SUCCESS;
 }
