@@ -3,6 +3,7 @@
 //
 
 #include "sdl_methods.h"
+#include "sdl_default_app_settings.h"
 #include "defines.h"
 #include "Log.h"
 
@@ -15,7 +16,7 @@ int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface) {
     }
     //TODO REMOVE THE MAGIC NUMBERS AS PARAMS
     *Window = SDL_CreateWindow("Metroidvania", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, \
-                                640, 860, SDL_WINDOW_SHOWN);
+                                WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     if (*Window == NULL) {
         LOGERR("SDL_CreateWindow failed! Reason: %s", SDL_GetError());
         //TODO Add filename, path and line number to the logger

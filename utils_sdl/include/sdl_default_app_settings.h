@@ -1,0 +1,12 @@
+//
+// Created by Iordan Tonchev on 10.10.21.
+//
+
+#ifndef SDL_GAME_SDL_DEFAULT_APP_SETTINGS_H
+#define SDL_GAME_SDL_DEFAULT_APP_SETTINGS_H
+
+#define WINDOW_WIDTH 860
+#define WINDOW_HEIGHT 640
+
+
+#endif //SDL_GAME_SDL_DEFAULT_APP_SETTINGS_H

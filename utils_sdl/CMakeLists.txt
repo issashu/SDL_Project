@@ -35,6 +35,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/sdl_event_defines.h
         ${_HEADERS_DIR}/sdl_command.h
         ${_HEADERS_DIR}/sdl_gfx_renderer.h
+        ${_HEADERS_DIR}/sdl_default_app_settings.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/sdl_event_handler.c

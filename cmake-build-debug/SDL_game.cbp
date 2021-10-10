@@ -213,6 +213,9 @@
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_command.h">
 			<Option target="utils_sdl"/>
 		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_default_app_settings.h">
+			<Option target="utils_sdl"/>
+		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_event_defines.h">
 			<Option target="utils_sdl"/>
 		</Unit>
