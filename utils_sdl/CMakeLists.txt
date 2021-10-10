@@ -32,11 +32,14 @@ add_library(${PROJECT_NAME}
         STATIC
         ${_HEADERS_DIR}/sdl_methods.h
         ${_HEADERS_DIR}/sdl_event_handler.h
+        ${_HEADERS_DIR}/sdl_event_defines.h
         ${_HEADERS_DIR}/sdl_command.h
+        ${_HEADERS_DIR}/sdl_gfx_renderer.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/sdl_event_handler.c
         ${_SOURCES_DIR}/sdl_command.c
+        ${_SOURCES_DIR}/sdl_gfx_renderer.c
         )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE

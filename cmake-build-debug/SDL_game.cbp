@@ -213,7 +213,13 @@
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_command.h">
 			<Option target="utils_sdl"/>
 		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_event_defines.h">
+			<Option target="utils_sdl"/>
+		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_event_handler.h">
+			<Option target="utils_sdl"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_gfx_renderer.h">
 			<Option target="utils_sdl"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include/sdl_methods.h">
@@ -223,6 +229,9 @@
 			<Option target="utils_sdl"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src/sdl_event_handler.c">
+			<Option target="utils_sdl"/>
+		</Unit>
+		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src/sdl_gfx_renderer.c">
 			<Option target="utils_sdl"/>
 		</Unit>
 		<Unit filename="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src/sdl_methods.c">
