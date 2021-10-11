@@ -2,6 +2,8 @@
 // Created by Iordan Tonchev on 7.10.21.
 //
 
+#include <SDL.h>
+#include <SDL_events.h>
 #include "sdl_event_handler.h"
 
 

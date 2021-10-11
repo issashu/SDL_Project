@@ -7,7 +7,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "defines.h"
 
 int8_t SDLLoader();
 void SDLUnloader();

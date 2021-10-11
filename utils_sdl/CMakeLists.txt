@@ -50,8 +50,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${_HEADERS_DIR}
-        PUBLIC
-        #TODO Make 'em private
+        PRIVATE
         ${_SOURCES_DIR}
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
@@ -62,7 +61,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
         utils
-        PUBLIC
+        PRIVATE
         ${SDL2_LIBRARY}
         ${SDL2_IMAGE_LIBRARY}
         ${SDL2_TTF_LIBRARY}

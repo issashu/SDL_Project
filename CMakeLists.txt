@@ -7,6 +7,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/helpers_c.cmake)
 #_CXX_ for C++
 #Remove/Comment before final build
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -fsanitize-address-use-after-scope -g")
+
 #Uncomment below for Apple Silicon setups
 #set(CMAKE_OSX_ARCHITECTURES "arm64")
 
@@ -24,25 +25,26 @@ add_executable(${PROJECT_NAME}
         ${SOURCES_DIR}/main.c
         ${SOURCES_DIR}/gameLoop.c
 
-        ${HEADERS_DIR}/gameLoop.h)
+        ${HEADERS_DIR}/gameLoop.h
+        )
 
 target_include_directories(
         ${PROJECT_NAME}
         PUBLIC
         ${BASE_DIR}
-)
+        )
 
 target_link_libraries(
         ${PROJECT_NAME}
         PUBLIC
         utils_sdl
-)
+        )
 
 target_compile_definitions(
         ${PROJECT_NAME}
         PRIVATE
         _DEFAULT_SOURCE=1
-)
+        )
 
 add_subdirectory(utils_sdl)
 add_subdirectory(utils)

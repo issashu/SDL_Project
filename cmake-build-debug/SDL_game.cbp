@@ -47,8 +47,6 @@
 					<Add option="-D_DEFAULT_SOURCE=1"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include"/>
-					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src"/>
-					<Add directory="/usr/local/include/SDL2"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>
@@ -73,8 +71,6 @@
 					<Add option="-D_DEFAULT_SOURCE=1"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include"/>
-					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src"/>
-					<Add directory="/usr/local/include/SDL2"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils/include/utils"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include"/>

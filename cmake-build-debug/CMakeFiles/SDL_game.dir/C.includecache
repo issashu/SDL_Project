@@ -6,3 +6,15 @@
 
 #IncludeRegexTransform: 
 
+../include/gameLoop.h
+stdint.h
+-
+stdio.h
+-
+
+/Users/issashu/Lessons/StrypesC/SDLproject/src/main.c
+stdlib.h
+-
+include/gameLoop.h
+/Users/issashu/Lessons/StrypesC/SDLproject/src/include/gameLoop.h
+

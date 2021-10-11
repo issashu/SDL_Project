@@ -4,7 +4,7 @@
 # compile C with /Library/Developer/CommandLineTools/usr/bin/cc
 C_DEFINES = -D_DEFAULT_SOURCE=1
 
-C_INCLUDES = -I/Users/issashu/Lessons/StrypesC/SDLproject -I/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include -I/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src -I/usr/local/include/SDL2 -I/Users/issashu/Lessons/StrypesC/SDLproject/utils/include/utils
+C_INCLUDES = -I/Users/issashu/Lessons/StrypesC/SDLproject -I/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include -I/Users/issashu/Lessons/StrypesC/SDLproject/utils/include/utils
 
 C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -Wall -Wextra -Werror -Wundef -Wuninitialized -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wunused-parameter -Wdouble-promotion -Wnull-dereference -std=c11
 

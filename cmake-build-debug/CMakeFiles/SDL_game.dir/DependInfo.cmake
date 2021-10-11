@@ -22,8 +22,6 @@ set(CMAKE_TARGET_DEFINITIONS_C
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "../"
   "../utils_sdl/include"
-  "../utils_sdl/src"
-  "/usr/local/include/SDL2"
   "../utils/include/utils"
   )
 
