@@ -86,6 +86,7 @@ int32_t initSFX() {
     return SUCCESS;
 }
 
+//TODO Move to renderer file
 int32_t loadResources(SDL_Surface **Image, const STRING*ImagePath) {
     *Image = SDL_LoadBMP(*ImagePath);
     if (*Image == NULL) {

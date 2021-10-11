@@ -6,24 +6,12 @@
 
 #IncludeRegexTransform: 
 
-../utils/include/utils/containers/Vector.h
-stddef.h
--
-stdbool.h
--
-
 ../utils/include/utils/defines.h
 
 ../utils/include/utils/vfx_tools/shapes.h
 stdint.h
 -
 stdio.h
--
-
-/Users/issashu/Lessons/StrypesC/SDLproject/utils/src/containers/Vector.c
-containers/Vector.h
-/Users/issashu/Lessons/StrypesC/SDLproject/utils/src/containers/containers/Vector.h
-stdlib.h
 -
 
 /Users/issashu/Lessons/StrypesC/SDLproject/utils/src/vfx_tools/shapes.c

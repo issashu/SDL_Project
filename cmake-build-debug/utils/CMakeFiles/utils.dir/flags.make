@@ -6,5 +6,5 @@ C_DEFINES =
 
 C_INCLUDES = -I/Users/issashu/Lessons/StrypesC/SDLproject/utils/include/utils
 
-C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
+C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -Wall -Wextra -Werror -Wundef -Wuninitialized -Wshadow -Wpointer-arith -Wcast-align -Wcast-qual -Wunused-parameter -Wdouble-promotion -Wnull-dereference -std=c11
 

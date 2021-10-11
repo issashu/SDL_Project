@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-D_DEFAULT_SOURCE=1"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src"/>
@@ -69,6 +70,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add option="-D_DEFAULT_SOURCE=1"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/include"/>
 					<Add directory="/Users/issashu/Lessons/StrypesC/SDLproject/utils_sdl/src"/>

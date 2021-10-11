@@ -4,6 +4,7 @@
 
 #include "sdl_event_handler.h"
 
+
 void eventHandler(BOOL *quit) {
     SDL_Event gameEvent;
     //TODO Unify everything in a single if statement and ||

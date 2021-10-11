@@ -23,3 +23,6 @@ target_include_directories(
        ${PROJECT_NAME} PUBLIC
             ${_HEADERS_DIR}
 )
+
+set_target_c_standard(${PROJECT_NAME} 11)
+enable_target_c_warnings(${PROJECT_NAME})

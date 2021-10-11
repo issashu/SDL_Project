@@ -5,9 +5,10 @@
 #include "defines.h"
 #include "sdl_command.h"
 #include "sdl_methods.h"
+#include "sdl_gfx_renderer.h"
 #include "Log.h"
 
-//TODO Check how to utilise the forward derclared struct and function pointers
+//TODO Check how to utilise the forward declared struct and function pointers
 struct SDLMethods{
     int32_t (*loadResources)(SDL_Surface**, const STRING);
     void (*drawGraphics)(SDL_Window**, SDL_Surface**, SDL_Surface**);
@@ -16,6 +17,7 @@ struct SDLMethods{
 
 //TODO Make non-global and after fix the drawGame spaghetti below
 static struct SDLWindow AppWindow;
+SDL_Surface ImageSurfaces [KEY_PRESS_SURFACE_TOTAL];
 
 int8_t SDLLoader(){
     //TODO Rethink the whole arhitecture to have SDL lib loader and then initialiser separetly
@@ -23,7 +25,8 @@ int8_t SDLLoader(){
     AppWindow.ScreenSurface = NULL;
     AppWindow.Image = NULL;
 
-    SDL_Event *gameEvent = NULL;
+ //TODO Add some use of the gameEvent pointer or delete
+ //SDL_Event *gameEvent = NULL;
     //TODO Fix the path abomination by possibly using path as param.
     const STRING ImagePath = ASSETS_PATH "images/hello.bmp";
 

@@ -38,6 +38,12 @@ target_link_libraries(
         utils_sdl
 )
 
+target_compile_definitions(
+        ${PROJECT_NAME}
+        PRIVATE
+        _DEFAULT_SOURCE=1
+)
+
 add_subdirectory(utils_sdl)
 add_subdirectory(utils)
 
