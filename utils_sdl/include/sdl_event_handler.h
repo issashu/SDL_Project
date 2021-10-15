@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "defines.h"
 
-void eventHandler(BOOL *quit);
+void eventHandler(BOOL *isRunning);
+void keyboardEvent(BOOL *isRunning);
 
 #endif //SDL_GAME_SDL_EVENT_HANDLER_H

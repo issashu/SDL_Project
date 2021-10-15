@@ -25,9 +25,6 @@ int8_t SDLLoader(){
     AppWindow.ScreenSurface = NULL;
     AppWindow.Image = NULL;
 
- //TODO Add some use of the gameEvent pointer or delete
- //SDL_Event *gameEvent = NULL;
-    //TODO Fix the path abomination by possibly using path as param.
     const STRING ImagePath = ASSETS_PATH "images/hello.bmp";
 
     //TODO Take out all error checks in a separate function or move them in a common if

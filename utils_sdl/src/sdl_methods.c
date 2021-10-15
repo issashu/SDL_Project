@@ -23,6 +23,7 @@ int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface) {
         return FAILURE;
     }
 
+
     *WindowSurface = SDL_GetWindowSurface(*Window);
     if (*WindowSurface == NULL) {
         LOGERR("SDL_GetWindowSurface has failed! Reason: %s", SDL_GetError());
@@ -45,9 +46,9 @@ int32_t initText(){
 }
 
 int32_t initTextures(){
-    const int32_t imgFlags = IMG_INIT_PNG;
+    const int32_t imgType = IMG_INIT_PNG;
 
-    if (! (IMG_Init(imgFlags) & imgFlags)) {
+    if (! (IMG_Init(imgType) & imgType)) {
         LOGERR("SDL_image could not be initialised! SDL_image Error: %s",
                IMG_GetError());
         return FAILURE;
@@ -93,12 +94,6 @@ int32_t loadResources(SDL_Surface **Image, const STRING*ImagePath) {
         LOGERR("SDL_LoadBMP failed! Reason: %s", SDL_GetError());
         return FAILURE;
     }
-    /*
-
-
-
-*/
-
     return EXIT_SUCCESS;
 }
 
