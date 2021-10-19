@@ -10,6 +10,6 @@
 
 int8_t SDLLoader();
 void SDLUnloader();
-void SDLdrawGame();
+void SDLdrawGame(int32_t TextureIndex);
 
 #endif //SDL_GAME_SDL_COMMAND_H

@@ -4,6 +4,7 @@
 
 #include <SDL_events.h>
 #include "sdl_event_handler.h"
+#include "sdl_command.h"
 #include "sdl_gfx_renderer.h"
 
 void eventHandler(BOOL *isRunning) {
@@ -29,28 +30,34 @@ void keyboardEvent(BOOL *isRunning) {
     // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
     SDL_PumpEvents();
     const Uint8 *gameKeyStates = SDL_GetKeyboardState(NULL);
-    if(gameKeyStates[SDL_SCANCODE_UP]) {
+    while(gameKeyStates[SDL_SCANCODE_UP]) {
+        SDLdrawGame(KEY_PRESS_SURFACE_UP);
         printf("UP ARROW is pressed.\n");
-        return;
+        SDL_PumpEvents();
     }
-    if(gameKeyStates[SDL_SCANCODE_RIGHT]) {
+    while(gameKeyStates[SDL_SCANCODE_RIGHT]) {
+        SDLdrawGame(KEY_PRESS_SURFACE_RIGHT);
         printf("RIGHT ARROW is pressed.\n");
-        return;
+        SDL_PumpEvents();
     }
-    if(gameKeyStates[SDL_SCANCODE_DOWN]){
+    while(gameKeyStates[SDL_SCANCODE_DOWN]){
+        SDLdrawGame(KEY_PRESS_SURFACE_DOWN);
         printf("DOWN ARROW is pressed.\n");
-        return;
+        SDL_PumpEvents();
     }
-    if(gameKeyStates[SDL_SCANCODE_LEFT]) {
+    while(gameKeyStates[SDL_SCANCODE_LEFT]) {
+        SDLdrawGame(KEY_PRESS_SURFACE_LEFT);
         printf("LEFT ARROW is pressed.\n");
-        return;
+        SDL_PumpEvents();
     }
-    if(gameKeyStates[SDL_SCANCODE_ESCAPE]){
+    while(gameKeyStates[SDL_SCANCODE_SPACE]){
+        printf("SPACE is pressed.\n");
+        SDL_PumpEvents();
+    }
+    while(gameKeyStates[SDL_SCANCODE_ESCAPE]){
         *isRunning = FALSE;
-        return;
+        SDL_PumpEvents();
+        break;
     }
-    else{
-        printf("Some random key pressed!\n");
-        return;
-    }
+    SDLdrawGame(KEY_PRESS_SURFACE_DEFAULT);
 }

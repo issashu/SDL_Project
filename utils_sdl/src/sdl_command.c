@@ -18,6 +18,8 @@ struct SDLMethods{
 //TODO Make non-global and after fix the drawGame spaghetti below
 static struct SDLWindow AppWindow;
 SDL_Surface ImageSurfaces [KEY_PRESS_SURFACE_TOTAL];
+static SDL_Texture* Texture = NULL;
+static SDL_Renderer *GfxRenderer = NULL;
 
 int8_t SDLLoader(){
     //TODO Rethink the whole arhitecture to have SDL lib loader and then initialiser separetly
@@ -25,10 +27,10 @@ int8_t SDLLoader(){
     AppWindow.ScreenSurface = NULL;
     AppWindow.Image = NULL;
 
-    const STRING ImagePath = ASSETS_PATH "images/hello.bmp";
+    __attribute__((unused)) const STRING ImagePath = ASSETS_PATH "images/hello.bmp";
 
     //TODO Take out all error checks in a separate function or move them in a common if
-    if (initScreen(&AppWindow.Window, &AppWindow.ScreenSurface) != SUCCESS) {
+    if (initScreen(&AppWindow.Window) != SUCCESS) {
         LOGERR("initScreen() failed.");
         //TODO Add info for file, line and path
         return FAILURE;
@@ -58,8 +60,20 @@ int8_t SDLLoader(){
         return FAILURE;
     }
 
-    if (loadResources(&AppWindow.Image, &ImagePath) != SUCCESS) {
+   /* if (loadResources(&AppWindow.Image, &ImagePath) != SUCCESS) {
         LOGERR("loadResources() failed.");
+        //TODO Add info  for file, line and path
+        return FAILURE;
+    }*/
+
+    if(loadSurfaces(ImageSurfaces) != SUCCESS){
+        LOGERR("loadSurfaces() failed.");
+        //TODO Add info  for file, line and path
+        return FAILURE;
+    }
+
+    if(initRenderer(AppWindow.Window, &GfxRenderer) != SUCCESS) {
+        LOGERR("initRenderer() failed.");
         //TODO Add info  for file, line and path
         return FAILURE;
     }
@@ -67,8 +81,9 @@ int8_t SDLLoader(){
     return SUCCESS;
 }
 
-void SDLdrawGame(){
-    drawGraphics(&AppWindow.Window,&AppWindow.ScreenSurface,&AppWindow.Image);
+void SDLdrawGame(int32_t TextureIndex) {
+    setTexture(&ImageSurfaces[TextureIndex], &Texture, GfxRenderer);
+    drawGraphics(&GfxRenderer, Texture);
 }
 
 void SDLUnloader(){

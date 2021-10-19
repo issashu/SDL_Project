@@ -26,7 +26,7 @@ struct MonitorWindowCfg {
 
 struct SDLWindow{
     SDL_Window *Window;
-    SDL_Surface *ScreenSurface;
+    __attribute__((unused)) SDL_Surface *ScreenSurface;
     SDL_Surface *Image;
 };
 
@@ -37,13 +37,13 @@ struct Display{
 };
 
 void initSDL();
-int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface);
-int32_t loadResources(SDL_Surface **Image, const STRING *ImagePath);
+int32_t initScreen(SDL_Window **Window);
+//int32_t loadResources(SDL_Surface **Image, const STRING *ImagePath);
 int32_t initText();
 int32_t initTextures();
 int32_t initTimers();
 int32_t initSFX();
-void drawGraphics(SDL_Window **Window, SDL_Surface **WindowSurface, SDL_Surface **Image);
+void drawGraphics(SDL_Renderer **Renderer, SDL_Texture *Texture);
 void deinitGame(SDL_Window **Window, SDL_Surface **Image);
 
 #endif //SDL_GAME_SDL_METHODS_H

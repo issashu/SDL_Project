@@ -7,7 +7,7 @@
 #include "defines.h"
 #include "Log.h"
 
-int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface) {
+int32_t initScreen(SDL_Window **Window) {
     if (SDL_Init(SDL_INIT_VIDEO) != SUCCESS) {
         LOGERR("SDL_Init_VIDEO() failed! Reason: %s", SDL_GetError());
         //TODO Add filename, path and line number to the logger
@@ -24,12 +24,12 @@ int32_t initScreen(SDL_Window **Window, SDL_Surface **WindowSurface) {
     }
 
 
-    *WindowSurface = SDL_GetWindowSurface(*Window);
-    if (*WindowSurface == NULL) {
-        LOGERR("SDL_GetWindowSurface has failed! Reason: %s", SDL_GetError());
-        //TODO Add filename, path and line number to the logger
-        return FAILURE;
-    }
+//    *WindowSurface = SDL_GetWindowSurface(*Window);
+//    if (*WindowSurface == NULL) {
+//        LOGERR("SDL_GetWindowSurface has failed! Reason: %s", SDL_GetError());
+//        //TODO Add filename, path and line number to the logger
+//        return FAILURE;
+//    }
 
     return EXIT_SUCCESS;
 }
@@ -45,6 +45,7 @@ int32_t initText(){
     return SUCCESS;
 }
 
+//FIXME Do we really need this one? IMG_Load works without it just fine
 int32_t initTextures(){
     const int32_t imgType = IMG_INIT_PNG;
 
@@ -87,21 +88,12 @@ int32_t initSFX() {
     return SUCCESS;
 }
 
-//TODO Move to renderer file
-int32_t loadResources(SDL_Surface **Image, const STRING*ImagePath) {
-    *Image = SDL_LoadBMP(*ImagePath);
-    if (*Image == NULL) {
-        LOGERR("SDL_LoadBMP failed! Reason: %s", SDL_GetError());
-        return FAILURE;
-    }
-    return EXIT_SUCCESS;
-}
-
-void drawGraphics(SDL_Window **Window, SDL_Surface **WindowSurface, SDL_Surface **Image) {
-    SDL_BlitSurface(*Image, NULL, *WindowSurface, NULL);
-    if (SDL_UpdateWindowSurface(*Window) != SUCCESS) {
-        LOGERR("SDL_BlitSurface failed! Reason: %s", SDL_GetError());
-    }
+//https://www.youtube.com/watch?v=yFLa3ln16w0&t=1025s
+// FORGOT THE DOUBLE BUFFER >.>
+//TODO Free up render resources on deinit!!!!
+void drawGraphics(SDL_Renderer **Renderer, SDL_Texture *Texture) {
+    SDL_RenderCopy(*Renderer, Texture, NULL, NULL);
+    SDL_RenderPresent(*Renderer);
 }
 
 void deinitGame(SDL_Window **Window, SDL_Surface **Image) {
