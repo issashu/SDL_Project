@@ -2,8 +2,8 @@
 // Created by Iordan Tonchev on 6.10.21.
 //
 
-#include "sdl_methods.h"
-#include "sdl_default_app_settings.h"
+#include "Core/sdl_methods.h"
+#include "Core/sdl_default_app_settings.h"
 #include "defines.h"
 #include "Log.h"
 

@@ -30,18 +30,21 @@ find_package(${SDL_mixer_name} REQUIRED)
 #We need to include SDL2 includes and libraries below too
 add_library(${PROJECT_NAME}
         STATIC
-        ${_HEADERS_DIR}/sdl_methods.h
-        ${_HEADERS_DIR}/sdl_event_handler.h
-        ${_HEADERS_DIR}/sdl_event_defines.h
-        ${_HEADERS_DIR}/sdl_command.h
-        ${_HEADERS_DIR}/sdl_gfx_renderer.h
-        ${_HEADERS_DIR}/sdl_default_app_settings.h
+        ${_HEADERS_DIR}/Core/sdl_methods.h
+        ${_HEADERS_DIR}/Core/sdl_event_handler.h
+        ${_HEADERS_DIR}/Core/sdl_event_defines.h
+        ${_HEADERS_DIR}/Core/sdl_command.h
+        ${_HEADERS_DIR}/Graphics/sdl_gfx_renderer.h
+        ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
+        ${_HEADERS_DIR}/Physics/sdl_vector2D.h
+        ${_HEADERS_DIR}/Physics/sdl_transform2D.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/sdl_event_handler.c
         ${_SOURCES_DIR}/sdl_command.c
         ${_SOURCES_DIR}/sdl_gfx_renderer.c
-        )
+        ${_SOURCES_DIR}/sdl_vector2D.c
+        ${_SOURCES_DIR}/sdl_transform2D.c)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

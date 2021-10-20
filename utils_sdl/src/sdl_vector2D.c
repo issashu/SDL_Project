@@ -1,0 +1,65 @@
+//
+// Created by Iordan Tonchev on 20.10.21.
+//
+
+#include <stdio.h>
+
+#include "Physics/sdl_vector2D.h"
+
+void initVector2D(Vector2D *self);
+void setVector2D (Vector2D *self, double X, double Y);
+Vector2D sumVector2D(Vector2D *self, Vector2D *vec2);
+Vector2D substVector2D(Vector2D *self, Vector2D *vec2);
+Vector2D scalingVector2D(Vector2D *self, float scallar);
+void debugVector2D(Vector2D *self);
+
+
+void initVector2D(Vector2D *self){
+    self->X = 0;
+    self->Y = 0;
+    //self->init = &initVector2D;
+    self->set = &setVector2D;
+    self->sum = &sumVector2D;
+    self->dif = &substVector2D;
+    self->scale = &scalingVector2D;
+    self->print = &debugVector2D;
+}
+
+void setVector2D (Vector2D *self, double X, double Y) {
+    self->X = X;
+    self->Y = Y;
+}
+
+Vector2D sumVector2D(Vector2D *self, Vector2D *vec2){
+    Vector2D result;
+    initVector2D(&result);
+
+    result.X = self->X + vec2->X;
+    result.Y = self->Y + vec2->Y;
+
+    return result;
+}
+
+Vector2D substVector2D(Vector2D *self, Vector2D *vec2){
+    Vector2D result;
+    initVector2D(&result);
+
+    result.X = self->X - vec2->X;
+    result.Y = self->Y - vec2->Y;
+
+    return result;
+}
+
+Vector2D scalingVector2D(Vector2D *self, float scallar) {
+    Vector2D scaledVector;
+    initVector2D(&scaledVector);
+
+    scaledVector.X = self->X * scallar;
+    scaledVector.Y = self->Y * scallar;
+
+    return scaledVector;
+}
+
+void debugVector2D(Vector2D *self){
+    printf("The vector2D has values: x = %f and Y = %f\n", self->X, self->Y);
+}

@@ -7,8 +7,8 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include "sdl_command.h"
-#include "sdl_event_handler.h"
+#include "utils_sdl/include/Core/sdl_command.h"
+#include "utils_sdl/include/Core/sdl_event_handler.h"
 //TODO Stupid fix, must remove
 #define BOOL int8_t
 

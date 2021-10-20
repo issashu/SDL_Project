@@ -8,7 +8,7 @@
 //TODO Change the enum to be used in the final game or remove
 #include <SDL.h>
 
-#include "sdl_methods.h"
+#include "Core/sdl_methods.h"
 
 enum ImageSurfaces{
     KEY_PRESS_SURFACE_DEFAULT,

@@ -3,9 +3,10 @@
 //
 
 #include <SDL_events.h>
-#include "sdl_event_handler.h"
-#include "sdl_command.h"
-#include "sdl_gfx_renderer.h"
+#include "Physics/sdl_vector2D.h"
+#include "Core/sdl_event_handler.h"
+#include "Core/sdl_command.h"
+#include "Graphics/sdl_gfx_renderer.h"
 
 void eventHandler(BOOL *isRunning) {
     SDL_Event gameEvent;
@@ -52,6 +53,11 @@ void keyboardEvent(BOOL *isRunning) {
     }
     while(gameKeyStates[SDL_SCANCODE_SPACE]){
         printf("SPACE is pressed.\n");
+        Vector2D vec1, vec2;
+        initVector2D(&vec1);
+        initVector2D(&vec2);
+        vec1.print(&vec1);
+        vec2.print(&vec2);
         SDL_PumpEvents();
     }
     while(gameKeyStates[SDL_SCANCODE_ESCAPE]){

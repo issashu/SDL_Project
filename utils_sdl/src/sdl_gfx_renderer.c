@@ -2,7 +2,7 @@
 // Created by Iordan Tonchev on 10.10.21.
 //
 
-#include "sdl_gfx_renderer.h"
+#include "Graphics/sdl_gfx_renderer.h"
 #include "Log.h"
 
 BOOL loadSurfaces(SDL_Surface *Images) {
@@ -41,6 +41,10 @@ BOOL setTexture(SDL_Surface *Image, SDL_Texture **Texture, SDL_Renderer *Rendere
     }
 
     return EXIT_SUCCESS;
+}
+
+void animateSprites(){
+
 }
 
 

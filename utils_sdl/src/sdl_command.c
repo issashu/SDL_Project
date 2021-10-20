@@ -3,9 +3,9 @@
 //
 
 #include "defines.h"
-#include "sdl_command.h"
-#include "sdl_methods.h"
-#include "sdl_gfx_renderer.h"
+#include "Core/sdl_command.h"
+#include "Core/sdl_methods.h"
+#include "Graphics/sdl_gfx_renderer.h"
 #include "Log.h"
 
 //TODO Check how to utilise the forward declared struct and function pointers
