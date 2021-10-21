@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libutils.a CMakeFiles/utils.dir/src/containers/Vector.c.o CMakeFiles/utils.dir/src/vfx_tools/shapes.c.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libutils.a
