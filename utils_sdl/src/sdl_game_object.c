@@ -3,7 +3,7 @@
 //
 
 #include "GameObject/sdl_game_object.h"
-#include "utils/include/utils/containers/Vector.h"
+#include "utils/containers/Vector.h"
 #include "Physics/sdl_transform2D.h"
 
 void drawObject();
@@ -12,11 +12,9 @@ void updateObject();
 
 void removeObject();
 
-void initObject();
-
 //TODO Add parameters, once it is clear how the objects
 // will be initialised
-void initObject(GameObject *self) {
+void initObject(GameObject *self, STRING texturePath) {
     self->transform->X = 0;
     self->transform->Y = 0;
     self->Height = 0;

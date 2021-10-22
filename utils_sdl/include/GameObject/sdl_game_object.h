@@ -19,4 +19,7 @@ typedef struct gameObject{
 
 } GameObject;
 
+void initObject(GameObject *self, STRING texturePath);
+
+
 #endif //SDL_GAME_SDL_GAME_OBJECT_H

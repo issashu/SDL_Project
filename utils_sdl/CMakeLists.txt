@@ -39,6 +39,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Physics/sdl_vector2D.h
         ${_HEADERS_DIR}/Physics/sdl_transform2D.h
         ${_HEADERS_DIR}/GameObject/sdl_game_object.h
+        ${_HEADERS_DIR}/Actors/sdl_character.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/sdl_event_handler.c
@@ -46,7 +47,8 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/sdl_gfx_renderer.c
         ${_SOURCES_DIR}/sdl_vector2D.c
         ${_SOURCES_DIR}/sdl_transform2D.c
-        ${_SOURCES_DIR}/sdl_game_object.c )
+        ${_SOURCES_DIR}/sdl_game_object.c
+        ${_SOURCES_DIR}/sdl_character.c)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"
