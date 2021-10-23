@@ -3,7 +3,7 @@
 //
 
 #include "utils/defines.h"
-#include "Core/sdl_command.h"
+#include "Core/GameEngineCore.h"
 #include "Core/sdl_methods.h"
 #include "Graphics/sdl_gfx_renderer.h"
 #include "utils/Log.h"

@@ -12,5 +12,6 @@
 #define FALSE 0
 #define BOOL int8_t
 #define NONE ((void*)0)
+#define UNUSED __attribute__((unused))
 
 #endif //SDL_GAME_DEFINES_H

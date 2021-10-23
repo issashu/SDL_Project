@@ -24,7 +24,6 @@ void drawObject();
 
 void updateObject();
 
-void removeObject();
 
 //TODO Add parameters, once it is clear how the objects
 // will be initialised
@@ -44,9 +43,5 @@ void drawObject() {
 }
 
 void updateObject() {
-
-}
-
-void removeObject() {
 
 }

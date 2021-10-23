@@ -13,7 +13,7 @@
 #include "utils/vfx_tools/shapes.h"
 
 //TODO Extract all struct objects in own header
-struct MonitorWindowCfg {
+struct WindowConfig {
     //Window modes:
     //SDL_WINDOW_SHOWN - for windowed version
     //SDL_WINDOW_FULLSCREEN_DESKTOP - for fullscreen
@@ -30,9 +30,10 @@ struct SDLWindow{
     SDL_Surface *Image;
 };
 
+//TODO Move to Main Engine code
 struct Display{
     struct SDLWindow *Window;
-    struct MonitorWindowCfg *DisplayConfig;
+    struct WindowConfig *DisplayConfig;
     struct Rectangle WindowShape;
 };
 

@@ -14,7 +14,7 @@ int32_t initScreen(SDL_Window **Window) {
         //TODO Why do we use a macro in LOGGER?
         return FAILURE;
     }
-    //TODO REMOVE THE MAGIC NUMBERS AS PARAMS
+
     *Window = SDL_CreateWindow("Metroidvania", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, \
                                 WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     if (*Window == NULL) {
