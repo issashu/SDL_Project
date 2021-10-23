@@ -14,7 +14,7 @@ void removeCharacter();
 
 
 void initCharacter(Character *self, STRING name, STRING texturePath) {
-    initObject(self->base, texturePath);
+    initObject(self->Base2D, texturePath);
     self->Name = name;
     self->Health = 100;
     self->Mana = 100;

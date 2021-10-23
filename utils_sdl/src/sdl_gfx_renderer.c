@@ -3,7 +3,7 @@
 //
 
 #include "Graphics/sdl_gfx_renderer.h"
-#include "Log.h"
+#include "utils/Log.h"
 
 BOOL loadSurfaces(SDL_Surface *Images) {
     //TODO Learn to use glob to load any number of textures into a vector

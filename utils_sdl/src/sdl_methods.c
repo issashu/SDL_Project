@@ -4,8 +4,8 @@
 
 #include "Core/sdl_methods.h"
 #include "Core/sdl_default_app_settings.h"
-#include "defines.h"
-#include "Log.h"
+#include "utils/defines.h"
+#include "utils/Log.h"
 
 int32_t initScreen(SDL_Window **Window) {
     if (SDL_Init(SDL_INIT_VIDEO) != SUCCESS) {

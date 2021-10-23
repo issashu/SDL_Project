@@ -6,7 +6,7 @@
 #define SDL_GAME_SDL_EVENT_HANDLER_H
 
 #include <stdio.h>
-#include "defines.h"
+#include "utils/defines.h"
 
 void eventHandler(BOOL *isRunning);
 void keyboardEvent(BOOL *isRunning);

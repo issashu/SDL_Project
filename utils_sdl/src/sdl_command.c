@@ -2,11 +2,11 @@
 // Created by Iordan Tonchev on 8.10.21.
 //
 
-#include "defines.h"
+#include "utils/defines.h"
 #include "Core/sdl_command.h"
 #include "Core/sdl_methods.h"
 #include "Graphics/sdl_gfx_renderer.h"
-#include "Log.h"
+#include "utils/Log.h"
 
 //TODO Check how to utilise the forward declared struct and function pointers
 struct SDLMethods{

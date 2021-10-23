@@ -60,6 +60,7 @@ Vector2D scalingVector2D(Vector2D *self, float scallar) {
     return scaledVector;
 }
 
+//FIXME Remove the dirty fix and remake variables as doubles to prevent printf from whining...
 void debugVector2D(Vector2D *self){
-    printf("The vector2D has values: x = %f and Y = %f\n", self->X, self->Y);
+    printf("The vector2D has values: x = %f and Y = %f\n", (double) self->X, (double) self->Y);
 }

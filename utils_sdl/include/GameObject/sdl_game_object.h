@@ -6,20 +6,10 @@
 #define SDL_GAME_SDL_GAME_OBJECT_H
 
 #include <stdint.h>
-#include "defines.h"
+#include "utils/defines.h"
 
-typedef struct gameObject{
-    struct Transform2D *transform;
-    int32_t  Width;
-    int32_t  Height;
-    STRING textureID;
-    BOOL isHFlipped;
-    BOOL isVFlipped;
-    //TODO Add function pointers to use
+typedef struct gameObject GameObject2D;
 
-} GameObject;
-
-void initObject(GameObject *self, STRING texturePath);
-
+void initObject(GameObject2D *self, STRING texturePath);
 
 #endif //SDL_GAME_SDL_GAME_OBJECT_H

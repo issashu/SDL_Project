@@ -2,8 +2,8 @@
 // Created by Iordan Tonchev on 8.10.21.
 //
 
-#include "vfx_tools/shapes.h"
-#include "defines.h"
+#include "utils/vfx_tools/shapes.h"
+#include "utils/defines.h"
 
 /*static const struct Point POINT_ZERO = {.x = 0, .y = 0};
 static const struct Point POINT_UNDEFINED = {.x = 100000, .y = 100000 };

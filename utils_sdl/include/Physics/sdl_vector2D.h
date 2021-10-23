@@ -6,8 +6,8 @@
 #define SDL_GAME_SDL_VECTOR2D_H
 
 typedef struct Vector2D {
-    double X;
-    double Y;
+    float X;
+    float Y;
     //void (*init)(struct Vector2D *);
     void (*set)(struct Vector2D *, double, double);
     struct Vector2D (*sum)(struct Vector2D *, struct Vector2D *);

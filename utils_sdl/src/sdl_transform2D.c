@@ -2,7 +2,15 @@
 // Created by Iordan Tonchev on 21.10.21.
 //
 
-#include "Physics/sdl_transform2D.h"
+#include "Graphics/sdl_transform2D.h"
+
+struct Transform2D {
+    float X;
+    float Y;
+    void (*transX)(float);
+    void (*transY)(float);
+    void (*trans2D)(float, float);
+};
 
 //TODO Check how to attach to game object in pure C.
 // Using fake structs inside methods. Replace with real ones
