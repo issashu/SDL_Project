@@ -3,36 +3,15 @@
 //
 
 #include "Core/sdl_methods.h"
-#include "Core/sdl_default_app_settings.h"
 #include "utils/defines.h"
 #include "utils/Log.h"
 
-int32_t initScreen(SDL_Window **Window) {
-    if (SDL_Init(SDL_INIT_VIDEO) != SUCCESS) {
-        LOGERR("SDL_Init_VIDEO() failed! Reason: %s", SDL_GetError());
-        //TODO Add filename, path and line number to the logger
-        //TODO Why do we use a macro in LOGGER?
-        return FAILURE;
-    }
-
-    *Window = SDL_CreateWindow("Metroidvania", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, \
-                                WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
-    if (*Window == NULL) {
-        LOGERR("SDL_CreateWindow failed! Reason: %s", SDL_GetError());
-        //TODO Add filename, path and line number to the logger
-        return FAILURE;
-    }
-
-
-//    *WindowSurface = SDL_GetWindowSurface(*Window);
-//    if (*WindowSurface == NULL) {
-//        LOGERR("SDL_GetWindowSurface has failed! Reason: %s", SDL_GetError());
-//        //TODO Add filename, path and line number to the logger
-//        return FAILURE;
-//    }
-
-    return EXIT_SUCCESS;
-}
+//TODO Check how to utilise the forward declared struct and function pointers
+struct SDLMethods{
+    int32_t (*loadResources)(SDL_Surface**, const STRING);
+    void (*drawGraphics)(SDL_Window**, SDL_Surface**, SDL_Surface**);
+    void (*deinitGame)(SDL_Window**, SDL_Surface**);
+};
 
 int32_t initText(){
     if (TTF_Init() != SUCCESS) {

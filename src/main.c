@@ -4,10 +4,11 @@
 //Misc 3rd party libs
 
 //Own libs and headers
-//TODO Check why cmake doesn't help with paths
 #include "include/gameLoop.h"
 
 int main() {
-    gameLoop();
+    if(gameLoop()){
+        return EXIT_FAILURE;
+    }
     return EXIT_SUCCESS;
 }

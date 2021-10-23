@@ -6,9 +6,9 @@
 #define SDL_GAME_EVENTMANAGER_H
 
 #include <stdio.h>
-#include "utils/defines.h"
+#include <stdint.h>
 
-void eventHandler(BOOL *isRunning);
-void keyboardEvent(BOOL *isRunning);
+void eventHandler(int8_t *isRunning);
+void keyboardEvent(int8_t *isRunning);
 
 #endif //SDL_GAME_EVENTMANAGER_H

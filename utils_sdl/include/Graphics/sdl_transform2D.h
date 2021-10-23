@@ -10,6 +10,12 @@
  * in space.
  * Attach this as substructure to a Game Object.
  */
-typedef struct Transform2D Transform2D;
+typedef struct Transform2D {
+    float X;
+    float Y;
+    void (*transX)(float);
+    void (*transY)(float);
+    void (*trans2D)(float, float);
+} Transform2D;
 
 #endif //SDL_GAME_SDL_TRANSFORM2D_H

@@ -16,7 +16,6 @@ struct gameObject{
     BOOL isVFlipped;
     BOOL isPassable;
     //TODO Add function pointers to use and above isFlags in an union
-
 };
 
 

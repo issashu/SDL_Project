@@ -7,11 +7,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
-#include "utils_sdl/include/Core/GameEngineCore.h"
-#include "utils_sdl/include/Managers/EventManager.h"
-//TODO Stupid fix, must remove
-#define BOOL int8_t
 
-BOOL gameLoop();
+int8_t gameLoop();
 
 #endif //SDL_GAME_GAMELOOP_H

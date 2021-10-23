@@ -7,21 +7,10 @@
 
 #include <utils/defines.h>
 
-struct SDLWindow{
-    SDL_Window *Window;
-    UNUSED SDL_Surface *ScreenSurface;
-    SDL_Surface *Image;
-};
+typedef struct WindowManager{
+    struct SDLWindow *Window;
+}WindowController;
 
-struct WindowConfig {
-    //Window modes:
-    //SDL_WINDOW_SHOWN - for windowed version
-    //SDL_WINDOW_FULLSCREEN_DESKTOP - for fullscreen
-    int32_t displayMode;
-    int32_t windowWidth;
-    int32_t windowHeight;
-    struct Point windowPos;
-    char *windowName;
-};
+int32_t initScreen(SDL_Window **Window, int32_t Width, int32_t Height);
 
 #endif //SDL_GAME_WINDOWMANAGER_H
