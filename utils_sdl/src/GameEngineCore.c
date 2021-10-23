@@ -7,6 +7,7 @@
 #include "Core/sdl_methods.h"
 #include "Core/sdl_default_app_settings.h"
 #include "Managers/WindowManager.h"
+#include "Managers/TextureManager.h"
 #include "Graphics/sdl_gfx_renderer.h"
 #include "utils/Log.h"
 
@@ -20,8 +21,6 @@ static SDL_Renderer *GfxRenderer = NULL;
 int8_t SDLLoader(){
     //TODO Rethink the whole arhitecture to have SDL lib loader and then initialiser separetly
    AppWindow = NULL;
-    //AppWindow.ScreenSurface = NULL;
-    //AppWindow.Image = NULL;
 
     //TODO Take out all error checks in a separate function or move them in a common if
     if (initScreen(&AppWindow, WINDOW_WIDTH, WINDOW_HEIGHT) != SUCCESS) {
@@ -71,15 +70,15 @@ int8_t SDLLoader(){
 }
 
 void SDLdrawGame(int32_t TextureIndex) {
-    setTexture(&ImageSurfaces[TextureIndex], &Texture, GfxRenderer);
+    applyTexture(&ImageSurfaces[TextureIndex], &Texture, GfxRenderer);
     drawGraphics(&GfxRenderer, Texture);
 }
 
-/*void SDLUnloader(){
+void SDLUnloader(){
     //TODO Rethink the whole arhitecture to have SDL lib unloader and then initialiser separetly
-    deinitGame(getWindow(AppWindow.Window), NULL);
+    deinitGame(&AppWindow, NULL);
     IMG_Quit();
     TTF_Quit();
     Mix_Quit();
     SDL_Quit();
-}*/
+}

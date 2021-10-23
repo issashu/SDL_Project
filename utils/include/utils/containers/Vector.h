@@ -1,4 +1,4 @@
-#ifndef UTILS_CONTAINERS_VECTOR_H_
+ #ifndef UTILS_CONTAINERS_VECTOR_H_
 #define UTILS_CONTAINERS_VECTOR_H_
 
 // C system headers

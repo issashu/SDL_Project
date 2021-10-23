@@ -43,6 +43,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
         ${_HEADERS_DIR}/Managers/WindowManager.h
         ${_HEADERS_DIR}/Managers/EventManager.h
+        ${_HEADERS_DIR}/Managers/TextureManager.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/GameEngineCore.c
@@ -54,7 +55,8 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/sdl_rigidBody2D.c
         ${_SOURCES_DIR}/GameObjectManager.c
         ${_SOURCES_DIR}/WindowManager.c
-        ${_SOURCES_DIR}/EventManager.c)
+        ${_SOURCES_DIR}/EventManager.c
+        ${_SOURCES_DIR}/TextureManager.c)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

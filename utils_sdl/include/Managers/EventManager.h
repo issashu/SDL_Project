@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
+//TODO Apply singleton
 void eventHandler(int8_t *isRunning);
 void keyboardEvent(int8_t *isRunning);
 

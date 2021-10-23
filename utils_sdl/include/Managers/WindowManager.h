@@ -7,10 +7,7 @@
 
 #include <utils/defines.h>
 
-typedef struct WindowManager{
-    struct SDLWindow *Window;
-}WindowController;
-
+//TODO Apply singleton
 int32_t initScreen(SDL_Window **Window, int32_t Width, int32_t Height);
 
 #endif //SDL_GAME_WINDOWMANAGER_H
