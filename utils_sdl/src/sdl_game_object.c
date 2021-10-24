@@ -11,12 +11,14 @@ struct gameObject{
     RigidBody2D *body2D;
     int32_t  Width;
     int32_t  Height;
-    STRING textureID;
+    STRING spriteSheetID;
     BOOL isHFlipped;
     BOOL isVFlipped;
     BOOL isPassable;
     //TODO Add function pointers to use and above isFlags in an union
 };
+
+
 
 
 void drawObject();

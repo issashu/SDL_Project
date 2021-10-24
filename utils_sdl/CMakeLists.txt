@@ -44,6 +44,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Managers/WindowManager.h
         ${_HEADERS_DIR}/Managers/EventManager.h
         ${_HEADERS_DIR}/Managers/TextureManager.h
+        ${_HEADERS_DIR}/Graphics/animation_settings.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/GameEngineCore.c

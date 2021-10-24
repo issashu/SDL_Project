@@ -9,6 +9,30 @@
 #include "Physics/sdl_rigidBody2D.h"
 #include "Graphics/sdl_transform2D.h"
 
+//Number is from sprite sheet, decrease by 1 in code
+enum animType {
+    IDLE = 2,
+    CROUCH = 10,
+    RUN = 4,
+    DASH = 13,
+    JUMP = 9,
+    ROLL = 12,
+    CRAWL = 11,
+    DIE = 18,
+    TOTAL_ANIM_TYPES = 8
+};
+
+enum animFrames {
+    IDLE_FRAMES = 7,
+    CROUCH_FRAMES = 6,
+    RUN_FRAMES = 8,
+    DASH_FRAMES = 4,
+    JUMP_FRAMES = 14,
+    ROLL_FRAMES = 10,
+    CRAWL_FRAMES = 8,
+    DIE_FRAMES = 5
+};
+
 typedef struct CharacterActor{
     GameObject2D *Base2D;
     STRING Name;
