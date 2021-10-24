@@ -5,7 +5,7 @@
 #include <SDL_events.h>
 #include "Managers/EventManager.h"
 #include "Core/GameEngineCore.h"
-#include "Graphics/sdl_gfx_renderer.h"
+#include "Graphics/gfxRenderer.h"
 #include "utils/defines.h"
 
 void eventHandler(BOOL *isRunning) {

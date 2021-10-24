@@ -8,7 +8,7 @@
 #include "Core/sdl_default_app_settings.h"
 #include "Managers/WindowManager.h"
 #include "Managers/TextureManager.h"
-#include "Graphics/sdl_gfx_renderer.h"
+#include "Graphics/gfxRenderer.h"
 #include "utils/Log.h"
 
 //TODO Make non-global and after fix the drawGame spaghetti below

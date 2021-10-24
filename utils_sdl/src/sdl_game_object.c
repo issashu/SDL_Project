@@ -36,7 +36,7 @@ void initObject(GameObject2D *self, STRING texturePath) {
     self->Width = 0;
     self->isHFlipped = FALSE;
     self->isVFlipped = FALSE;
-    self->textureID = texturePath;
+    self->spriteSheetID = texturePath;
 }
 
 void drawObject() {

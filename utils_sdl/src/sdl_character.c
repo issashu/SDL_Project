@@ -18,5 +18,6 @@ void initCharacter(Character *self, STRING name, STRING texturePath) {
     self->Name = name;
     self->Health = 100;
     self->Mana = 100;
+    self->isAlive = TRUE;
     self->stateFlags = 0;
 }

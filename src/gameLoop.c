@@ -9,7 +9,7 @@
 BOOL gameLoop(){
 
     SDLLoader();
-    //FIXME FIX DEFINES AND MAGIC NUMBERS. Used 0 to avoid sdl_includes
+    //FIXME MOVE LOOP INSIDE GAME ENGINE
     SDLdrawGame(0);
     BOOL isRunning = TRUE;
     while(isRunning){

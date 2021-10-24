@@ -2,7 +2,7 @@
 // Created by Iordan Tonchev on 10.10.21.
 //
 
-#include "Graphics/sdl_gfx_renderer.h"
+#include "Graphics/gfxRenderer.h"
 #include "Managers/TextureManager.h"
 
 //For testing purposes, remove the global vector here after debugging
@@ -36,8 +36,22 @@ BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
     return EXIT_SUCCESS;
 }
 
-void animateSprites(){
+void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture) {
+    SDL_RenderCopy(*Renderer, Texture, NULL, NULL);
+    SDL_RenderPresent(*Renderer);
+}
 
+void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t animFrame, int Width, int Height, BOOL vFlip, BOOL hFlip){
+    SDL_Rect srcFrame;
+    SDL_Rect dstFrame;
+    srcFrame.x = Width*animFrame;
+    srcFrame.y = Height*animType;
+    srcFrame.w = Width;
+    srcFrame.h = Height;
+    //Remove. for debugging only
+    vFlip = 0;
+    SDL_RenderCopyEx(*Renderer,Texture,&srcFrame, &dstFrame, 0, NULL, hFlip);
+    SDL_RenderPresent(*Renderer);
 }
 
 

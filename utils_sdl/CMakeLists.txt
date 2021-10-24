@@ -33,7 +33,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Core/sdl_methods.h
         ${_HEADERS_DIR}/Core/sdl_event_defines.h
         ${_HEADERS_DIR}/Core/GameEngineCore.h
-        ${_HEADERS_DIR}/Graphics/sdl_gfx_renderer.h
+        ${_HEADERS_DIR}/Graphics/gfxRenderer.h
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Physics/sdl_vector2D.h
         ${_HEADERS_DIR}/Graphics/sdl_transform2D.h
@@ -48,7 +48,7 @@ add_library(${PROJECT_NAME}
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/GameEngineCore.c
-        ${_SOURCES_DIR}/sdl_gfx_renderer.c
+        ${_SOURCES_DIR}/gfxRenderer.c
         ${_SOURCES_DIR}/sdl_vector2D.c
         ${_SOURCES_DIR}/sdl_transform2D.c
         ${_SOURCES_DIR}/sdl_game_object.c
