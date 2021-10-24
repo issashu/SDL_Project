@@ -29,6 +29,7 @@ void eventHandler(BOOL *isRunning) {
 
 void keyboardEvent(BOOL *isRunning) {
     //TODO ADD DOXYGEN and set some default key event (also might be having slight delay because of pump
+    //TODO Find a way to automate indexing. Maybe object struct should know the index of its texture
     // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
     SDL_PumpEvents();
     const Uint8 *gameKeyStates = SDL_GetKeyboardState(NULL);

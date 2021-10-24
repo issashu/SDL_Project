@@ -9,6 +9,8 @@
 #include <SDL.h>
 
 #include "Core/sdl_methods.h"
+#include "utils/containers/Vector.h"
+#include "utils/Log.h"
 
 enum ImageSurfaces{
     KEY_PRESS_SURFACE_DEFAULT,
@@ -19,7 +21,7 @@ enum ImageSurfaces{
     KEY_PRESS_SURFACE_TOTAL
 };
 
-BOOL loadSurfaces(SDL_Surface *Images);
+BOOL loadSurfaces(struct Vector *objTextures);
 BOOL initRenderer(SDL_Window* Window, SDL_Renderer** Renderer);
 BOOL setTexture(SDL_Surface* Image, SDL_Texture** Texture, SDL_Renderer *Renderer);
 

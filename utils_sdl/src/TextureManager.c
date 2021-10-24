@@ -6,19 +6,20 @@
 #include <SDL_image.h>
 
 #include "Managers/TextureManager.h"
-
-void initTextureStorage(struct Vector *textures, size_t initialCapacity) {
-    textures = malloc(sizeof(struct Vector)*initialCapacity);
-    initVector(textures, initialCapacity);
+//TODO Add error messages and checking
+void initTextureStorage(struct Vector *textureMap, size_t initialCapacity) {
+    textureMap = malloc(sizeof(struct Vector) * initialCapacity);
+    initVector(textureMap, initialCapacity);
 }
 
-BOOL loadTexture(STRING texturePath, struct Vector *textures){
-    pushElementVector(textures, IMG_Load(texturePath));
+BOOL loadTextures(struct Vector *textureMap, char *texturePath) {
+    pushElementVector(textureMap, IMG_Load(texturePath));
 
     return SUCCESS;
 }
 
-BOOL applyTexture(SDL_Surface *Image, SDL_Texture **Texture, SDL_Renderer *Renderer){
+BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer *Renderer, size_t index) {
+    SDL_Surface *Image = (SDL_Surface*)getElementVector(textureMap, index);
     *Texture = SDL_CreateTextureFromSurface(Renderer, Image);
 
     if (*Texture == NULL) {
@@ -28,8 +29,16 @@ BOOL applyTexture(SDL_Surface *Image, SDL_Texture **Texture, SDL_Renderer *Rende
     return SUCCESS;
 }
 
-void UNUSED unloadTexture(struct Vector *textures) {
-   UNUSED size_t texturesCount = getSizeVector(textures);
+//TODO Use on destroy object.
+void unloadTexture(struct Vector *textures) {
+    if (textures!= NULL){
+        size_t texturesCount = getSizeVector(textures);
+        for (size_t i = 0; i<texturesCount; i++){
+            if(textures->items[i]!=NULL)
+                free(textures->items[i]);
+        }
+        freeVector(textures);
+    }
 }
 
 void freeTexture(struct Vector *textures) {

@@ -10,9 +10,11 @@
 
 //TODO Apply singleton
 
-void initTextureStorage(struct Vector *textures, size_t initialCapacity);
-BOOL loadTexture(STRING texturePath, struct Vector *textures);
-BOOL applyTexture(SDL_Surface *Image, SDL_Texture **Texture, SDL_Renderer *Renderer);
+void initTextureStorage(struct Vector *textureMap, size_t initialCapacity);
+
+BOOL loadTextures(struct Vector *textureMap, char *texturePath);
+
+BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer *Renderer, size_t index);
 void unloadTexture(struct Vector *textures);
 void freeTexture(struct Vector *textures);
 

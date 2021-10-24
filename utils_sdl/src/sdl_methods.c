@@ -67,8 +67,6 @@ int32_t initSFX() {
     return SUCCESS;
 }
 
-//https://www.youtube.com/watch?v=yFLa3ln16w0&t=1025s
-// FORGOT THE DOUBLE BUFFER >.>
 //TODO Free up render resources on deinit!!!!
 void drawGraphics(SDL_Renderer **Renderer, SDL_Texture *Texture) {
     SDL_RenderCopy(*Renderer, Texture, NULL, NULL);

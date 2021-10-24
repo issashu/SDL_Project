@@ -3,23 +3,27 @@
 //
 
 #include "Graphics/sdl_gfx_renderer.h"
-#include "utils/Log.h"
+#include "Managers/TextureManager.h"
 
-BOOL loadSurfaces(SDL_Surface *Images) {
+//For testing purposes, remove the global vector here after debugging
+//struct Vector testTextures2;
+
+
+BOOL loadSurfaces(struct Vector *objTextures) {
+    initTextureStorage(objTextures, KEY_PRESS_SURFACE_TOTAL);
     //TODO Learn to use glob to load any number of textures into a vector
-    //const STRING ImgPath = ASSETS_PATH "images/hello.png";
-    Images[KEY_PRESS_SURFACE_DEFAULT] = *IMG_Load(ASSETS_PATH "images/hello.png");
-    Images[KEY_PRESS_SURFACE_DOWN] = *IMG_Load(ASSETS_PATH "images/down.png");
-    Images[KEY_PRESS_SURFACE_UP] = *IMG_Load(ASSETS_PATH "images/up.png");
-    Images[KEY_PRESS_SURFACE_LEFT] = *IMG_Load(ASSETS_PATH "images/left.png");
-    Images[KEY_PRESS_SURFACE_RIGHT] = *IMG_Load(ASSETS_PATH "images/right.png");
-
+    loadTextures(objTextures, (ASSETS_PATH "images/hello.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/down.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/up.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/left.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/right.png"));
     for (int8_t i = 0; i < KEY_PRESS_SURFACE_TOTAL; i++) {
-        if (Images + i == NULL) {
+        if (getElementVector(objTextures, i) == NULL) {
             LOGERR("SDL_LoadIMG failed! Reason: %s", SDL_GetError());
             return FAILURE;
         }
     }
+
     return EXIT_SUCCESS;
 }
 
@@ -29,17 +33,6 @@ BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
         LOGERR("SDL_renderer could not be initialised! Reason: %s", SDL_GetError());
         return FAILURE;
     }
-    return EXIT_SUCCESS;
-}
-
-BOOL setTexture(SDL_Surface *Image, SDL_Texture **Texture, SDL_Renderer *Renderer) {
-    *Texture = SDL_CreateTextureFromSurface(Renderer, Image);
-
-    if (*Texture == NULL) {
-        printf("Failed to load texture from asset! Reason: %s\n", SDL_GetError());
-        return EXIT_FAILURE;
-    }
-
     return EXIT_SUCCESS;
 }
 

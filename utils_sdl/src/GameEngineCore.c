@@ -15,6 +15,7 @@
 static SDL_Window *AppWindow;
 
 SDL_Surface ImageSurfaces [KEY_PRESS_SURFACE_TOTAL];
+static struct Vector testTextures;
 static SDL_Texture *Texture = NULL;
 static SDL_Renderer *GfxRenderer = NULL;
 
@@ -53,7 +54,7 @@ int8_t SDLLoader(){
         return FAILURE;
     }
 
-    if(loadSurfaces(ImageSurfaces) != SUCCESS){
+    if(loadSurfaces(&testTextures) != SUCCESS){
         LOGERR("loadSurfaces() failed.");
 
         return FAILURE;
@@ -70,7 +71,7 @@ int8_t SDLLoader(){
 }
 
 void SDLdrawGame(int32_t TextureIndex) {
-    applyTexture(&ImageSurfaces[TextureIndex], &Texture, GfxRenderer);
+    applyTexture(&testTextures, &Texture, GfxRenderer, TextureIndex);
     drawGraphics(&GfxRenderer, Texture);
 }
 
