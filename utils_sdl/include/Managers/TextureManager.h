@@ -16,6 +16,5 @@ BOOL loadTextures(struct Vector *textureMap, char *texturePath);
 
 BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer *Renderer, size_t index);
 void unloadTexture(struct Vector *textures);
-void freeTexture(struct Vector *textures);
 
 #endif //SDL_GAME_TEXTUREMANAGER_H

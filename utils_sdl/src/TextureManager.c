@@ -40,7 +40,3 @@ void unloadTexture(struct Vector *textures) {
         freeVector(textures);
     }
 }
-
-void freeTexture(struct Vector *textures) {
-    freeVector(textures);
-}
