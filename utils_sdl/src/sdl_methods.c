@@ -7,11 +7,11 @@
 #include "utils/Log.h"
 
 //TODO Check how to utilise the forward declared struct and function pointers
-struct SDLMethods{
+/*struct SDLMethods{
     int32_t (*loadResources)(SDL_Surface**, const STRING);
     void (*drawGraphics)(SDL_Window**, SDL_Surface**, SDL_Surface**);
     void (*deinitGame)(SDL_Window**, SDL_Surface**);
-};
+};*/
 
 int32_t initText(){
     if (TTF_Init() != SUCCESS) {

@@ -37,30 +37,25 @@ void keyboardEvent(BOOL *isRunning) {
         SDLdrawGame(KEY_PRESS_SURFACE_UP);
         printf("UP ARROW is pressed.\n");
         SDL_PumpEvents();
-
     }
     while(gameKeyStates[SDL_SCANCODE_RIGHT]) {
         SDLdrawGame(KEY_PRESS_SURFACE_RIGHT);
         printf("RIGHT ARROW is pressed.\n");
         SDL_PumpEvents();
-
     }
     while(gameKeyStates[SDL_SCANCODE_DOWN]){
         SDLdrawGame(KEY_PRESS_SURFACE_DOWN);
         printf("DOWN ARROW is pressed.\n");
         SDL_PumpEvents();
-
     }
     while(gameKeyStates[SDL_SCANCODE_LEFT]) {
         SDLdrawGame(KEY_PRESS_SURFACE_LEFT);
         printf("LEFT ARROW is pressed.\n");
         SDL_PumpEvents();
-
     }
     while(gameKeyStates[SDL_SCANCODE_SPACE]){
         printf("SPACE is pressed.\n");
         SDL_PumpEvents();
-
     }
     while(gameKeyStates[SDL_SCANCODE_ESCAPE]){
         *isRunning = FALSE;

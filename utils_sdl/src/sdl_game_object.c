@@ -6,6 +6,7 @@
 #include "Graphics/sdl_transform2D.h"
 #include "Physics/sdl_rigidBody2D.h"
 
+//TODO Move >Transform into RigidBody?
 struct gameObject{
     Transform2D *transform;
     RigidBody2D *body2D;

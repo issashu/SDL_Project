@@ -12,11 +12,11 @@
 BOOL loadSurfaces(struct Vector *objTextures) {
     initTextureStorage(objTextures, KEY_PRESS_SURFACE_TOTAL);
     //TODO Learn to use glob to load any number of textures into a vector
-    loadTextures(objTextures, (ASSETS_PATH "images/hello.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/down.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/up.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/left.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/right.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
+    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
     for (int8_t i = 0; i < KEY_PRESS_SURFACE_TOTAL; i++) {
         if (getElementVector(objTextures, i) == NULL) {
             LOGERR("SDL_LoadIMG failed! Reason: %s", SDL_GetError());
@@ -41,14 +41,12 @@ void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture) {
     SDL_RenderPresent(*Renderer);
 }
 
-void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t animFrame, int Width, int Height, BOOL vFlip, BOOL hFlip){
-    SDL_Rect srcFrame;
-    SDL_Rect dstFrame;
-    srcFrame.x = Width*animFrame;
-    srcFrame.y = Height*animType;
-    srcFrame.w = Width;
-    srcFrame.h = Height;
-    //Remove. for debugging only
+void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t animFrame,
+                   int transX, int transY, int Width, int Height, BOOL vFlip, BOOL hFlip) {
+
+    SDL_Rect srcFrame = {.x=Width*animFrame, .y=Height*animType, .w = Width, .h = Height};
+    SDL_Rect dstFrame = {.x=transX, .y=transY, .w = Width, .h = Height};
+    //Remove. for debugging only or add vertical flip ideas
     vFlip = 0;
     SDL_RenderCopyEx(*Renderer,Texture,&srcFrame, &dstFrame, 0, NULL, hFlip);
     SDL_RenderPresent(*Renderer);

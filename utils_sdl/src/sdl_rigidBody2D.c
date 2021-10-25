@@ -19,7 +19,6 @@ struct RigidBody2D{
     Vector2D Position;
     Vector2D Velocity;
     Vector2D Acceleration;
-
 };
 
 void initRigidBody2D(RigidBody2D *self) {

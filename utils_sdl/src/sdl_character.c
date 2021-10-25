@@ -5,9 +5,6 @@
 #include <MacTypes.h>
 #include "Actors/sdl_character.h"
 
-
-void drawCharacter();
-
 void updateCharacter();
 
 void removeCharacter();

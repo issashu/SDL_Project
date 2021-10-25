@@ -9,11 +9,13 @@
 #include "Managers/WindowManager.h"
 #include "Managers/TextureManager.h"
 #include "Graphics/gfxRenderer.h"
+#include "Actors/sdl_character.h"
 #include "utils/Log.h"
 
 //TODO Make non-global and after fix the drawGame spaghetti below
 static SDL_Window *AppWindow;
 
+//TODO Replace debug globals with ones from characters/objects
 SDL_Surface ImageSurfaces [KEY_PRESS_SURFACE_TOTAL];
 static struct Vector testTextures;
 static SDL_Texture *Texture = NULL;
@@ -60,7 +62,6 @@ int8_t SDLLoader(){
         return FAILURE;
     }
 
-    //FIXME Need to use a variable instead of the getter
     if(initRenderer(AppWindow, &GfxRenderer) != SUCCESS) {
         LOGERR("initRenderer() failed.");
 
@@ -70,9 +71,19 @@ int8_t SDLLoader(){
     return SUCCESS;
 }
 
-void SDLdrawGame(int32_t TextureIndex) {
-    applyTexture(&testTextures, &Texture, GfxRenderer, TextureIndex);
-    drawGraphics(&GfxRenderer, Texture);
+void SDLdrawGame(int32_t event) {
+    applyTexture(&testTextures, &Texture, GfxRenderer, KEY_PRESS_SURFACE_UP);
+    switch (event){
+        case KEY_PRESS_SURFACE_UP:
+            drawAnimation(&GfxRenderer,Texture, JUMP-1, JUMP_FRAMES-1, 200, 200, 96, 84, FALSE, FALSE);
+            break;
+
+        default:
+            drawAnimation(&GfxRenderer,Texture, IDLE-1, IDLE_FRAMES-1, 100, 100, 96, 84, FALSE, FALSE);
+            break;
+    }
+    //applyTexture(&testTextures, &Texture, GfxRenderer, event);
+    //drawGraphics(&GfxRenderer, Texture);
 }
 
 void SDLUnloader(){

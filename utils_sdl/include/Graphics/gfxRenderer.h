@@ -24,7 +24,7 @@ enum ImageSurfaces{
 BOOL loadSurfaces(struct Vector *objTextures);
 BOOL initRenderer(SDL_Window* Window, SDL_Renderer** Renderer);
 void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture);
-void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t animFrame,
+void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t animFrame, int x, int y,
                    int Width, int Height, BOOL vFlip, BOOL hFlip);
 
 #endif //SDL_GAME_GFXRENDERER_H

@@ -33,7 +33,10 @@ enum animFrames {
     DIE_FRAMES = 5
 };
 
-typedef struct CharacterActor{
+//TODO Make sure that base class structures are always first
+// We can cast between base class and child class like that (since pointer will point to the first element,
+// which being base class, will fit the memory correctly :) )
+typedef struct CharacterActor {
     GameObject2D *Base2D;
     STRING Name;
     int8_t Health;

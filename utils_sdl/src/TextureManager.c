@@ -34,9 +34,12 @@ void unloadTexture(struct Vector *textures) {
     if (textures!= NULL){
         size_t texturesCount = getSizeVector(textures);
         for (size_t i = 0; i<texturesCount; i++){
-            if(textures->items[i]!=NULL)
+            if(textures->items[i]!=NULL){
                 free(textures->items[i]);
+                textures->items[i] = NULL;
+            }
         }
         freeVector(textures);
+        textures = NULL;
     }
 }
