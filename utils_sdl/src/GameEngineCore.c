@@ -15,7 +15,7 @@
 //TODO Make non-global and after fix the drawGame spaghetti below
 static SDL_Window *AppWindow;
 
-//TODO Replace debug globals with ones from characters/objects
+//FIXME Replace debug globals with ones from characters/objects
 SDL_Surface ImageSurfaces [KEY_PRESS_SURFACE_TOTAL];
 static struct Vector testTextures;
 static SDL_Texture *Texture = NULL;
@@ -82,12 +82,10 @@ void SDLdrawGame(int32_t event) {
             drawAnimation(&GfxRenderer,Texture, IDLE-1, IDLE_FRAMES-1, 100, 100, 96, 84, FALSE, FALSE);
             break;
     }
-    //applyTexture(&testTextures, &Texture, GfxRenderer, event);
-    //drawGraphics(&GfxRenderer, Texture);
 }
 
 void SDLUnloader(){
-    //TODO Rethink the whole arhitecture to have SDL lib unloader and then initialiser separetly
+    //TODO Rethink the whole architecture to have SDL lib unloader and then initializer separately
     deinitGame(&AppWindow, NULL);
     IMG_Quit();
     TTF_Quit();
