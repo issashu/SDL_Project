@@ -12,19 +12,13 @@
 #include "utils/containers/Vector.h"
 #include "utils/Log.h"
 
-enum ImageSurfaces{
-    KEY_PRESS_SURFACE_DEFAULT,
-    KEY_PRESS_SURFACE_UP,
-    KEY_PRESS_SURFACE_DOWN,
-    KEY_PRESS_SURFACE_LEFT,
-    KEY_PRESS_SURFACE_RIGHT,
-    KEY_PRESS_SURFACE_TOTAL
-};
+
 
 BOOL loadSurfaces(struct Vector *objTextures);
 BOOL initRenderer(SDL_Window* Window, SDL_Renderer** Renderer);
 void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture);
-void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t animFrame, int x, int y,
-                   int Width, int Height, BOOL vFlip, BOOL hFlip);
+void
+drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t firstFrame, int32_t animSpeed,
+              int transX, int transY, int Width, int Height, BOOL vFlip, BOOL hFlip);
 
 #endif //SDL_GAME_GFXRENDERER_H

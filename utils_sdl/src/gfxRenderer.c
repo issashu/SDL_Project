@@ -8,22 +8,17 @@
 //For testing purposes, remove the global vector here after debugging
 //struct Vector testTextures2;
 
-
+//FIXME REMOVE MAGIC NUMBERS
 BOOL loadSurfaces(struct Vector *objTextures) {
-    initTextureStorage(objTextures, KEY_PRESS_SURFACE_TOTAL);
+    initTextureStorage(objTextures, 1);
     //TODO Learn to use glob to load any number of textures into a vector
     loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
-    loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
-    for (int8_t i = 0; i < KEY_PRESS_SURFACE_TOTAL; i++) {
+    for (int8_t i = 0; i < 1; i++) {
         if (getElementVector(objTextures, i) == NULL) {
             LOGERR("SDL_LoadIMG failed! Reason: %s", SDL_GetError());
             return FAILURE;
         }
     }
-
     return EXIT_SUCCESS;
 }
 
@@ -41,14 +36,17 @@ void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture) {
     SDL_RenderPresent(*Renderer);
 }
 
-void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t animFrame,
-                   int transX, int transY, int Width, int Height, BOOL vFlip, BOOL hFlip) {
+void
+drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t firstFrame, int32_t animSpeed,
+              int transX, int transY, int Width, int Height, BOOL vFlip, BOOL hFlip) {
 
-    SDL_Rect srcFrame = {.x=Width*animFrame, .y=Height*animType, .w = Width, .h = Height};
+    int32_t currentFrame = (SDL_GetTicks() / animSpeed) % firstFrame;
+    SDL_Rect srcFrame = {.x=Width * currentFrame, .y=Height * animType, .w = Width, .h = Height};
     SDL_Rect dstFrame = {.x=transX, .y=transY, .w = Width, .h = Height};
+
     //Remove. for debugging only or add vertical flip ideas
-    vFlip = 0;
-    SDL_RenderCopyEx(*Renderer,Texture,&srcFrame, &dstFrame, 0, NULL, hFlip);
+    vFlip = FALSE;
+    SDL_RenderCopyEx(*Renderer, Texture, &srcFrame, &dstFrame, 0, NULL, hFlip);
     SDL_RenderPresent(*Renderer);
 }
 

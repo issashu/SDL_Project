@@ -10,6 +10,6 @@
 
 int8_t SDLLoader();
 void SDLUnloader();
-void SDLdrawGame(int32_t event);
+void DrawGame(int32_t event);
 
 #endif //SDL_GAME_GAMEENGINECORE_H

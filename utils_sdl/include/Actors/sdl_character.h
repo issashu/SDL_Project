@@ -38,11 +38,13 @@ enum animFrames {
 // which being base class, will fit the memory correctly :) )
 typedef struct CharacterActor {
     GameObject2D *Base2D;
-    STRING Name;
     int8_t Health;
     int8_t Mana;
-    BOOL isAlive;
     u_int8_t stateFlags;
+    int8_t AnimationSpeed;
+    BOOL isAlive;
+    STRING Name;
+
     //TODO Add some stats and function pointers for methods
 } Character;
 

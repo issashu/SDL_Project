@@ -10,7 +10,7 @@ BOOL gameLoop(){
 
     SDLLoader();
     //FIXME MOVE LOOP INSIDE GAME ENGINE
-    SDLdrawGame(0);
+    DrawGame(0);
     BOOL isRunning = TRUE;
     while(isRunning){
         eventHandler(&isRunning);

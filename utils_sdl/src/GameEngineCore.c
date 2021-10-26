@@ -12,18 +12,16 @@
 #include "Actors/sdl_character.h"
 #include "utils/Log.h"
 
-//TODO Make non-global and after fix the drawGame spaghetti below
-static SDL_Window *AppWindow;
-
-//FIXME Replace debug globals with ones from characters/objects
-SDL_Surface ImageSurfaces [KEY_PRESS_SURFACE_TOTAL];
+//FIXME Replace debug globals with ones from characters/objects/managers
 static struct Vector testTextures;
+static SDL_Window *AppWindow;
 static SDL_Texture *Texture = NULL;
 static SDL_Renderer *GfxRenderer = NULL;
+static int32_t AnimationSpeed = 2;
 
-int8_t SDLLoader(){
-    //TODO Rethink the whole arhitecture to have SDL lib loader and then initialiser separetly
-   AppWindow = NULL;
+int8_t SDLLoader() {
+    //TODO Rethink the whole arhitecture to have SDL lib loader and then initializer separately
+    AppWindow = NULL;
 
     //TODO Take out all error checks in a separate function or move them in a common if
     if (initScreen(&AppWindow, WINDOW_WIDTH, WINDOW_HEIGHT) != SUCCESS) {
@@ -56,13 +54,13 @@ int8_t SDLLoader(){
         return FAILURE;
     }
 
-    if(loadSurfaces(&testTextures) != SUCCESS){
+    if (loadSurfaces(&testTextures) != SUCCESS) {
         LOGERR("loadSurfaces() failed.");
 
         return FAILURE;
     }
 
-    if(initRenderer(AppWindow, &GfxRenderer) != SUCCESS) {
+    if (initRenderer(AppWindow, &GfxRenderer) != SUCCESS) {
         LOGERR("initRenderer() failed.");
 
         return FAILURE;
@@ -71,20 +69,38 @@ int8_t SDLLoader(){
     return SUCCESS;
 }
 
-void SDLdrawGame(int32_t event) {
-    applyTexture(&testTextures, &Texture, GfxRenderer, KEY_PRESS_SURFACE_UP);
-    switch (event){
-        case KEY_PRESS_SURFACE_UP:
-            drawAnimation(&GfxRenderer,Texture, JUMP-1, JUMP_FRAMES-1, 200, 200, 96, 84, FALSE, FALSE);
+//FIXME REPLACE THE MAGIC NUMBERS and move delta time into a timer manager
+void DrawGame(int32_t event) {
+    applyTexture(&testTextures, &Texture, GfxRenderer, 0);
+    switch (event) {
+        case SDL_SCANCODE_UP:
+            drawAnimation(&GfxRenderer, Texture, JUMP - 1, JUMP_FRAMES - 1, AnimationSpeed, 200, 200, 96,
+                          84, FALSE, FALSE);
+            break;
+
+        case SDL_SCANCODE_RIGHT:
+            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed, 200, 200, 96,
+                          84, FALSE, FALSE);
+            break;
+
+        case SDL_SCANCODE_DOWN:
+            drawAnimation(&GfxRenderer, Texture, CRAWL - 1, CRAWL_FRAMES - 1, AnimationSpeed, 200, 200, 96,
+                          84, FALSE, FALSE);
+            break;
+
+        case SDL_SCANCODE_LEFT:
+            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed, 200, 200, 96,
+                          84, FALSE, TRUE);
             break;
 
         default:
-            drawAnimation(&GfxRenderer,Texture, IDLE-1, IDLE_FRAMES-1, 100, 100, 96, 84, FALSE, FALSE);
+            drawAnimation(&GfxRenderer, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed, 100, 100, 96,
+                          84, FALSE, FALSE);
             break;
     }
 }
 
-void SDLUnloader(){
+void SDLUnloader() {
     //TODO Rethink the whole architecture to have SDL lib unloader and then initializer separately
     deinitGame(&AppWindow, NULL);
     IMG_Quit();
