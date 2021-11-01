@@ -37,7 +37,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Physics/sdl_vector2D.h
         ${_HEADERS_DIR}/Graphics/sdl_transform2D.h
-        ${_HEADERS_DIR}/GameObject/sdl_game_object.h
+        ${_HEADERS_DIR}/GameObject/GameObject2D.h
         ${_HEADERS_DIR}/Actors/sdl_character.h
         ${_HEADERS_DIR}/Physics/sdl_rigidBody2D.h
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
@@ -45,19 +45,21 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Managers/EventManager.h
         ${_HEADERS_DIR}/Managers/TextureManager.h
         ${_HEADERS_DIR}/Graphics/animation_settings.h
+        ${_HEADERS_DIR}/GameObject/ObjectPool.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/GameEngineCore.c
         ${_SOURCES_DIR}/gfxRenderer.c
         ${_SOURCES_DIR}/sdl_vector2D.c
         ${_SOURCES_DIR}/sdl_transform2D.c
-        ${_SOURCES_DIR}/sdl_game_object.c
+        ${_SOURCES_DIR}/GameObject2D.c
         ${_SOURCES_DIR}/sdl_character.c
         ${_SOURCES_DIR}/sdl_rigidBody2D.c
         ${_SOURCES_DIR}/GameObjectManager.c
         ${_SOURCES_DIR}/WindowManager.c
         ${_SOURCES_DIR}/EventManager.c
-        ${_SOURCES_DIR}/TextureManager.c)
+        ${_SOURCES_DIR}/TextureManager.c
+        ${_SOURCES_DIR}/ObjectPool.c)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

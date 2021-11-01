@@ -2,7 +2,7 @@
 // Created by Iordan Tonchev on 21.10.21.
 //
 
-#include "GameObject/sdl_game_object.h"
+#include "GameObject/GameObject2D.h"
 #include "Graphics/sdl_transform2D.h"
 #include "Physics/sdl_rigidBody2D.h"
 

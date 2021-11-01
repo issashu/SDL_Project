@@ -46,6 +46,7 @@ drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, i
 
     //Remove. for debugging only or add vertical flip ideas
     vFlip = FALSE;
+    SDL_RenderClear(*Renderer);
     SDL_RenderCopyEx(*Renderer, Texture, &srcFrame, &dstFrame, 0, NULL, hFlip);
     SDL_RenderPresent(*Renderer);
 }

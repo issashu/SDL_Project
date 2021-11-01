@@ -5,7 +5,6 @@
 #include <SDL_events.h>
 #include "Managers/EventManager.h"
 #include "Core/GameEngineCore.h"
-#include "Graphics/gfxRenderer.h"
 #include "utils/defines.h"
 
 void eventHandler(BOOL *isRunning) {
@@ -18,6 +17,8 @@ void eventHandler(BOOL *isRunning) {
 
             case SDL_KEYDOWN:
                 keyboardEvent(isRunning);
+                break;
+            case SDL_KEYUP:
                 break;
 //TODO Disable mouse control for the end game and fix the default idle state
             case SDL_MOUSEBUTTONDOWN:
@@ -35,35 +36,34 @@ void keyboardEvent(BOOL *isRunning) {
     // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
     SDL_PumpEvents();
     const Uint8 *gameKeyStates = SDL_GetKeyboardState(NULL);
-    while(gameKeyStates[SDL_SCANCODE_UP]) {
+    while (gameKeyStates[SDL_SCANCODE_UP]) {
         DrawGame(SDL_SCANCODE_UP);
         printf("UP ARROW is pressed.\n");
         SDL_PumpEvents();
     }
-    while(gameKeyStates[SDL_SCANCODE_RIGHT]) {
+    while (gameKeyStates[SDL_SCANCODE_RIGHT]) {
         DrawGame(SDL_SCANCODE_RIGHT);
         printf("RIGHT ARROW is pressed.\n");
         SDL_PumpEvents();
     }
-    while(gameKeyStates[SDL_SCANCODE_DOWN]){
+    while (gameKeyStates[SDL_SCANCODE_DOWN]){
         DrawGame(SDL_SCANCODE_DOWN);
         printf("DOWN ARROW is pressed.\n");
         SDL_PumpEvents();
     }
-    while(gameKeyStates[SDL_SCANCODE_LEFT]) {
+    while (gameKeyStates[SDL_SCANCODE_LEFT]) {
         DrawGame(SDL_SCANCODE_LEFT);
         printf("LEFT ARROW is pressed.\n");
         SDL_PumpEvents();
     }
-    while(gameKeyStates[SDL_SCANCODE_SPACE]){
+    while (gameKeyStates[SDL_SCANCODE_SPACE]){
         DrawGame(SDL_SCANCODE_SPACE);
         printf("SPACE is pressed.\n");
         SDL_PumpEvents();
     }
-    while(gameKeyStates[SDL_SCANCODE_ESCAPE]){
+    while (gameKeyStates[SDL_SCANCODE_ESCAPE]){
         *isRunning = FALSE;
         break;
     }
     //FIXME NEED A DEFAULT STATE IN THE MACHINE
-    DrawGame(SDL_SCANCODE_CANCEL);
 }

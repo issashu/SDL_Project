@@ -6,13 +6,13 @@
 #include "utils_sdl/include/Managers/EventManager.h"
 #include "utils/defines.h"
 
-BOOL gameLoop(){
+BOOL gameLoop() {
 
     SDLLoader();
-    //FIXME MOVE LOOP INSIDE GAME ENGINE
-    DrawGame(0);
+    //FIXME MOVE LOOP INSIDE GAME ENGINE and implement the renderer game loop clear/update/present
     BOOL isRunning = TRUE;
-    while(isRunning){
+    while (isRunning) {
+        DrawGame(0);
         eventHandler(&isRunning);
     }
     //SDLUnloader();

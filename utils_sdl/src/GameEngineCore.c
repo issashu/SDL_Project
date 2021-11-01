@@ -17,7 +17,7 @@ static struct Vector testTextures;
 static SDL_Window *AppWindow;
 static SDL_Texture *Texture = NULL;
 static SDL_Renderer *GfxRenderer = NULL;
-static int32_t AnimationSpeed = 2;
+static int32_t AnimationSpeed = 250;
 
 int8_t SDLLoader() {
     //TODO Rethink the whole arhitecture to have SDL lib loader and then initializer separately
@@ -94,7 +94,7 @@ void DrawGame(int32_t event) {
             break;
 
         default:
-            drawAnimation(&GfxRenderer, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed, 100, 100, 96,
+            drawAnimation(&GfxRenderer, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed, 200, 200, 96,
                           84, FALSE, FALSE);
             break;
     }

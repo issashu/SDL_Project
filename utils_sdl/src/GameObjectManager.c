@@ -3,5 +3,5 @@
 //
 
 #include "Managers/GameObjectManager.h"
-#include "GameObject/sdl_game_object.h"
+#include "GameObject/GameObject2D.h"
 #include "utils/containers/Vector.h"
