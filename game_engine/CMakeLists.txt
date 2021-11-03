@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.1)
 
-project(utils_sdl LANGUAGES C)
+project(game_engine LANGUAGES C)
 
 set(_BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(_HEADERS_DIR ${_BASE_DIR}/include)
@@ -39,6 +39,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Graphics/sdl_transform2D.h
         ${_HEADERS_DIR}/GameObject/GameObject2D.h
         ${_HEADERS_DIR}/Actors/sdl_character.h
+        ${_HEADERS_DIR}/Actors/Player.h
         ${_HEADERS_DIR}/Physics/sdl_rigidBody2D.h
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
         ${_HEADERS_DIR}/Managers/WindowManager.h
@@ -46,6 +47,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Managers/TextureManager.h
         ${_HEADERS_DIR}/Graphics/animation_settings.h
         ${_HEADERS_DIR}/GameObject/ObjectPool.h
+        ${_HEADERS_DIR}/Timers/Timers.h
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/GameEngineCore.c
@@ -54,12 +56,14 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/sdl_transform2D.c
         ${_SOURCES_DIR}/GameObject2D.c
         ${_SOURCES_DIR}/sdl_character.c
+        ${_SOURCES_DIR}/Player.c
         ${_SOURCES_DIR}/sdl_rigidBody2D.c
         ${_SOURCES_DIR}/GameObjectManager.c
         ${_SOURCES_DIR}/WindowManager.c
         ${_SOURCES_DIR}/EventManager.c
         ${_SOURCES_DIR}/TextureManager.c
-        ${_SOURCES_DIR}/ObjectPool.c)
+        ${_SOURCES_DIR}/ObjectPool.c
+        ${_SOURCES_DIR}/Timers.c )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

@@ -17,8 +17,7 @@
 BOOL loadSurfaces(struct Vector *objTextures);
 BOOL initRenderer(SDL_Window* Window, SDL_Renderer** Renderer);
 void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture);
-void
-drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t firstFrame, int32_t animSpeed,
-              int transX, int transY, int Width, int Height, BOOL vFlip, BOOL hFlip);
+void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t firstFrame,
+                   float animSpeed, int transX, int transY, int Width, int Height, BOOL hFlip);
 
 #endif //SDL_GAME_GFXRENDERER_H

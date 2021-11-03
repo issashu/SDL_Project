@@ -9,7 +9,8 @@
 #include "Physics/sdl_rigidBody2D.h"
 #include "Graphics/sdl_transform2D.h"
 
-//Number is from sprite sheet, decrease by 1 in code
+//Enums are based on the sprite sheet, decrease by 1 when using in code
+//Using common sprite sheet, thus enums are in character struct and not actor structs
 enum animType {
     IDLE = 2,
     CROUCH = 10,
@@ -41,10 +42,8 @@ typedef struct CharacterActor {
     int8_t Health;
     int8_t Mana;
     u_int8_t stateFlags;
-    int8_t AnimationSpeed;
     BOOL isAlive;
     STRING Name;
-
     //TODO Add some stats and function pointers for methods
 } Character;
 

@@ -31,7 +31,7 @@ void addObjects (ObjectPool *pool, GameObject2D *object) {
 }
 
 //TODO Check if Vector would allocate space for each object
-GameObject2D* pullObject (ObjectPool *pool, int32_t position) {
+GameObject2D* pullObject (ObjectPool *pool, int8_t position) {
     GameObject2D *object = NULL;
     if (CHECK_BIT(pool->UsedFlags, position) == FALSE){
         object = (GameObject2D*) getElementVector(pool->GameObjects,position);
@@ -39,7 +39,7 @@ GameObject2D* pullObject (ObjectPool *pool, int32_t position) {
     return object;
 }
 
-void flagObject (ObjectPool *pool, int32_t position){
+void flagObject (ObjectPool *pool, int8_t position){
     pool->UsedFlags = (1 << position) | pool->UsedFlags;
 }
 

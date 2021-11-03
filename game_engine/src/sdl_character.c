@@ -2,7 +2,6 @@
 // Created by Iordan Tonchev on 22.10.21.
 //
 
-#include <MacTypes.h>
 #include "Actors/sdl_character.h"
 
 void updateCharacter();

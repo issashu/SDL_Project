@@ -40,7 +40,7 @@ target_include_directories(
 target_link_libraries(
         ${PROJECT_NAME}
         PUBLIC
-        utils_sdl
+        game_engine
         )
 
 target_compile_definitions(
@@ -49,7 +49,7 @@ target_compile_definitions(
         _DEFAULT_SOURCE=1
         )
 
-add_subdirectory(utils_sdl)
+add_subdirectory(game_engine)
 add_subdirectory(utils)
 
 set_target_c_standard(${PROJECT_NAME} 11)

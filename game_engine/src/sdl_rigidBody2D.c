@@ -4,6 +4,7 @@
 
 #include "utils/Log.h"
 #include "utils/defines.h"
+#include "Graphics/sdl_transform2D.h"
 #include "Physics/sdl_rigidBody2D.h"
 #include "Physics/sdl_vector2D.h"
 
@@ -12,6 +13,7 @@
 #define WORLD_GRAVITY 9.8f
 
 struct RigidBody2D{
+    Transform2D *transform;
     float Mass;
     float appliedGravity;
     Vector2D appliedForce;
@@ -22,6 +24,8 @@ struct RigidBody2D{
 };
 
 void initRigidBody2D(RigidBody2D *self) {
+    self->transform->X = 0;
+    self->transform->Y = 0;
     self->Mass = BODY_MASS;
     self->appliedGravity = WORLD_GRAVITY;
     initVector2D(&self->appliedForce);
@@ -48,14 +52,12 @@ void applyForce(RigidBody2D *self, Vector2D *Force){
     self->appliedForce.Y = Force->Y;
 }
 
-
 void applyFriction(RigidBody2D *self, Vector2D *Friction){
     self->Friction.X = Friction->X;
     self->Friction.Y = Friction->Y;
 }
 
 void applyAcceleration(RigidBody2D *self) {
-    //self->Acceleration = self->Acceleration.sum(&self->Acceleration, &self->Friction);
     self->Acceleration.X = (self->appliedForce.X - self->Friction.X) / self->Mass;
     self->Acceleration.Y = (self->appliedForce.Y - self->Friction.Y + self->appliedGravity) / self->Mass;
 }
@@ -73,6 +75,8 @@ void setVelocity(RigidBody2D *self, float deltaTime) {
 void setPosition(RigidBody2D *self, float deltaTime){
     if(self != NONE){
         self->Position = self->Position.scale(&self->Velocity, deltaTime);
+        self->transform->X += self->Position.X;
+        self->transform->Y += self->Position.Y;
     }
     else{
         LOGERR("Setting position has failed!!");

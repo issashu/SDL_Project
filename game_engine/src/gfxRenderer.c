@@ -5,12 +5,14 @@
 #include "Graphics/gfxRenderer.h"
 #include "Managers/TextureManager.h"
 
+#define STORAGE_START_CAPACITY 1
+
 //For testing purposes, remove the global vector here after debugging
 //struct Vector testTextures2;
 
 //FIXME REMOVE MAGIC NUMBERS
 BOOL loadSurfaces(struct Vector *objTextures) {
-    initTextureStorage(objTextures, 1);
+    initTextureStorage(objTextures, STORAGE_START_CAPACITY);
     //TODO Learn to use glob to load any number of textures into a vector
     loadTextures(objTextures, (ASSETS_PATH "images/character_anim.png"));
     for (int8_t i = 0; i < 1; i++) {
@@ -23,7 +25,7 @@ BOOL loadSurfaces(struct Vector *objTextures) {
 }
 
 BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
-    *Renderer = SDL_CreateRenderer(Window, -1, 0);
+    *Renderer = SDL_CreateRenderer(Window, -1, (SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED));
     if (*Renderer == NULL) {
         LOGERR("SDL_renderer could not be initialised! Reason: %s", SDL_GetError());
         return FAILURE;
@@ -36,16 +38,14 @@ void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture) {
     SDL_RenderPresent(*Renderer);
 }
 
-void
-drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t firstFrame, int32_t animSpeed,
-              int transX, int transY, int Width, int Height, BOOL vFlip, BOOL hFlip) {
+void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t firstFrame,
+                   float animSpeed, int transX, int transY, int Width, int Height, BOOL hFlip) {
 
-    int32_t currentFrame = (SDL_GetTicks() / animSpeed) % firstFrame;
+    //This will always keep rotating up to the maximum available sprites in the animation, since % will revert to 0
+    int32_t currentFrame = (int32_t )(SDL_GetTicks() / animSpeed) % firstFrame;
     SDL_Rect srcFrame = {.x=Width * currentFrame, .y=Height * animType, .w = Width, .h = Height};
     SDL_Rect dstFrame = {.x=transX, .y=transY, .w = Width, .h = Height};
 
-    //Remove. for debugging only or add vertical flip ideas
-    vFlip = FALSE;
     SDL_RenderClear(*Renderer);
     SDL_RenderCopyEx(*Renderer, Texture, &srcFrame, &dstFrame, 0, NULL, hFlip);
     SDL_RenderPresent(*Renderer);

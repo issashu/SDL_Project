@@ -8,7 +8,6 @@
 typedef struct Vector2D {
     float X;
     float Y;
-    //void (*init)(struct Vector2D *);
     void (*set)(struct Vector2D *, double, double);
     struct Vector2D (*sum)(struct Vector2D *, struct Vector2D *);
     struct Vector2D (*dif)(struct Vector2D *, struct Vector2D *);

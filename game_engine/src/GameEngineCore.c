@@ -17,10 +17,10 @@ static struct Vector testTextures;
 static SDL_Window *AppWindow;
 static SDL_Texture *Texture = NULL;
 static SDL_Renderer *GfxRenderer = NULL;
-static int32_t AnimationSpeed = 250;
+static float AnimationSpeed = 150.0f;
 
 int8_t SDLLoader() {
-    //TODO Rethink the whole arhitecture to have SDL lib loader and then initializer separately
+    //TODO Rethink the whole architecture to have SDL lib loader and then initializer separately
     AppWindow = NULL;
 
     //TODO Take out all error checks in a separate function or move them in a common if
@@ -74,28 +74,28 @@ void DrawGame(int32_t event) {
     applyTexture(&testTextures, &Texture, GfxRenderer, 0);
     switch (event) {
         case SDL_SCANCODE_UP:
-            drawAnimation(&GfxRenderer, Texture, JUMP - 1, JUMP_FRAMES - 1, AnimationSpeed, 200, 200, 96,
-                          84, FALSE, FALSE);
+            drawAnimation(&GfxRenderer, Texture, JUMP - 1, JUMP_FRAMES - 1, AnimationSpeed,
+                          200, 200, 96, 84, FALSE);
             break;
 
         case SDL_SCANCODE_RIGHT:
-            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed, 200, 200, 96,
-                          84, FALSE, FALSE);
+            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
+                          200, 200, 96, 84, FALSE);
             break;
 
         case SDL_SCANCODE_DOWN:
-            drawAnimation(&GfxRenderer, Texture, CRAWL - 1, CRAWL_FRAMES - 1, AnimationSpeed, 200, 200, 96,
-                          84, FALSE, FALSE);
+            drawAnimation(&GfxRenderer, Texture, CRAWL - 1, CRAWL_FRAMES - 1, AnimationSpeed,
+                          200, 200, 96, 84, FALSE);
             break;
 
         case SDL_SCANCODE_LEFT:
-            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed, 200, 200, 96,
-                          84, FALSE, TRUE);
+            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
+                          200, 200, 96, 84, TRUE);
             break;
 
         default:
-            drawAnimation(&GfxRenderer, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed, 200, 200, 96,
-                          84, FALSE, FALSE);
+            drawAnimation(&GfxRenderer, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed,
+                          200, 200, 96, 84, FALSE);
             break;
     }
 }
