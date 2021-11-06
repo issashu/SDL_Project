@@ -2,12 +2,12 @@
 // Created by Iordan Tonchev on 22.10.21.
 //
 
-#ifndef SDL_GAME_SDL_CHARACTER_H
-#define SDL_GAME_SDL_CHARACTER_H
+#ifndef SDL_GAME_BASECHARACTER_H
+#define SDL_GAME_BASECHARACTER_H
 
 #include "GameObject/GameObject2D.h"
-#include "Physics/sdl_rigidBody2D.h"
-#include "Graphics/sdl_transform2D.h"
+#include "Physics/RigidBody2D.h"
+#include "Graphics/Transform2D.h"
 
 //Enums are based on the sprite sheet, decrease by 1 when using in code
 //Using common sprite sheet, thus enums are in character struct and not actor structs
@@ -49,4 +49,4 @@ typedef struct CharacterActor {
 
 void initCharacter(Character *self, STRING name, STRING texturePath);
 
-#endif //SDL_GAME_SDL_CHARACTER_H
+#endif //SDL_GAME_BASECHARACTER_H

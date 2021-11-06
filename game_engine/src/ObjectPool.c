@@ -11,7 +11,7 @@
 #include "utils/defines.h"
 
 
-#define OBJECT_COUNT 10
+#define OBJECT_COUNT 50
 #define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 
 //TODO Decide about hardcoding the object number

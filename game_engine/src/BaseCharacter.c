@@ -2,7 +2,7 @@
 // Created by Iordan Tonchev on 22.10.21.
 //
 
-#include "Actors/sdl_character.h"
+#include "Actors/BaseCharacter.h"
 
 void updateCharacter();
 

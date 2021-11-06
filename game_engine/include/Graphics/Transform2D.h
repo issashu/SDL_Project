@@ -2,8 +2,8 @@
 // Created by Iordan Tonchev on 21.10.21.
 //
 
-#ifndef SDL_GAME_SDL_TRANSFORM2D_H
-#define SDL_GAME_SDL_TRANSFORM2D_H
+#ifndef SDL_GAME_TRANSFORM2D_H
+#define SDL_GAME_TRANSFORM2D_H
 
 /**
  * Transform2D holds the information for an object position
@@ -18,4 +18,4 @@ typedef struct Transform2D {
     void (*trans2D)(float, float);
 } Transform2D;
 
-#endif //SDL_GAME_SDL_TRANSFORM2D_H
+#endif //SDL_GAME_TRANSFORM2D_H

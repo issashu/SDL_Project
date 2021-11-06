@@ -5,7 +5,7 @@
 #ifndef SDL_GAME_PLAYER_H
 #define SDL_GAME_PLAYER_H
 
-#include "Actors/sdl_character.h"
+#include "Actors/BaseCharacter.h"
 #include "utils/defines.h"
 
 typedef struct Player{

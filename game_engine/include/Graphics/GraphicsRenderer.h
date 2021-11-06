@@ -2,8 +2,8 @@
 // Created by Iordan Tonchev on 10.10.21.
 //
 
-#ifndef SDL_GAME_GFXRENDERER_H
-#define SDL_GAME_GFXRENDERER_H
+#ifndef SDL_GAME_GRAPHICSRENDERER_H
+#define SDL_GAME_GRAPHICSRENDERER_H
 
 //TODO Change the enum to be used in the final game or remove
 #include <SDL.h>
@@ -20,4 +20,4 @@ void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture);
 void drawAnimation(SDL_Renderer **Renderer, SDL_Texture *Texture, int32_t animType, int32_t firstFrame,
                    float animSpeed, int transX, int transY, int Width, int Height, BOOL hFlip);
 
-#endif //SDL_GAME_GFXRENDERER_H
+#endif //SDL_GAME_GRAPHICSRENDERER_H

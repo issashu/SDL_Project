@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-#include "Physics/sdl_vector2D.h"
+#include "Physics/Vector2D.h"
 
 void initVector2D(Vector2D *self);
 void setVector2D (Vector2D *self, double X, double Y);

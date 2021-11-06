@@ -8,8 +8,8 @@
 #include "Core/sdl_default_app_settings.h"
 #include "Managers/WindowManager.h"
 #include "Managers/TextureManager.h"
-#include "Graphics/gfxRenderer.h"
-#include "Actors/sdl_character.h"
+#include "Graphics/GraphicsRenderer.h"
+#include "Actors/BaseCharacter.h"
 #include "utils/Log.h"
 
 //FIXME Replace debug globals with ones from characters/objects/managers

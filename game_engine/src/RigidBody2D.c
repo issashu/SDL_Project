@@ -4,13 +4,13 @@
 
 #include "utils/Log.h"
 #include "utils/defines.h"
-#include "Graphics/sdl_transform2D.h"
-#include "Physics/sdl_rigidBody2D.h"
-#include "Physics/sdl_vector2D.h"
+#include "Graphics/Transform2D.h"
+#include "Physics/RigidBody2D.h"
+#include "Physics/Vector2D.h"
 
 //TODO Move defines to respective header
 #define BODY_MASS 1.0f
-#define WORLD_GRAVITY 9.8f
+#define WORLD_GRAVITY 3.8f
 
 struct RigidBody2D{
     Transform2D *transform;
@@ -57,6 +57,7 @@ void applyFriction(RigidBody2D *self, Vector2D *Friction){
     self->Friction.Y = Friction->Y;
 }
 
+//Higher the mass, lower the acceleration and viceversa
 void applyAcceleration(RigidBody2D *self) {
     self->Acceleration.X = (self->appliedForce.X - self->Friction.X) / self->Mass;
     self->Acceleration.Y = (self->appliedForce.Y - self->Friction.Y + self->appliedGravity) / self->Mass;

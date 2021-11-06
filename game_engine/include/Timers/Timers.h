@@ -5,6 +5,11 @@
 #ifndef SDL_GAME_TIMERS_H
 #define SDL_GAME_TIMERS_H
 
-float getDeltaTime();
+/**
+ *
+ * @param lastTime - Last updated time/game-tick
+ * @return Returns the calculated delta time between last update and current moment
+ */
+float getDeltaTime(uint32_t *lastTime);
 
 #endif //SDL_GAME_TIMERS_H

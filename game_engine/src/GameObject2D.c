@@ -3,7 +3,7 @@
 //
 
 #include "GameObject/GameObject2D.h"
-#include "Physics/sdl_rigidBody2D.h"
+#include "Physics/RigidBody2D.h"
 
 //TODO Move >Transform into RigidBody?
 struct gameObject{

@@ -2,7 +2,7 @@
 // Created by Iordan Tonchev on 10.10.21.
 //
 
-#include "Graphics/gfxRenderer.h"
+#include "Graphics/GraphicsRenderer.h"
 #include "Managers/TextureManager.h"
 
 #define STORAGE_START_CAPACITY 1
