@@ -5,11 +5,24 @@
 #ifndef SDL_GAME_GAMEOBJECT2D_H
 #define SDL_GAME_GAMEOBJECT2D_H
 
-#include <stdint.h>
+#include <SDL_rect.h>
 #include "utils/defines.h"
+#include "Physics/Vector2D.h"
 
 typedef struct gameObject GameObject2D;
 
-void initObject(GameObject2D *self, STRING texturePath);
+void initObject(GameObject2D *self);
+SDL_Rect* getObjRect(GameObject2D *self);
+BOOL getHorrizFlip(GameObject2D *self);
+BOOL getVertFlip(GameObject2D *self);
+BOOL getPassable(GameObject2D *self);
+BOOL getAlive(GameObject2D *self);
+
+void setHorrizFlip(GameObject2D *self, BOOL flag);
+void setVertFlip(GameObject2D *self, BOOL flag);
+void setPassable(GameObject2D *self, BOOL flag);
+void setAlive(GameObject2D *self, BOOL flag);
+
+void updateObject(GameObject2D *self, float DeltaTime, Vector2D *Force, Vector2D *Friction);
 
 #endif //SDL_GAME_GAMEOBJECT2D_H

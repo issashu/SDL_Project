@@ -26,8 +26,22 @@ BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer
         printf("Failed to load texture from asset! Reason: %s\n", SDL_GetError());
         return FAILURE;
     }
+  //SDL_FreeSurface(Image);
+
     return SUCCESS;
 }
+
+BOOL destroyTexture(SDL_Texture *texture){
+    if (texture == NULL) {
+        printf("Failed to free Texture memory! Reason: %s\n", SDL_GetError());
+        return FAILURE;
+    }
+
+    SDL_DestroyTexture(texture);
+
+    return SUCCESS;
+}
+
 
 //TODO Use on destroy object.
 void unloadTexture(struct Vector *textures) {

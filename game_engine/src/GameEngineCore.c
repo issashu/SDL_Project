@@ -8,7 +8,7 @@
 #include "Core/sdl_default_app_settings.h"
 #include "Managers/WindowManager.h"
 #include "Managers/TextureManager.h"
-#include "Graphics/GraphicsRenderer.h"
+#include "Graphics/GraphicsRenderer2D.h"
 #include "Actors/BaseCharacter.h"
 #include "utils/Log.h"
 
@@ -70,38 +70,39 @@ int8_t SDLLoader() {
 }
 
 //FIXME REPLACE THE MAGIC NUMBERS and move delta time into a timer manager
-void DrawGame(int32_t event) {
+void DrawGame(int32_t Event, float DeltaTime) {
     applyTexture(&testTextures, &Texture, GfxRenderer, 0);
-    switch (event) {
+    switch (Event) {
         case SDL_SCANCODE_UP:
             drawAnimation(&GfxRenderer, Texture, JUMP - 1, JUMP_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE);
+                          200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_RIGHT:
             drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE);
+                          200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_DOWN:
             drawAnimation(&GfxRenderer, Texture, CRAWL - 1, CRAWL_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE);
+                          200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_LEFT:
             drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, TRUE);
+                          200, 200, 96, 84, TRUE, DeltaTime);
             break;
 
         default:
             drawAnimation(&GfxRenderer, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE);
+                          200, 200, 96, 84, FALSE, DeltaTime);
             break;
     }
 }
 
 void SDLUnloader() {
     //TODO Rethink the whole architecture to have SDL lib unloader and then initializer separately
+    //FIXME Pass Image pointer to free
     deinitGame(&AppWindow, NULL);
     IMG_Quit();
     TTF_Quit();

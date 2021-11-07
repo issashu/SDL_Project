@@ -5,6 +5,7 @@
 #ifndef SDL_GAME_VECTOR2D_H
 #define SDL_GAME_VECTOR2D_H
 
+//TODO Finish encapsulation by creating a struct with pointer to Vector and methods
 typedef struct Vector2D {
     float X;
     float Y;

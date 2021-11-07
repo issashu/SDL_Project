@@ -13,7 +13,7 @@
 #include "utils/vfx_tools/shapes.h"
 
 //TODO Extract all struct objects in own header
-/*struct WindowConfig {
+struct WindowConfig {
     //Window modes:
     //SDL_WINDOW_SHOWN - for windowed version
     //SDL_WINDOW_FULLSCREEN_DESKTOP - for fullscreen
@@ -22,13 +22,7 @@
     int32_t windowHeight;
     struct Point windowPos;
     char *windowName;
-};*/
-
-/*struct SDLWindow{
-    SDL_Window *Window;
-    __attribute__((unused)) SDL_Surface *ScreenSurface;
-    SDL_Surface *Image;
-};*/
+};
 
 //TODO Move to Main Engine code
 struct Display{
@@ -37,14 +31,11 @@ struct Display{
     struct Rectangle WindowShape;
 };
 
-void initSDL();
 int32_t initScreen(SDL_Window **Window, int32_t Width, int32_t Height);
-//int32_t loadResources(SDL_Surface **Image, const STRING *ImagePath);
 int32_t initText();
 int32_t initTextures();
 int32_t initTimers();
 int32_t initSFX();
-void drawGraphics(SDL_Renderer **Renderer, SDL_Texture *Texture);
 void deinitGame(SDL_Window **Window, SDL_Surface **Image);
 
 #endif //SDL_GAME_SDL_METHODS_H

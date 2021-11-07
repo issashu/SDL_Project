@@ -6,13 +6,6 @@
 #include "utils/defines.h"
 #include "utils/Log.h"
 
-//TODO Check how to utilise the forward declared struct and function pointers
-/*struct SDLMethods{
-    int32_t (*loadResources)(SDL_Surface**, const STRING);
-    void (*drawGraphics)(SDL_Window**, SDL_Surface**, SDL_Surface**);
-    void (*deinitGame)(SDL_Window**, SDL_Surface**);
-};*/
-
 int32_t initText(){
     if (TTF_Init() != SUCCESS) {
         LOGERR("TTF_Init() failed! Reason: %s", SDL_GetError());
@@ -67,18 +60,15 @@ int32_t initSFX() {
     return SUCCESS;
 }
 
-//TODO Free up render resources on deinit!!!!
-void drawGraphics(SDL_Renderer **Renderer, SDL_Texture *Texture) {
-    SDL_RenderCopy(*Renderer, Texture, NULL, NULL);
-    SDL_RenderPresent(*Renderer);
-}
-
 void deinitGame(SDL_Window **Window, SDL_Surface **Image) {
-    if (*Image != NULL) {
+    if (Image != NULL) {
         SDL_FreeSurface(*Image);
+        *Image = NULL;
     }
-    if (*Window != NULL) {
+    //FIXME Possibly the window remains dengling pointer
+    if (Window != NULL) {
         SDL_DestroyWindow(*Window);
+        *Window = NULL;
     }
     SDL_Quit();
 }

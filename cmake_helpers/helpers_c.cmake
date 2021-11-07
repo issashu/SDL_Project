@@ -16,14 +16,14 @@ function(enable_target_c_warnings target)
         PRIVATE
           -Wall
           -Wextra
-          -Werror
+          #-Werror
           -Wundef
           -Wuninitialized
           -Wshadow
           -Wpointer-arith
           -Wcast-align
           -Wcast-qual
-          -Wunused-parameter
+          #-Wunused-parameter
           #-Wlogical-op
           -Wdouble-promotion
           #-Wduplicated-cond

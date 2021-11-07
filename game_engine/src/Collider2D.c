@@ -32,8 +32,8 @@ void deinitCollider2D (Collider2D *Collider){
 inline void setColliderStatus(Collider2D *Collider, BOOL NewStatus) {Collider->Enabled = NewStatus;}
 inline BOOL getColliderStatus (Collider2D *Collider){ return Collider->Enabled;}
 
-void ScaleCollider2D(Collider2D *Collider, int32_t Scale) {
+/*void ScaleCollider2D(Collider2D *Collider, int32_t Scale) {
      Collider->ColliderRect.w * Scale;
      Collider->ColliderRect.h * Scale;
-}
+}*/
 

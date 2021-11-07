@@ -6,24 +6,9 @@
 
 #include "Physics/Vector2D.h"
 
+/*------------- PRIVATE: -----------------------*/
+
 void initVector2D(Vector2D *self);
-void setVector2D (Vector2D *self, double X, double Y);
-Vector2D sumVector2D(Vector2D *self, Vector2D *vec2);
-Vector2D substVector2D(Vector2D *self, Vector2D *vec2);
-Vector2D scalingVector2D(Vector2D *self, float scallar);
-void debugVector2D(Vector2D *self);
-
-
-void initVector2D(Vector2D *self){
-    self->X = 0;
-    self->Y = 0;
-    //self->init = &initVector2D;
-    self->set = &setVector2D;
-    self->sum = &sumVector2D;
-    self->dif = &substVector2D;
-    self->scale = &scalingVector2D;
-    self->print = &debugVector2D;
-}
 
 void setVector2D (Vector2D *self, double X, double Y) {
     self->X = X;
@@ -63,4 +48,17 @@ Vector2D scalingVector2D(Vector2D *self, float scallar) {
 //FIXME Remove the dirty fix and remake variables as doubles to prevent printf from whining...
 void debugVector2D(Vector2D *self){
     printf("The vector2D has values: x = %f and Y = %f\n", (double) self->X, (double) self->Y);
+}
+
+/*------------- PUBLIC: -----------------------*/
+
+void initVector2D(Vector2D *self){
+    self->X = 0;
+    self->Y = 0;
+    //self->init = &initVector2D;
+    self->set = &setVector2D;
+    self->sum = &sumVector2D;
+    self->dif = &substVector2D;
+    self->scale = &scalingVector2D;
+    self->print = &debugVector2D;
 }

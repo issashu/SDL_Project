@@ -31,15 +31,14 @@ find_package(${SDL_mixer_name} REQUIRED)
 add_library(${PROJECT_NAME}
         STATIC
         ${_HEADERS_DIR}/Core/sdl_methods.h
-        ${_HEADERS_DIR}/Core/sdl_event_defines.h
         ${_HEADERS_DIR}/Core/GameEngineCore.h
-        ${_HEADERS_DIR}/Graphics/GraphicsRenderer.h
+        ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Physics/Vector2D.h
         ${_HEADERS_DIR}/Graphics/Transform2D.h
         ${_HEADERS_DIR}/GameObject/GameObject2D.h
         ${_HEADERS_DIR}/Actors/BaseCharacter.h
-        ${_HEADERS_DIR}/Actors/Player.h
+        ${_HEADERS_DIR}/Actors/PlayerCharacter.h
         ${_HEADERS_DIR}/Physics/RigidBody2D.h
         ${_HEADERS_DIR}/Physics/Collider2D.h
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
@@ -53,12 +52,12 @@ add_library(${PROJECT_NAME}
 
         ${_SOURCES_DIR}/sdl_methods.c
         ${_SOURCES_DIR}/GameEngineCore.c
-        ${_SOURCES_DIR}/GraphicsRenderer.c
+        ${_SOURCES_DIR}/GraphicsRenderer2D.c
         ${_SOURCES_DIR}/Vector2D.c
         ${_SOURCES_DIR}/Transform2D.c
         ${_SOURCES_DIR}/GameObject2D.c
         ${_SOURCES_DIR}/BaseCharacter.c
-        ${_SOURCES_DIR}/Player.c
+        ${_SOURCES_DIR}/PlayerCharacter.c
         ${_SOURCES_DIR}/RigidBody2D.c
         ${_SOURCES_DIR}/GameObjectManager.c
         ${_SOURCES_DIR}/WindowManager.c

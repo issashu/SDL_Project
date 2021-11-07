@@ -14,7 +14,6 @@ void eventHandler(BOOL *isRunning) {
             case SDL_QUIT:
                 *isRunning = FALSE;
                 break;
-
             case SDL_KEYDOWN:
                 keyboardEvent(isRunning);
                 break;
@@ -22,7 +21,12 @@ void eventHandler(BOOL *isRunning) {
                 break;
 //TODO Disable mouse control for the end game and fix the default idle state
             case SDL_MOUSEBUTTONDOWN:
-                *isRunning = FALSE;
+            case SDL_MOUSEMOTION:
+            case SDL_MOUSEBUTTONUP:
+            case SDL_MOUSEWHEEL:
+            case SDL_MOUSEWHEEL_FLIPPED:
+            case SDL_MOUSEWHEEL_NORMAL:
+                break;
 
             default:
                 keyboardEvent(isRunning);
@@ -37,27 +41,27 @@ void keyboardEvent(BOOL *isRunning) {
     SDL_PumpEvents();
     const Uint8 *gameKeyStates = SDL_GetKeyboardState(NULL);
     while (gameKeyStates[SDL_SCANCODE_UP]) {
-        DrawGame(SDL_SCANCODE_UP);
+        DrawGame(SDL_SCANCODE_UP, 0);
         printf("UP ARROW is pressed.\n");
         SDL_PumpEvents();
     }
     while (gameKeyStates[SDL_SCANCODE_RIGHT]) {
-        DrawGame(SDL_SCANCODE_RIGHT);
+        DrawGame(SDL_SCANCODE_RIGHT, 0);
         printf("RIGHT ARROW is pressed.\n");
         SDL_PumpEvents();
     }
     while (gameKeyStates[SDL_SCANCODE_DOWN]){
-        DrawGame(SDL_SCANCODE_DOWN);
+        DrawGame(SDL_SCANCODE_DOWN, 0);
         printf("DOWN ARROW is pressed.\n");
         SDL_PumpEvents();
     }
     while (gameKeyStates[SDL_SCANCODE_LEFT]) {
-        DrawGame(SDL_SCANCODE_LEFT);
+        DrawGame(SDL_SCANCODE_LEFT, 0);
         printf("LEFT ARROW is pressed.\n");
         SDL_PumpEvents();
     }
     while (gameKeyStates[SDL_SCANCODE_SPACE]){
-        DrawGame(SDL_SCANCODE_SPACE);
+        DrawGame(SDL_SCANCODE_SPACE, 0);
         printf("SPACE is pressed.\n");
         SDL_PumpEvents();
     }

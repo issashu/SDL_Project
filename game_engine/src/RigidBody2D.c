@@ -6,11 +6,12 @@
 #include "utils/defines.h"
 #include "Graphics/Transform2D.h"
 #include "Physics/RigidBody2D.h"
-#include "Physics/Vector2D.h"
 
 //TODO Move defines to respective header
 #define BODY_MASS 1.0f
 #define WORLD_GRAVITY 3.8f
+
+/*------------- PRIVATE: -----------------------*/
 
 struct RigidBody2D{
     Transform2D *transform;
@@ -22,22 +23,6 @@ struct RigidBody2D{
     Vector2D Velocity;
     Vector2D Acceleration;
 };
-
-void initRigidBody2D(RigidBody2D *self) {
-    self->transform->X = 0;
-    self->transform->Y = 0;
-    self->Mass = BODY_MASS;
-    self->appliedGravity = WORLD_GRAVITY;
-    initVector2D(&self->appliedForce);
-    initVector2D(&self->Friction);
-    initVector2D(&self->Position);
-    initVector2D(&self->Velocity);
-    initVector2D(&self->Acceleration);
-}
-
-inline float getMass(RigidBody2D *self) {return self->Mass;}
-
-inline float getGravity(RigidBody2D *self) {return self->appliedGravity;}
 
 void setGravity(RigidBody2D *self, float newGravity){
     self->appliedGravity = newGravity;
@@ -73,9 +58,31 @@ void setVelocity(RigidBody2D *self, float deltaTime) {
     }
 }
 
-void setPosition(RigidBody2D *self, float deltaTime){
+/*------------- PUBLIC: -----------------------*/
+
+void initRigidBody2D(RigidBody2D *self) {
+    self->transform->X = 0;
+    self->transform->Y = 0;
+    self->Mass = BODY_MASS;
+    self->appliedGravity = WORLD_GRAVITY;
+    initVector2D(&self->appliedForce);
+    initVector2D(&self->Friction);
+    initVector2D(&self->Position);
+    initVector2D(&self->Velocity);
+    initVector2D(&self->Acceleration);
+}
+
+inline float getMass(RigidBody2D *self) {return self->Mass;}
+
+inline float getGravity(RigidBody2D *self) {return self->appliedGravity;}
+
+void updatePosition(RigidBody2D *self, float deltaTime, Vector2D *Force, Vector2D *Friction) {
     if(self != NONE){
-        self->Position = self->Position.scale(&self->Velocity, deltaTime);
+        applyForce(self, Force);
+        applyFriction(self, Friction);
+        applyAcceleration(self);
+        setVelocity(self, deltaTime);
+        self->Position = self->Position.sum(&self->Position, &self->Velocity);
         self->transform->X += self->Position.X;
         self->transform->Y += self->Position.Y;
     }
