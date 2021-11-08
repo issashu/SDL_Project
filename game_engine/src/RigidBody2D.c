@@ -2,6 +2,8 @@
 // Created by Iordan Tonchev on 22.10.21.
 //
 
+#include <stdlib.h>
+
 #include "utils/Log.h"
 #include "utils/defines.h"
 #include "Graphics/Transform2D.h"
@@ -14,7 +16,7 @@
 /*------------- PRIVATE: -----------------------*/
 
 struct RigidBody2D{
-    Transform2D *transform;
+    Transform2D transform;
     float Mass;
     float appliedGravity;
     Vector2D appliedForce;
@@ -42,13 +44,12 @@ void applyFriction(RigidBody2D *self, Vector2D *Friction){
     self->Friction.Y = Friction->Y;
 }
 
-//Higher the mass, lower the acceleration and viceversa
+//Force+Friction = acc*mass (Using negative Friction for ice and option for vertical Friction)
 void applyAcceleration(RigidBody2D *self) {
     self->Acceleration.X = (self->appliedForce.X - self->Friction.X) / self->Mass;
     self->Acceleration.Y = (self->appliedForce.Y - self->Friction.Y + self->appliedGravity) / self->Mass;
 }
 
-//TODO Rethink how to simplify this: a method call another method inside
 void setVelocity(RigidBody2D *self, float deltaTime) {
     if(self != NONE){
         self->Velocity = self->Velocity.scale(&self->Acceleration, deltaTime);
@@ -60,9 +61,10 @@ void setVelocity(RigidBody2D *self, float deltaTime) {
 
 /*------------- PUBLIC: -----------------------*/
 
-void initRigidBody2D(RigidBody2D *self) {
-    self->transform->X = 0;
-    self->transform->Y = 0;
+RigidBody2D* initRigidBody2D(RigidBody2D *self) {
+    self = (RigidBody2D *)malloc(sizeof(struct RigidBody2D));
+    self->transform.X = 0;
+    self->transform.Y = 0;
     self->Mass = BODY_MASS;
     self->appliedGravity = WORLD_GRAVITY;
     initVector2D(&self->appliedForce);
@@ -72,19 +74,32 @@ void initRigidBody2D(RigidBody2D *self) {
     initVector2D(&self->Acceleration);
 }
 
+void deinitRigidBody2D(RigidBody2D **self) {
+    if (self != NONE) {
+        deinitVector2D(&(*self)->Acceleration);
+        deinitVector2D(&(*self)->Velocity);
+        deinitVector2D(&(*self)->Position);
+        deinitVector2D(&(*self)->Friction);
+        deinitVector2D(&(*self)->appliedForce);
+        free((*self));
+        (*self) = NONE;
+    }
+}
+
 inline float getMass(RigidBody2D *self) {return self->Mass;}
 
 inline float getGravity(RigidBody2D *self) {return self->appliedGravity;}
 
-void updatePosition(RigidBody2D *self, float deltaTime, Vector2D *Force, Vector2D *Friction) {
+//FIXME Move transform . GameObject and not RigidBody2D and use translate methods in transform
+void updatePosition(RigidBody2D **self, float deltaTime, Vector2D *Force, Vector2D *Friction) {
     if(self != NONE){
-        applyForce(self, Force);
-        applyFriction(self, Friction);
-        applyAcceleration(self);
-        setVelocity(self, deltaTime);
-        self->Position = self->Position.sum(&self->Position, &self->Velocity);
-        self->transform->X += self->Position.X;
-        self->transform->Y += self->Position.Y;
+        applyForce((*self), Force);
+        applyFriction((*self), Friction);
+        applyAcceleration((*self));
+        setVelocity((*self), deltaTime);
+        (*self)->Position = (*self)->Position.scale(&(*self)->Velocity, deltaTime);
+        (*self)->transform.X += (*self)->Position.X;
+        (*self)->transform.Y += (*self)->Position.Y;
     }
     else{
         LOGERR("Setting position has failed!!");

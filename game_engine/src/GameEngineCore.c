@@ -10,6 +10,7 @@
 #include "Managers/TextureManager.h"
 #include "Graphics/GraphicsRenderer2D.h"
 #include "Actors/BaseCharacter.h"
+#include "Actors/PlayerCharacter.h"
 #include "utils/Log.h"
 
 //FIXME Replace debug globals with ones from characters/objects/managers
@@ -54,11 +55,11 @@ int8_t SDLLoader() {
         return FAILURE;
     }
 
-    if (loadSurfaces(&testTextures) != SUCCESS) {
+    /*if (loadSurfaces(&testTextures, NULL) != SUCCESS) {
         LOGERR("loadSurfaces() failed.");
 
         return FAILURE;
-    }
+    }*/
 
     if (initRenderer(AppWindow, &GfxRenderer) != SUCCESS) {
         LOGERR("initRenderer() failed.");
@@ -74,27 +75,27 @@ void DrawGame(int32_t Event, float DeltaTime) {
     applyTexture(&testTextures, &Texture, GfxRenderer, 0);
     switch (Event) {
         case SDL_SCANCODE_UP:
-            drawAnimation(&GfxRenderer, Texture, JUMP - 1, JUMP_FRAMES - 1, AnimationSpeed,
+            drawAnimation(&GfxRenderer, NULL, Texture, JUMP - 1, JUMP_FRAMES - 1, AnimationSpeed,
                           200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_RIGHT:
-            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
+            drawAnimation(&GfxRenderer, NULL, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
                           200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_DOWN:
-            drawAnimation(&GfxRenderer, Texture, CRAWL - 1, CRAWL_FRAMES - 1, AnimationSpeed,
+            drawAnimation(&GfxRenderer, NULL, Texture, CRAWL - 1, CRAWL_FRAMES - 1, AnimationSpeed,
                           200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_LEFT:
-            drawAnimation(&GfxRenderer, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
+            drawAnimation(&GfxRenderer, NULL, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
                           200, 200, 96, 84, TRUE, DeltaTime);
             break;
 
         default:
-            drawAnimation(&GfxRenderer, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed,
+            drawAnimation(&GfxRenderer, NULL, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed,
                           200, 200, 96, 84, FALSE, DeltaTime);
             break;
     }

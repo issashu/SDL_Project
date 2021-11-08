@@ -9,6 +9,7 @@
 
 #include "Physics/Vector2D.h"
 #include "utils/defines.h"
+#include "GameObject/GameObject2D.h"
 
 /*
  * Enums are based on the sprite sheet.
@@ -40,17 +41,38 @@ enum animFrames {
     DIE_FRAMES = 5
 };
 
+typedef enum CharacterStates{
+    IDLE_STATE,
+    JUMPING_UP,
+    JUMPING_RIGHT,
+    JUMPING_LEFT,
+    CROUCHING,
+    CRAWLING_RIGHT,
+    CRAWLING_LEFT,
+    DEAD,
+    RUNNING_LEFT,
+    RUNNING_RIGHT,
+    ATTACKING
+} StateFlags;
+
 //TODO Make sure that base class structures are always first
 
 typedef struct CharacterActor Character;
 
-void initCharacter(Character *self, char *texturePath);
+Character * initCharacter(Character *self, char *texturePath);
+void deinitCharacter(Character *self);
+
+GameObject2D* getBaseObj (Character *self);
+int32_t getState (Character *self);
 int32_t getHealth (Character *self);
 int32_t getMana (Character *self);
 STRING getSpriteSheet(Character *self);
+
+void setState(Character *self, int32_t State);
 void setHealth(Character *self, int32_t HP);
 void takeDamage(Character *self, int32_t Dmg);
 void healDamage(Character *self, int32_t Heal);
+
 void moveCharacter(Character *self, float DeltaTime, Vector2D *Force, Vector2D *Friction);
 
 

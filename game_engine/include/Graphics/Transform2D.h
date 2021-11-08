@@ -13,9 +13,9 @@
 typedef struct Transform2D {
     float X;
     float Y;
-    void (*transX)(float);
-    void (*transY)(float);
-    void (*trans2D)(float, float);
+    void (*transX)(struct Transform2D *, float);
+    void (*transY)(struct Transform2D *, float);
+    void (*trans2D)(struct Transform2D *, float, float);
 } Transform2D;
 
 #endif //SDL_GAME_TRANSFORM2D_H

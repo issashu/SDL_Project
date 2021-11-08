@@ -7,9 +7,12 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <utils/defines.h>
+#include <Actors/PlayerCharacter.h>
+
 
 //TODO Apply singleton
-void eventHandler(int8_t *isRunning);
-void keyboardEvent(int8_t *isRunning);
+void playerEventHandler(BOOL *isRunning, playerActor *Player);
+void keyboardEvent(BOOL *isRunning, playerActor *Player, const u_int8_t *gameKeyStates);
 
 #endif //SDL_GAME_EVENTMANAGER_H

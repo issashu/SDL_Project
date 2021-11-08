@@ -7,18 +7,15 @@
 //TODO Check how to attach to game object in pure C.
 // Using fake structs inside methods. Replace with real ones
 
-__attribute__((unused)) void TranslateX(float x) {
-   struct Transform2D Point;
-   Point.X += x;
+void TranslateX(Transform2D *self, float x) {
+   self->X += x;
 }
 
-__attribute__((unused)) void TranslateY(float y) {
-    struct Transform2D Point;
-    Point.Y += y;
+void TranslateY(Transform2D *self, float y) {
+    self->Y += y;
 }
 
-__attribute__((unused)) void Translate2D(float x, float y) {
-    struct Transform2D Point;
-    Point.X += x;
-    Point.Y += y;
+void Translate2D(float x, float y, Transform2D *self) {
+    self->X += x;
+    self->Y += y;
 }

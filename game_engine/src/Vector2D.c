@@ -3,12 +3,13 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "Physics/Vector2D.h"
+#include "utils/defines.h"
 
 /*------------- PRIVATE: -----------------------*/
 
-void initVector2D(Vector2D *self);
 
 void setVector2D (Vector2D *self, double X, double Y) {
     self->X = X;
@@ -53,6 +54,7 @@ void debugVector2D(Vector2D *self){
 /*------------- PUBLIC: -----------------------*/
 
 void initVector2D(Vector2D *self){
+    self = (Vector2D *)malloc(sizeof(struct Vector2D));
     self->X = 0;
     self->Y = 0;
     //self->init = &initVector2D;
@@ -61,4 +63,11 @@ void initVector2D(Vector2D *self){
     self->dif = &substVector2D;
     self->scale = &scalingVector2D;
     self->print = &debugVector2D;
+}
+
+void deinitVector2D(Vector2D *self) {
+    if (self != NONE){
+        free(self);
+        self = NONE;
+    }
 }

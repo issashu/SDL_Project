@@ -8,13 +8,18 @@
 #include "Actors/BaseCharacter.h"
 #include "utils/defines.h"
 
-typedef struct PlayerCharacter{
-    Character *baseCharacter;
-    int32_t AnimationSpeed;
-    STRING spriteSheetPath;
-    STRING playerName;
-}playerActor;
+typedef struct PlayerCharacter playerActor;
 
-void initPlayer(playerActor *self, int32_t AnimationSpeed, STRING Name);
+playerActor * initPlayerActor(playerActor *self, int32_t AnimationSpeed, STRING Name);
+void deinitPlayerActor(playerActor *self);
+
+Character* getBaseChar (struct PlayerCharacter *self);
+STRING getPlayerName(playerActor *self);
+STRING getSpriteSheetPath (playerActor *self);
+void setPlayerName(playerActor *self, STRING Name);
+int32_t getAnimationSpeed (playerActor *self);
+void setAnimationSpeed(playerActor *self, int32_t AnimSpeed);
+int32_t getPlayerState (playerActor *self);
+void setPlayerState(playerActor *self, int32_t state);
 
 #endif //SDL_GAME_PLAYERCHARACTER_H
