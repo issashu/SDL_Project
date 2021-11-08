@@ -32,7 +32,6 @@ add_library(${PROJECT_NAME}
         STATIC
         ${_HEADERS_DIR}/Core/sdl_methods.h
         ${_HEADERS_DIR}/Core/GameEngineCore.h
-        ${_HEADERS_DIR}/Graphics/StateMachine.h
         ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Physics/Vector2D.h
@@ -67,8 +66,7 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/ObjectPool.c
         ${_SOURCES_DIR}/Timers.c
         ${_SOURCES_DIR}/Collider2D.c
-        ${_SOURCES_DIR}/CollisionManager.c
-        ${_SOURCES_DIR}/StateMAchine.c)
+        ${_SOURCES_DIR}/CollisionManager.c)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"
@@ -77,7 +75,6 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${_HEADERS_DIR}
-        PRIVATE
         ${_SOURCES_DIR}
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
@@ -88,7 +85,6 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
         utils
-        PRIVATE
         ${SDL2_LIBRARY}
         ${SDL2_IMAGE_LIBRARY}
         ${SDL2_TTF_LIBRARY}

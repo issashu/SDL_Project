@@ -10,15 +10,13 @@
 
 typedef struct PlayerCharacter playerActor;
 
-playerActor * initPlayerActor(playerActor *self, int32_t AnimationSpeed, STRING Name);
+playerActor *initPlayerActor(playerActor *self, char *Name);
 void deinitPlayerActor(playerActor *self);
 
 Character* getBaseChar (struct PlayerCharacter *self);
 STRING getPlayerName(playerActor *self);
 STRING getSpriteSheetPath (playerActor *self);
 void setPlayerName(playerActor *self, STRING Name);
-int32_t getAnimationSpeed (playerActor *self);
-void setAnimationSpeed(playerActor *self, int32_t AnimSpeed);
 int32_t getPlayerState (playerActor *self);
 void setPlayerState(playerActor *self, int32_t state);
 

@@ -66,12 +66,14 @@ GameObject2D* getBaseObj (Character *self);
 int32_t getState (Character *self);
 int32_t getHealth (Character *self);
 int32_t getMana (Character *self);
+int32_t getAnimationSpeed (Character *self);
 STRING getSpriteSheet(Character *self);
 
 void setState(Character *self, int32_t State);
 void setHealth(Character *self, int32_t HP);
 void takeDamage(Character *self, int32_t Dmg);
 void healDamage(Character *self, int32_t Heal);
+void setAnimationSpeed(Character **self, int32_t speed);
 
 void moveCharacter(Character *self, float DeltaTime, Vector2D *Force, Vector2D *Friction);
 

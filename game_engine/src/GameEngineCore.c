@@ -18,9 +18,8 @@ static struct Vector testTextures;
 static SDL_Window *AppWindow;
 static SDL_Texture *Texture = NULL;
 static SDL_Renderer *GfxRenderer = NULL;
-static float AnimationSpeed = 150.0f;
 
-int8_t SDLLoader() {
+int8_t SDLLoader(playerActor *Player) {
     //TODO Rethink the whole architecture to have SDL lib loader and then initializer separately
     AppWindow = NULL;
 
@@ -55,11 +54,11 @@ int8_t SDLLoader() {
         return FAILURE;
     }
 
-    /*if (loadSurfaces(&testTextures, NULL) != SUCCESS) {
+    if (loadSurfaces(&testTextures, getSpriteSheet(getBaseChar(Player))) != SUCCESS) {
         LOGERR("loadSurfaces() failed.");
 
         return FAILURE;
-    }*/
+    }
 
     if (initRenderer(AppWindow, &GfxRenderer) != SUCCESS) {
         LOGERR("initRenderer() failed.");
@@ -71,32 +70,32 @@ int8_t SDLLoader() {
 }
 
 //FIXME REPLACE THE MAGIC NUMBERS and move delta time into a timer manager
-void DrawGame(int32_t Event, float DeltaTime) {
+void DrawGame(int32_t Event, float DeltaTime, Character *BaseCharacter) {
     applyTexture(&testTextures, &Texture, GfxRenderer, 0);
     switch (Event) {
         case SDL_SCANCODE_UP:
-            drawAnimation(&GfxRenderer, NULL, Texture, JUMP - 1, JUMP_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE, DeltaTime);
+            drawAnimation(&GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), Texture, JUMP - 1, JUMP_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_RIGHT:
-            drawAnimation(&GfxRenderer, NULL, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE, DeltaTime);
+            drawAnimation(&GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), Texture, RUN - 1, RUN_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_DOWN:
-            drawAnimation(&GfxRenderer, NULL, Texture, CRAWL - 1, CRAWL_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE, DeltaTime);
+            drawAnimation(&GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), Texture, CRAWL - 1, CRAWL_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 200, 200, 96, 84, FALSE, DeltaTime);
             break;
 
         case SDL_SCANCODE_LEFT:
-            drawAnimation(&GfxRenderer, NULL, Texture, RUN - 1, RUN_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, TRUE, DeltaTime);
+            drawAnimation(&GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), Texture, RUN - 1, RUN_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 200, 200, 96, 84, TRUE, DeltaTime);
             break;
 
         default:
-            drawAnimation(&GfxRenderer, NULL, Texture, IDLE - 1, IDLE_FRAMES - 1, AnimationSpeed,
-                          200, 200, 96, 84, FALSE, DeltaTime);
+            drawAnimation(&GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), Texture, IDLE - 1, IDLE_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 200, 200, 96, 84, FALSE, DeltaTime);
             break;
     }
 }

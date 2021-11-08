@@ -6,6 +6,7 @@
 #define SDL_GAME_GAMEOBJECT2D_H
 
 #include <SDL.h>
+
 #include "GameObject/GameObject2D.h"
 #include "utils/defines.h"
 #include "Physics/Vector2D.h"

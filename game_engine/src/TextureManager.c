@@ -26,7 +26,6 @@ BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer
         printf("Failed to load texture from asset! Reason: %s\n", SDL_GetError());
         return FAILURE;
     }
-  //SDL_FreeSurface(Image);
 
     return SUCCESS;
 }

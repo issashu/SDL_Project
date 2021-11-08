@@ -14,9 +14,9 @@ BOOL gameLoop() {
     BOOL isRunning = TRUE;
     uint32_t ElapsedTime=0;
     float DeltaTime = 0.0f;
-    SDLLoader();
     playerActor *Player = NONE;
-    Player = initPlayerActor(Player, 0, "John Doe");
+    Player = initPlayerActor(Player, "John Doe");
+    SDLLoader(Player);
     setPlayerName(Player, "Issashu");
     setAnimationSpeed(Player, 150);
     printf("The Player Name is %s and he runs at %d anim. speed \n",
@@ -25,8 +25,8 @@ BOOL gameLoop() {
         DeltaTime = getDeltaTime(&ElapsedTime);
         //TODO Process input for player, state machine sets state, then animator executes
         //For enemies, instead of input have state based on player location
-        //DrawGame(0, DeltaTime);
-        playerEventHandler(&isRunning, NULL);
+        DrawGame(0, DeltaTime, getBaseChar(Player));
+        playerEventHandler(&isRunning, Player);
     }
     deinitPlayerActor(Player);
     SDLUnloader();

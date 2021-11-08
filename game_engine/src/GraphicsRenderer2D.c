@@ -7,9 +7,6 @@
 
 #define STORAGE_START_CAPACITY 1
 
-//For testing purposes, remove the global vector here after debugging
-//struct Vector testTextures2;
-
 // (ASSETS_PATH "images/character_anim.png")
 
 BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
@@ -46,7 +43,6 @@ void drawAnimation(SDL_Renderer **Renderer, const SDL_Rect *targetFrame, SDL_Tex
 
     //This will always keep rotating up to the maximum available sprites in the animation, then reset,
     // since % will revert to 0 eventually
-    //printf("%.3f\n", (double) DeltaTime);
     int32_t currentFrame = ((int32_t )((SDL_GetTicks() / animSpeed)) % firstFrame);
     SDL_Rect srcFrame = {.x=Width * currentFrame, .y=Height * animType, .w = Width, .h = Height};
     SDL_Rect dstFrame = *targetFrame;

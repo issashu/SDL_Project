@@ -4,7 +4,6 @@
 
 #include <SDL_events.h>
 #include "Managers/EventManager.h"
-#include "Graphics/StateMachine.h"
 #include "Core/GameEngineCore.h"
 #include "Actors/PlayerCharacter.h"
 #include "utils/defines.h"
@@ -41,46 +40,44 @@ void keyboardEvent(BOOL *isRunning, playerActor *Player, const u_int8_t *gameKey
     //TODO ADD DOXYGEN and set some default key event (also might be having slight delay because of pump
     //TODO Find a way to automate indexing. Maybe object struct should know the index of its texture
     // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
-    //SDL_PumpEvents();
-    //const u_int8_t *gameKeyStates = SDL_GetKeyboardState(NULL);
     if (gameKeyStates[SDL_SCANCODE_UP]) {
         setState(getBaseChar(Player),JUMPING_UP);
-        //DrawGame(SDL_SCANCODE_UP, 0);
+        DrawGame(SDL_SCANCODE_UP, 0, getBaseChar(Player));
         printf("UP ARROW is pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_RIGHT]) {
         setState(getBaseChar(Player),JUMPING_RIGHT);
-        DrawGame(SDL_SCANCODE_RIGHT, 0);
+        DrawGame(SDL_SCANCODE_RIGHT, 0, getBaseChar(Player));
         printf("RIGHT-UP ARROWS are pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_LEFT]) {
         setState(getBaseChar(Player),JUMPING_LEFT);
-        //DrawGame(SDL_SCANCODE_RIGHT, 0);
+        DrawGame(SDL_SCANCODE_RIGHT, 0, getBaseChar(Player));
         printf("LEFT-UP ARROWS are pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_RIGHT]) {
         setState(getBaseChar(Player),RUNNING_RIGHT);
-        //DrawGame(SDL_SCANCODE_RIGHT, 0);
+        DrawGame(SDL_SCANCODE_RIGHT, 0, getBaseChar(Player));
         printf("RIGHT ARROW is pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_LEFT]) {
         setState(getBaseChar(Player),RUNNING_LEFT);
-        //DrawGame(SDL_SCANCODE_LEFT, 0);
+        DrawGame(SDL_SCANCODE_LEFT, 0, getBaseChar(Player));
         printf("LEFT ARROW is pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_DOWN]) {
         setState(getBaseChar(Player),CROUCHING);
-        //DrawGame(SDL_SCANCODE_DOWN, 0);
+        DrawGame(SDL_SCANCODE_DOWN, 0, getBaseChar(Player));
         printf("DOWN ARROW is pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_RIGHT]){
         setState(getBaseChar(Player),CRAWLING_RIGHT);
-        //DrawGame(SDL_SCANCODE_DOWN, 0);
+        DrawGame(SDL_SCANCODE_DOWN, 0, getBaseChar(Player));
         printf("RIGHT - DOWN ARROWS are pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_LEFT]){
         setState(getBaseChar(Player),CRAWLING_LEFT);
-        //DrawGame(SDL_SCANCODE_DOWN, 0);
+        DrawGame(SDL_SCANCODE_DOWN, 0, getBaseChar(Player));
         printf("LEFT - DOWN ARROWS are pressed.\n");
     }
     if (gameKeyStates[SDL_SCANCODE_ESCAPE]){

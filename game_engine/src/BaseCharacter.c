@@ -5,7 +5,6 @@
 #include <stdlib.h>
 
 #include "Actors/BaseCharacter.h"
-#include "Graphics/StateMachine.h"
 #include "utils/defines.h"
 
 /*------------- PRIVATE: -----------------------*/
@@ -15,18 +14,21 @@ GameObject2D *Base2D;
 StateFlags CharacterState;
 int32_t Health;
 int32_t Mana;
+float AnimationSpeed;
 STRING spriteSheet;
 //TODO Add some stats and function pointers for methods
 };
 
 /*------------- PUBLIC: -----------------------*/
 
+//FIXME Replace magic numbers
 Character* initCharacter(Character *self, char *texturePath) {
     self = (Character*)malloc(sizeof(struct CharacterActor));
     self->Base2D = initObject(self->Base2D);
     self->CharacterState = IDLE_STATE;
     self->Health = 100;
     self->Mana = 100;
+    self->AnimationSpeed = 150.0f;
     self->spriteSheet = texturePath;
 
     return self;
@@ -56,6 +58,10 @@ int32_t getMana (Character *self) {
     return self->Mana;
 }
 
+int32_t getAnimationSpeed (Character *self) {
+    return self->AnimationSpeed;
+}
+
 STRING getSpriteSheet(Character *self) {
     return self->spriteSheet;
 }
@@ -74,6 +80,10 @@ void takeDamage(Character *self, int32_t Dmg) {
 
 void healDamage(Character *self, int32_t Heal) {
     self->Health +=Heal;
+}
+
+void setAnimationSpeed(Character **self, int32_t speed) {
+    (*self)->AnimationSpeed = speed;
 }
 
 void moveCharacter(Character *self, float DeltaTime, Vector2D *Force, Vector2D *Friction) {

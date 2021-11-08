@@ -7,15 +7,13 @@
 
 struct PlayerCharacter{
     Character *baseCharacter;
-    int32_t AnimationSpeed;
     STRING spriteSheetPath;
     STRING playerName;
 };
 
-playerActor* initPlayerActor(playerActor *self, int32_t AnimationSpeed, STRING Name) {
+playerActor *initPlayerActor(playerActor *self, char *Name) {
     self = (playerActor *) malloc (sizeof(struct PlayerCharacter));
     self->spriteSheetPath = ASSETS_PATH "images/character_anim.png";
-    self->AnimationSpeed = AnimationSpeed;
     self->playerName = Name;
     self->baseCharacter = initCharacter(self->baseCharacter, self->spriteSheetPath);
 
@@ -44,14 +42,6 @@ STRING getSpriteSheetPath (playerActor *self) {
 
 void setPlayerName(playerActor *self, STRING Name) {
     self->playerName = Name;
-}
-
-int32_t getAnimationSpeed (playerActor *self) {
-    return self->AnimationSpeed;
-}
-
-void setAnimationSpeed(playerActor *self, int32_t AnimSpeed) {
-    self->AnimationSpeed = AnimSpeed;
 }
 
 int32_t getPlayerState (playerActor *self) {
