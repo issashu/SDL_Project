@@ -61,28 +61,28 @@ void setVelocity(RigidBody2D *self, float deltaTime) {
 
 /*------------- PUBLIC: -----------------------*/
 
-RigidBody2D* initRigidBody2D(RigidBody2D *self) {
-    self = (RigidBody2D *)malloc(sizeof(struct RigidBody2D));
-    self->transform.X = 0;
-    self->transform.Y = 0;
-    self->Mass = BODY_MASS;
-    self->appliedGravity = WORLD_GRAVITY;
-    initVector2D(&self->appliedForce);
-    initVector2D(&self->Friction);
-    initVector2D(&self->Position);
-    initVector2D(&self->Velocity);
-    initVector2D(&self->Acceleration);
+void initRigidBody2D(RigidBody2D **self) {
+    *self = (RigidBody2D *)malloc(sizeof(struct RigidBody2D));
+    (*self)->transform.X = 0;
+    (*self)->transform.Y = 0;
+    (*self)->Mass = BODY_MASS;
+    (*self)->appliedGravity = WORLD_GRAVITY;
+    initVector2D(&(*self)->appliedForce);
+    initVector2D(&(*self)->Friction);
+    initVector2D(&(*self)->Position);
+    initVector2D(&(*self)->Velocity);
+    initVector2D(&(*self)->Acceleration);
 }
 
 void deinitRigidBody2D(RigidBody2D **self) {
-    if (self != NONE) {
-        deinitVector2D(&(*self)->Acceleration);
-        deinitVector2D(&(*self)->Velocity);
-        deinitVector2D(&(*self)->Position);
-        deinitVector2D(&(*self)->Friction);
-        deinitVector2D(&(*self)->appliedForce);
-        free((*self));
-        (*self) = NONE;
+    if (*self != NONE) {
+//        deinitVector2D(&(*self)->Acceleration);
+//        deinitVector2D(&(*self)->Velocity);
+//        deinitVector2D(&(*self)->Position);
+//        deinitVector2D(&(*self)->Friction);
+//        deinitVector2D(&(*self)->appliedForce);
+        free(*self);
+        *self = NONE;
     }
 }
 

@@ -9,7 +9,7 @@
 
 typedef struct RigidBody2D RigidBody2D;
 
-RigidBody2D * initRigidBody2D(RigidBody2D *self);
+void initRigidBody2D(RigidBody2D **self);
 void deinitRigidBody2D(RigidBody2D **self);
 inline float getMass(RigidBody2D *self);
 inline float getGravity(RigidBody2D *self);

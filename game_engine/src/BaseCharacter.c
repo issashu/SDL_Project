@@ -22,23 +22,21 @@ STRING spriteSheet;
 /*------------- PUBLIC: -----------------------*/
 
 //FIXME Replace magic numbers
-Character* initCharacter(Character *self, char *texturePath) {
-    self = (Character*)malloc(sizeof(struct CharacterActor));
-    self->Base2D = initObject(self->Base2D);
-    self->CharacterState = IDLE_STATE;
-    self->Health = 100;
-    self->Mana = 100;
-    self->AnimationSpeed = 150.0f;
-    self->spriteSheet = texturePath;
-
-    return self;
+void initCharacter(Character **self, char *texturePath) {
+    *self = (Character*)malloc(sizeof(struct CharacterActor));
+    initObject(&(*self)->Base2D);
+    (*self)->CharacterState = IDLE_STATE;
+    (*self)->Health = 100;
+    (*self)->Mana = 100;
+    (*self)->AnimationSpeed = 150.0f;
+    (*self)->spriteSheet = texturePath;
 }
 
-void deinitCharacter(Character *self) {
-    if(self != NONE) {
-        deinitObject(&self->Base2D);
-        free(self);
-        self = NONE;
+void deinitCharacter(Character **self) {
+    if(*self != NONE) {
+        deinitObject(&(*self)->Base2D);
+        free(*self);
+        *self = NONE;
     }
 }
 
@@ -58,7 +56,7 @@ int32_t getMana (Character *self) {
     return self->Mana;
 }
 
-int32_t getAnimationSpeed (Character *self) {
+float_t getAnimationSpeed (Character *self) {
     return self->AnimationSpeed;
 }
 

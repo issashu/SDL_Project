@@ -11,20 +11,18 @@ struct PlayerCharacter{
     STRING playerName;
 };
 
-playerActor *initPlayerActor(playerActor *self, char *Name) {
-    self = (playerActor *) malloc (sizeof(struct PlayerCharacter));
-    self->spriteSheetPath = ASSETS_PATH "images/character_anim.png";
-    self->playerName = Name;
-    self->baseCharacter = initCharacter(self->baseCharacter, self->spriteSheetPath);
-
-    return self;
+void initPlayerActor(playerActor **self, const char *Name) {
+    *self = (playerActor *) malloc(sizeof(struct PlayerCharacter));
+    (*self)->spriteSheetPath = ASSETS_PATH "images/character_anim.png";
+    (*self)->playerName = Name;
+    initCharacter(&(*self)->baseCharacter, (*self)->spriteSheetPath);
 }
 
-void deinitPlayerActor(playerActor *self) {
-    if (self != NONE) {
-        deinitCharacter(self->baseCharacter);
-        free(self);
-        self = NONE;
+void deinitPlayerActor(playerActor **self) {
+    if (*self != NONE) {
+        deinitCharacter(&(*self)->baseCharacter);
+        free(*self);
+        *self = NONE;
     }
 }
 

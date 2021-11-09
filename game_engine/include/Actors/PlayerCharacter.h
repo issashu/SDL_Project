@@ -10,8 +10,8 @@
 
 typedef struct PlayerCharacter playerActor;
 
-playerActor *initPlayerActor(playerActor *self, char *Name);
-void deinitPlayerActor(playerActor *self);
+void initPlayerActor(playerActor **self, const char *Name);
+void deinitPlayerActor(playerActor **self);
 
 Character* getBaseChar (struct PlayerCharacter *self);
 STRING getPlayerName(playerActor *self);

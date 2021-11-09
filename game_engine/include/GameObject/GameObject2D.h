@@ -13,7 +13,7 @@
 
 typedef struct GameObject GameObject2D;
 
-GameObject2D * initObject(GameObject2D *self);
+void initObject(GameObject2D **self);
 void deinitObject(GameObject2D **self);
 
 SDL_Rect* getObjRect(GameObject2D *self);

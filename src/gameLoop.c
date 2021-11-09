@@ -15,12 +15,10 @@ BOOL gameLoop() {
     uint32_t ElapsedTime=0;
     float DeltaTime = 0.0f;
     playerActor *Player = NONE;
-    Player = initPlayerActor(Player, "John Doe");
+    initPlayerActor(&Player, "John Doe");
     SDLLoader(Player);
-    setPlayerName(Player, "Issashu");
-    setAnimationSpeed(Player, 150);
-    printf("The Player Name is %s and he runs at %d anim. speed \n",
-           getPlayerName(Player), getAnimationSpeed(Player));
+    printf("The Player Name is %s and he runs at %.2f anim. speed \n",
+           getPlayerName(Player), (double) getAnimationSpeed(getBaseChar(Player)));
     while (isRunning) {
         DeltaTime = getDeltaTime(&ElapsedTime);
         //TODO Process input for player, state machine sets state, then animator executes
@@ -28,7 +26,7 @@ BOOL gameLoop() {
         DrawGame(0, DeltaTime, getBaseChar(Player));
         playerEventHandler(&isRunning, Player);
     }
-    deinitPlayerActor(Player);
+    deinitPlayerActor(&Player);
     SDLUnloader();
 
     return SUCCESS;

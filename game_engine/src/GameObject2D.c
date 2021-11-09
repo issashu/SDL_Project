@@ -22,26 +22,24 @@ struct GameObject {
 /*------------- PUBLIC: -----------------------*/
 //TODO Add parameters, once it is clear how the objects
 // will be initialised and take what is needed from player class
-GameObject2D *initObject(GameObject2D *self) {
-    self = (GameObject2D *) malloc(sizeof(struct GameObject));
-    self->body2D = initRigidBody2D(self->body2D);
-    self->ObjectRect.x = 100;
-    self->ObjectRect.y = 100;
-    self->ObjectRect.w = 96;
-    self->ObjectRect.h = 84;
-    self->isHFlipped = FALSE;
-    self->isVFlipped = FALSE;
-    self->isPassable = TRUE;
-    self->isAlive = FALSE;
-
-    return self;
+void initObject(GameObject2D **self) {
+    *self = (GameObject2D *) malloc(sizeof(struct GameObject));
+    initRigidBody2D(&(*self)->body2D);
+    (*self)->ObjectRect.x = 100;
+    (*self)->ObjectRect.y = 100;
+    (*self)->ObjectRect.w = 96;
+    (*self)->ObjectRect.h = 84;
+    (*self)->isHFlipped = FALSE;
+    (*self)->isVFlipped = FALSE;
+    (*self)->isPassable = TRUE;
+    (*self)->isAlive = FALSE;
 }
 
 void deinitObject(GameObject2D **self) {
-    if ((*self) != NONE) {
-        deinitRigidBody2D((RigidBody2D **) (*self)->body2D);
-        free((*self));
-        (*self) = NONE;
+    if (*self != NONE) {
+        deinitRigidBody2D(&(*self)->body2D);
+        free(*self);
+        *self = NONE;
     }
 }
 

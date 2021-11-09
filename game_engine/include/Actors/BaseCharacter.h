@@ -59,14 +59,14 @@ typedef enum CharacterStates{
 
 typedef struct CharacterActor Character;
 
-Character * initCharacter(Character *self, char *texturePath);
-void deinitCharacter(Character *self);
+void initCharacter(Character **self, char *texturePath);
+void deinitCharacter(Character **self);
 
 GameObject2D* getBaseObj (Character *self);
 int32_t getState (Character *self);
 int32_t getHealth (Character *self);
 int32_t getMana (Character *self);
-int32_t getAnimationSpeed (Character *self);
+float_t getAnimationSpeed (Character *self);
 STRING getSpriteSheet(Character *self);
 
 void setState(Character *self, int32_t State);
