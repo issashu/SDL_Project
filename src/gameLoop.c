@@ -1,6 +1,7 @@
 //
 // Created by Iordan Tonchev on 9.10.21.
 //
+
 #include "include/gameLoop.h"
 #include "Core/GameEngineCore.h"
 #include "Managers/EventManager.h"
@@ -10,7 +11,7 @@
 
 BOOL gameLoop() {
 
-    //FIXME MOVE LOOP INSIDE GAME ENGINE and implement the renderer game loop clear/update/present
+    //FIXME MOVE LOOP INSIDE GAME ENGINE TO RESTORE ENCAPSULATION
     BOOL isRunning = TRUE;
     uint32_t ElapsedTime=0;
     float DeltaTime = 0.0f;
@@ -21,10 +22,8 @@ BOOL gameLoop() {
            getPlayerName(Player), (double) getAnimationSpeed(getBaseChar(Player)));
     while (isRunning) {
         DeltaTime = getDeltaTime(&ElapsedTime);
-        //TODO Process input for player, state machine sets state, then animator executes
-        //For enemies, instead of input have state based on player location
-        DrawGame(0, DeltaTime, getBaseChar(Player));
-        playerEventHandler(&isRunning, Player);
+        playerEventHandler(&isRunning, Player, &DeltaTime);
+        //enemyEventHandler();
     }
     deinitPlayerActor(&Player);
     SDLUnloader();

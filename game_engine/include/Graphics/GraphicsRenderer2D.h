@@ -19,6 +19,8 @@ void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture);
 void drawAnimation(SDL_Renderer **Renderer, const SDL_Rect *targetFrame, SDL_Texture *Texture, int32_t animType,
                    int32_t firstFrame, float animSpeed, int transX, int transY, int Width, int Height, BOOL hFlip,
                    float DeltaTime);
+void clearRenderer(SDL_Renderer **Renderer);
+void presentRenderer(SDL_Renderer *Renderer);
 void destroyRenderer(SDL_Renderer **Renderer);
 
 #endif //SDL_GAME_GRAPHICSRENDERER2D_H

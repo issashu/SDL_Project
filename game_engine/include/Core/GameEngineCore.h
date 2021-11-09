@@ -13,6 +13,6 @@
 
 int8_t SDLLoader(playerActor *Player);
 void SDLUnloader();
-void DrawGame(int32_t Event, float DeltaTime, Character *BaseCharacter);
+void DrawGame(int32_t Event, float *DeltaTime, Character *BaseCharacter);
 
 #endif //SDL_GAME_GAMEENGINECORE_H

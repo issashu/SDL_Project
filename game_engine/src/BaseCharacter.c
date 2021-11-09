@@ -84,6 +84,6 @@ void setAnimationSpeed(Character **self, int32_t speed) {
     (*self)->AnimationSpeed = speed;
 }
 
-void moveCharacter(Character *self, float DeltaTime, Vector2D *Force, Vector2D *Friction) {
-    updateObject(&self->Base2D,DeltaTime, Force, Friction);
+void moveCharacter(Character *self, float *DeltaTime, Vector2D *Force, Vector2D *Friction) {
+    updateObject(&self->Base2D, *DeltaTime, Force, Friction);
 }

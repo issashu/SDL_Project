@@ -5,7 +5,7 @@
 #include <SDL.h>
 
 #include "Physics/Collider2D.h"
-#include "Graphics/Transform2D.h"
+#include "GameObject/Transform2D.h"
 
 struct Collider2D {
     SDL_Rect ColliderRect;

@@ -6,12 +6,12 @@
 
 #include "utils/Log.h"
 #include "utils/defines.h"
-#include "Graphics/Transform2D.h"
+#include "GameObject/Transform2D.h"
 #include "Physics/RigidBody2D.h"
 
 //TODO Move defines to respective header
 #define BODY_MASS 1.0f
-#define WORLD_GRAVITY 3.8f
+#define WORLD_GRAVITY 0.0f
 
 /*------------- PRIVATE: -----------------------*/
 
@@ -63,8 +63,8 @@ void setVelocity(RigidBody2D *self, float deltaTime) {
 
 void initRigidBody2D(RigidBody2D **self) {
     *self = (RigidBody2D *)malloc(sizeof(struct RigidBody2D));
-    (*self)->transform.X = 0;
-    (*self)->transform.Y = 0;
+    (*self)->transform.X = 100;
+    (*self)->transform.Y = 100;
     (*self)->Mass = BODY_MASS;
     (*self)->appliedGravity = WORLD_GRAVITY;
     initVector2D(&(*self)->appliedForce);
@@ -76,21 +76,30 @@ void initRigidBody2D(RigidBody2D **self) {
 
 void deinitRigidBody2D(RigidBody2D **self) {
     if (*self != NONE) {
-//        deinitVector2D(&(*self)->Acceleration);
-//        deinitVector2D(&(*self)->Velocity);
-//        deinitVector2D(&(*self)->Position);
-//        deinitVector2D(&(*self)->Friction);
-//        deinitVector2D(&(*self)->appliedForce);
         free(*self);
         *self = NONE;
     }
 }
 
-inline float getMass(RigidBody2D *self) {return self->Mass;}
+float getMass(RigidBody2D *self) {
+    return self->Mass;
+}
 
-inline float getGravity(RigidBody2D *self) {return self->appliedGravity;}
+float getGravity(RigidBody2D *self) {
+    return self->appliedGravity;
+}
 
-//FIXME Move transform . GameObject and not RigidBody2D and use translate methods in transform
+float getTransformX(RigidBody2D *self) {
+    return self->transform.X;
+}
+
+float getTransformY(RigidBody2D *self) {
+    return self->transform.Y;
+}
+
+
+
+//FIXME Move transform to GameObject and not RigidBody2D and use translate methods in transform
 void updatePosition(RigidBody2D **self, float deltaTime, Vector2D *Force, Vector2D *Friction) {
     if(self != NONE){
         applyForce((*self), Force);

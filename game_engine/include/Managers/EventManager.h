@@ -12,7 +12,7 @@
 
 
 //TODO Apply singleton
-void playerEventHandler(BOOL *isRunning, playerActor *Player);
-void keyboardEvent(BOOL *isRunning, playerActor *Player, const u_int8_t *gameKeyStates);
+void playerEventHandler(BOOL *isRunning, playerActor *Player, float *DeltaTime);
+void keyboardEvent(BOOL *isRunning, playerActor *Player, const u_int8_t *gameKeyStates, float *DeltaTime);
 
 #endif //SDL_GAME_EVENTMANAGER_H

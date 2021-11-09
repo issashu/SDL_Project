@@ -75,7 +75,7 @@ void takeDamage(Character *self, int32_t Dmg);
 void healDamage(Character *self, int32_t Heal);
 void setAnimationSpeed(Character **self, int32_t speed);
 
-void moveCharacter(Character *self, float DeltaTime, Vector2D *Force, Vector2D *Friction);
+void moveCharacter(Character *self, float *DeltaTime, Vector2D *Force, Vector2D *Friction);
 
 
 

@@ -54,7 +54,7 @@ void debugVector2D(Vector2D *self){
 /*------------- PUBLIC: -----------------------*/
 
 void initVector2D(Vector2D *self){
-    self = (Vector2D*)malloc(sizeof(struct Vector2D));
+   // self = (Vector2D*)malloc(sizeof(struct Vector2D));
     self->X = 0;
     self->Y = 0;
     self->set = &setVector2D;

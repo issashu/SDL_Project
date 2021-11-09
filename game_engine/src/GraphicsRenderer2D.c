@@ -46,10 +46,18 @@ void drawAnimation(SDL_Renderer **Renderer, const SDL_Rect *targetFrame, SDL_Tex
     int32_t currentFrame = ((int32_t )((SDL_GetTicks() / animSpeed)) % firstFrame);
     SDL_Rect srcFrame = {.x=Width * currentFrame, .y=Height * animType, .w = Width, .h = Height};
     SDL_Rect dstFrame = *targetFrame;
-
-    SDL_RenderClear(*Renderer);
     SDL_RenderCopyEx(*Renderer, Texture, &srcFrame, &dstFrame, 0, NULL, hFlip);
-    SDL_RenderPresent(*Renderer);
+    if(currentFrame != 0){
+        currentFrame = 0;
+    }
+}
+
+void clearRenderer(SDL_Renderer **Renderer) {
+    SDL_RenderClear(*Renderer);
+}
+
+void presentRenderer(SDL_Renderer *Renderer){
+    SDL_RenderPresent(Renderer);
 }
 
 void destroyRenderer(SDL_Renderer **Renderer){

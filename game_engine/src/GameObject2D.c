@@ -25,8 +25,8 @@ struct GameObject {
 void initObject(GameObject2D **self) {
     *self = (GameObject2D *) malloc(sizeof(struct GameObject));
     initRigidBody2D(&(*self)->body2D);
-    (*self)->ObjectRect.x = 100;
-    (*self)->ObjectRect.y = 100;
+    (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
+    (*self)->ObjectRect.y = (int) getTransformY((*self)->body2D);
     (*self)->ObjectRect.w = 96;
     (*self)->ObjectRect.h = 84;
     (*self)->isHFlipped = FALSE;
@@ -81,6 +81,8 @@ void setAlive(GameObject2D *self, BOOL flag) {
 
 void updateObject(GameObject2D **self, float DeltaTime, Vector2D *Force, Vector2D *Friction) {
     updatePosition(&(*self)->body2D, DeltaTime, Force, Friction);
+    (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
+    (*self)->ObjectRect.y = (int) getTransformY((*self)->body2D);
 }
 
 

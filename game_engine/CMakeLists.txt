@@ -33,9 +33,11 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Core/sdl_methods.h
         ${_HEADERS_DIR}/Core/GameEngineCore.h
         ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
+        ${_HEADERS_DIR}/Graphics/ImageLayers.h
+        ${_HEADERS_DIR}/Core/Camera2D.h
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Physics/Vector2D.h
-        ${_HEADERS_DIR}/Graphics/Transform2D.h
+        ${_HEADERS_DIR}/GameObject/Transform2D.h
         ${_HEADERS_DIR}/GameObject/GameObject2D.h
         ${_HEADERS_DIR}/Actors/BaseCharacter.h
         ${_HEADERS_DIR}/Actors/PlayerCharacter.h
@@ -46,7 +48,6 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Managers/EventManager.h
         ${_HEADERS_DIR}/Managers/TextureManager.h
         ${_HEADERS_DIR}/Managers/CollisionManager.h
-        ${_HEADERS_DIR}/Graphics/animation_settings.h
         ${_HEADERS_DIR}/GameObject/ObjectPool.h
         ${_HEADERS_DIR}/Timers/Timers.h
 
@@ -66,7 +67,9 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/ObjectPool.c
         ${_SOURCES_DIR}/Timers.c
         ${_SOURCES_DIR}/Collider2D.c
-        ${_SOURCES_DIR}/CollisionManager.c)
+        ${_SOURCES_DIR}/CollisionManager.c
+        ${_SOURCES_DIR}/ImageLayers.c
+        ${_SOURCES_DIR}/Camera2D.c )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"
