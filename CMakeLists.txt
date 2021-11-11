@@ -6,7 +6,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/helpers_c.cmake)
 
 #_CXX_ for C++
 #Remove/Comment before final build or before using Valgrind
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -fsanitize-address-use-after-scope -g")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -fsanitize-address-use-after-scope -g")
 
 #Uncomment below line in order to run the clion profiler:
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")

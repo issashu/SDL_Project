@@ -34,8 +34,10 @@ void initCamera2D(Camera **self){
 }
 
 void deinitCamera2D(Camera **self){
-    free(*self);
-    *self = NONE;
+    if (*self != NONE){
+        free(*self);
+        *self = NONE;
+    }
 }
 
 void setCameraPosition(Camera **self, const int32_t *positionX, const int32_t *positionY) {

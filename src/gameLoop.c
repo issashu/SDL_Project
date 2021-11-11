@@ -35,6 +35,7 @@ BOOL gameLoop() {
         //enemyEventHandler();
     }
     deinitPlayerActor(&Player);
+    deinitCamera2D(&MainCamera);
     SDLUnloader();
 
     return SUCCESS;
