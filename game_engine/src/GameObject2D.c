@@ -14,6 +14,7 @@
 struct GameObject {
     RigidBody2D *body2D;
     SDL_Rect ObjectRect;
+    SDL_Texture *ObjTexture;
     BOOL isHFlipped;
     BOOL isVFlipped;
     BOOL isPassable;
@@ -27,10 +28,12 @@ struct GameObject {
 void initObject(GameObject2D **self) {
     *self = (GameObject2D *) malloc(sizeof(struct GameObject));
     initRigidBody2D(&(*self)->body2D);
+    (*self)->ObjTexture = NONE;
     (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
     (*self)->ObjectRect.y = (int) getTransformY((*self)->body2D);
     (*self)->ObjectRect.w = 96;
     (*self)->ObjectRect.h = 84;
+    (*self)->ObjTexture = NONE;
     (*self)->isHFlipped = FALSE;
     (*self)->isVFlipped = FALSE;
     (*self)->isPassable = TRUE;
@@ -45,12 +48,18 @@ void deinitObject(GameObject2D **self) {
     }
 }
 
-SDL_Rect *getObjRect(GameObject2D *self) {
+SDL_Rect *getObjectRect(GameObject2D *self) {
     return &self->ObjectRect;
 }
 
-BOOL getHorrizFlip(GameObject2D *self) {
-    return self->isHFlipped;
+SDL_Texture ** getObjectTexture(GameObject2D *self) {
+    return &self->ObjTexture;
+}
+
+BOOL getHorrizFlip(GameObject2D
+*self) {
+return self->
+isHFlipped;
 }
 
 BOOL getVertFlip(GameObject2D *self) {

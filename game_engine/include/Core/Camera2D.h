@@ -12,5 +12,6 @@ void setCameraPosition(Camera **self, const int32_t *positionX, const int32_t *p
 void moveCameraPosition(Camera **self, const float_t *positionX, const float_t *positionY, float_t DeltaTime);
 void setCameraLimits (Camera **self, int32_t Width, int32_t Height);
 SDL_Rect* getCameraViewPoint(Camera *self);
+SDL_Texture **getCameraTexture(Camera *self);
 
 #endif //SDL_GAME_CAMERA2D_H

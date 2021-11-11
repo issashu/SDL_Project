@@ -110,6 +110,13 @@ void keyboardEvent(BOOL *isRunning, playerActor *Player, const u_int8_t *gameKey
         DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
         SDL_PumpEvents();
     }
+    while (gameKeyStates[SDL_SCANCODE_SPACE]) {
+        setState(getBaseChar(Player), ATTACKING);
+        //Force.set(&Force, 0.3, 0.0);
+        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
+        DrawCharacter(SDL_SCANCODE_SPACE, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
+        SDL_PumpEvents();
+    }
     while (gameKeyStates[SDL_SCANCODE_ESCAPE]) {
         *isRunning = FALSE;
         SDL_PumpEvents();

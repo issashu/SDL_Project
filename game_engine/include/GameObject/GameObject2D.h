@@ -16,7 +16,8 @@ typedef struct GameObject GameObject2D;
 void initObject(GameObject2D **self);
 void deinitObject(GameObject2D **self);
 
-SDL_Rect* getObjRect(GameObject2D *self);
+SDL_Rect* getObjectRect(GameObject2D *self);
+SDL_Texture ** getObjectTexture(GameObject2D *self);
 BOOL getHorrizFlip(GameObject2D *self);
 BOOL getVertFlip(GameObject2D *self);
 BOOL getPassable(GameObject2D *self);

@@ -28,7 +28,8 @@ enum animType {
     ROLL = 12,
     CRAWL = 11,
     DIE = 18,
-    TOTAL_ANIM_TYPES = 8
+    ATTACK = 6,
+    TOTAL_ANIM_TYPES = 9
 };
 
 enum animFrames {
@@ -39,7 +40,8 @@ enum animFrames {
     JUMP_FRAMES = 14,
     ROLL_FRAMES = 10,
     CRAWL_FRAMES = 8,
-    DIE_FRAMES = 5
+    DIE_FRAMES = 5,
+    ATTACK_FRAMES = 6
 };
 
 typedef enum CharacterStates{

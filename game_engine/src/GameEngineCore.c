@@ -153,28 +153,35 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
 
     switch (Event) {
         case SDL_SCANCODE_UP:
-            drawAnimation(GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), *Texture, JUMP - 1, JUMP_FRAMES - 1,
-            getAnimationSpeed(BaseCharacter), 96, 84, FALSE, *DeltaTime);
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, JUMP - 1, JUMP_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         case SDL_SCANCODE_RIGHT:
-            drawAnimation(GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), *Texture, RUN - 1, RUN_FRAMES - 1,
-            getAnimationSpeed(BaseCharacter), 96, 84, FALSE, *DeltaTime);
+            setHorrizFlip(getBaseObj(BaseCharacter), FALSE);
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, RUN - 1, RUN_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         case SDL_SCANCODE_DOWN:
-            drawAnimation(GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), *Texture, CRAWL - 1, CRAWL_FRAMES - 1,
-            getAnimationSpeed(BaseCharacter), 96, 84, FALSE, *DeltaTime);
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, CRAWL - 1, CRAWL_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         case SDL_SCANCODE_LEFT:
-            drawAnimation(GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), *Texture, RUN - 1, RUN_FRAMES - 1,
-            getAnimationSpeed(BaseCharacter), 96, 84, TRUE, *DeltaTime);
+            setHorrizFlip(getBaseObj(BaseCharacter), TRUE);
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, RUN - 1, RUN_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
+            break;
+
+        case SDL_SCANCODE_SPACE:
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, ATTACK - 1, ATTACK_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         default:
-            drawAnimation(GfxRenderer, getObjRect(getBaseObj(BaseCharacter)), *Texture, IDLE - 1, IDLE_FRAMES - 1,
-            getAnimationSpeed(BaseCharacter), 96, 84, FALSE, *DeltaTime);
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, IDLE - 1, IDLE_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
     }
 
@@ -182,13 +189,12 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
     destroyTexture(Texture);
 }
 
-void DrawCamera(Camera *Camera, SDL_Renderer **GfxRenderer) {
-    static SDL_Texture *Texture = NULL;
+void DrawCamera(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture) {
     clearRenderer(GfxRenderer);
-    applyTexture(&backgroundTextures, &Texture, GfxRenderer, 0);
-    drawStatic(GfxRenderer, Texture, NULL, getCameraViewPoint(Camera));
+    applyTexture(&backgroundTextures, Texture, GfxRenderer, 0);
+    drawStatic(GfxRenderer, *Texture, NULL, getCameraViewPoint(Camera));
     presentRenderer(*GfxRenderer);
-    destroyTexture(&Texture);
+    destroyTexture(Texture);
 }
 
 

@@ -2,10 +2,11 @@
 // Created by Iordan Tonchev on 9.11.21.
 //
 
-#include <SDL_rect.h>
+#include <SDL_render.h>
 
 #include "Core/Camera2D.h"
 #include "Physics/Vector2D.h"
+#include "GameObject/GameObject2D.h"
 #include "utils/defines.h"
 #include "Core/sdl_default_app_settings.h"
 
@@ -14,7 +15,7 @@
 /*------------- PRIVATE: -----------------------*/
 
 struct Camera2D{
-    SDL_Rect ViewPoint;
+    GameObject2D *BaseObject;
     int32_t SceneWidth;
     int32_t SceneHeight;
 };
@@ -22,32 +23,30 @@ struct Camera2D{
 
 /*------------- PUBLIC: -----------------------*/
 
-
 void initCamera2D(Camera **self){
     *self = (Camera *)malloc(sizeof(struct Camera2D));
-    (*self)->ViewPoint.x = 0;
-    (*self)->ViewPoint.y = 0;
-    (*self)->ViewPoint.w = WINDOW_WIDTH;
-    (*self)->ViewPoint.h = WINDOW_HEIGHT;
+    initObject(&(*self)->BaseObject);
     (*self)->SceneHeight = WINDOW_HEIGHT;
     (*self)->SceneWidth = WINDOW_WIDTH;
 }
 
 void deinitCamera2D(Camera **self){
     if (*self != NONE){
+        deinitObject(&(*self)->BaseObject);
         free(*self);
         *self = NONE;
     }
 }
 
+//TODO Add setObjectRect method
 void setCameraPosition(Camera **self, const int32_t *positionX, const int32_t *positionY) {
-    (*self)->ViewPoint.x = (int32_t)*positionX;
-    (*self)->ViewPoint.y = (int32_t)*positionY;
+    getObjectRect((*self)->BaseObject)->x= (int32_t)*positionX;
+    getObjectRect((*self)->BaseObject)->y = (int32_t)*positionY;
 }
 
 void moveCameraPosition(Camera **self, const float_t *positionX, const float_t *positionY, float_t DeltaTime){
-    (*self)->ViewPoint.x += *positionX * DeltaTime;
-    (*self)->ViewPoint.y += *positionY * DeltaTime;
+    getObjectRect((*self)->BaseObject)->x += *positionX * DeltaTime;
+    getObjectRect((*self)->BaseObject)->y += *positionY * DeltaTime;
 }
 
 void setCameraLimits (Camera **self, int32_t Width, int32_t Height){
@@ -56,5 +55,9 @@ void setCameraLimits (Camera **self, int32_t Width, int32_t Height){
 }
 
 SDL_Rect* getCameraViewPoint(Camera *self){
-    return &self->ViewPoint;
+    return getObjectRect(self->BaseObject);
+}
+
+SDL_Texture **getCameraTexture(Camera *self){
+    return getObjectTexture(self->BaseObject);
 }

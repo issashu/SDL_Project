@@ -22,16 +22,20 @@ BOOL mainGame() {
     Camera *MainCamera = NONE;
     SDL_Window *AppWindow = NONE;
     SDL_Renderer *GfxRenderer = NONE;
-    SDL_Texture *Texture = NONE;
     initPlayerActor(&Player, "John Doe");
     initCamera2D(&MainCamera);
     SDLLoader(Player, &GfxRenderer, &AppWindow);
 
     while (isRunning) {
         DeltaTime = getDeltaTime(&ElapsedTime);
-        DrawCamera(MainCamera, &GfxRenderer);
-        playerEventHandler(&isRunning, Player, &DeltaTime, &GfxRenderer, &Texture);
+        playerEventHandler(&isRunning, Player, &DeltaTime, &GfxRenderer,
+                           getObjectTexture(getBaseObj(getBaseChar(Player))));
+        //DrawCamera(MainCamera, &GfxRenderer, getCameraTexture(MainCamera));
         //enemyEventHandler();
+        //clearRenderer(&GfxRenderer);
+        //presentRenderer(GfxRenderer);
+        //destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
+        // Irrelevant! Connected to vsync and using delta time: SDL_Delay(1000/60);
         //TODO Add texture to character and camera, so they can be separately destroyed
     }
     deinitPlayerActor(&Player);
