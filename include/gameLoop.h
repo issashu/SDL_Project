@@ -8,6 +8,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-int8_t gameLoop();
+int8_t mainGame();
 
 #endif //SDL_GAME_GAMELOOP_H

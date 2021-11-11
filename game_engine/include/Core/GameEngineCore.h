@@ -12,9 +12,10 @@
 #include "Core/Camera2D.h"
 
 
-int8_t SDLLoader(playerActor *Player);
-void SDLUnloader();
-void DrawCharacter(int32_t Event, float *DeltaTime, Character *BaseCharacter);
-void DrawCamera(Camera *Camera);
+int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **AppWindow);
+void SDLUnloader(SDL_Renderer *GfxRenderer, SDL_Window *AppWindow, SDL_Surface *ImageSurface);
+void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharacter, SDL_Renderer **GfxRenderer,
+                   SDL_Texture **Texture);
+void DrawCamera(Camera *Camera, SDL_Renderer **GfxRenderer);
 
 #endif //SDL_GAME_GAMEENGINECORE_H

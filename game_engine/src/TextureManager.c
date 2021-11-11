@@ -20,9 +20,9 @@ BOOL loadTextures(struct Vector *textureMap, char *texturePath) {
 }
 
 //TODO This causes 80% of the CPU load and memory leaks
-BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer *Renderer, size_t index) {
+BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer **Renderer, size_t index) {
     SDL_Surface *Image = (SDL_Surface*)getElementVector(textureMap, index);
-    *Texture = SDL_CreateTextureFromSurface(Renderer, Image);
+    *Texture = SDL_CreateTextureFromSurface(*Renderer, Image);
 
     if (*Texture == NULL) {
         printf("Failed to load texture from asset! Reason: %s\n", SDL_GetError());

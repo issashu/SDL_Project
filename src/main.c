@@ -7,7 +7,7 @@
 #include "include/gameLoop.h"
 
 int main() {
-    if(gameLoop()){
+    if(mainGame()){
         return EXIT_FAILURE;
     }
     return EXIT_SUCCESS;
