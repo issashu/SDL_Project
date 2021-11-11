@@ -5,11 +5,15 @@
 #include "Actors/PlayerCharacter.h"
 #include "utils/defines.h"
 
+
+/*------------- PRIVATE: -----------------------*/
 struct PlayerCharacter{
     Character *baseCharacter;
     STRING spriteSheetPath;
     STRING playerName;
 };
+
+/*------------- PUBLIC: -----------------------*/
 
 void initPlayerActor(playerActor **self, const char *Name) {
     *self = (playerActor *) malloc(sizeof(struct PlayerCharacter));

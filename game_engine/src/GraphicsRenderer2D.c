@@ -10,7 +10,7 @@
 // (ASSETS_PATH "images/character_anim.png")
 
 BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
-    *Renderer = SDL_CreateRenderer(Window, -1, (SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED));
+    *Renderer = SDL_CreateRenderer(Window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
     if (*Renderer == NULL) {
         LOGERR("SDL_renderer could not be initialised! Reason: %s", SDL_GetError());
         return FAILURE;
@@ -20,7 +20,9 @@ BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
 
 //FIXME REMOVE MAGIC NUMBERS
 BOOL loadSurfaces(struct Vector *objTextures, STRING TexturePath) {
-    initTextureStorage(objTextures, STORAGE_START_CAPACITY);
+    if (objTextures == NONE){
+        initTextureStorage(objTextures, STORAGE_START_CAPACITY);
+    }
     //TODO Learn to use glob to load any number of textures into a vector
     loadTextures(objTextures, TexturePath);
     for (int8_t i = 0; i < 1; i++) {
@@ -32,14 +34,21 @@ BOOL loadSurfaces(struct Vector *objTextures, STRING TexturePath) {
     return EXIT_SUCCESS;
 }
 
-void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture) {
-    SDL_RenderCopy(*Renderer, Texture, NULL, NULL);
+void unloadSurfaces(struct Vector *objTextures) {
+    if (objTextures != NONE){
+        unloadTextures(objTextures);
+    }
+}
+
+
+
+void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture, SDL_Rect *SrcRect, SDL_Rect *DstRect) {
+    SDL_RenderCopy(*Renderer, Texture, SrcRect, DstRect);
     SDL_RenderPresent(*Renderer);
 }
 
 void drawAnimation(SDL_Renderer **Renderer, const SDL_Rect *targetFrame, SDL_Texture *Texture, int32_t animType,
-                   int32_t firstFrame, float animSpeed, int transX, int transY, int Width, int Height, BOOL hFlip,
-                   float DeltaTime) {
+                   int32_t firstFrame, float animSpeed, int Width, int Height, BOOL hFlip, float DeltaTime) {
 
     //This will always keep rotating up to the maximum available sprites in the animation, then reset,
     // since % will revert to 0 eventually

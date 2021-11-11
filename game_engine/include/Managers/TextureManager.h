@@ -11,10 +11,9 @@
 //TODO Apply singleton
 
 void initTextureStorage(struct Vector *textureMap, size_t initialCapacity);
-
 BOOL loadTextures(struct Vector *textureMap, char *texturePath);
-
+BOOL destroyTexture(SDL_Texture **texture);
 BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer *Renderer, size_t index);
-void unloadTexture(struct Vector *textures);
+void unloadTextures(struct Vector *textures);
 
 #endif //SDL_GAME_TEXTUREMANAGER_H

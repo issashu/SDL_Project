@@ -7,6 +7,7 @@
 #include "Core/Camera2D.h"
 #include "Physics/Vector2D.h"
 #include "utils/defines.h"
+#include "Core/sdl_default_app_settings.h"
 
 
 
@@ -14,8 +15,6 @@
 
 struct Camera2D{
     SDL_Rect ViewPoint;
-    SDL_Point *Target;
-    Vector2D Position;
     int32_t SceneWidth;
     int32_t SceneHeight;
 };
@@ -26,35 +25,27 @@ struct Camera2D{
 
 void initCamera2D(Camera **self){
     *self = (Camera *)malloc(sizeof(struct Camera2D));
-    (*self)->ViewPoint.h = 0;
-    (*self)->ViewPoint.w = 0;
-    (*self)->ViewPoint.y = 0;
     (*self)->ViewPoint.x = 0;
-    (*self)->Target = NONE;
-    initVector2D(&(*self)->Position);
-    (*self)->SceneHeight = 0;
-    (*self)->SceneWidth = 0;
+    (*self)->ViewPoint.y = 0;
+    (*self)->ViewPoint.w = WINDOW_WIDTH;
+    (*self)->ViewPoint.h = WINDOW_HEIGHT;
+    (*self)->SceneHeight = WINDOW_HEIGHT;
+    (*self)->SceneWidth = WINDOW_WIDTH;
 }
 
 void deinitCamera2D(Camera **self){
-    deinitVector2D(&(*self)->Position);
-    (*self)->Target = NONE;
     free(*self);
     *self = NONE;
 }
 
-void setCameraPosition(Camera **self, const SDL_Point *position){
-    (*self)->Position.X = position->x;
-    (*self)->Position.Y = position->y;
+void setCameraPosition(Camera **self, const int32_t *positionX, const int32_t *positionY) {
+    (*self)->ViewPoint.x = (int32_t)*positionX;
+    (*self)->ViewPoint.y = (int32_t)*positionY;
 }
 
-void moveCameraPosition(Camera **self, const SDL_Point *position, float_t DeltaTime){
-    (*self)->Position.X += position->x * DeltaTime;
-    (*self)->Position.Y += position->y * DeltaTime;
-}
-
-void setCameraTarget (Camera **self, const SDL_Point *target){
-    (*self)->Target = target;
+void moveCameraPosition(Camera **self, const float_t *positionX, const float_t *positionY, float_t DeltaTime){
+    (*self)->ViewPoint.x += *positionX * DeltaTime;
+    (*self)->ViewPoint.y += *positionY * DeltaTime;
 }
 
 void setCameraLimits (Camera **self, int32_t Width, int32_t Height){
@@ -62,6 +53,6 @@ void setCameraLimits (Camera **self, int32_t Width, int32_t Height){
     (*self)->SceneHeight = Height;
 }
 
-SDL_Rect* getCameraViewPoint(Camera **self){
-    return &(*self)->ViewPoint;
+SDL_Rect* getCameraViewPoint(Camera *self){
+    return &self->ViewPoint;
 }

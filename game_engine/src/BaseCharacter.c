@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 
+#include <SDL_render.h>
 #include "Actors/BaseCharacter.h"
 #include "utils/defines.h"
 
@@ -14,6 +15,7 @@ GameObject2D *Base2D;
 StateFlags CharacterState;
 int32_t Health;
 int32_t Mana;
+SDL_Texture *CharacterTexture;
 float AnimationSpeed;
 STRING spriteSheet;
 //TODO Add some stats and function pointers for methods
@@ -30,6 +32,7 @@ void initCharacter(Character **self, char *texturePath) {
     (*self)->Mana = 100;
     (*self)->AnimationSpeed = 150.0f;
     (*self)->spriteSheet = texturePath;
+    (*self)->CharacterTexture = NULL;
 }
 
 void deinitCharacter(Character **self) {

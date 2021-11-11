@@ -12,12 +12,14 @@ void initTextureStorage(struct Vector *textureMap, size_t initialCapacity) {
     initVector(textureMap, initialCapacity);
 }
 
+//FIXME Change debug load to a texture manager
 BOOL loadTextures(struct Vector *textureMap, char *texturePath) {
     pushElementVector(textureMap, IMG_Load(texturePath));
 
     return SUCCESS;
 }
 
+//TODO This causes 80% of the CPU load and memory leaks
 BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer *Renderer, size_t index) {
     SDL_Surface *Image = (SDL_Surface*)getElementVector(textureMap, index);
     *Texture = SDL_CreateTextureFromSurface(Renderer, Image);
@@ -30,24 +32,24 @@ BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer
     return SUCCESS;
 }
 
-BOOL destroyTexture(SDL_Texture *texture){
-    if (texture == NULL) {
+BOOL destroyTexture(SDL_Texture **texture){
+    if (*texture == NULL) {
         printf("Failed to free Texture memory! Reason: %s\n", SDL_GetError());
         return FAILURE;
     }
-
-    SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(*texture);
 
     return SUCCESS;
 }
 
 
 //TODO Use on destroy object.
-void unloadTexture(struct Vector *textures) {
+void unloadTextures(struct Vector *textures) {
     if (textures!= NULL){
         size_t texturesCount = getSizeVector(textures);
         for (size_t i = 0; i<texturesCount; i++){
             if(textures->items[i]!=NULL){
+                SDL_DestroyTexture(getElementVector(textures, i));
                 free(textures->items[i]);
                 textures->items[i] = NULL;
             }

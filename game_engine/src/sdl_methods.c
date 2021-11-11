@@ -70,5 +70,4 @@ void deinitGame(SDL_Window **Window, SDL_Surface **Image) {
         SDL_DestroyWindow(*Window);
         *Window = NULL;
     }
-    SDL_Quit();
 }

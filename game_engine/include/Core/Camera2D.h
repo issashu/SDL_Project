@@ -8,10 +8,9 @@
 typedef struct Camera2D Camera;
 void initCamera2D(Camera **self);
 void deinitCamera2D(Camera **self);
-void setCameraPosition(Camera **self, const SDL_Point *position);
-void moveCameraPosition(Camera **self, const SDL_Point *position, float_t DeltaTime);
-void setCameraTarget (Camera **self, const SDL_Point *target);
+void setCameraPosition(Camera **self, const int32_t *positionX, const int32_t *positionY);
+void moveCameraPosition(Camera **self, const float_t *positionX, const float_t *positionY, float_t DeltaTime);
 void setCameraLimits (Camera **self, int32_t Width, int32_t Height);
-SDL_Rect* getCameraViewPoint(Camera **self);
+SDL_Rect* getCameraViewPoint(Camera *self);
 
 #endif //SDL_GAME_CAMERA2D_H

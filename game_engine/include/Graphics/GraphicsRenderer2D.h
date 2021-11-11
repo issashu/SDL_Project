@@ -14,11 +14,11 @@
 
 
 BOOL loadSurfaces(struct Vector *objTextures, STRING TexturePath);
+void unloadSurfaces(struct Vector *objTextures);
 BOOL initRenderer(SDL_Window* Window, SDL_Renderer** Renderer);
-void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture);
+void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture, SDL_Rect *SrcRect, SDL_Rect *DstRect);
 void drawAnimation(SDL_Renderer **Renderer, const SDL_Rect *targetFrame, SDL_Texture *Texture, int32_t animType,
-                   int32_t firstFrame, float animSpeed, int transX, int transY, int Width, int Height, BOOL hFlip,
-                   float DeltaTime);
+                   int32_t firstFrame, float animSpeed, int Width, int Height, BOOL hFlip, float DeltaTime);
 void clearRenderer(SDL_Renderer **Renderer);
 void presentRenderer(SDL_Renderer *Renderer);
 void destroyRenderer(SDL_Renderer **Renderer);

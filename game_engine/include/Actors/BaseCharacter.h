@@ -16,7 +16,8 @@
  * Decrease by 1 when using in code
  *
  * Using common sprite sheet for both player and enemies,
- * thus enums are in base character struct and not actor structs
+ * thus enums are in base character struct and not in each actor structs
+ * as it normally should be.
  */
 enum animType {
     IDLE = 2,
