@@ -25,11 +25,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake_hel
 
 #TODO Check and rearrange all the executables and headers
 add_executable(${PROJECT_NAME}
-        ${SOURCES_DIR}/main.c
-        ${SOURCES_DIR}/gameLoop.c
-
-        ${HEADERS_DIR}/gameLoop.h
-        )
+        ${SOURCES_DIR}/main.c)
 
 target_include_directories(
         ${PROJECT_NAME}

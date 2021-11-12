@@ -66,6 +66,7 @@ void initCharacter(Character **self, char *texturePath);
 void deinitCharacter(Character **self);
 
 GameObject2D* getBaseObj (Character *self);
+SDL_Event* getCharacterEvent(Character *self);
 int32_t getState (Character *self);
 int32_t getHealth (Character *self);
 int32_t getMana (Character *self);
@@ -78,7 +79,7 @@ void takeDamage(Character *self, int32_t Dmg);
 void healDamage(Character *self, int32_t Heal);
 void setAnimationSpeed(Character **self, int32_t speed);
 
-void moveCharacter(Character *self, float *DeltaTime, Vector2D *Force, Vector2D *Friction);
+void moveCharacter(Character *self, const float *DeltaTime, Vector2D *Force, Vector2D *Friction);
 
 
 

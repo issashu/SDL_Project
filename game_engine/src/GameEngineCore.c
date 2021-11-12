@@ -148,9 +148,7 @@ int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **A
 void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharacter, SDL_Renderer **GfxRenderer,
                    SDL_Texture **Texture) {
 
-    clearRenderer(GfxRenderer);
     applyTexture(&characterTextures, Texture, GfxRenderer, 0);
-
     switch (Event) {
         case SDL_SCANCODE_UP:
             drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, JUMP - 1, JUMP_FRAMES - 1,
@@ -184,17 +182,11 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
     }
-
-    presentRenderer(*GfxRenderer);
-    destroyTexture(Texture);
 }
 
 void DrawCamera(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture) {
-    clearRenderer(GfxRenderer);
     applyTexture(&backgroundTextures, Texture, GfxRenderer, 0);
     drawStatic(GfxRenderer, *Texture, NULL, getCameraViewPoint(Camera));
-    presentRenderer(*GfxRenderer);
-    destroyTexture(Texture);
 }
 
 

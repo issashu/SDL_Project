@@ -5,120 +5,141 @@
 #include <SDL_events.h>
 #include "Managers/EventManager.h"
 #include "Core/GameEngineCore.h"
-#include "Actors/PlayerCharacter.h"
+#include "Actors/BaseCharacter.h"
 #include "utils/defines.h"
-#include "Timers/Timers.h"
 
-void keyboardEvent(BOOL *isRunning, playerActor *Player, const u_int8_t *gameKeyStates, float *DeltaTime,
-                   SDL_Renderer **GfxRenderer, SDL_Texture **Texture);
+void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *gameKeyStates);
 
 
-void playerEventHandler(BOOL *isRunning, playerActor *Player, float *DeltaTime, SDL_Renderer **GfxRenderer,
-                        SDL_Texture **Texture) {
-    SDL_Event gameEvent;
+void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI) {
+//Player character does not send a default event; AI characters will.
+//FIXME FIX the logic below to reflect between player and AI
+    if(gameEventAI==NONE) {
+        SDL_Event gameEvent;
+        u_int8_t *gameKeyStates = NONE;
+        while (SDL_PollEvent(&gameEvent)) {
+            switch (gameEvent.type) {
+                case SDL_QUIT:
+                    *isRunning = FALSE;
+                    break;
 
-    if (!SDL_PollEvent(&gameEvent)) {
-        DrawCharacter(IDLE_STATE, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-    }
-    while (SDL_PollEvent(&gameEvent)) {
-        switch (gameEvent.type) {
-            case SDL_QUIT:
-                *isRunning = FALSE;
-                break;
+                case SDL_KEYDOWN:
+                    gameKeyStates = SDL_GetKeyboardState(NULL);
+                    keyboardEvent(isRunning, BaseCharacter, gameKeyStates);
+                    break;
 
-            case SDL_KEYDOWN:
-                keyboardEvent(isRunning, Player, NULL, DeltaTime, GfxRenderer, Texture);
-                break;
+                case SDL_KEYUP:
+                    setState(BaseCharacter, IDLE_STATE);
+                    break;
 
-            case SDL_KEYUP:
-                break;
+                case SDL_MOUSEBUTTONDOWN:
+                case SDL_MOUSEMOTION:
+                case SDL_MOUSEBUTTONUP:
+                case SDL_MOUSEWHEEL:
+                case SDL_MOUSEWHEEL_FLIPPED:
+                case SDL_MOUSEWHEEL_NORMAL:
+                    break;
 
-            case SDL_MOUSEBUTTONDOWN:
-            case SDL_MOUSEMOTION:
-            case SDL_MOUSEBUTTONUP:
-            case SDL_MOUSEWHEEL:
-            case SDL_MOUSEWHEEL_FLIPPED:
-            case SDL_MOUSEWHEEL_NORMAL:
-                break;
-
-            default:
-                break;
+                default:
+                    break;
+            }
         }
+    } else {
+        return;
     }
+
 }
 
-void keyboardEvent(BOOL *isRunning, playerActor *Player, const u_int8_t *gameKeyStates, float *DeltaTime,
-                   SDL_Renderer **GfxRenderer, SDL_Texture **Texture) {
+void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *gameKeyStates) {
     //TODO ADD DOXYGEN and set some default key event (also might be having slight delay because of pump
     //TODO Find a way to automate indexing. Maybe object struct should know the index of its texture
     // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
+    if (gameKeyStates[SDL_SCANCODE_UP]) {
+        setState(BaseCharacter, JUMPING_UP);
+    }
+    if (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_RIGHT]) {
+        setState(BaseCharacter, JUMPING_RIGHT);
+    }
+    if (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_LEFT]) {
+        setState(BaseCharacter, JUMPING_LEFT);
+    }
+    if (gameKeyStates[SDL_SCANCODE_RIGHT]) {
+        setState(BaseCharacter, RUNNING_RIGHT);
+    }
+    if (gameKeyStates[SDL_SCANCODE_LEFT]) {
+        setState(BaseCharacter, RUNNING_LEFT);
+    }
+    if (gameKeyStates[SDL_SCANCODE_DOWN]) {
+        setState(BaseCharacter, CROUCHING);
+    }
+    if (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_RIGHT]) {
+        setState(BaseCharacter, CRAWLING_RIGHT);
+    }
+    if (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_LEFT]) {
+        setState(BaseCharacter, CRAWLING_LEFT);
+    }
+    if (gameKeyStates[SDL_SCANCODE_SPACE]) {
+        setState(BaseCharacter, ATTACKING);
+    }
+    if (gameKeyStates[SDL_SCANCODE_ESCAPE]) {
+        *isRunning = FALSE;
+    }
+}
+
+void updatePlayer(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer,
+                  SDL_Texture **Texture) {
     static Vector2D Force;
     static Vector2D Friction;
     initVector2D(&Force);
     initVector2D(&Friction);
-    gameKeyStates = SDL_GetKeyboardState(NULL);
-
-    while (gameKeyStates[SDL_SCANCODE_UP]) {
-        setState(getBaseChar(Player), JUMPING_UP);
-        Force.set(&Force, 0.0, -2.0);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_UP, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_RIGHT]) {
-        setState(getBaseChar(Player), JUMPING_RIGHT);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_UP, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_LEFT]) {
-        setState(getBaseChar(Player), JUMPING_LEFT);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_UP, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_RIGHT]) {
-        setState(getBaseChar(Player), RUNNING_RIGHT);
-        Force.set(&Force, 2.0, 0.0);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_RIGHT, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_LEFT]) {
-        setState(getBaseChar(Player), RUNNING_LEFT);
-        Force.set(&Force, -2.0, 0.0);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_LEFT, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_DOWN]) {
-        setState(getBaseChar(Player), CROUCHING);
-        Force.set(&Force, 0.0, 2.0);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_RIGHT]) {
-        setState(getBaseChar(Player), CRAWLING_RIGHT);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_LEFT]) {
-        setState(getBaseChar(Player), CRAWLING_LEFT);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_SPACE]) {
-        setState(getBaseChar(Player), ATTACKING);
-        //Force.set(&Force, 0.3, 0.0);
-        moveCharacter(getBaseChar(Player), DeltaTime, &Force, &Friction);
-        DrawCharacter(SDL_SCANCODE_SPACE, DeltaTime, getBaseChar(Player), GfxRenderer, Texture);
-        SDL_PumpEvents();
-    }
-    while (gameKeyStates[SDL_SCANCODE_ESCAPE]) {
-        *isRunning = FALSE;
-        SDL_PumpEvents();
+    switch (getState(BaseCharacter)) {
+        case IDLE_STATE:
+            DrawCharacter(IDLE_STATE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case JUMPING_UP:
+            Force.set(&Force, 0.0, -2.0);
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case JUMPING_LEFT:
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case JUMPING_RIGHT:
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case CROUCHING:
+            Force.set(&Force, 0.0, 2.0);
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case CRAWLING_LEFT:
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case CRAWLING_RIGHT:
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case DEAD:
+            break;
+        case RUNNING_LEFT:
+            Force.set(&Force, -2.0, 0.0);
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_LEFT, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case RUNNING_RIGHT:
+            Force.set(&Force, 2.0, 0.0);
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_RIGHT, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        case ATTACKING:
+            //Force.set(&Force, 0.3, 0.0);
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_SPACE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
+        default:
+            break;
     }
 }

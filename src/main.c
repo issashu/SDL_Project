@@ -4,7 +4,7 @@
 //Misc 3rd party libs
 
 //Own libs and headers
-#include "include/gameLoop.h"
+#include "game_engine/include/Core/MainGameLoop.h"
 
 int main() {
     if(mainGame()){

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include <SDL_render.h>
+#include <SDL_events.h>
 #include "Actors/BaseCharacter.h"
 #include "utils/defines.h"
 
@@ -13,6 +14,7 @@
 struct CharacterActor{
 GameObject2D *Base2D;
 StateFlags CharacterState;
+SDL_Event CharacterEvent;
 int32_t Health;
 int32_t Mana;
 float AnimationSpeed;
@@ -22,11 +24,13 @@ STRING spriteSheet;
 
 /*------------- PUBLIC: -----------------------*/
 
+//Added event to struct in order to control the AI via submitted events
 //FIXME Replace magic numbers
 void initCharacter(Character **self, char *texturePath) {
     *self = (Character*)malloc(sizeof(struct CharacterActor));
     initObject(&(*self)->Base2D);
     (*self)->CharacterState = IDLE_STATE;
+    (*self)->CharacterEvent.type = SDL_USEREVENT;
     (*self)->Health = 100;
     (*self)->Mana = 100;
     (*self)->AnimationSpeed = 150.0f;
@@ -43,6 +47,10 @@ void deinitCharacter(Character **self) {
 
 GameObject2D* getBaseObj (Character *self) {
     return self->Base2D;
+}
+
+SDL_Event* getCharacterEvent(Character *self) {
+    return &self->CharacterEvent;
 }
 
 int32_t getState (Character *self) {
@@ -85,6 +93,7 @@ void setAnimationSpeed(Character **self, int32_t speed) {
     (*self)->AnimationSpeed = speed;
 }
 
-void moveCharacter(Character *self, float *DeltaTime, Vector2D *Force, Vector2D *Friction) {
+void moveCharacter(Character *self, const float *DeltaTime,
+                   Vector2D *Force, Vector2D *Friction) {
     updateObject(&self->Base2D, *DeltaTime, Force, Friction);
 }

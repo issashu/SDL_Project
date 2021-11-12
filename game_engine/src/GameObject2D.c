@@ -25,6 +25,7 @@ struct GameObject {
 /*------------- PUBLIC: -----------------------*/
 //TODO Add parameters, once it is clear how the objects
 // will be initialised and take what is needed from player class. Also rework the texture load to get it from the vector storage container
+//FIXME Set the w and h universally on init via set (different objects and sizes)
 void initObject(GameObject2D **self) {
     *self = (GameObject2D *) malloc(sizeof(struct GameObject));
     initRigidBody2D(&(*self)->body2D);

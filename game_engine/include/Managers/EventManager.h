@@ -12,7 +12,10 @@
 
 
 //TODO Apply singleton
-void playerEventHandler(BOOL *isRunning, playerActor *Player, float *DeltaTime, SDL_Renderer **GfxRenderer,
-                        SDL_Texture **Texture);
+void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI);
+void updatePlayer(Character *BaseCharacter,
+                  const float *DeltaTime,
+                  SDL_Renderer **GfxRenderer,
+                  SDL_Texture **Texture);
 
 #endif //SDL_GAME_EVENTMANAGER_H

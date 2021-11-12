@@ -35,6 +35,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
         ${_HEADERS_DIR}/Graphics/ImageLayers.h
         ${_HEADERS_DIR}/Core/Camera2D.h
+        ${_HEADERS_DIR}/Core/MainGameLoop.h
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Physics/Vector2D.h
         ${_HEADERS_DIR}/GameObject/Transform2D.h
@@ -69,7 +70,8 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/Collider2D.c
         ${_SOURCES_DIR}/CollisionManager.c
         ${_SOURCES_DIR}/ImageLayers.c
-        ${_SOURCES_DIR}/Camera2D.c )
+        ${_SOURCES_DIR}/Camera2D.c
+        ${_SOURCES_DIR}/MainGameLoop.c)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"
@@ -78,6 +80,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 target_include_directories(${PROJECT_NAME}
         PUBLIC
         ${_HEADERS_DIR}
+        PRIVATE
         ${_SOURCES_DIR}
         ${SDL2_INCLUDE_DIR}
         ${SDL2_IMAGE_INCLUDE_DIR}
@@ -88,6 +91,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
         utils
+        PRIVATE
         ${SDL2_LIBRARY}
         ${SDL2_IMAGE_LIBRARY}
         ${SDL2_TTF_LIBRARY}

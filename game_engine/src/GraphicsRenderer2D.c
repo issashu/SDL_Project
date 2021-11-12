@@ -15,6 +15,7 @@ BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
         LOGERR("SDL_renderer could not be initialised! Reason: %s", SDL_GetError());
         return FAILURE;
     }
+    SDL_SetRenderDrawColor(*Renderer,0,0,0,1);
     return EXIT_SUCCESS;
 }
 
@@ -40,11 +41,8 @@ void unloadSurfaces(struct Vector *objTextures) {
     }
 }
 
-
-
 void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture, SDL_Rect *SrcRect, SDL_Rect *DstRect) {
     SDL_RenderCopy(*Renderer, Texture, SrcRect, DstRect);
-    SDL_RenderPresent(*Renderer);
 }
 
 void drawAnimation(SDL_Renderer **Renderer, const SDL_Rect *targetFrame, SDL_Texture *Texture, int32_t animType,
