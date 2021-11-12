@@ -14,7 +14,7 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
 void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI) {
 //Player character does not send a default event; AI characters will.
 //FIXME FIX the logic below to reflect between player and AI
-    if(gameEventAI==NONE) {
+    if (gameEventAI == NONE) {
         SDL_Event gameEvent;
         u_int8_t *gameKeyStates = NONE;
         while (SDL_PollEvent(&gameEvent)) {
@@ -86,8 +86,8 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
     }
 }
 
-void updatePlayer(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer,
-                  SDL_Texture **Texture) {
+void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer,
+                          SDL_Texture **Texture) {
     static Vector2D Force;
     static Vector2D Friction;
     initVector2D(&Force);
@@ -135,7 +135,7 @@ void updatePlayer(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer
             DrawCharacter(SDL_SCANCODE_RIGHT, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case ATTACKING:
-            //Force.set(&Force, 0.3, 0.0);
+            Force.set(&Force, (0.5*getHorrizFlip(getBaseObj(BaseCharacter))), 0.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_SPACE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;

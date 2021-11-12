@@ -31,7 +31,8 @@ BOOL mainGame() {
         clearRenderer(&GfxRenderer);
         DrawCamera(MainCamera, &GfxRenderer, getCameraTexture(MainCamera));
         characterEventHandler(&isRunning, getBaseChar(Player), NONE);
-        updatePlayer(getBaseChar(Player), &DeltaTime, &GfxRenderer, getObjectTexture(getBaseObj(getBaseChar(Player))));
+        updateCharacterActor(getBaseChar(Player), &DeltaTime, &GfxRenderer,
+                             getObjectTexture(getBaseObj(getBaseChar(Player))));
         //enemyEventHandler();
         presentRenderer(GfxRenderer);
         destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
