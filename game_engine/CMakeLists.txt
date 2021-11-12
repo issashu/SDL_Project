@@ -30,26 +30,27 @@ find_package(${SDL_mixer_name} REQUIRED)
 #We need to include SDL2 includes and libraries below too
 add_library(${PROJECT_NAME}
         STATIC
-        ${_HEADERS_DIR}/Core/sdl_methods.h
-        ${_HEADERS_DIR}/Core/GameEngineCore.h
-        ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
-        ${_HEADERS_DIR}/Graphics/ImageLayers.h
-        ${_HEADERS_DIR}/Core/Camera2D.h
-        ${_HEADERS_DIR}/Core/MainGameLoop.h
-        ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
-        ${_HEADERS_DIR}/Physics/Vector2D.h
-        ${_HEADERS_DIR}/GameObject/Transform2D.h
-        ${_HEADERS_DIR}/GameObject/GameObject2D.h
         ${_HEADERS_DIR}/Actors/BaseCharacter.h
         ${_HEADERS_DIR}/Actors/PlayerCharacter.h
-        ${_HEADERS_DIR}/Physics/RigidBody2D.h
-        ${_HEADERS_DIR}/Physics/Collider2D.h
+        ${_HEADERS_DIR}/Core/Camera2D.h
+        ${_HEADERS_DIR}/Core/GameEngineCore.h
+        ${_HEADERS_DIR}/Core/MainGameLoop.h
+        ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
+        ${_HEADERS_DIR}/Core/sdl_methods.h
+        ${_HEADERS_DIR}/GameObject/GameObject2D.h
+        ${_HEADERS_DIR}/GameObject/ObjectPool.h
+        ${_HEADERS_DIR}/GameObject/Transform2D.h
+        ${_HEADERS_DIR}/Graphics/DrawParalaxBackgrounds.h
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
-        ${_HEADERS_DIR}/Managers/WindowManager.h
+        ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
+        ${_HEADERS_DIR}/Graphics/ImageLayers.h
+        ${_HEADERS_DIR}/Managers/CollisionManager.h
         ${_HEADERS_DIR}/Managers/EventManager.h
         ${_HEADERS_DIR}/Managers/TextureManager.h
-        ${_HEADERS_DIR}/Managers/CollisionManager.h
-        ${_HEADERS_DIR}/GameObject/ObjectPool.h
+        ${_HEADERS_DIR}/Managers/WindowManager.h
+        ${_HEADERS_DIR}/Physics/Collider2D.h
+        ${_HEADERS_DIR}/Physics/RigidBody2D.h
+        ${_HEADERS_DIR}/Physics/Vector2D.h
         ${_HEADERS_DIR}/Timers/Timers.h
 
         ${_SOURCES_DIR}/sdl_methods.c
@@ -71,7 +72,8 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/CollisionManager.c
         ${_SOURCES_DIR}/ImageLayers.c
         ${_SOURCES_DIR}/Camera2D.c
-        ${_SOURCES_DIR}/MainGameLoop.c)
+        ${_SOURCES_DIR}/MainGameLoop.c
+        ${_SOURCES_DIR}/DrawParalaxBackgrounds.c )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

@@ -29,6 +29,7 @@ BOOL mainGame() {
     while (isRunning) {
         DeltaTime = getDeltaTime(&ElapsedTime);
         clearRenderer(&GfxRenderer);
+        //DrawParalaxBackground() method to sort out paralax backgrounds
         DrawCamera(MainCamera, &GfxRenderer, getCameraTexture(MainCamera));
         characterEventHandler(&isRunning, getBaseChar(Player), NONE);
         updateCharacterActor(getBaseChar(Player), &DeltaTime, &GfxRenderer,

@@ -16,7 +16,7 @@ void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event 
 //FIXME FIX the logic below to reflect between player and AI
     if (gameEventAI == NONE) {
         SDL_Event gameEvent;
-        u_int8_t *gameKeyStates = NONE;
+        const u_int8_t *gameKeyStates = NONE;
         while (SDL_PollEvent(&gameEvent)) {
             switch (gameEvent.type) {
                 case SDL_QUIT:
@@ -102,23 +102,27 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case JUMPING_LEFT:
+            Force.set(&Force, -2.0, -2.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case JUMPING_RIGHT:
+            Force.set(&Force, 2.0, -2.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case CROUCHING:
-            Force.set(&Force, 0.0, 2.0);
+            Force.set(&Force, 0.0, 0.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case CRAWLING_LEFT:
+            Force.set(&Force, -1.0, 0.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case CRAWLING_RIGHT:
+            Force.set(&Force, 1.0, 0.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
