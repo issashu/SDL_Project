@@ -37,8 +37,9 @@ BOOL mainGame() {
         presentRenderer(GfxRenderer);
         destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
         destroyTexture(getCameraTexture(MainCamera));
-        // Irrelevant! Connected to vsync and using delta time: SDL_Delay(1000/60);
-        //TODO Add texture to character and camera, so they can be separately destroyed
+
+        // Connected render to vsync and using delta time, so should have no effect
+        SDL_Delay(1000/60);
     }
     deinitPlayerActor(&Player);
     deinitCamera2D(&MainCamera);
