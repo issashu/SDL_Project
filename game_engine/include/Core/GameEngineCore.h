@@ -10,12 +10,15 @@
 #include "Actors/BaseCharacter.h"
 #include "Actors/PlayerCharacter.h"
 #include "Core/Camera2D.h"
+#include "utils/containers/Vector.h"
 
 
 int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **AppWindow);
 void SDLUnloader(SDL_Renderer *GfxRenderer, SDL_Window *AppWindow, SDL_Surface *ImageSurface);
 void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharacter, SDL_Renderer **GfxRenderer,
                    SDL_Texture **Texture);
-void DrawCamera(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture);
+void DrawObjects(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture, SDL_Rect *SrcTextureRect,
+                 struct Vector *TexturesContainer, int32_t TextureIndex);
+
 
 #endif //SDL_GAME_GAMEENGINECORE_H

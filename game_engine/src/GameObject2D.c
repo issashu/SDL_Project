@@ -7,7 +7,6 @@
 
 #include "GameObject/GameObject2D.h"
 #include "Physics/RigidBody2D.h"
-#include "Managers/TextureManager.h"
 #include "utils/defines.h"
 
 /*------------- PRIVATE: -----------------------*/
@@ -26,14 +25,13 @@ struct GameObject {
 //TODO Add parameters, once it is clear how the objects
 // will be initialised and take what is needed from player class. Also rework the texture load to get it from the vector storage container
 //FIXME Set the w and h universally on init via set (different objects and sizes)
-void initObject(GameObject2D **self) {
+void initObject(GameObject2D **self, int32_t Width, int32_t Height) {
     *self = (GameObject2D *) malloc(sizeof(struct GameObject));
     initRigidBody2D(&(*self)->body2D);
-    (*self)->ObjTexture = NONE;
     (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
     (*self)->ObjectRect.y = (int) getTransformY((*self)->body2D);
-    (*self)->ObjectRect.w = 96;
-    (*self)->ObjectRect.h = 84;
+    (*self)->ObjectRect.w = Width;
+    (*self)->ObjectRect.h = Height;
     (*self)->ObjTexture = NONE;
     (*self)->isHFlipped = FALSE;
     (*self)->isVFlipped = FALSE;
@@ -53,14 +51,12 @@ SDL_Rect *getObjectRect(GameObject2D *self) {
     return &self->ObjectRect;
 }
 
-SDL_Texture ** getObjectTexture(GameObject2D *self) {
+SDL_Texture **getObjectTexture(GameObject2D *self) {
     return &self->ObjTexture;
 }
 
-BOOL getHorrizFlip(GameObject2D
-*self) {
-return self->
-isHFlipped;
+BOOL getHorrizFlip(GameObject2D *self) {
+    return self->isHFlipped;
 }
 
 BOOL getVertFlip(GameObject2D *self) {

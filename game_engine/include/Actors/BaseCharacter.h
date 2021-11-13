@@ -12,13 +12,18 @@
 #include "GameObject/GameObject2D.h"
 
 /*
- * Enums are based on the sprite sheet.
+ * Enums and defines are based on the sprite sheet.
  * Decrease by 1 when using in code
  *
  * Using common sprite sheet for both player and enemies,
  * thus enums are in base character struct and not in each actor structs
  * as it normally should be.
  */
+
+#define SPRITE_WIDTH 96
+#define SPRITE_HEIGHT 84
+
+
 enum animType {
     IDLE = 2,
     CROUCH = 10,
@@ -47,6 +52,7 @@ enum animFrames {
 typedef enum CharacterStates{
     IDLE_STATE,
     JUMPING_UP,
+    JUMPING_DOWN,
     JUMPING_RIGHT,
     JUMPING_LEFT,
     CROUCHING,
@@ -80,7 +86,5 @@ void healDamage(Character *self, int32_t Heal);
 void setAnimationSpeed(Character **self, int32_t speed);
 
 void moveCharacter(Character *self, const float *DeltaTime, Vector2D *Force, Vector2D *Friction);
-
-
 
 #endif //SDL_GAME_BASECHARACTER_H

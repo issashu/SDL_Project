@@ -15,7 +15,7 @@ struct PlayerCharacter{
 
 /*------------- PUBLIC: -----------------------*/
 
-void initPlayerActor(playerActor **self, const char *Name) {
+void initPlayerActor(playerActor **self, char *Name) {
     *self = (playerActor *) malloc(sizeof(struct PlayerCharacter));
     (*self)->spriteSheetPath = ASSETS_PATH "images/character_anim.png";
     (*self)->playerName = Name;

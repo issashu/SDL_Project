@@ -6,57 +6,75 @@
 
 #include "Graphics/ImageLayers.h"
 #include "Physics/Vector2D.h"
-#include "utils/defines.h"
+#include "utils/containers/Vector.h"
 
 /*------------- PRIVATE: -----------------------*/
+
+#define INITIAL_TILES_COUNT 5
+
 struct LayeredImage2D {
-    STRING TexturePath;
+    struct Vector TexturesContainer;
     Vector2D Offset;
     Vector2D Scale;
     int32_t Width;
     int32_t Height;
-    BOOL isLooped;
+    int32_t LayerIndex;
     float_t ScrollSpeed;
-    SDL_RendererFlip isFlipped;
+    BOOL isLooped;
+    BOOL isFlipped;
 };
 
 
 /*------------- PUBLIC: -----------------------*/
 
-void initLayeredImage (ImageLayer **self) {
-    *self = (ImageLayer*) malloc (sizeof(struct LayeredImage2D));
-    (*self)->TexturePath = "";
+void initLayeredImage(ImageLayer **self, int32_t ImageCount, int32_t Width, int32_t Height, int32_t LayerIndex,
+                      int32_t ScrollSpeed, BOOL Looped, BOOL Flipped) {
+    *self = (ImageLayer *) malloc(sizeof(struct LayeredImage2D));
+    initVector(&(*self)->TexturesContainer, ImageCount);
     initVector2D(&(*self)->Offset);
     initVector2D(&(*self)->Scale);
-    (*self)->Width = 0;
-    (*self)->Height = 0;
-    (*self)->isLooped = FALSE;
-    (*self)->ScrollSpeed = 0;
-    (*self)->isFlipped = SDL_FLIP_NONE;
+    (*self)->Width = Width;
+    (*self)->Height = Height;
+    (*self)->LayerIndex = LayerIndex;
+    (*self)->ScrollSpeed = ScrollSpeed;
+    (*self)->isLooped = Looped;
+    (*self)->isFlipped = Flipped;
 }
 
-void deinitLayeredImage (ImageLayer **self) {
-    if(*self != NONE) {
+void deinitLayeredImage(ImageLayer **self) {
+    if (*self != NONE) {
         deinitVector2D(&(*self)->Offset);
         deinitVector2D(&(*self)->Scale);
+        freeVector(&(*self)->TexturesContainer);
         free(*self);
         *self = NONE;
     }
 }
 
-void setScrollSpeed (ImageLayer **self, float_t ImageScrollSpeed){
-    (*self)->ScrollSpeed = ImageScrollSpeed;
-}
-float_t* getScrollSpeed(ImageLayer **self) {
-    return &(*self)->ScrollSpeed;
+struct Vector* getTexturesContainer (ImageLayer *self) {
+    return &self->TexturesContainer;
 }
 
-void loopImage(ImageLayer **self, BOOL loop){
+void setScrollSpeed(ImageLayer **self, float_t ImageScrollSpeed) {
+    (*self)->ScrollSpeed = ImageScrollSpeed;
+}
+
+float_t getScrollSpeed(const ImageLayer **self) {
+    return (*self)->ScrollSpeed;
+}
+
+void setLayerIndex(ImageLayer **self, int32_t index) {
+    (*self)->LayerIndex = index;
+}
+
+int32_t getLayerIndex(const ImageLayer *self) {
+    return self->LayerIndex;
+}
+
+void setImageLoop(ImageLayer **self, BOOL loop) {
     (*self)->isLooped = loop;
 }
 
-void flipImage(ImageLayer **self, int32_t FlipFlag) {
+void flipImage(ImageLayer **self, BOOL FlipFlag) {
     (*self)->isFlipped = FlipFlag;
-} 
-//TODO Put setters and getters
-
+}

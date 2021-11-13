@@ -56,84 +56,6 @@ int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **A
         return FAILURE;
     }
 
-    if (loadSurfaces(&characterTextures, ASSETS_PATH "images/Enemies/enemy_sheet_red.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_0.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_1.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_2.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_3.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_4.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_5.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_6.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_7.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_8.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_9.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_10.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
-    if (loadSurfaces(&backgroundTextures, ASSETS_PATH "images/Background/Layer_11.png") != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
     if (initRenderer(*AppWindow, GfxRenderer) != SUCCESS) {
         LOGERR("initRenderer() failed.");
 
@@ -143,8 +65,7 @@ int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **A
     return SUCCESS;
 }
 
-//FIXME REPLACE THE MAGIC NUMBERS and move delta time into a timer manager
-//TODO Unite DrawCharacter and DrawCamera in one method to have single Render clear and prtesent
+//FIXME REPLACE THE MAGIC NUMBERS
 void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharacter, SDL_Renderer **GfxRenderer,
                    SDL_Texture **Texture) {
 
@@ -162,7 +83,8 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
             break;
 
         case SDL_SCANCODE_DOWN:
-            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, CRAWL - 1, CRAWL_FRAMES - 1,
+
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, CROUCH - 1, CROUCH_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
@@ -184,11 +106,15 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
     }
 }
 
-void DrawCamera(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture) {
-    applyTexture(&backgroundTextures, Texture, GfxRenderer, 0);
-    drawStatic(GfxRenderer, *Texture, NULL, getCameraViewPoint(Camera));
+void DrawObjects(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture, SDL_Rect *SrcTextureRect,
+                 struct Vector *TexturesContainer, int32_t TextureIndex) {
+    //TODO "Debug if statement": Remove it when passing outside params
+    if(TexturesContainer == NONE){
+        TexturesContainer = &backgroundTextures;
+    }
+    applyTexture(TexturesContainer, Texture, GfxRenderer, TextureIndex);
+    drawStatic(GfxRenderer, *Texture, SrcTextureRect, getCameraViewPoint(Camera));
 }
-
 
 void SDLUnloader(SDL_Renderer *GfxRenderer, SDL_Window *AppWindow, SDL_Surface *ImageSurface) {
     //TODO Rethink the whole architecture to have SDL lib unloader and then initializer separately

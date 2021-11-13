@@ -111,7 +111,13 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
+        case JUMPING_DOWN:
+            Force.set(&Force, 0.0, 2.0);
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            break;
         case CROUCHING:
+            //TODO Add methods to shrink hitbox
             Force.set(&Force, 0.0, 0.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);

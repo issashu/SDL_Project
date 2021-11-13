@@ -28,7 +28,7 @@ STRING spriteSheet;
 //FIXME Replace magic numbers
 void initCharacter(Character **self, char *texturePath) {
     *self = (Character*)malloc(sizeof(struct CharacterActor));
-    initObject(&(*self)->Base2D);
+    initObject(&(*self)->Base2D, SPRITE_WIDTH, SPRITE_HEIGHT);
     (*self)->CharacterState = IDLE_STATE;
     (*self)->CharacterEvent.type = SDL_USEREVENT;
     (*self)->Health = 100;
