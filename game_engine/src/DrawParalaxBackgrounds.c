@@ -23,7 +23,7 @@
 
 static STRING Layer[4][3];
 
-void loadLayerPaths(){
+void loadLayerPaths() {
     Layer[0][0] = ASSETS_PATH "images/Background/Layer_0_0.png";
     Layer[0][1] = ASSETS_PATH "images/Background/Layer_0_1.png";
     Layer[0][2] = ASSETS_PATH "images/Background/Layer_0_2.png";
@@ -39,16 +39,13 @@ void loadLayerPaths(){
 }
 
 void LoadImageLayer(ImageLayer **BackgroundSet, int32_t LayerIndex, int32_t ImageCount, int32_t Width, int32_t Height,
-                    int32_t ScrollSpeed, BOOL isLooped, BOOL isFlipped, STRING *ImageMap) {
+                    int32_t ScrollSpeed, BOOL isLooped, BOOL isFlipped, UNUSED STRING *ImageMap) {
     //FIXME Refactor the method, once above is solved...quick and ugly below
     // ...avoid the pointer arithmetic for 2D array ImageMap
     loadLayerPaths();
-    ImageMap = (char **) Layer;
     initLayeredImage(BackgroundSet, ImageCount, Width, Height, LayerIndex, ScrollSpeed, isLooped, isFlipped);
 
     for(int32_t ImageIndex = 0; ImageIndex < (ImageCount); ImageIndex++) {
-//        loadTextures(getTexturesContainer(*BackgroundSet), *((Layer + LayerIndex) + ImageIndex));
         loadTextures(getTexturesContainer(*BackgroundSet), Layer[LayerIndex][ImageIndex]);
-        printf("%s\n", Layer[LayerIndex][ImageIndex]);
     }
 }

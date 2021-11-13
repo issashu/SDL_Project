@@ -2,6 +2,7 @@
 // Created by Iordan Tonchev on 6.11.21.
 //
 
+
 #include <SDL_rect.h>
 #include <math.h>
 #include "Managers/CollisionManager.h"
@@ -11,13 +12,17 @@
 /*------------- PRIVATE: -----------------------*/
 static CollisionManager2D *self = NONE;
 
-BOOL areObjColliding(GameObject2D *FirstObject, GameObject2D *SecondObject);
+BOOL areObjectsColliding(GameObject2D *FirstObject, GameObject2D *SecondObject);
+SDL_Rect ObjectsIntersectionRect(GameObject2D *FirstObject, GameObject2D *SecondObject);
+int8_t ObjectsIntersectionSide(GameObject2D *FirstObject, GameObject2D *SecondObject);
 
 /*------------- PUBLIC: -----------------------*/
 CollisionManager2D* getCollisionManager() {
     if (self == NONE) {
-        self = (struct CollisionManager2D*) malloc(sizeof(struct CollisionManager));
-        self->CheckCollision = &areObjColliding;
+        self = (CollisionManager2D*) malloc(sizeof(struct CollisionManager));
+        self->CheckCollision = &areObjectsColliding;
+        self->getIntersectionRect = &ObjectsIntersectionRect;
+        self->getIntersactionSide = &ObjectsIntersectionSide;
     }
     return self;
 }
@@ -27,13 +32,16 @@ void deinitCollisionManager() {
     self = NONE;
 }
 
-BOOL areObjColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) {
+
+/*------------- IMPLEMENTATION: -----------------------*/
+
+BOOL areObjectsColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) {
     SDL_Point CenterFirstObject = {.x = 0, .y = 0};
     SDL_Point CenterSecondObject = {.x = 0, .y = 0};
     float Hypotenuse = 0.0f;
     float SumObjRadiuses = 0.0f;
 
-    // w: 96 / h: 84
+
     CenterFirstObject.x = ((getObjectRect(FirstObject)->w + getObjectRect(FirstObject)->x) * HALF);
     CenterFirstObject.y = ((getObjectRect(FirstObject)->h + getObjectRect(FirstObject)->y) * HALF);
 
@@ -53,3 +61,28 @@ BOOL areObjColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) {
     return FALSE;
 }
 
+SDL_Rect ObjectsIntersectionRect(GameObject2D *FirstObject, GameObject2D *SecondObject) {
+    SDL_Rect result;
+    SDL_IntersectRect(getObjectRect(FirstObject),getObjectRect(SecondObject), &result);
+
+    return result;
+}
+
+int8_t ObjectsIntersectionSide(GameObject2D *FirstObject, GameObject2D *SecondObject) {
+    SDL_Rect *First = getObjectRect(FirstObject);
+    SDL_Rect *Second = getObjectRect(SecondObject);
+
+    if (SDL_HasIntersection(First, Second)){
+
+        if ((First->x + First->w) <= Second->x)
+            return SIDE_LEFT;
+        if((First->y+First->h) <= Second->y)
+            return SIDE_UP;
+        if((Second->x + Second->w) <= First->x)
+            return SIDE_RIGHT;
+        if((Second->y + Second->h) <= First->y)
+            return SIDE_DOWN;
+    }
+
+    return NO_COLLISION;
+}

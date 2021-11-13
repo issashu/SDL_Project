@@ -7,7 +7,7 @@
 
 #define STORAGE_START_CAPACITY 1
 
-// (ASSETS_PATH "images/character_anim.png")
+// (ASSETS_PATH "images/character_anim1.png")
 
 BOOL initRenderer(SDL_Window *Window, SDL_Renderer **Renderer) {
     *Renderer = SDL_CreateRenderer(Window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);

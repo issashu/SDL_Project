@@ -67,9 +67,8 @@ BOOL mainGame() {
                             getObjectTexture(getBaseObj(getBaseChar(Player))));
 
         //TODO Replace print with actual collision manager mechanic
-        printf("%d", CollisionManager->CheckCollision(getBaseObj(getBaseChar(Player)),
-                                                      getBaseObj(getBaseChar(Player))));
 
+        CollisionManager->getIntersectionRect(getBaseObj(getBaseChar(Player)), getBaseObj(getBaseChar(Player)));
         //enemyEventHandler();
 
         presentRenderer(GfxRenderer);
@@ -83,6 +82,7 @@ BOOL mainGame() {
     }
     deinitPlayerActor(&Player);
     deinitCamera2D(&MainCamera);
+    deinitCollisionManager();
     SDLUnloader(GfxRenderer, AppWindow, NULL);
 
     return SUCCESS;

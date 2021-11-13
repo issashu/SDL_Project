@@ -51,10 +51,10 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Managers/CollisionManager.h
         ${_HEADERS_DIR}/Managers/EventManager.h
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
+        ${_HEADERS_DIR}/Managers/GameStateManager.h
         ${_HEADERS_DIR}/Managers/TextureManager.h
         ${_HEADERS_DIR}/Managers/WindowManager.h
 
-        ${_HEADERS_DIR}/Physics/Collider2D.h
         ${_HEADERS_DIR}/Physics/RigidBody2D.h
         ${_HEADERS_DIR}/Physics/Vector2D.h
 
@@ -76,12 +76,12 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/TextureManager.c
         ${_SOURCES_DIR}/ObjectPool.c
         ${_SOURCES_DIR}/Timers.c
-        ${_SOURCES_DIR}/Collider2D.c
         ${_SOURCES_DIR}/CollisionManager.c
         ${_SOURCES_DIR}/ImageLayers.c
         ${_SOURCES_DIR}/Camera2D.c
         ${_SOURCES_DIR}/MainGameLoop.c
-        ${_SOURCES_DIR}/DrawParalaxBackgrounds.c )
+        ${_SOURCES_DIR}/DrawParalaxBackgrounds.c
+        ${_SOURCES_DIR}/GameStateManager.c)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

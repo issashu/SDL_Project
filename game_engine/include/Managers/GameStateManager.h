@@ -1,0 +1,8 @@
+//
+// Created by Iordan Tonchev on 13.11.21.
+//
+
+#ifndef SDL_GAME_GAMESTATEMANAGER_H
+#define SDL_GAME_GAMESTATEMANAGER_H
+
+#endif //SDL_GAME_GAMESTATEMANAGER_H
