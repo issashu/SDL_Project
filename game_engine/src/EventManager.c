@@ -23,11 +23,13 @@ void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event 
                     *isRunning = FALSE;
                     break;
 
+                case SDL_CONTROLLERBUTTONDOWN:
                 case SDL_KEYDOWN:
                     gameKeyStates = SDL_GetKeyboardState(NULL);
                     keyboardEvent(isRunning, BaseCharacter, gameKeyStates);
                     break;
 
+                case SDL_CONTROLLERBUTTONUP:
                 case SDL_KEYUP:
                     setState(BaseCharacter, IDLE_STATE);
                     break;
@@ -54,7 +56,7 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
     //TODO ADD DOXYGEN and set some default key event (also might be having slight delay because of pump
     //TODO Find a way to automate indexing. Maybe object struct should know the index of its texture
     // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
-    if (gameKeyStates[SDL_SCANCODE_UP]) {
+    if (gameKeyStates[SDL_SCANCODE_UP] || SDL_CONTROLLER_BUTTON_A) {
         setState(BaseCharacter, JUMPING_UP);
     }
     if (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_RIGHT]) {

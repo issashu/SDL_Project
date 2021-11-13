@@ -61,10 +61,11 @@ void setVelocity(RigidBody2D *self, float deltaTime) {
 
 /*------------- PUBLIC: -----------------------*/
 
+//FIXME Set the spawn location correctly w/o magic numbers
 void initRigidBody2D(RigidBody2D **self) {
     *self = (RigidBody2D *)malloc(sizeof(struct RigidBody2D));
-    (*self)->transform.X = 100;
-    (*self)->transform.Y = 100;
+    (*self)->transform.X = 10;
+    (*self)->transform.Y = 650;
     (*self)->Mass = BODY_MASS;
     (*self)->appliedGravity = WORLD_GRAVITY;
     initVector2D(&(*self)->appliedForce);

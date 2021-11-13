@@ -8,7 +8,12 @@
 #include "utils/defines.h"
 #include "utils/containers/Vector.h"
 
-//TODO Apply singleton
+//TODO Apply singleton by:
+// 1. Make the manager into struct.
+// 2. Initialise as external global.
+// 3. In the init method put an if with isCreated flag.
+// 4. Raise flag on init, put down on deinit.
+// 5. If the flag is down, create new instance (initialise). If it is up - return pointer to the existing one ^^
 
 void initTextureStorage(struct Vector *textureMap, size_t initialCapacity);
 BOOL loadTextures(struct Vector *textureMap, char *texturePath);

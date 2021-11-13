@@ -8,8 +8,16 @@
 #include <SDL.h>
 
 #include "Physics/Collider2D.h"
+#include "GameObject/GameObject2D.h"
 #include "utils/defines.h"
 
-BOOL CheckCollision2D (Collider2D *Collider, SDL_Rect *obj);
+typedef struct CollisionManager {
+    BOOL (*CheckCollision)(GameObject2D *, GameObject2D *);
+}CollisionManager2D;
+
+CollisionManager2D* getCollisionManager();
+void deinitCollisionManager();
+
+
 
 #endif //SDL_GAME_COLLISIONMANAGER_H

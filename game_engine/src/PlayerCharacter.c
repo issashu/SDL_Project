@@ -7,7 +7,7 @@
 
 
 /*------------- PRIVATE: -----------------------*/
-struct PlayerCharacter{
+struct PlayerCharacter {
     Character *baseCharacter;
     STRING spriteSheetPath;
     STRING playerName;

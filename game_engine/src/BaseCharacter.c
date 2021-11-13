@@ -11,7 +11,7 @@
 
 /*------------- PRIVATE: -----------------------*/
 
-struct CharacterActor{
+struct CharacterActor {
 GameObject2D *Base2D;
 StateFlags CharacterState;
 SDL_Event CharacterEvent;

@@ -12,8 +12,9 @@
 /*------------- PRIVATE: -----------------------*/
 struct GameObject {
     RigidBody2D *body2D;
-    SDL_Rect ObjectRect;
     SDL_Texture *ObjTexture;
+    SDL_Rect ObjectRect;
+    float ObjectRadius;
     BOOL isHFlipped;
     BOOL isVFlipped;
     BOOL isPassable;
@@ -32,6 +33,7 @@ void initObject(GameObject2D **self, int32_t Width, int32_t Height) {
     (*self)->ObjectRect.y = (int) getTransformY((*self)->body2D);
     (*self)->ObjectRect.w = Width;
     (*self)->ObjectRect.h = Height;
+    (*self)->ObjectRadius = Width * HALF;
     (*self)->ObjTexture = NONE;
     (*self)->isHFlipped = FALSE;
     (*self)->isVFlipped = FALSE;
@@ -53,6 +55,10 @@ SDL_Rect *getObjectRect(GameObject2D *self) {
 
 SDL_Texture **getObjectTexture(GameObject2D *self) {
     return &self->ObjTexture;
+}
+
+float getObjectRadius(GameObject2D *self) {
+    return self->ObjectRadius;
 }
 
 BOOL getHorrizFlip(GameObject2D *self) {

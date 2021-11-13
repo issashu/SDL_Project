@@ -7,11 +7,12 @@
 
 #define SUCCESS 0
 #define FAILURE 1
-#define STRING char*
+#define HALF 0.5f
 #define TRUE 1
 #define FALSE 0
 #define BOOL int8_t
 #define NONE ((void*)0)
+#define STRING char*
 #define UNUSED __attribute__((unused))
 
 #endif //SDL_GAME_DEFINES_H

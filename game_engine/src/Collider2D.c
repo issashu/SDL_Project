@@ -9,8 +9,8 @@
 
 struct Collider2D {
     SDL_Rect ColliderRect;
-    STRING ColliderTag;
     Transform2D *ObjTransformPtr;
+    STRING ColliderTag;
     BOOL Enabled;
 };
 
