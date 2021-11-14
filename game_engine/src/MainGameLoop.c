@@ -73,13 +73,13 @@ BOOL mainGame() {
 
         presentRenderer(GfxRenderer);
         //Need a separate destroy method for the backgrounds to clear the texture. Currently, huge leak
-
+        destroyTexture(&ViewPortTexture);
         // Connected render to vsync and using delta time, so should not have much of an effect
         SDL_Delay(1000 / 60);
     }
     //FIXME Refactor with single ptr
     destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
-    destroyTexture(getCameraTexture(MainCamera));
+    ViewPortTexture = NONE;
     deinitPlayerActor(&Player);
     deinitCamera2D(&MainCamera);
     deinitCollisionManager();
