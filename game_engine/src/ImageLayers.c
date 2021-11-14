@@ -14,8 +14,6 @@
 
 struct LayeredImage2D {
     struct Vector TexturesContainer;
-    Vector2D Offset;
-    Vector2D Scale;
     int32_t Width;
     int32_t Height;
     int32_t LayerIndex;

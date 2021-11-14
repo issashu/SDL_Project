@@ -9,6 +9,7 @@
 #include "GameObject/GameObject2D.h"
 #include "Physics/RigidBody2D.h"
 #include "utils/defines.h"
+#include "Managers/TextureManager.h"
 
 /*------------- PRIVATE: -----------------------*/
 struct GameObject {
@@ -55,6 +56,8 @@ void initObject(GameObject2D **self, uint8_t PositionInPool, int32_t Width, int3
 void deinitObject(GameObject2D **self) {
     if (*self != NONE) {
         deinitRigidBody2D(&(*self)->body2D);
+        destroyTexture(&(*self)->ObjTexture);
+        (*self)->ObjTexture = NONE;
         free(*self);
         *self = NONE;
     }

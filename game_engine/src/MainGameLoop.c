@@ -138,13 +138,18 @@ BOOL mainGame() {
         // Connected render to vsync and using delta time, so should not have much of an effect
         SDL_Delay(1000 / 60);
     }
-    //FIXME Refactor with single ptr
+    //DEINITIALISATION
     deinitBasePlatform(&Platform1);
     deinitBasePlatform(&Platform2);
     deinitBasePlatform(&Platform3);
     deinitBasePlatform(&Platform4);
     deinitBasePlatform(&Platform5);
     deinitBasePlatform(&Platform6);
+
+    UnloadImageLayer(&Background0);
+    UnloadImageLayer(&Background1);
+    UnloadImageLayer(&Background2);
+    UnloadImageLayer(&Background3);
 
     deinitLayeredImage(&Background0);
     deinitLayeredImage(&Background1);

@@ -49,3 +49,9 @@ void LoadImageLayer(ImageLayer **BackgroundSet, int32_t LayerIndex, int32_t Imag
         loadImageSurfaces(getTexturesContainer(*BackgroundSet), Layer[LayerIndex][ImageIndex]);
     }
 }
+
+void UnloadImageLayer(ImageLayer **BackgroundSet) {
+        unloadTextures(getTexturesContainer(*BackgroundSet));
+        free(*BackgroundSet);
+        *BackgroundSet = NONE;
+}

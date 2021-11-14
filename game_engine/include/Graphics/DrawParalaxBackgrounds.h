@@ -12,4 +12,6 @@
 void LoadImageLayer(ImageLayer **BackgroundSet, int32_t LayerIndex, int32_t ImageCount, int32_t Width, int32_t Height,
                     int32_t ScrollSpeed, BOOL isLooped, BOOL isFlipped, STRING *ImageMap);
 
+void UnloadImageLayer(ImageLayer **BackgroundSet);
+
 #endif //SDL_GAME_DRAWPARALAXBACKGROUNDS_H

@@ -22,7 +22,6 @@ uint8_t ObjectsIntersectionSide(GameObject2D *FirstObject, GameObject2D *SecondO
 CollisionManager2D *getCollisionManager() {
     if (self == NONE) {
         self = (CollisionManager2D *) malloc(sizeof(struct CollisionManager));
-        self->CheckCollision = &areObjectsColliding;
         self->getIntersectionRect = &ObjectsIntersectionRect;
         self->getIntersactionSide = &ObjectsIntersectionSide;
     }
@@ -38,8 +37,8 @@ void deinitCollisionManager() {
 
 
 /*------------- IMPLEMENTATION: -----------------------*/
-
-BOOL areObjectsColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) {
+//TODO Uncomment once Ubuntu 21.10 receives sqrt and pow math libraries back
+/*BOOL areObjectsColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) {
     SDL_Point CenterFirstObject = {.x = 0, .y = 0};
     SDL_Point CenterSecondObject = {.x = 0, .y = 0};
     float Hypotenuse = 0.0f;
@@ -62,7 +61,7 @@ BOOL areObjectsColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) 
     }
 
     return FALSE;
-}
+}*/
 
 SDL_Rect ObjectsIntersectionRect(GameObject2D *FirstObject, GameObject2D *SecondObject) {
     SDL_Rect result;

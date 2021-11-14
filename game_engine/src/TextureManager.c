@@ -44,17 +44,17 @@ BOOL destroyTexture(SDL_Texture **texture){
 
 
 //TODO Use on destroy object.
-void unloadTextures(struct Vector *textures) {
-    if (textures!= NULL){
-        size_t texturesCount = getSizeVector(textures);
+void unloadTextures(struct Vector *textureMap) {
+    if (textureMap != NULL){
+        size_t texturesCount = getSizeVector(textureMap);
         for (size_t i = 0; i<texturesCount; i++){
-            if(textures->items[i]!=NULL){
-                SDL_DestroyTexture(getElementVector(textures, i));
-                free(textures->items[i]);
-                textures->items[i] = NULL;
+            if(textureMap->items[i] != NULL){
+                SDL_DestroyTexture(getElementVector(textureMap, i));
+                free(textureMap->items[i]);
+                textureMap->items[i] = NULL;
             }
         }
-        freeVector(textures);
-        textures = NULL;
+        freeVector(textureMap);
+        textureMap = NULL;
     }
 }
