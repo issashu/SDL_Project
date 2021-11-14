@@ -3,7 +3,7 @@
 //
 
 #include "GameObject/Platforms/BasePlatform2D.h"
-#include "GameObject/GameObject2D.h"
+
 
 /*------------- PRIVATE: -----------------------*/
 
@@ -19,15 +19,16 @@ struct BasePlatform2D {
 
 /*------------- PUBLIC: -----------------------*/
 
-void initBasePlatform(BasePlatform2D **self, STRING TexturePath, STRING Tag, int32_t Width,
-                      int32_t Height, int32_t Health, SDL_Renderer *GfxRenderer) {
+void
+initBasePlatform(BasePlatform2D **self, char *TexturePath, char *Tag, int32_t Width, int32_t Height, int32_t Health,
+                 SDL_Renderer *GfxRenderer, float SpawnX, float SpawnY) {
     *self = (BasePlatform2D *) malloc(sizeof(struct BasePlatform2D));
     (*self)->TexturePath = TexturePath;
     (*self)->Tag = Tag;
     (*self)->Width = Width;
     (*self)->Height = Height;
     (*self)->Health = Health;
-    initObject(&(*self)->BaseObject, 0, (*self)->Width, (*self)->Height, GfxRenderer, (*self)->TexturePath);
+    initObject(&(*self)->BaseObject, 0, (*self)->Width, (*self)->Height, GfxRenderer, (*self)->TexturePath, SpawnX, SpawnY);
 }
 
 void deinitBasePlatform(BasePlatform2D **self) {
@@ -52,8 +53,12 @@ int32_t getHeight(BasePlatform2D *self) {
     return self->Height;
 }
 
-int32_t getHealth(BasePlatform2D *self) {
+int32_t checkHealth(BasePlatform2D *self) {
     return self->Health;
+}
+
+GameObject2D* getBaseObject (BasePlatform2D *self) {
+    return self->BaseObject;
 }
 
 void setTexturePath (BasePlatform2D **self, STRING texturePath) {

@@ -26,7 +26,7 @@ STRING spriteSheet;
 
 //Added event to struct in order to control the AI via submitted events
 //FIXME Replace magic numbers
-void initCharacter(Character **self, char *texturePath, SDL_Renderer *GfxRenderer) {
+void initCharacter(Character **self, char *texturePath, SDL_Renderer *GfxRenderer, float SpawnX, float SpawnY) {
     *self = (Character*)malloc(sizeof(struct CharacterActor));
     (*self)->CharacterState = IDLE_STATE;
     (*self)->CharacterEvent.type = SDL_USEREVENT;
@@ -34,7 +34,7 @@ void initCharacter(Character **self, char *texturePath, SDL_Renderer *GfxRendere
     (*self)->Mana = 100;
     (*self)->AnimationSpeed = 150.0f;
     (*self)->spriteSheet = texturePath;
-    initObject(&(*self)->Base2D, 0, SPRITE_WIDTH, SPRITE_HEIGHT, GfxRenderer, (*self)->spriteSheet);
+    initObject(&(*self)->Base2D, 0, SPRITE_WIDTH, SPRITE_HEIGHT, GfxRenderer, (*self)->spriteSheet, SpawnX, SpawnY);
 }
 
 void deinitCharacter(Character **self) {

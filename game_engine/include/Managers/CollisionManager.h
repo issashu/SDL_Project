@@ -19,7 +19,7 @@ enum CollisionSides {
 
 typedef struct CollisionManager {
     BOOL (*CheckCollision)(GameObject2D *, GameObject2D *);
-    int8_t (*getIntersactionSide)(GameObject2D *, GameObject2D *);
+    uint8_t (*getIntersactionSide)(GameObject2D *, GameObject2D *, int32_t *);
     SDL_Rect (*getIntersectionRect)(GameObject2D *, GameObject2D *);
 
 } CollisionManager2D;

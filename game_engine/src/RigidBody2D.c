@@ -11,7 +11,10 @@
 
 //TODO Move defines to respective header
 #define BODY_MASS 1.0f
-#define WORLD_GRAVITY 0.0f
+#define WORLD_GRAVITY 0.5f
+
+#define SPAWN_X 10
+#define SPAWN_Y 50
 
 /*------------- PRIVATE: -----------------------*/
 
@@ -34,7 +37,7 @@ void setMass(RigidBody2D *self, float newMass) {
     self->Mass = newMass;
 }
 //TODO Think about the need of unset force function or just use negative vector
-void applyForce(RigidBody2D *self, Vector2D *Force){
+void applyForce(RigidBody2D *self, Vector2D *Force) {
     self->appliedForce.X = Force->X;
     self->appliedForce.Y = Force->Y;
 }
@@ -62,10 +65,10 @@ void setVelocity(RigidBody2D *self, float deltaTime) {
 /*------------- PUBLIC: -----------------------*/
 
 //FIXME Set the spawn location correctly w/o magic numbers
-void initRigidBody2D(RigidBody2D **self) {
+void initRigidBody2D(RigidBody2D **self, float SpawnX, float SpawnY) {
     *self = (RigidBody2D *)malloc(sizeof(struct RigidBody2D));
-    (*self)->transform.X = 10;
-    (*self)->transform.Y = 650;
+    (*self)->transform.X = SpawnX;
+    (*self)->transform.Y = SpawnY;
     (*self)->Mass = BODY_MASS;
     (*self)->appliedGravity = WORLD_GRAVITY;
     initVector2D(&(*self)->appliedForce);
@@ -96,6 +99,14 @@ float getTransformX(RigidBody2D *self) {
 
 float getTransformY(RigidBody2D *self) {
     return self->transform.Y;
+}
+
+void setTransformX(RigidBody2D **self, float NewX) {
+    (*self)->transform.X = NewX;
+}
+
+void setTransformY(RigidBody2D **self, float NewY) {
+    (*self)->transform.Y = NewY;
 }
 
 

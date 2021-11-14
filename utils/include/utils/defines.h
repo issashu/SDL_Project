@@ -15,4 +15,14 @@
 #define STRING char*
 #define UNUSED __attribute__((unused))
 
+enum ObjectTypes{
+    BASIC_PLATFORM = 1,
+    FALL_THROUGH_TRAP,
+    SPIKE_TRAP,
+    HEALING_POTION,
+    MANA_POTION,
+    BONUS_POINTS_ITEM,
+    GENERIC_GAME_OBJECT
+};
+
 #endif //SDL_GAME_DEFINES_H

@@ -30,9 +30,9 @@ struct GameObject {
 // will be initialised and take what is needed from player class. Also rework the texture load to get it from the vector storage container
 //FIXME Set the w and h universally on init via set (different objects and sizes)
 void initObject(GameObject2D **self, uint8_t PositionInPool, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer,
-                char *TexturePath) {
+                char *TexturePath, float SpawnX, float SpawnY) {
     *self = (GameObject2D *) malloc(sizeof(struct GameObject));
-    initRigidBody2D(&(*self)->body2D);
+    initRigidBody2D(&(*self)->body2D, SpawnX, SpawnY);
     (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
     (*self)->ObjectRect.y = (int) getTransformY((*self)->body2D);
     (*self)->ObjectRect.w = Width;
@@ -110,6 +110,11 @@ void setAlive(GameObject2D **self, BOOL flag) {
 
 void setObjectTexture (GameObject2D **self, SDL_Texture *Texture) {
     (*self)->ObjTexture = Texture;
+}
+
+void updateBody2DTransform(GameObject2D **self, float NewX, float NewY) {
+    setTransformX(&(*self)->body2D, NewX);
+    setTransformY(&(*self)->body2D, NewY);
 }
 
 void updateObject(GameObject2D **self, float DeltaTime, Vector2D *Force, Vector2D *Friction) {

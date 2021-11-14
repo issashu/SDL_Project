@@ -7,9 +7,14 @@
 #include "GameObject/GameObject2D.h"
 #include "utils/containers/Vector.h"
 
+/**
+ * StashObject is used to insert an item in the object pool.
+ *     Please supply an object and it's type based on the ObjectTypes enum
+ */
 typedef struct ObjectPool2D {
-    void (*StashObject)(struct Vector *, GameObject2D *);
-    GameObject2D* (*TakeOutObject)(uint8_t);
+    size_t (*StashObject)(void *, uint8_t);
+    void * (*TakeOutObject)(uint8_t);
+    void (*TrashObject)(uint8_t);
 } ObjectPool;
 
 ObjectPool* getObjectPool ();

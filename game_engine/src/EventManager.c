@@ -96,6 +96,7 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
     initVector2D(&Friction);
     switch (getState(BaseCharacter)) {
         case IDLE_STATE:
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(IDLE_STATE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case JUMPING_UP:

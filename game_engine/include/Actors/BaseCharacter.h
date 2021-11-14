@@ -68,7 +68,7 @@ typedef enum CharacterStates{
 
 typedef struct CharacterActor Character;
 
-void initCharacter(Character **self, char *texturePath, SDL_Renderer *GfxRenderer);
+void initCharacter(Character **self, char *texturePath, SDL_Renderer *GfxRenderer, float SpawnX, float SpawnY);
 void deinitCharacter(Character **self);
 
 GameObject2D* getBaseObj (Character *self);
