@@ -136,6 +136,7 @@ void deepCopyVector(const struct Vector *from, struct Vector *to) {
     }
 }
 
+//FIXME Changed a bit the free vector in order to account for the items not being free
 void freeVector(struct Vector *vec) {
     if (vec->items != NULL) {
         for (size_t i = 0; i < getSizeVector(vec); i++) {

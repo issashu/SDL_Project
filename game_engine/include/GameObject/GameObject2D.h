@@ -13,7 +13,8 @@
 
 typedef struct GameObject GameObject2D;
 
-void initObject(GameObject2D **self, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer, char *TexturePath);
+void initObject(GameObject2D **self, uint8_t PositionInPool, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer,
+                char *TexturePath);
 void deinitObject(GameObject2D **self);
 
 SDL_Rect* getObjectRect(GameObject2D *self);
@@ -28,7 +29,8 @@ BOOL getAlive(GameObject2D *self);
 void setHorrizFlip(GameObject2D *self, BOOL flag);
 void setVertFlip(GameObject2D *self, BOOL flag);
 void setPassable(GameObject2D *self, BOOL flag);
-void setAlive(GameObject2D *self, BOOL flag);
+void setAlive(GameObject2D **self, BOOL flag);
+void setObjectTexture (GameObject2D **self, SDL_Texture *Texture);
 
 void updateObject(GameObject2D **self, float DeltaTime, Vector2D *Force, Vector2D *Friction);
 

@@ -20,15 +20,15 @@ BOOL mainGame() {
     uint32_t ElapsedTime = 0;
     float DeltaTime = 0.0f;
     playerActor *Player = NONE;
-    UNUSED CollisionManager2D *CollisionManager = NONE;
+    CollisionManager2D *CollisionManager = NONE;
     Camera *MainCamera = NONE;
     SDL_Window *AppWindow = NONE;
     SDL_Renderer *GfxRenderer = NONE;
     SDL_Texture *ViewPortTexture = NONE;
-    UNUSED ImageLayer *Background0 = NONE;
-    UNUSED ImageLayer *Background1 = NONE;
-    UNUSED ImageLayer *Background2 = NONE;
-    UNUSED ImageLayer *Background3 = NONE;
+    ImageLayer *Background0 = NONE;
+    ImageLayer *Background1 = NONE;
+    ImageLayer *Background2 = NONE;
+    ImageLayer *Background3 = NONE;
 
     LoadImageLayer(&Background0, 0, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background1, 1, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
@@ -39,7 +39,7 @@ BOOL mainGame() {
     initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT, GfxRenderer, NULL);
     setCameraPosition(&MainCamera, 0, 0);
     ViewPortTexture = getCameraTexture(MainCamera);
-    //CollisionManager = getCollisionManager();
+    CollisionManager = getCollisionManager();
 
 
     while (isRunning) {
@@ -68,7 +68,7 @@ BOOL mainGame() {
         updateCharacterActor(getBaseChar(Player), &DeltaTime, &GfxRenderer,
                             getObjectTexture(getBaseObj(getBaseChar(Player))));
 
-        //CollisionManager->getIntersectionRect(getBaseObj(getBaseChar(Player)), getBaseObj(getBaseChar(Player)));
+        CollisionManager->getIntersectionRect(getBaseObj(getBaseChar(Player)), getBaseObj(getBaseChar(Player)));
         //enemyEventHandler();
 
         presentRenderer(GfxRenderer);

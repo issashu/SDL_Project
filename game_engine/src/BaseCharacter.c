@@ -34,7 +34,7 @@ void initCharacter(Character **self, char *texturePath, SDL_Renderer *GfxRendere
     (*self)->Mana = 100;
     (*self)->AnimationSpeed = 150.0f;
     (*self)->spriteSheet = texturePath;
-    initObject(&(*self)->Base2D, SPRITE_WIDTH, SPRITE_HEIGHT, GfxRenderer, (*self)->spriteSheet);
+    initObject(&(*self)->Base2D, 0, SPRITE_WIDTH, SPRITE_HEIGHT, GfxRenderer, (*self)->spriteSheet);
 }
 
 void deinitCharacter(Character **self) {

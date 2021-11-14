@@ -16,18 +16,21 @@ struct GameObject {
     SDL_Texture *ObjTexture;
     SDL_Rect ObjectRect;
     float ObjectRadius;
+    uint8_t PositionInObjectPool;
+    //TODO Add Flags Bitfield/Union to reduce size
     BOOL isHFlipped;
     BOOL isVFlipped;
     BOOL isPassable;
     BOOL isAlive;
-    //TODO Add function pointers to use and set Flag in a bitfield?
+
 };
 
 /*------------- PUBLIC: -----------------------*/
 //TODO Add parameters, once it is clear how the objects
 // will be initialised and take what is needed from player class. Also rework the texture load to get it from the vector storage container
 //FIXME Set the w and h universally on init via set (different objects and sizes)
-void initObject(GameObject2D **self, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer, char *TexturePath) {
+void initObject(GameObject2D **self, uint8_t PositionInPool, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer,
+                char *TexturePath) {
     *self = (GameObject2D *) malloc(sizeof(struct GameObject));
     initRigidBody2D(&(*self)->body2D);
     (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
@@ -35,6 +38,7 @@ void initObject(GameObject2D **self, int32_t Width, int32_t Height, SDL_Renderer
     (*self)->ObjectRect.w = Width;
     (*self)->ObjectRect.h = Height;
     (*self)->ObjectRadius = Width * HALF;
+    (*self)->PositionInObjectPool = PositionInPool;
     //TODO CHeck if it crashes on NULL TexturePath
     if(TexturePath != NONE) {
         (*self)->ObjTexture = SDL_CreateTextureFromSurface(GfxRenderer, IMG_Load(TexturePath));
@@ -84,6 +88,10 @@ BOOL getAlive(GameObject2D *self) {
     return self->isAlive;
 }
 
+void setPositionInPool(GameObject2D **self, uint8_t Position) {
+    (*self)->PositionInObjectPool = Position;
+}
+
 void setHorrizFlip(GameObject2D *self, BOOL flag) {
     self->isHFlipped = flag;
 }
@@ -96,8 +104,12 @@ void setPassable(GameObject2D *self, BOOL flag) {
     self->isPassable = flag;
 }
 
-void setAlive(GameObject2D *self, BOOL flag) {
-    self->isAlive = flag;
+void setAlive(GameObject2D **self, BOOL flag) {
+    (*self)->isAlive = flag;
+}
+
+void setObjectTexture (GameObject2D **self, SDL_Texture *Texture) {
+    (*self)->ObjTexture = Texture;
 }
 
 void updateObject(GameObject2D **self, float DeltaTime, Vector2D *Force, Vector2D *Friction) {

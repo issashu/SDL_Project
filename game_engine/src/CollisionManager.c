@@ -28,8 +28,10 @@ CollisionManager2D* getCollisionManager() {
 }
 
 void deinitCollisionManager() {
-    free(self);
-    self = NONE;
+    if (self != NONE) {
+        free(self);
+        self = NONE;
+    }
 }
 
 

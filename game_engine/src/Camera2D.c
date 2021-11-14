@@ -26,7 +26,7 @@ struct Camera2D{
 
 void initCamera2D(Camera **self, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer, STRING TexturePath) {
     *self = (Camera *)malloc(sizeof(struct Camera2D));
-    initObject(&(*self)->BaseObject, Width, Height, GfxRenderer, TexturePath);
+    initObject(&(*self)->BaseObject, 0, Width, Height, GfxRenderer, TexturePath);
     (*self)->SceneHeight = Width;
     (*self)->SceneWidth = Height;
 }

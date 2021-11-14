@@ -81,7 +81,7 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/Camera2D.c
         ${_SOURCES_DIR}/MainGameLoop.c
         ${_SOURCES_DIR}/DrawParalaxBackgrounds.c
-        ${_SOURCES_DIR}/GameStateManager.c)
+        ${_SOURCES_DIR}/GameStateManager.c src/BasePlatform2D.c include/GameObject/Platforms/BasePlatform2D.h)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"
