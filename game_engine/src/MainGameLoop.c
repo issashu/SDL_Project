@@ -43,12 +43,12 @@ BOOL mainGame() {
 
     //INITIALISATION
     SDLLoader(&GfxRenderer, &AppWindow);
-    initBasePlatform(&Platform1, ASSETS_PATH "images/Platform.png", "Platform1", 150, 20, 100, GfxRenderer, 10, 100);
-    initBasePlatform(&Platform2, ASSETS_PATH "images/Platform.png", "Platform2", 150, 20, 100, GfxRenderer, 160, 200);
-    initBasePlatform(&Platform3, ASSETS_PATH "images/Platform.png", "Platform3", 150, 20, 100, GfxRenderer, 20, 250);
-    initBasePlatform(&Platform4, ASSETS_PATH "images/Platform.png", "Platform4", 150, 20, 100, GfxRenderer, 80, 300);
-    initBasePlatform(&Platform5, ASSETS_PATH "images/Platform.png", "Platform5", 150, 20, 100, GfxRenderer, 160, 400);
-    initBasePlatform(&Platform6, ASSETS_PATH "images/Platform.png", "Platform6", 150, 20, 100, GfxRenderer, 240, 600);
+    initBasePlatform(&Platform1, ASSETS_PATH "images/Platform.png", "Platform1", 150, 20, 100, GfxRenderer, 10, 500);
+    initBasePlatform(&Platform2, ASSETS_PATH "images/Platform.png", "Platform2", 150, 20, 100, GfxRenderer, 700, 500);
+    initBasePlatform(&Platform3, ASSETS_PATH "images/Platform.png", "Platform3", 150, 20, 100, GfxRenderer, 450, 550);
+    initBasePlatform(&Platform4, ASSETS_PATH "images/Platform.png", "Platform4", 150, 20, 100, GfxRenderer, 100, 650);
+    initBasePlatform(&Platform5, ASSETS_PATH "images/Platform.png", "Platform5", 150, 20, 100, GfxRenderer, 675, 770);
+    initBasePlatform(&Platform6, ASSETS_PATH "images/Platform.png", "Platform6", 150, 20, 100, GfxRenderer, 200, 600);
 
     BasePlatform2D* PlatformsArray[6];
     PlatformsArray[0]=Platform1;
@@ -63,7 +63,7 @@ BOOL mainGame() {
     LoadImageLayer(&Background2, 2, 2, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
 
-    initPlayerActor(&Player, "John Doe", GfxRenderer, 10, 50);
+    initPlayerActor(&Player, "John Doe", GfxRenderer, 10, 400);
     initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT, GfxRenderer, NULL, 0, 0);
     setCameraPosition(&MainCamera, 0, 0);
     ViewPortTexture = getCameraTexture(MainCamera);
@@ -90,7 +90,8 @@ BOOL mainGame() {
                         getTexturesContainer(Background2), textureIdx);
         }
         for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
-
+            DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
+                       getTexturesContainer(Background3), textureIdx);
         }
 
         //OBJECTS UPDATE:
@@ -98,7 +99,6 @@ BOOL mainGame() {
             GameObject2D *tmpObj = getBaseObject(PlatformsArray[i]);
             drawStatic(&GfxRenderer, getObjectTexture(tmpObj), NONE, getObjectRect(tmpObj));
         }
-
 
         //PLAYER UPDATE:
         characterEventHandler(&isRunning, getBaseChar(Player), NONE);
@@ -117,7 +117,6 @@ BOOL mainGame() {
                 case SIDE_UP:
                     updateBody2DTransform(&FirstObj,getObjectRect(FirstObj)->x,
                                           getObjectRect(FirstObj)->y-Overlap);
-
                     break;
                 case SIDE_LEFT:
                     break;
@@ -140,8 +139,18 @@ BOOL mainGame() {
         SDL_Delay(1000 / 60);
     }
     //FIXME Refactor with single ptr
-    //destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
-    //destroyTexture(getCameraTexture(MainCamera));
+    deinitBasePlatform(&Platform1);
+    deinitBasePlatform(&Platform2);
+    deinitBasePlatform(&Platform3);
+    deinitBasePlatform(&Platform4);
+    deinitBasePlatform(&Platform5);
+    deinitBasePlatform(&Platform6);
+
+    deinitLayeredImage(&Background0);
+    deinitLayeredImage(&Background1);
+    deinitLayeredImage(&Background2);
+    deinitLayeredImage(&Background3);
+
     deinitPlayerActor(&Player);
     deinitCamera2D(&MainCamera);
     deinitCollisionManager();

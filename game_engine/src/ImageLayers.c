@@ -31,8 +31,6 @@ void initLayeredImage(ImageLayer **self, int32_t ImageCount, int32_t Width, int3
                       int32_t ScrollSpeed, BOOL Looped, BOOL Flipped) {
     *self = (ImageLayer *) malloc(sizeof(struct LayeredImage2D));
     initVector(&(*self)->TexturesContainer, ImageCount);
-    initVector2D(&(*self)->Offset);
-    initVector2D(&(*self)->Scale);
     (*self)->Width = Width;
     (*self)->Height = Height;
     (*self)->LayerIndex = LayerIndex;
@@ -43,8 +41,6 @@ void initLayeredImage(ImageLayer **self, int32_t ImageCount, int32_t Width, int3
 
 void deinitLayeredImage(ImageLayer **self) {
     if (*self != NONE) {
-        deinitVector2D(&(*self)->Offset);
-        deinitVector2D(&(*self)->Scale);
         freeVector(&(*self)->TexturesContainer);
         free(*self);
         *self = NONE;
