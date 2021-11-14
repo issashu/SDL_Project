@@ -16,7 +16,7 @@
  * Decrease by 1 when using in code
  *
  * Using common sprite sheet for both player and enemies,
- * thus enums are in base character struct and not in each actor structs
+ * thus enums and defines are in base character struct and not in each actor structs
  * as it normally should be.
  */
 
@@ -68,7 +68,7 @@ typedef enum CharacterStates{
 
 typedef struct CharacterActor Character;
 
-void initCharacter(Character **self, char *texturePath);
+void initCharacter(Character **self, char *texturePath, SDL_Renderer *GfxRenderer);
 void deinitCharacter(Character **self);
 
 GameObject2D* getBaseObj (Character *self);

@@ -16,6 +16,6 @@ void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event 
 void updateCharacterActor(Character *BaseCharacter,
                           const float *DeltaTime,
                           SDL_Renderer **GfxRenderer,
-                          SDL_Texture **Texture);
+                          SDL_Texture *Texture);
 
 #endif //SDL_GAME_EVENTMANAGER_H

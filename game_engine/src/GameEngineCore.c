@@ -11,14 +11,13 @@
 #include "Managers/TextureManager.h"
 #include "Graphics/GraphicsRenderer2D.h"
 #include "Actors/BaseCharacter.h"
-#include "Actors/PlayerCharacter.h"
 #include "utils/Log.h"
 
 //FIXME Replace debug globals with ones from characters/objects/managers
 static struct Vector characterTextures;
 static struct Vector backgroundTextures;
 
-int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **AppWindow) {
+int8_t SDLLoader(SDL_Renderer **GfxRenderer, SDL_Window **AppWindow) {
        //TODO Take out all error checks in a separate function or move them in a common if
     if (initScreen(AppWindow, WINDOW_WIDTH, WINDOW_HEIGHT) != SUCCESS) {
         LOGERR("initScreen() failed.");
@@ -50,12 +49,6 @@ int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **A
         return FAILURE;
     }
 
-    if (loadSurfaces(&characterTextures, getSpriteSheet(getBaseChar(Player))) != SUCCESS) {
-        LOGERR("loadSurfaces() failed.");
-
-        return FAILURE;
-    }
-
     if (initRenderer(*AppWindow, GfxRenderer) != SUCCESS) {
         LOGERR("initRenderer() failed.");
 
@@ -67,40 +60,39 @@ int8_t SDLLoader(playerActor *Player, SDL_Renderer **GfxRenderer, SDL_Window **A
 
 //FIXME REPLACE THE MAGIC NUMBERS
 void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharacter, SDL_Renderer **GfxRenderer,
-                   SDL_Texture **Texture) {
+                   SDL_Texture *Texture) {
 
-    applyTexture(&characterTextures, Texture, GfxRenderer, 0);
     switch (Event) {
         case SDL_SCANCODE_UP:
-            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, JUMP - 1, JUMP_FRAMES - 1,
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, JUMP - 1, JUMP_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         case SDL_SCANCODE_RIGHT:
             setHorrizFlip(getBaseObj(BaseCharacter), FALSE);
-            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, RUN - 1, RUN_FRAMES - 1,
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, RUN - 1, RUN_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         case SDL_SCANCODE_DOWN:
 
-            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, CROUCH - 1, CROUCH_FRAMES - 1,
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, CROUCH - 1, CROUCH_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         case SDL_SCANCODE_LEFT:
             setHorrizFlip(getBaseObj(BaseCharacter), TRUE);
-            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, RUN - 1, RUN_FRAMES - 1,
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, RUN - 1, RUN_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         case SDL_SCANCODE_SPACE:
-            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, ATTACK - 1, ATTACK_FRAMES - 1,
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, ATTACK - 1, ATTACK_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
         default:
-            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), *Texture, IDLE - 1, IDLE_FRAMES - 1,
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, IDLE - 1, IDLE_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), 96, 84, getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
     }

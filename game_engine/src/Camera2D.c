@@ -25,7 +25,7 @@ struct Camera2D{
 
 void initCamera2D(Camera **self, int32_t Width, int32_t Height) {
     *self = (Camera *)malloc(sizeof(struct Camera2D));
-    initObject(&(*self)->BaseObject, Width, Height);
+    initObject(&(*self)->BaseObject, Width, Height, NULL, NULL);
     (*self)->SceneHeight = Width;
     (*self)->SceneWidth = Height;
 }
@@ -58,6 +58,6 @@ SDL_Rect* getCameraViewPoint(Camera *self){
     return getObjectRect(self->BaseObject);
 }
 
-SDL_Texture **getCameraTexture(Camera *self){
+SDL_Texture * getCameraTexture(Camera *self){
     return getObjectTexture(self->BaseObject);
 }

@@ -13,11 +13,11 @@
 
 typedef struct GameObject GameObject2D;
 
-void initObject(GameObject2D **self, int32_t Width, int32_t Height);
+void initObject(GameObject2D **self, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer, char *TexturePath);
 void deinitObject(GameObject2D **self);
 
 SDL_Rect* getObjectRect(GameObject2D *self);
-SDL_Texture ** getObjectTexture(GameObject2D *self);
+SDL_Texture * getObjectTexture(GameObject2D *self);
 float getObjectRadius(GameObject2D *self);
 BOOL getHorrizFlip(GameObject2D *self);
 BOOL getVertFlip(GameObject2D *self);

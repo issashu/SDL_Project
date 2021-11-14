@@ -89,7 +89,7 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
 }
 
 void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer,
-                          SDL_Texture **Texture) {
+                          SDL_Texture *Texture) {
     static Vector2D Force;
     static Vector2D Friction;
     initVector2D(&Force);

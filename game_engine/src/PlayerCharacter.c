@@ -15,11 +15,11 @@ struct PlayerCharacter {
 
 /*------------- PUBLIC: -----------------------*/
 
-void initPlayerActor(playerActor **self, char *Name) {
+void initPlayerActor(playerActor **self, char *Name, SDL_Renderer *GfxRenderer) {
     *self = (playerActor *) malloc(sizeof(struct PlayerCharacter));
     (*self)->spriteSheetPath = ASSETS_PATH "images/character_anim.png";
     (*self)->playerName = Name;
-    initCharacter(&(*self)->baseCharacter, (*self)->spriteSheetPath);
+    initCharacter(&(*self)->baseCharacter, (*self)->spriteSheetPath, GfxRenderer);
 }
 
 void deinitPlayerActor(playerActor **self) {

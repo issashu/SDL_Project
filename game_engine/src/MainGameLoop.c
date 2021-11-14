@@ -20,32 +20,32 @@ BOOL mainGame() {
     uint32_t ElapsedTime = 0;
     float DeltaTime = 0.0f;
     playerActor *Player = NONE;
-    CollisionManager2D *CollisionManager = NONE;
+    UNUSED CollisionManager2D *CollisionManager = NONE;
     Camera *MainCamera = NONE;
     SDL_Window *AppWindow = NONE;
     SDL_Renderer *GfxRenderer = NONE;
-    ImageLayer *Background0 = NONE;
-    ImageLayer *Background1 = NONE;
-    ImageLayer *Background2 = NONE;
-    ImageLayer *Background3 = NONE;
+    UNUSED ImageLayer *Background0 = NONE;
+    UNUSED ImageLayer *Background1 = NONE;
+    UNUSED ImageLayer *Background2 = NONE;
+    UNUSED ImageLayer *Background3 = NONE;
 
     initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT);
     setCameraPosition(&MainCamera, 0, 0);
-    LoadImageLayer(&Background0, 0, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
+/*    LoadImageLayer(&Background0, 0, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background1, 1, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background2, 2, 2, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
-    LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
+    LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);*/
+    SDLLoader(&GfxRenderer, &AppWindow);
+    initPlayerActor(&Player, "John Doe", GfxRenderer);
+    //CollisionManager = getCollisionManager();
 
-    initPlayerActor(&Player, "John Doe");
-    CollisionManager = getCollisionManager();
-    SDLLoader(Player, &GfxRenderer, &AppWindow);
 
     while (isRunning) {
         //TODO Separate the scene into beginning (render clear, setup)->execution (update, draw, etc.) -> destroy
         DeltaTime = getDeltaTime(&ElapsedTime);
         clearRenderer(&GfxRenderer);
         //Move all business logic inside own src file
-        for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
+  /*      for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
             DrawObjects(MainCamera, &GfxRenderer, getCameraTexture(MainCamera), NONE,
                         getTexturesContainer(Background0), textureIdx);
         }
@@ -60,26 +60,23 @@ BOOL mainGame() {
         for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
             DrawObjects(MainCamera, &GfxRenderer, getCameraTexture(MainCamera), NONE,
                         getTexturesContainer(Background3), textureIdx);
-        }
+        }*/
         characterEventHandler(&isRunning, getBaseChar(Player), NONE);
-
         updateCharacterActor(getBaseChar(Player), &DeltaTime, &GfxRenderer,
                             getObjectTexture(getBaseObj(getBaseChar(Player))));
 
-        //TODO Replace print with actual collision manager mechanic
-
-        CollisionManager->getIntersectionRect(getBaseObj(getBaseChar(Player)), getBaseObj(getBaseChar(Player)));
+        //CollisionManager->getIntersectionRect(getBaseObj(getBaseChar(Player)), getBaseObj(getBaseChar(Player)));
         //enemyEventHandler();
 
         presentRenderer(GfxRenderer);
         //Need a separate destroy method for the backgrounds to clear the texture. Currently, huge leak
-        //destroyTexture(getTexturesContainer(Background0));
-        destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
-        destroyTexture(getCameraTexture(MainCamera));
 
         // Connected render to vsync and using delta time, so should not have much of an effect
         SDL_Delay(1000 / 60);
     }
+    //FIXME Refactor with single ptr
+    destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
+    destroyTexture(getCameraTexture(MainCamera));
     deinitPlayerActor(&Player);
     deinitCamera2D(&MainCamera);
     deinitCollisionManager();

@@ -3,7 +3,8 @@
 //
 
 #include <stdlib.h>
-#include <SDL_render.h>
+#include <SDL.h>
+#include <SDL_image.h>
 
 #include "GameObject/GameObject2D.h"
 #include "Physics/RigidBody2D.h"
@@ -26,7 +27,7 @@ struct GameObject {
 //TODO Add parameters, once it is clear how the objects
 // will be initialised and take what is needed from player class. Also rework the texture load to get it from the vector storage container
 //FIXME Set the w and h universally on init via set (different objects and sizes)
-void initObject(GameObject2D **self, int32_t Width, int32_t Height) {
+void initObject(GameObject2D **self, int32_t Width, int32_t Height, SDL_Renderer *GfxRenderer, char *TexturePath) {
     *self = (GameObject2D *) malloc(sizeof(struct GameObject));
     initRigidBody2D(&(*self)->body2D);
     (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
@@ -34,7 +35,13 @@ void initObject(GameObject2D **self, int32_t Width, int32_t Height) {
     (*self)->ObjectRect.w = Width;
     (*self)->ObjectRect.h = Height;
     (*self)->ObjectRadius = Width * HALF;
-    (*self)->ObjTexture = NONE;
+    //TODO CHeck if it crashes on NULL TexturePath
+    if(TexturePath != NONE) {
+        (*self)->ObjTexture = SDL_CreateTextureFromSurface(GfxRenderer, IMG_Load(TexturePath));
+    }
+    else {
+        (*self)->ObjTexture = NONE;
+    }
     (*self)->isHFlipped = FALSE;
     (*self)->isVFlipped = FALSE;
     (*self)->isPassable = TRUE;
@@ -53,8 +60,8 @@ SDL_Rect *getObjectRect(GameObject2D *self) {
     return &self->ObjectRect;
 }
 
-SDL_Texture **getObjectTexture(GameObject2D *self) {
-    return &self->ObjTexture;
+SDL_Texture * getObjectTexture(GameObject2D *self) {
+    return self->ObjTexture;
 }
 
 float getObjectRadius(GameObject2D *self) {

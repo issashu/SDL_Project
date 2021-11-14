@@ -10,7 +10,7 @@
 
 typedef struct PlayerCharacter playerActor;
 
-void initPlayerActor(playerActor **self, char *Name);
+void initPlayerActor(playerActor **self, char *Name, SDL_Renderer *GfxRenderer);
 void deinitPlayerActor(playerActor **self);
 
 Character* getBaseChar (struct PlayerCharacter *self);
