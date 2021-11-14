@@ -104,6 +104,7 @@ void DrawObjects(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Textu
     if(TexturesContainer == NONE){
         TexturesContainer = &backgroundTextures;
     }
+    destroyTexture(Texture);
     applyTexture(TexturesContainer, Texture, GfxRenderer, TextureIndex);
     drawStatic(GfxRenderer, *Texture, SrcTextureRect, getCameraViewPoint(Camera));
 }

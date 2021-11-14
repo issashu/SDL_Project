@@ -78,8 +78,8 @@ BOOL mainGame() {
         SDL_Delay(1000 / 60);
     }
     //FIXME Refactor with single ptr
-    destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
-    destroyTexture(getCameraTexture(MainCamera));
+    //destroyTexture(getObjectTexture(getBaseObj(getBaseChar(Player))));
+    //destroyTexture(getCameraTexture(MainCamera));
     deinitPlayerActor(&Player);
     deinitCamera2D(&MainCamera);
     deinitCollisionManager();
