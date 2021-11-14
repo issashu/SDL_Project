@@ -36,7 +36,7 @@ void deinitCollisionManager() {
 /*------------- IMPLEMENTATION: -----------------------*/
 
 BOOL areObjectsColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) {
-    SDL_Point CenterFirstObject = {.x = 0, .y = 0};
+/*    SDL_Point CenterFirstObject = {.x = 0, .y = 0};
     SDL_Point CenterSecondObject = {.x = 0, .y = 0};
     float Hypotenuse = 0.0f;
     float SumObjRadiuses = 0.0f;
@@ -56,7 +56,7 @@ BOOL areObjectsColliding(GameObject2D *FirstObject, GameObject2D *SecondObject) 
 
     if (Hypotenuse <= SumObjRadiuses) {
         return TRUE;
-    }
+    }*/
 
     return FALSE;
 }

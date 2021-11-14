@@ -24,19 +24,21 @@ BOOL mainGame() {
     Camera *MainCamera = NONE;
     SDL_Window *AppWindow = NONE;
     SDL_Renderer *GfxRenderer = NONE;
+    SDL_Texture *ViewPortTexture = NONE;
     UNUSED ImageLayer *Background0 = NONE;
     UNUSED ImageLayer *Background1 = NONE;
     UNUSED ImageLayer *Background2 = NONE;
     UNUSED ImageLayer *Background3 = NONE;
 
-    initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT);
-    setCameraPosition(&MainCamera, 0, 0);
-/*    LoadImageLayer(&Background0, 0, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
+    LoadImageLayer(&Background0, 0, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background1, 1, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background2, 2, 2, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
-    LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);*/
+    LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     SDLLoader(&GfxRenderer, &AppWindow);
     initPlayerActor(&Player, "John Doe", GfxRenderer);
+    initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT, GfxRenderer, NULL);
+    setCameraPosition(&MainCamera, 0, 0);
+    ViewPortTexture = getCameraTexture(MainCamera);
     //CollisionManager = getCollisionManager();
 
 
@@ -45,22 +47,23 @@ BOOL mainGame() {
         DeltaTime = getDeltaTime(&ElapsedTime);
         clearRenderer(&GfxRenderer);
         //Move all business logic inside own src file
-  /*      for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
-            DrawObjects(MainCamera, &GfxRenderer, getCameraTexture(MainCamera), NONE,
+
+        for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
+            DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
                         getTexturesContainer(Background0), textureIdx);
         }
         for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
-            DrawObjects(MainCamera, &GfxRenderer, getCameraTexture(MainCamera), NONE,
+            DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
                         getTexturesContainer(Background1), textureIdx);
         }
         for (int32_t textureIdx = 0; textureIdx < 2; textureIdx++) {
-            DrawObjects(MainCamera, &GfxRenderer, getCameraTexture(MainCamera), NONE,
+            DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
                         getTexturesContainer(Background2), textureIdx);
         }
         for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
-            DrawObjects(MainCamera, &GfxRenderer, getCameraTexture(MainCamera), NONE,
+            DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
                         getTexturesContainer(Background3), textureIdx);
-        }*/
+        }
         characterEventHandler(&isRunning, getBaseChar(Player), NONE);
         updateCharacterActor(getBaseChar(Player), &DeltaTime, &GfxRenderer,
                             getObjectTexture(getBaseObj(getBaseChar(Player))));
