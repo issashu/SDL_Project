@@ -46,6 +46,6 @@ void LoadImageLayer(ImageLayer **BackgroundSet, int32_t LayerIndex, int32_t Imag
     initLayeredImage(BackgroundSet, ImageCount, Width, Height, LayerIndex, ScrollSpeed, isLooped, isFlipped);
 
     for(int32_t ImageIndex = 0; ImageIndex < (ImageCount); ImageIndex++) {
-        loadTextures(getTexturesContainer(*BackgroundSet), Layer[LayerIndex][ImageIndex]);
+        loadImageSurfaces(getTexturesContainer(*BackgroundSet), Layer[LayerIndex][ImageIndex]);
     }
 }

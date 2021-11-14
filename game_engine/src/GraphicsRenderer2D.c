@@ -25,7 +25,7 @@ BOOL loadSurfaces(struct Vector *objTextures, STRING TexturePath) {
         initTextureStorage(objTextures, STORAGE_START_CAPACITY);
     }
     //TODO Learn to use glob to load any number of textures into a vector
-    loadTextures(objTextures, TexturePath);
+    loadImageSurfaces(objTextures, TexturePath);
     for (int8_t i = 0; i < 1; i++) {
         if (getElementVector(objTextures, i) == NULL) {
             LOGERR("SDL_LoadIMG failed! Reason: %s", SDL_GetError());

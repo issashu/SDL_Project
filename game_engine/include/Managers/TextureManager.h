@@ -16,7 +16,7 @@
 // 5. If the flag is down, create new instance (initialise). If it is up - return pointer to the existing one ^^
 
 void initTextureStorage(struct Vector *textureMap, size_t initialCapacity);
-BOOL loadTextures(struct Vector *textureMap, char *texturePath);
+BOOL loadImageSurfaces(struct Vector *textureMap, char *texturePath);
 BOOL destroyTexture(SDL_Texture **texture);
 BOOL applyTexture(struct Vector *textureMap, SDL_Texture **Texture, SDL_Renderer **Renderer, size_t index);
 void unloadTextures(struct Vector *textures);

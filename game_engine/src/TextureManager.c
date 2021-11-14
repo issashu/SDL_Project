@@ -13,7 +13,7 @@ void initTextureStorage(struct Vector *textureMap, size_t initialCapacity) {
 }
 
 //FIXME Change debug load to a texture manager
-BOOL loadTextures(struct Vector *textureMap, char *texturePath) {
+BOOL loadImageSurfaces(struct Vector *textureMap, char *texturePath) {
     pushElementVector(textureMap, IMG_Load(texturePath));
 
     return SUCCESS;
