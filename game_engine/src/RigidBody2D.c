@@ -11,7 +11,7 @@
 
 //TODO Move defines to respective header
 #define BODY_MASS 1.0f
-#define WORLD_GRAVITY 0.5f
+#define WORLD_GRAVITY 1.45f
 
 #define SPAWN_X 10
 #define SPAWN_Y 50
