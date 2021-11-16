@@ -5,7 +5,7 @@ project(SDL_game LANGUAGES C)
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/helpers_c.cmake)
 
 #Remove/Comment before final build or before using Valgrind (CLion specific sanitizer options)
-#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -fsanitize-address-use-after-scope  -fno-omit-frame-pointer -g")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -fsanitize-address-use-after-scope  -fno-omit-frame-pointer -g")
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=memory -fPIE -pie -fno-omit-frame-pointer -g")
 #Uncomment below line in order to run the Clion profiler:
 #set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0")
@@ -22,7 +22,6 @@ set(ASSETS_PATH ${BASE_DIR}/game/assets/)
 # This appends a complex path to a variable. Set it as itself and then set the path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/find_modules)
 
-#TODO Check and rearrange all the executables and headers
 add_executable( ${PROJECT_NAME}
         ${HEADERS_DIR}/main.h
         ${SOURCES_DIR}/main.c
@@ -36,7 +35,7 @@ target_include_directories(
 
 target_link_libraries(
         ${PROJECT_NAME}
-        PUBLIC
+        PRIVATE
         game_engine
         )
 
