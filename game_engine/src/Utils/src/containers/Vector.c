@@ -9,6 +9,9 @@
 //Own components headers
 
 void initVector(struct Vector *vec, size_t initialCapacity) {
+    if(vec==NULL){
+        vec=(struct Vector*) malloc(sizeof(struct Vector));
+    }
     vec->capacity = initialCapacity;
     vec->size = 0;
 

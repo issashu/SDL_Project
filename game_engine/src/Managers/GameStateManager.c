@@ -68,6 +68,7 @@ void deinitGameStateManager() {
 
 BOOL switchGameState(uint8_t State) {
     //TODO Make sure all game functions return exit status to use here
+    // also fionish the sate manager to return to main menu on game exit and not just quit.
     BOOL ExitStatus = EXIT_SUCCESS;
     uint8_t GameState = State;
     switch(GameState){

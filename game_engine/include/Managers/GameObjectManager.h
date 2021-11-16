@@ -12,7 +12,8 @@
 //TODO Apply singleton
 
 typedef struct ObjectManager {
-    size_t(*LoadObjectToPool)(void*, uint8_t);
+    size_t(*LoadObjectToPool)(uint8_t);
+    void*(*SpawnObject)(size_t, uint8_t);
     void(*DespawnObject)(uint8_t);
     void(*ResetObject)(void*, uint8_t, STRING, STRING, int32_t, int32_t, int32_t, SDL_Renderer*);
 } GameObjectManager;

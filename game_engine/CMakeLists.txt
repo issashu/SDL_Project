@@ -65,7 +65,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Utils/include/ErrorCodes.h
         ${_HEADERS_DIR}/Utils/include/containers/Vector.h
         ${_HEADERS_DIR}/Utils/include/vfx_tools/shapes.h
-        ${_HEADERS_DIR}/Utils/include/defines.h
+        ${_HEADERS_DIR}/Utils/include/Defines.h
 
         # SOURCE FILES HERE
         ${_SOURCES_DIR}/Core/sdl_methods.c
