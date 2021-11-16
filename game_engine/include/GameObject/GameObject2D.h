@@ -8,7 +8,7 @@
 #include <SDL.h>
 
 #include "GameObject/GameObject2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "Physics/Vector2D.h"
 
 typedef struct GameObject GameObject2D;

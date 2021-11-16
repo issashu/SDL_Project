@@ -4,8 +4,8 @@
 
 #include <stdlib.h>
 
-#include "utils/Log.h"
-#include "utils/defines.h"
+#include "Utils/include/Log.h"
+#include "Utils/include/Defines.h"
 #include "GameObject/Transform2D.h"
 #include "Physics/RigidBody2D.h"
 

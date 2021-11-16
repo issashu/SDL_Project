@@ -3,8 +3,8 @@
 //
 
 #include "Core/sdl_methods.h"
-#include "utils/defines.h"
-#include "utils/Log.h"
+#include "Utils/include/Defines.h"
+#include "Utils/include/Log.h"
 
 int32_t initText(){
     if (TTF_Init() != SUCCESS) {

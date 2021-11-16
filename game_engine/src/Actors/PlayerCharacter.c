@@ -3,8 +3,6 @@
 //
 #include <stdlib.h>
 #include "Actors/PlayerCharacter.h"
-#include "utils/defines.h"
-
 
 /*------------- PRIVATE: -----------------------*/
 struct PlayerCharacter {

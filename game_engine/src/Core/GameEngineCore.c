@@ -2,7 +2,7 @@
 // Created by Iordan Tonchev on 8.10.21.
 //
 
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "Core/GameEngineCore.h"
 #include "Core/sdl_methods.h"
 #include "Core/Camera2D.h"
@@ -11,7 +11,7 @@
 #include "Managers/TextureManager.h"
 #include "Graphics/GraphicsRenderer2D.h"
 #include "Actors/BaseCharacter.h"
-#include "utils/Log.h"
+#include "Utils/include/Log.h"
 
 
 int8_t SDLLoader(SDL_Renderer **GfxRenderer, SDL_Window **AppWindow) {

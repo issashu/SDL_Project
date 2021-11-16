@@ -5,7 +5,7 @@
 #ifndef SDL_GAME_OBJECTPOOL_H
 #define SDL_GAME_OBJECTPOOL_H
 #include "GameObject/GameObject2D.h"
-#include "utils/containers/Vector.h"
+#include "Utils/include/containers/Vector.h"
 
 /**
  * StashObject is used to insert an item in the object pool.

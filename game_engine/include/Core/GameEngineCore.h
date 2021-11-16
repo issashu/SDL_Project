@@ -10,7 +10,7 @@
 #include "Actors/BaseCharacter.h"
 #include "Actors/PlayerCharacter.h"
 #include "Core/Camera2D.h"
-#include "utils/containers/Vector.h"
+#include "Utils/include/containers/Vector.h"
 
 
 int8_t SDLLoader(SDL_Renderer **GfxRenderer, SDL_Window **AppWindow);

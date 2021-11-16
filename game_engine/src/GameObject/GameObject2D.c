@@ -8,7 +8,7 @@
 
 #include "GameObject/GameObject2D.h"
 #include "Physics/RigidBody2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "Managers/TextureManager.h"
 
 /*------------- PRIVATE: -----------------------*/

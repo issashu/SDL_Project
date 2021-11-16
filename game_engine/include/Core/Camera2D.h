@@ -6,7 +6,7 @@
 #define SDL_GAME_CAMERA2D_H
 
 #include "GameObject/GameObject2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 typedef struct Camera2D Camera;
 void

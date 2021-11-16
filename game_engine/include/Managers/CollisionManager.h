@@ -6,7 +6,7 @@
 #define SDL_GAME_COLLISIONMANAGER_H
 
 #include "GameObject/GameObject2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 typedef struct CollisionManager {
     BOOL (*CheckCollision)(GameObject2D *, GameObject2D *);

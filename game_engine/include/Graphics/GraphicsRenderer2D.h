@@ -9,8 +9,8 @@
 #include <SDL.h>
 
 #include "Core/sdl_methods.h"
-#include "utils/containers/Vector.h"
-#include "utils/Log.h"
+#include "Utils/include/containers/Vector.h"
+#include "Utils/include/Log.h"
 
 
 BOOL loadSurfaces(struct Vector *objTextures, STRING TexturePath);

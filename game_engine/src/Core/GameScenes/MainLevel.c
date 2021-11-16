@@ -10,7 +10,7 @@
 #include "Graphics/GraphicsRenderer2D.h"
 #include "Managers/EventManager.h"
 #include "Managers/CollisionManager.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "Timers/Timers.h"
 #include "Graphics/DrawParalaxBackgrounds.h"
 #include "Managers/TextureManager.h"

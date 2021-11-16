@@ -7,8 +7,8 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include <utils/defines.h>
-#include <Actors/PlayerCharacter.h>
+#include "Utils/include/Defines.h"
+#include "Actors/PlayerCharacter.h"
 
 
 //TODO Apply singleton

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #include "Physics/Vector2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 /*------------- PRIVATE: -----------------------*/
 

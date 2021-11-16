@@ -6,7 +6,7 @@
 #include "Managers/EventManager.h"
 #include "Core/GameEngineCore.h"
 #include "Actors/BaseCharacter.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *gameKeyStates);
 

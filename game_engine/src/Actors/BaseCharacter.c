@@ -7,7 +7,7 @@
 #include <SDL_render.h>
 #include <SDL_events.h>
 #include "Actors/BaseCharacter.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 /*------------- PRIVATE: -----------------------*/
 

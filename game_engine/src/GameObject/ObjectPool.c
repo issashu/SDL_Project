@@ -7,7 +7,7 @@
 
 #include "GameObject/ObjectPool.h"
 #include "GameObject/Platforms/BasePlatform2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 /*------------- PRIVATE: -----------------------*/
 

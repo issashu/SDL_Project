@@ -9,8 +9,8 @@
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
-#include "utils/defines.h"
-#include "utils/vfx_tools/shapes.h"
+#include "Utils/include/Defines.h"
+#include "Utils/include/vfx_tools/shapes.h"
 
 //TODO Extract all struct objects in own header
 struct WindowConfig {

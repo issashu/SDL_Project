@@ -8,7 +8,7 @@
 #include <stdint.h>
 
 #include "Physics/Vector2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "GameObject/GameObject2D.h"
 
 /*

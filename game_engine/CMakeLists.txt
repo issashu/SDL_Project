@@ -61,6 +61,12 @@ add_library(${PROJECT_NAME}
 
         ${_HEADERS_DIR}/Timers/Timers.h
 
+        ${_HEADERS_DIR}/Utils/include/Log.h
+        ${_HEADERS_DIR}/Utils/include/ErrorCodes.h
+        ${_HEADERS_DIR}/Utils/include/containers/Vector.h
+        ${_HEADERS_DIR}/Utils/include/vfx_tools/shapes.h
+        ${_HEADERS_DIR}/Utils/include/defines.h
+
         # SOURCE FILES HERE
         ${_SOURCES_DIR}/Core/sdl_methods.c
         ${_SOURCES_DIR}/Actors/BaseCharacter.c
@@ -92,6 +98,9 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/Physics/Vector2D.c
 
         ${_SOURCES_DIR}/Timers/Timers.c
+
+        ${_SOURCES_DIR}/Utils/src/containers/Vector.c
+        ${_SOURCES_DIR}/Utils/src/vfx_tools/shapes.c
          )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
@@ -110,8 +119,6 @@ target_include_directories(${PROJECT_NAME}
         )
 
 target_link_libraries(${PROJECT_NAME}
-        PUBLIC
-        utils
         PRIVATE
         ${SDL2_LIBRARY}
         ${SDL2_IMAGE_LIBRARY}

@@ -6,7 +6,7 @@
 #define SDL_GAME_BASEPLATFORM2D_H
 
 #include <stdint.h>
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "Graphics/GraphicsRenderer2D.h"
 #include "GameObject/GameObject2D.h"
 

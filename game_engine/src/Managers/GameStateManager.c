@@ -4,7 +4,7 @@
 
 #include "Managers/GameStateManager.h"
 #include "Core/GameScenes/MainLevel.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 
 /*1. GAME LOAD & GAMESTATEMANAGER ON

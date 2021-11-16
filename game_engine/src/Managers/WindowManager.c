@@ -4,13 +4,10 @@
 
 #include <stdint.h>
 #include <SDL.h>
-#include <SDL_ttf.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
 #include <SDL_video.h>
-#include "utils/defines.h"
-#include "utils/Log.h"
-#include "utils/vfx_tools/shapes.h"
+#include "Utils/include/Defines.h"
+#include "Utils/include/Log.h"
+#include "Utils/include/vfx_tools/shapes.h"
 #include "Managers/WindowManager.h"
 
 struct UNUSED WindowConfig {
