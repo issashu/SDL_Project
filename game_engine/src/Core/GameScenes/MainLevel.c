@@ -1,10 +1,10 @@
 //
-// Created by Iordan Tonchev on 9.10.21.
+// Created by Iordan Tonchev on 16.11.21.
 //
 
+#include "Core/GameScenes/MainLevel.h"
 #include "Actors/PlayerCharacter.h"
 #include "Core/Camera2D.h"
-#include "Core/MainGameLoop.h"
 #include "Core/sdl_default_app_settings.h"
 #include "Core/GameEngineCore.h"
 #include "Graphics/GraphicsRenderer2D.h"
@@ -18,6 +18,7 @@
 #include "Managers/GameStateManager.h"
 
 BOOL mainGame() {
+    //LOAD GAME LOGIC
     BOOL isRunning = TRUE;
     uint32_t ElapsedTime = 0;
     float DeltaTime = 0.0f;
@@ -69,6 +70,7 @@ BOOL mainGame() {
     ViewPortTexture = getCameraTexture(MainCamera);
     CollisionManager = getCollisionManager();
 
+    //MAIN GAME LOOP
     while (isRunning) {
         //TODO Separate the scene into beginning (render clear, setup)->execution (update, draw, etc.) -> destroy
         DeltaTime = getDeltaTime(&ElapsedTime);
@@ -91,7 +93,7 @@ BOOL mainGame() {
         }
         for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
             DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
-                       getTexturesContainer(Background3), textureIdx);
+                        getTexturesContainer(Background3), textureIdx);
         }
 
         //OBJECTS UPDATE:
@@ -103,7 +105,7 @@ BOOL mainGame() {
         //PLAYER UPDATE:
         characterEventHandler(&isRunning, getBaseChar(Player), NONE);
         updateCharacterActor(getBaseChar(Player), &DeltaTime, &GfxRenderer,
-                            getObjectTexture(getBaseObj(getBaseChar(Player))));
+                             getObjectTexture(getBaseObj(getBaseChar(Player))));
 
         //COLLISIONS AND PHYSICS UPDATE:
         GameObject2D *FirstObj = getBaseObj(getBaseChar(Player));
@@ -161,5 +163,5 @@ BOOL mainGame() {
     deinitCollisionManager();
     SDLUnloader(GfxRenderer, AppWindow, NULL);
 
-    return SUCCESS;
+    return EXIT_SUCCESS;
 }

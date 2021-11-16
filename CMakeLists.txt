@@ -15,16 +15,18 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/helpers_c.cmake)
 
 #Set directories below
 set(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-set(HEADERS_DIR ${BASE_DIR}/include)
-set(SOURCES_DIR ${BASE_DIR}/src)
-set(ASSETS_PATH ${BASE_DIR}/assets/)
+set(HEADERS_DIR ${BASE_DIR}/game/include)
+set(SOURCES_DIR ${BASE_DIR}/game/src)
+set(ASSETS_PATH ${BASE_DIR}/game/assets/)
 
 # This appends a complex path to a variable. Set it as itself and then set the path
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake_helpers/find_modules)
 
 #TODO Check and rearrange all the executables and headers
-add_executable(${PROJECT_NAME}
-        ${SOURCES_DIR}/main.c)
+add_executable( ${PROJECT_NAME}
+        ${HEADERS_DIR}/main.h
+        ${SOURCES_DIR}/main.c
+        )
 
 target_include_directories(
         ${PROJECT_NAME}

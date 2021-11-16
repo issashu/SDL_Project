@@ -8,15 +8,6 @@
 #include "GameObject/GameObject2D.h"
 #include "utils/defines.h"
 
-enum CollisionSides {
-    NO_COLLISION = 0,
-    SIDE_UP,
-    SIDE_RIGHT,
-    SIDE_DOWN,
-    SIDE_LEFT,
-    ALL_SIDES
-};
-
 typedef struct CollisionManager {
     BOOL (*CheckCollision)(GameObject2D *, GameObject2D *);
     uint8_t (*getIntersactionSide)(GameObject2D *, GameObject2D *, int32_t *);

@@ -21,7 +21,6 @@ else (MACOS)
 endif ()
 
 #Find package will generate an include dir and a source dir for each package.
-
 find_package(SDL2 REQUIRED)
 find_package(${SDL_image_name} REQUIRED)
 find_package(${SDL_ttf_name} REQUIRED)
@@ -36,13 +35,15 @@ add_library(${PROJECT_NAME}
 
         ${_HEADERS_DIR}/Core/Camera2D.h
         ${_HEADERS_DIR}/Core/GameEngineCore.h
-        ${_HEADERS_DIR}/Core/MainGameLoop.h
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Core/sdl_methods.h
+
+        ${_HEADERS_DIR}/Core/GameScenes/MainLevel.h
 
         ${_HEADERS_DIR}/GameObject/GameObject2D.h
         ${_HEADERS_DIR}/GameObject/ObjectPool.h
         ${_HEADERS_DIR}/GameObject/Transform2D.h
+        ${_HEADERS_DIR}/GameObject/Platforms/BasePlatform2D.h
 
         ${_HEADERS_DIR}/Graphics/DrawParalaxBackgrounds.h
         ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
@@ -61,27 +62,37 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Timers/Timers.h
 
         # SOURCE FILES HERE
-        ${_SOURCES_DIR}/sdl_methods.c
-        ${_SOURCES_DIR}/GameEngineCore.c
-        ${_SOURCES_DIR}/GraphicsRenderer2D.c
-        ${_SOURCES_DIR}/Vector2D.c
-        ${_SOURCES_DIR}/Transform2D.c
-        ${_SOURCES_DIR}/GameObject2D.c
-        ${_SOURCES_DIR}/BaseCharacter.c
-        ${_SOURCES_DIR}/PlayerCharacter.c
-        ${_SOURCES_DIR}/RigidBody2D.c
-        ${_SOURCES_DIR}/GameObjectManager.c
-        ${_SOURCES_DIR}/WindowManager.c
-        ${_SOURCES_DIR}/EventManager.c
-        ${_SOURCES_DIR}/TextureManager.c
-        ${_SOURCES_DIR}/ObjectPool.c
-        ${_SOURCES_DIR}/Timers.c
-        ${_SOURCES_DIR}/CollisionManager.c
-        ${_SOURCES_DIR}/ImageLayers.c
-        ${_SOURCES_DIR}/Camera2D.c
-        ${_SOURCES_DIR}/MainGameLoop.c
-        ${_SOURCES_DIR}/DrawParalaxBackgrounds.c
-        ${_SOURCES_DIR}/GameStateManager.c src/BasePlatform2D.c include/GameObject/Platforms/BasePlatform2D.h)
+        ${_SOURCES_DIR}/Core/sdl_methods.c
+        ${_SOURCES_DIR}/Actors/BaseCharacter.c
+        ${_SOURCES_DIR}/Actors/PlayerCharacter.c
+
+        ${_SOURCES_DIR}/Core/Camera2D.c
+        ${_SOURCES_DIR}/Core/GameEngineCore.c
+        ${_SOURCES_DIR}/Core/sdl_methods.c
+
+        ${_SOURCES_DIR}/Core/GameScenes/MainLevel.c
+
+        ${_SOURCES_DIR}/GameObject/GameObject2D.c
+        ${_SOURCES_DIR}/GameObject/ObjectPool.c
+        ${_SOURCES_DIR}/GameObject/Transform2D.c
+        ${_SOURCES_DIR}/GameObject/Platforms/BasePlatform2D.c
+
+        ${_SOURCES_DIR}/Graphics/DrawParalaxBackgrounds.c
+        ${_SOURCES_DIR}/Graphics/GraphicsRenderer2D.c
+        ${_SOURCES_DIR}/Graphics/ImageLayers.c
+
+        ${_SOURCES_DIR}/Managers/CollisionManager.c
+        ${_SOURCES_DIR}/Managers/EventManager.c
+        ${_SOURCES_DIR}/Managers/GameObjectManager.c
+        ${_SOURCES_DIR}/Managers/GameStateManager.c
+        ${_SOURCES_DIR}/Managers/TextureManager.c
+        ${_SOURCES_DIR}/Managers/WindowManager.c
+
+        ${_SOURCES_DIR}/Physics/RigidBody2D.c
+        ${_SOURCES_DIR}/Physics/Vector2D.c
+
+        ${_SOURCES_DIR}/Timers/Timers.c
+         )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

@@ -46,7 +46,7 @@ void drawStatic(SDL_Renderer **Renderer, SDL_Texture *Texture, SDL_Rect *SrcRect
 }
 
 void drawAnimation(SDL_Renderer **Renderer, const SDL_Rect *targetFrame, SDL_Texture *Texture, int32_t animType,
-                   int32_t firstFrame, float animSpeed, int Width, int Height, BOOL hFlip, float DeltaTime) {
+                   int32_t firstFrame, float animSpeed, int Width, int Height, BOOL hFlip, float UNUSED DeltaTime) {
 
     //This will always keep rotating up to the maximum available sprites in the animation, then reset,
     // since % will revert to 0 eventually

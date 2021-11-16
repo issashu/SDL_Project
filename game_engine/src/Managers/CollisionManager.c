@@ -96,15 +96,3 @@ uint8_t ObjectsIntersectionSide(GameObject2D *FirstObject, GameObject2D *SecondO
     return NO_COLLISION;
 }
 
-    /*if (SDL_HasIntersection(First, Second)) {
-        if ((First->x + First->w) = Second->x &&)
-            return SIDE_LEFT;
-        if ((First->x + First->w) >= Second->x)
-            return SIDE_UP;
-        if ((Second->x + Second->w) <= First->x)
-            return SIDE_RIGHT;
-        if ((Second->y + Second->h) <= First->y)
-            return SIDE_DOWN;
-    }*/
-
-
