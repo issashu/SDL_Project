@@ -101,7 +101,7 @@ add_library(${PROJECT_NAME}
 
         ${_SOURCES_DIR}/Utils/src/containers/Vector.c
         ${_SOURCES_DIR}/Utils/src/vfx_tools/shapes.c
-         )
+        src/Core/GameScenes/TitleScreen.c include/Core/GameScenes/TitleScreen.h)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

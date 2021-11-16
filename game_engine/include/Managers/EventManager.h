@@ -12,6 +12,15 @@
 
 
 //TODO Apply singleton
+
+typedef struct EventManager{
+    void (*handleCharacterEvent)(BOOL*, Character*, SDL_Event*);
+    void (*updateCharacter)(Character*, const float*, SDL_Renderer**, SDL_Texture*);
+} EventHandler;
+
+EventHandler* getCharacterEventHandler();
+void deleteCharacterHandler();
+
 void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI);
 void updateCharacterActor(Character *BaseCharacter,
                           const float *DeltaTime,

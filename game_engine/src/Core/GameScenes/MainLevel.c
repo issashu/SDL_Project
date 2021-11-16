@@ -34,6 +34,7 @@ BOOL mainGame() {
     CollisionManager2D *CollisionManager = getCollisionManager();
     uint8_t CollisionSide;
     GameObjectManager *ObjectManager = getObjectManager();
+    EventHandler *CharacterEventManager = getCharacterEventHandler();
 
     //Graphics struct
     Camera *MainCamera = NONE;
@@ -107,9 +108,10 @@ BOOL mainGame() {
         }
 
         //PLAYER UPDATE:
-        characterEventHandler(&isRunning, getBaseChar(Player), NONE);
-        updateCharacterActor(getBaseChar(Player), &DeltaTime, &GfxRenderer,
-                             getObjectTexture(getBaseObj(getBaseChar(Player))));
+        CharacterEventManager->handleCharacterEvent(&isRunning, getBaseChar(Player), NONE);
+        CharacterEventManager->updateCharacter(getBaseChar(Player), &DeltaTime, &GfxRenderer,
+                                               getObjectTexture(getBaseObj(getBaseChar(Player))));
+
 
         //COLLISIONS AND PHYSICS UPDATE:
         GameObject2D *FirstObj = getBaseObj(getBaseChar(Player));
@@ -162,6 +164,7 @@ BOOL mainGame() {
     deinitCollisionManager();
     deleteObjectManager();
     deleteObjectManager();
+    deleteCharacterHandler();
     SDLUnloader(GfxRenderer, AppWindow, NULL);
 
     return EXIT_SUCCESS;

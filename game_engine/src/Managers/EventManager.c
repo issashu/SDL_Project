@@ -8,9 +8,37 @@
 #include "Actors/BaseCharacter.h"
 #include "Utils/include/Defines.h"
 
+/*------------- PRIVATE: -----------------------*/
 void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *gameKeyStates);
+void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI);
+void updateCharacterActor(Character *BaseCharacter,
+                          const float *DeltaTime,
+                          SDL_Renderer **GfxRenderer,
+                          SDL_Texture *Texture);
+
+static EventHandler *self= NONE;
+
+/*------------- PUBLIC: -----------------------*/
+
+EventHandler* getCharacterEventHandler() {
+    if (self == NONE) {
+        self = (EventHandler*) malloc(sizeof(struct EventManager));
+        self->handleCharacterEvent=&characterEventHandler;
+        self->updateCharacter=&updateCharacterActor;
+    }
+
+    return self;
+}
+
+void deleteCharacterHandler() {
+    if (self!=NONE) {
+        free(self);
+        self=NONE;
+    }
+}
 
 
+/*------------- IMPLEMENTATION: -----------------------*/
 void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI) {
 //Player character does not send a default event; AI characters will.
 //FIXME FIX the logic below to reflect between player and AI
