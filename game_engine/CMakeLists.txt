@@ -49,8 +49,8 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Graphics/GraphicsRenderer2D.h
         ${_HEADERS_DIR}/Graphics/ImageLayers.h
 
+        ${_HEADERS_DIR}/Managers/CharactersEventManager.h
         ${_HEADERS_DIR}/Managers/CollisionManager.h
-        ${_HEADERS_DIR}/Managers/EventManager.h
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
         ${_HEADERS_DIR}/Managers/GameStateManager.h
         ${_HEADERS_DIR}/Managers/TextureManager.h
@@ -87,8 +87,8 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/Graphics/GraphicsRenderer2D.c
         ${_SOURCES_DIR}/Graphics/ImageLayers.c
 
+        ${_SOURCES_DIR}/Managers/CharactersEventManager.c
         ${_SOURCES_DIR}/Managers/CollisionManager.c
-        ${_SOURCES_DIR}/Managers/EventManager.c
         ${_SOURCES_DIR}/Managers/GameObjectManager.c
         ${_SOURCES_DIR}/Managers/GameStateManager.c
         ${_SOURCES_DIR}/Managers/TextureManager.c

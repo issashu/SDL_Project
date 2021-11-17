@@ -11,7 +11,6 @@
 
 //TODO Move defines to respective header
 #define BODY_MASS 1.0f
-#define WORLD_GRAVITY 1.45f
 
 #define SPAWN_X 10
 #define SPAWN_Y 50
@@ -47,7 +46,7 @@ void applyFriction(RigidBody2D *self, Vector2D *Friction){
     self->Friction.Y = Friction->Y;
 }
 
-//Force+Friction = acc*mass (Using negative Friction for ice and option for vertical Friction)
+//Force+Friction = acc*mass (Using negative Friction for ice and option for vertical Friction. Force must be negative to jump)
 void applyAcceleration(RigidBody2D *self) {
     self->Acceleration.X = (self->appliedForce.X - self->Friction.X) / self->Mass;
     self->Acceleration.Y = (self->appliedForce.Y - self->Friction.Y + self->appliedGravity) / self->Mass;

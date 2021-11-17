@@ -3,37 +3,39 @@
 //
 
 #include <SDL_events.h>
-#include "Managers/EventManager.h"
+#include "Managers/CharactersEventManager.h"
 #include "Core/GameEngineCore.h"
 #include "Actors/BaseCharacter.h"
 #include "Utils/include/Defines.h"
 
 /*------------- PRIVATE: -----------------------*/
 void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *gameKeyStates);
+
 void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI);
+
 void updateCharacterActor(Character *BaseCharacter,
                           const float *DeltaTime,
                           SDL_Renderer **GfxRenderer,
                           SDL_Texture *Texture);
 
-static EventHandler *self= NONE;
+static CharacterEventHandler *self = NONE;
 
 /*------------- PUBLIC: -----------------------*/
 
-EventHandler* getCharacterEventHandler() {
+CharacterEventHandler *getCharacterEventHandler() {
     if (self == NONE) {
-        self = (EventHandler*) malloc(sizeof(struct EventManager));
-        self->handleCharacterEvent=&characterEventHandler;
-        self->updateCharacter=&updateCharacterActor;
+        self = (CharacterEventHandler *) malloc(sizeof(struct CharactersEventManager));
+        self->handleCharacterEvent = &characterEventHandler;
+        self->updateCharacter = &updateCharacterActor;
     }
 
     return self;
 }
 
 void deleteCharacterHandler() {
-    if (self!=NONE) {
+    if (self != NONE) {
         free(self);
-        self=NONE;
+        self = NONE;
     }
 }
 
@@ -84,28 +86,28 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
     //TODO ADD DOXYGEN and set some default key event (also might be having slight delay because of pump
     //TODO Find a way to automate indexing. Maybe object struct should know the index of its texture
     // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
-    if (gameKeyStates[SDL_SCANCODE_UP] || SDL_CONTROLLER_BUTTON_A) {
+    if (gameKeyStates[SDL_SCANCODE_W] != 0) {
         setState(BaseCharacter, JUMPING_UP);
     }
-    if (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_RIGHT]) {
+    if (gameKeyStates[SDL_SCANCODE_E]) {
         setState(BaseCharacter, JUMPING_RIGHT);
     }
-    if (gameKeyStates[SDL_SCANCODE_UP] && gameKeyStates[SDL_SCANCODE_LEFT]) {
+    if (gameKeyStates[SDL_SCANCODE_Q]) {
         setState(BaseCharacter, JUMPING_LEFT);
     }
-    if (gameKeyStates[SDL_SCANCODE_RIGHT]) {
+    if (gameKeyStates[SDL_SCANCODE_D]) {
         setState(BaseCharacter, RUNNING_RIGHT);
     }
-    if (gameKeyStates[SDL_SCANCODE_LEFT]) {
+    if (gameKeyStates[SDL_SCANCODE_A]) {
         setState(BaseCharacter, RUNNING_LEFT);
     }
-    if (gameKeyStates[SDL_SCANCODE_DOWN]) {
+    if (gameKeyStates[SDL_SCANCODE_S]) {
         setState(BaseCharacter, CROUCHING);
     }
-    if (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_RIGHT]) {
+    if (gameKeyStates[SDL_SCANCODE_S] && gameKeyStates[SDL_SCANCODE_D]) {
         setState(BaseCharacter, CRAWLING_RIGHT);
     }
-    if (gameKeyStates[SDL_SCANCODE_DOWN] && gameKeyStates[SDL_SCANCODE_LEFT]) {
+    if (gameKeyStates[SDL_SCANCODE_S] && gameKeyStates[SDL_SCANCODE_A]) {
         setState(BaseCharacter, CRAWLING_LEFT);
     }
     if (gameKeyStates[SDL_SCANCODE_SPACE]) {
@@ -124,21 +126,30 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
     initVector2D(&Friction);
     switch (getState(BaseCharacter)) {
         case IDLE_STATE:
-            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
-            DrawCharacter(IDLE_STATE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            if (Force.Y <= 0) {
+                Force.Y = 0;
+            } else {
+                Force.Y -= WORLD_GRAVITY * (*DeltaTime);
+                moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+                DrawCharacter(IDLE_STATE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            }
             break;
         case JUMPING_UP:
-            Force.set(&Force, 0.0, -2.0);
-            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
-            DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            if (getAirborne(getBaseObj(BaseCharacter)) == FALSE) {
+                GameObject2D *ObjProxy = getBaseObj(BaseCharacter);
+                setAirborne(&ObjProxy, TRUE);
+                Force.set(&Force, 0.0, -3.0);
+                moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+                DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            }
             break;
         case JUMPING_LEFT:
-            Force.set(&Force, -2.0, -2.0);
+            Force.set(&Force, -2.0, -3.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case JUMPING_RIGHT:
-            Force.set(&Force, 2.0, -2.0);
+            Force.set(&Force, 2.0, -3.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
@@ -176,7 +187,7 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             DrawCharacter(SDL_SCANCODE_RIGHT, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case ATTACKING:
-            Force.set(&Force, (0.5*getHorrizFlip(getBaseObj(BaseCharacter))), 0.0);
+            Force.set(&Force, (0.5 * getHorrizFlip(getBaseObj(BaseCharacter))), 0.0);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_SPACE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;

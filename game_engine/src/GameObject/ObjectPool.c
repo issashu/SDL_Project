@@ -75,7 +75,7 @@ size_t addObjects(void *object, uint8_t ObjectType) {
     return PositionTicket;
 }
 
-void * pullObject(uint8_t position) {
+void* pullObject(uint8_t position) {
     if (ObjectLibraryCards[position] != 0) {
         switch (ObjectLibraryCards[position]) {
             case BASIC_PLATFORM: {

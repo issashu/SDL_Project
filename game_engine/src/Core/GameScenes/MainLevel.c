@@ -8,7 +8,7 @@
 #include "Core/sdl_default_app_settings.h"
 #include "Core/GameEngineCore.h"
 #include "Graphics/GraphicsRenderer2D.h"
-#include "Managers/EventManager.h"
+#include "Managers/CharactersEventManager.h"
 #include "Managers/CollisionManager.h"
 #include "Utils/include/Defines.h"
 #include "Timers/Timers.h"
@@ -16,9 +16,9 @@
 #include "Managers/TextureManager.h"
 #include "Managers/GameObjectManager.h"
 #include "Managers/GameStateManager.h"
-
-
 //TODO UNIFY engine includes in a single header to pass around for convenience, when needed
+
+
 BOOL mainGame() {
     //LOAD GAME LOGIC
 
@@ -34,7 +34,7 @@ BOOL mainGame() {
     CollisionManager2D *CollisionManager = getCollisionManager();
     uint8_t CollisionSide;
     GameObjectManager *ObjectManager = getObjectManager();
-    EventHandler *CharacterEventManager = getCharacterEventHandler();
+    CharacterEventHandler *CharacterEventManager = getCharacterEventHandler();
 
     //Graphics struct
     Camera *MainCamera = NONE;
@@ -48,32 +48,32 @@ BOOL mainGame() {
     ImageLayer *Background2 = NONE;
     ImageLayer *Background3 = NONE;
 
-    //Objects Pool
-    BasePlatform2D *PlatformTest = NONE;
+    //Characters
+    UNUSED Character *Enemy = NONE;
 
     //INITIALISATION
     SDLLoader(&GfxRenderer, &AppWindow);
 
-    //TODO Decide what to do with the ticket numbers
-    size_t ObjectKey = ObjectManager->LoadObjectToPool(BASIC_PLATFORM);
-    printf("%zu", ObjectKey);
-    PlatformTest = ObjectManager->SpawnObject(ObjectKey, BASIC_PLATFORM);
-
-    initBasePlatform(&PlatformTest, ASSETS_PATH "images/Platform.png", "Platform6", 150, 20, 100, GfxRenderer, 10, 500);
-
-    BasePlatform2D* PlatformsArray[1];
-    PlatformsArray[0]=PlatformTest;
+    //TODO Decide what to do with the ticket numbers returned by the pool. Right now just pulling out in a sequence
+    //Objects Pool Load
+    BasePlatform2D *PlatformObject = NONE;
+    for (int32_t i =0; i<MAX_PLATFORMS; i++) {
+        ObjectManager->StashObjectToPool(BASIC_PLATFORM, GfxRenderer);
+    }
 
     LoadImageLayer(&Background0, 0, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background1, 1, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background2, 2, 2, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
 
-    initPlayerActor(&Player, "John Doe", GfxRenderer, 10, 400);
+    //Player Character Loader
+    PlatformObject = (BasePlatform2D*)ObjectManager->PulloutObject(1, BASIC_PLATFORM);
+    int32_t SpawnX = getObjectRect(getBaseObject(PlatformObject))->x;
+    int32_t SpawnY = getObjectRect(getBaseObject(PlatformObject))->y;
+    initPlayerActor(&Player, "John Doe", GfxRenderer, SpawnX-10, SpawnY-10);
     initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT, GfxRenderer, NULL, 0, 0);
     setCameraPosition(&MainCamera, 0, 0);
     ViewPortTexture = getCameraTexture(MainCamera);
-    CollisionManager = getCollisionManager();
 
     //MAIN GAME LOOP
     while (isRunning) {
@@ -102,9 +102,9 @@ BOOL mainGame() {
         }
 
         //OBJECTS UPDATE:
-        for (int32_t i =0; i<1; i++) {
-            GameObject2D *tmpObj = getBaseObject(PlatformsArray[i]);
-            drawStatic(&GfxRenderer, getObjectTexture(tmpObj), NONE, getObjectRect(tmpObj));
+        for (int32_t ObjectKey=1; ObjectKey<MAX_PLATFORMS; ObjectKey++){
+            PlatformObject = (BasePlatform2D*)ObjectManager->PulloutObject(ObjectKey, BASIC_PLATFORM);
+            DrawSingleObject(MainCamera, &GfxRenderer,getObjectTexture(getBaseObject(PlatformObject)), NONE);
         }
 
         //PLAYER UPDATE:
@@ -117,7 +117,7 @@ BOOL mainGame() {
         GameObject2D *FirstObj = getBaseObj(getBaseChar(Player));
         int32_t Overlap = 0;
         for (int32_t i= 0; i<1; i++) {
-            GameObject2D *SecondObj = getBaseObject(PlatformsArray[i]);
+            GameObject2D *SecondObj = getBaseObject(PlatformObject);
             CollisionSide = CollisionManager->getIntersactionSide(FirstObj, SecondObj, &Overlap);
             switch (CollisionSide) {
                 case NO_COLLISION:
@@ -125,6 +125,7 @@ BOOL mainGame() {
                 case SIDE_UP:
                     updateBody2DTransform(&FirstObj,getObjectRect(FirstObj)->x,
                                           getObjectRect(FirstObj)->y-Overlap);
+                    setAirborne(&FirstObj, FALSE);
                     break;
                 case SIDE_LEFT:
                     break;
@@ -147,7 +148,7 @@ BOOL mainGame() {
         SDL_Delay(1000 / 60);
     }
     //DEINITIALISATION
-    deinitBasePlatform(&PlatformTest);
+    deinitBasePlatform(&PlatformObject);
 
     UnloadImageLayer(&Background0);
     UnloadImageLayer(&Background1);
@@ -163,7 +164,7 @@ BOOL mainGame() {
     deinitCamera2D(&MainCamera);
     deinitCollisionManager();
     deleteObjectManager();
-    deleteObjectManager();
+    deleteObjectPool();
     deleteCharacterHandler();
     SDLUnloader(GfxRenderer, AppWindow, NULL);
 

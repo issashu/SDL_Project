@@ -5,6 +5,7 @@
 #ifndef SDL_GAME_DEFINES_H
 #define SDL_GAME_DEFINES_H
 
+/*--------------GENERAL DEFINES--------------*/
 #define SUCCESS 0
 #define FAILURE 1
 #define HALF 0.5f
@@ -14,6 +15,11 @@
 #define NONE ((void*)0)
 #define STRING char*
 #define UNUSED __attribute__((unused))
+
+/*--------------OBJECT DEFINES--------------*/
+
+#define MAX_PLATFORMS 8
+#define MAX_ENEMIES 3
 
 enum ObjectTypes{
     BASIC_PLATFORM = 1,
@@ -33,6 +39,10 @@ enum CollisionSides {
     SIDE_LEFT,
     ALL_SIDES
 };
+
+/*--------------GAME AND PLAYER DEFINES--------------*/
+
+#define WORLD_GRAVITY 1.3f
 
 enum GameStates {
     NO_STATE = 0,

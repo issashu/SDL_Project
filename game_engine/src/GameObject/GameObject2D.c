@@ -23,6 +23,7 @@ struct GameObject {
     BOOL isVFlipped;
     BOOL isPassable;
     BOOL isAlive;
+    BOOL isAirborne;
 
 };
 
@@ -51,6 +52,7 @@ void initObject(GameObject2D **self, uint8_t PositionInPool, int32_t Width, int3
     (*self)->isVFlipped = FALSE;
     (*self)->isPassable = TRUE;
     (*self)->isAlive = FALSE;
+    (*self)->isAirborne = FALSE;
 }
 
 void deinitObject(GameObject2D **self) {
@@ -91,6 +93,10 @@ BOOL getAlive(GameObject2D *self) {
     return self->isAlive;
 }
 
+BOOL getAirborne(GameObject2D *self) {
+    return self->isAirborne;
+}
+
 void setPositionInPool(GameObject2D **self, uint8_t Position) {
     (*self)->PositionInObjectPool = Position;
 }
@@ -109,6 +115,10 @@ void setPassable(GameObject2D *self, BOOL flag) {
 
 void setAlive(GameObject2D **self, BOOL flag) {
     (*self)->isAlive = flag;
+}
+
+void setAirborne(GameObject2D **self, BOOL flag) {
+    (*self)->isAirborne = flag;
 }
 
 void setObjectTexture (GameObject2D **self, SDL_Texture *Texture) {

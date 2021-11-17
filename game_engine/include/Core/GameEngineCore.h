@@ -19,6 +19,7 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
                    SDL_Texture *Texture);
 void DrawObjects(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture, SDL_Rect *SrcTextureRect,
                  struct Vector *TexturesContainer, int32_t TextureIndex);
+void DrawSingleObject(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture *Texture, SDL_Rect *SrcTextureRect);
 
 
 #endif //SDL_GAME_GAMEENGINECORE_H

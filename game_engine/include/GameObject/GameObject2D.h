@@ -24,12 +24,14 @@ BOOL getHorrizFlip(GameObject2D *self);
 BOOL getVertFlip(GameObject2D *self);
 BOOL getPassable(GameObject2D *self);
 BOOL getAlive(GameObject2D *self);
+BOOL getAirborne(GameObject2D *self);
 
 
 void setHorrizFlip(GameObject2D *self, BOOL flag);
 void setVertFlip(GameObject2D *self, BOOL flag);
 void setPassable(GameObject2D *self, BOOL flag);
 void setAlive(GameObject2D **self, BOOL flag);
+void setAirborne(GameObject2D **self, BOOL flag);
 void setObjectTexture (GameObject2D **self, SDL_Texture *Texture);
 void updateBody2DTransform(GameObject2D **self, float NewX, float NewY);
 

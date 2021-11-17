@@ -9,11 +9,11 @@
 
 static GameObjectManager *self = NONE;
 
-size_t LoadGameObjects(uint8_t ObjectType);
+size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer);
 
-void *SpawnGameObjects(size_t Position, uint8_t Type);
+void *PulloutGameObject(size_t Position, uint8_t Type);
 
-void deSpawnObject(uint8_t Position);
+void ThrashObject(uint8_t Position);
 
 void resetGameObject(void *object, uint8_t ObjectType, STRING TexturePath, STRING Tag, int32_t Width, int32_t Height,
                      int32_t Health, SDL_Renderer *GfxRenderer);
@@ -24,9 +24,9 @@ void resetGameObject(void *object, uint8_t ObjectType, STRING TexturePath, STRIN
 GameObjectManager *getObjectManager() {
     if (self == NONE) {
         self = (GameObjectManager *) malloc(sizeof(struct ObjectManager));
-        self->LoadObjectToPool = &LoadGameObjects;
-        self->SpawnObject = &SpawnGameObjects;
-        self->DespawnObject = &deSpawnObject;
+        self->StashObjectToPool = &StashGameObjects;
+        self->PulloutObject = &PulloutGameObject;
+        self->DeleteObject = &ThrashObject;
         self->ResetObject = &resetGameObject;
     }
     return self;
@@ -42,13 +42,16 @@ void deleteObjectManager() {
 /*------------- IMPLEMENTATION: -----------------------*/
 
 //TODO Find a less naive implementation (type agnostic). Work for now, since we only have platforms
-size_t LoadGameObjects(uint8_t ObjectType) {
+//TODO Think about initialising textures separately, so we don't expose renderer here
+size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer) {
     ObjectPool *tmpPool = getObjectPool();
     size_t PositionTicket = 0;
     switch (ObjectType) {
         case BASIC_PLATFORM: {
             BasePlatform2D *tmpObject;
-            PositionTicket = tmpPool->StashObject(&tmpObject, ObjectType);
+            srand(time(0));
+            initBasePlatform(&tmpObject, ASSETS_PATH "images/Platform.png", "Platform", 150, 10, 100, GfxRenderer, (rand()%6+1)*150.0, (rand()%65+10)*10.0);
+            PositionTicket = tmpPool->StashObject(tmpObject, ObjectType);
             break;
         }
         case FALL_THROUGH_TRAP:
@@ -57,13 +60,14 @@ size_t LoadGameObjects(uint8_t ObjectType) {
         case MANA_POTION:
         case BONUS_POINTS_ITEM:
         case GENERIC_GAME_OBJECT:
+        default:
             break;
     }
     return PositionTicket;
 }
 
 //TODO Add the remaining types of objects. For demo only base platform. Rewthink a bit how to not pass type, but just ID
-void* SpawnGameObjects(size_t Position, uint8_t Type) {
+void* PulloutGameObject(size_t Position, uint8_t Type) {
     ObjectPool *tmpPool = getObjectPool();
     switch (Type) {
         case BASIC_PLATFORM: {
@@ -92,7 +96,7 @@ void* SpawnGameObjects(size_t Position, uint8_t Type) {
 
 //TODO Need to tie the LibraryCards to the ObjectContainer positions, so that the cards update, when an object is deleted
 // Works for now, since we have few items only and don't intend to resize
-void deSpawnObject(uint8_t Position) {
+void ThrashObject(uint8_t Position) {
     ObjectPool *tmpPool = getObjectPool();
     tmpPool->TrashObject(Position);
 }

@@ -113,6 +113,10 @@ void DrawObjects(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Textu
     drawStatic(GfxRenderer, *Texture, SrcTextureRect, getCameraViewPoint(Camera));
 }
 
+void DrawSingleObject(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture *Texture, SDL_Rect *SrcTextureRect) {
+    drawStatic(GfxRenderer, Texture, SrcTextureRect, getCameraViewPoint(Camera));
+}
+
 void SDLUnloader(SDL_Renderer *GfxRenderer, SDL_Window *AppWindow, SDL_Surface *ImageSurface) {
     //TODO Rethink the whole architecture to have SDL lib unloader and then initializer separately
     //FIXME Pass Image pointer to free
