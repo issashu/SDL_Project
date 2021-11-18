@@ -70,7 +70,7 @@ BOOL mainGame() {
     PlatformObject = (BasePlatform2D*)ObjectManager->PulloutObject(1, BASIC_PLATFORM);
     int32_t SpawnX = getObjectRect(getBaseObject(PlatformObject))->x;
     int32_t SpawnY = getObjectRect(getBaseObject(PlatformObject))->y;
-    initPlayerActor(&Player, "John Doe", GfxRenderer, SpawnX-10, SpawnY-10);
+    initPlayerActor(&Player, "John Doe", GfxRenderer, SpawnX+10, SpawnY-10);
     initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT, GfxRenderer, NULL, 0, 0);
     setCameraPosition(&MainCamera, 0, 0);
     ViewPortTexture = getCameraTexture(MainCamera);
@@ -104,7 +104,8 @@ BOOL mainGame() {
         //OBJECTS UPDATE:
         for (int32_t ObjectKey=1; ObjectKey<MAX_PLATFORMS; ObjectKey++){
             PlatformObject = (BasePlatform2D*)ObjectManager->PulloutObject(ObjectKey, BASIC_PLATFORM);
-            DrawSingleObject(MainCamera, &GfxRenderer,getObjectTexture(getBaseObject(PlatformObject)), NONE);
+            DrawSingleObject(getBaseObject(PlatformObject), &GfxRenderer,
+                             getObjectTexture(getBaseObject(PlatformObject)), NONE);
         }
 
         //PLAYER UPDATE:
@@ -144,11 +145,11 @@ BOOL mainGame() {
         //PRESENT RENDERER AND MISC
         presentRenderer(GfxRenderer);
 
-        // Connected render to vsync and using delta time, so should not have much of an effect
+        // Connected render to vsync and using delta time, so should not have much of an effect,
+        // but delay to sync frames just in case
         SDL_Delay(1000 / 60);
     }
     //DEINITIALISATION
-    deinitBasePlatform(&PlatformObject);
 
     UnloadImageLayer(&Background0);
     UnloadImageLayer(&Background1);
@@ -160,6 +161,7 @@ BOOL mainGame() {
     deinitLayeredImage(&Background2);
     deinitLayeredImage(&Background3);
 
+    //Remember that vector free has been modified to first remove all objects. Do not double free them!!
     deinitPlayerActor(&Player);
     deinitCamera2D(&MainCamera);
     deinitCollisionManager();

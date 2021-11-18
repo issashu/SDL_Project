@@ -20,6 +20,7 @@
 
 #define MAX_PLATFORMS 8
 #define MAX_ENEMIES 3
+#define WORLD_GRAVITY 1.0f
 
 enum ObjectTypes{
     BASIC_PLATFORM = 1,
@@ -42,7 +43,7 @@ enum CollisionSides {
 
 /*--------------GAME AND PLAYER DEFINES--------------*/
 
-#define WORLD_GRAVITY 1.3f
+# define JUMP_FORCE  (-5.0)
 
 enum GameStates {
     NO_STATE = 0,

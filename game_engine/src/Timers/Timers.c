@@ -14,7 +14,7 @@
 float getDeltaTime(uint32_t *lastTime) {
     float deltaTime = 0.0f;
     uint32_t currentTIme = SDL_GetTicks();
-    deltaTime = (float)(currentTIme - *lastTime)*(FPS/MSECS_TO_SECS);
+    deltaTime = (float)(currentTIme - *lastTime)*(MSECS_TO_SECS/FPS);
     *lastTime = currentTIme;
 
     if (deltaTime > TARGET_DELTA_TIME){

@@ -50,7 +50,7 @@ size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer) {
         case BASIC_PLATFORM: {
             BasePlatform2D *tmpObject;
             srand(time(0));
-            initBasePlatform(&tmpObject, ASSETS_PATH "images/Platform.png", "Platform", 150, 10, 100, GfxRenderer, (rand()%6+1)*150.0, (rand()%65+10)*10.0);
+            initBasePlatform(&tmpObject, ASSETS_PATH "images/Platform.png", "Platform", 150, 20, 100, GfxRenderer, (rand()%6+1)*150.0, (rand()%65+10)*10.0);
             PositionTicket = tmpPool->StashObject(tmpObject, ObjectType);
             break;
         }

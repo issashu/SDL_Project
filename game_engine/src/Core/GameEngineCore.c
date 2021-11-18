@@ -113,8 +113,8 @@ void DrawObjects(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Textu
     drawStatic(GfxRenderer, *Texture, SrcTextureRect, getCameraViewPoint(Camera));
 }
 
-void DrawSingleObject(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture *Texture, SDL_Rect *SrcTextureRect) {
-    drawStatic(GfxRenderer, Texture, SrcTextureRect, getCameraViewPoint(Camera));
+void DrawSingleObject(GameObject2D *object, SDL_Renderer **GfxRenderer, SDL_Texture *Texture, SDL_Rect *SrcTextureRect) {
+    drawStatic(GfxRenderer, Texture, SrcTextureRect, getObjectRect(object));
 }
 
 void SDLUnloader(SDL_Renderer *GfxRenderer, SDL_Window *AppWindow, SDL_Surface *ImageSurface) {

@@ -49,7 +49,7 @@ void applyFriction(RigidBody2D *self, Vector2D *Friction){
 //Force+Friction = acc*mass (Using negative Friction for ice and option for vertical Friction. Force must be negative to jump)
 void applyAcceleration(RigidBody2D *self) {
     self->Acceleration.X = (self->appliedForce.X - self->Friction.X) / self->Mass;
-    self->Acceleration.Y = (self->appliedForce.Y - self->Friction.Y + self->appliedGravity) / self->Mass;
+    self->Acceleration.Y = (self->appliedForce.Y - self->Friction.Y) + (self->appliedGravity * self->Mass);
 }
 
 void setVelocity(RigidBody2D *self, float deltaTime) {

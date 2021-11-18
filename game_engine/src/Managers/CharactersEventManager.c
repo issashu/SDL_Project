@@ -83,17 +83,26 @@ void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event 
 }
 
 void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *gameKeyStates) {
-    //TODO ADD DOXYGEN and set some default key event (also might be having slight delay because of pump
-    //TODO Find a way to automate indexing. Maybe object struct should know the index of its texture
-    // https://cpp.hotexamples.com/examples/-/-/SDL_GetKeyboardState/cpp-sdl_getkeyboardstate-function-examples.html
     if (gameKeyStates[SDL_SCANCODE_W] != 0) {
-        setState(BaseCharacter, JUMPING_UP);
+        if (getAirborne(getBaseObj(BaseCharacter)) == FALSE) {
+            GameObject2D *ObjProxy = getBaseObj(BaseCharacter);
+            setAirborne(&ObjProxy, TRUE);
+            setState(BaseCharacter, JUMPING_UP);
+        }
     }
     if (gameKeyStates[SDL_SCANCODE_E]) {
-        setState(BaseCharacter, JUMPING_RIGHT);
+        if (getAirborne(getBaseObj(BaseCharacter)) == FALSE) {
+            GameObject2D *ObjProxy = getBaseObj(BaseCharacter);
+            setAirborne(&ObjProxy, TRUE);
+            setState(BaseCharacter, JUMPING_RIGHT);
+        }
     }
     if (gameKeyStates[SDL_SCANCODE_Q]) {
-        setState(BaseCharacter, JUMPING_LEFT);
+        if (getAirborne(getBaseObj(BaseCharacter)) == FALSE) {
+            GameObject2D *ObjProxy = getBaseObj(BaseCharacter);
+            setAirborne(&ObjProxy, TRUE);
+            setState(BaseCharacter, JUMPING_LEFT);
+        }
     }
     if (gameKeyStates[SDL_SCANCODE_D]) {
         setState(BaseCharacter, RUNNING_RIGHT);
@@ -120,38 +129,53 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
 
 void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer,
                           SDL_Texture *Texture) {
+    static BOOL isInit = FALSE;
+    SDL_Event tempEvent;
+    tempEvent.type = SDL_KEYUP;
     static Vector2D Force;
     static Vector2D Friction;
-    initVector2D(&Force);
-    initVector2D(&Friction);
+
+    if (!isInit) {
+        initVector2D(&Force);
+        initVector2D(&Friction);
+        isInit = TRUE;
+    }
+
     switch (getState(BaseCharacter)) {
         case IDLE_STATE:
-            if (Force.Y <= 0) {
-                Force.Y = 0;
-            } else {
-                Force.Y -= WORLD_GRAVITY * (*DeltaTime);
-                moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
-                DrawCharacter(IDLE_STATE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            if (Force.Y < 0) {
+                Force.Y += WORLD_GRAVITY * (*DeltaTime);
             }
+            if (Force.X != 0) {
+                Force.X += (-Force.X) * (*DeltaTime);
+                printf("%.1f\n", (double) Force.X);
+            }
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            DrawCharacter(IDLE_STATE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case JUMPING_UP:
-            if (getAirborne(getBaseObj(BaseCharacter)) == FALSE) {
-                GameObject2D *ObjProxy = getBaseObj(BaseCharacter);
-                setAirborne(&ObjProxy, TRUE);
-                Force.set(&Force, 0.0, -3.0);
+            Force.set(&Force, 0.2, JUMP_FORCE);
+            for (uint32_t timer = 0; timer < JUMP_FRAMES; timer++) {
+                DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+                moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+            }
+            SDL_PushEvent(&tempEvent);
+            break;
+        case JUMPING_LEFT:
+            Force.set(&Force, -2.0, JUMP_FORCE);
+            for (uint32_t timer = 0; timer < JUMP_FRAMES; timer++) {
                 moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
                 DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             }
-            break;
-        case JUMPING_LEFT:
-            Force.set(&Force, -2.0, -3.0);
-            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
-            DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            SDL_PushEvent(&tempEvent);
             break;
         case JUMPING_RIGHT:
-            Force.set(&Force, 2.0, -3.0);
-            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
-            DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            Force.set(&Force, 2.0, JUMP_FORCE);
+            for (uint32_t timer = 0; timer < JUMP_FRAMES; timer++) {
+                moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+                DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            }
+            SDL_PushEvent(&tempEvent);
             break;
         case JUMPING_DOWN:
             Force.set(&Force, 0.0, 2.0);
