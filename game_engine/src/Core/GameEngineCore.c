@@ -97,6 +97,13 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
                           getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
+        case DEAD:
+            drawAnimation(GfxRenderer,getObjectRect(getBaseObj(BaseCharacter)),Texture, DIE - 1, DIE_FRAMES - 1,
+                          getAnimationSpeed(BaseCharacter), getObjectRect(getBaseObj(BaseCharacter))->w,
+                          getObjectRect(getBaseObj(BaseCharacter))->h,
+                          getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
+            break;
+
         default:
             drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, IDLE - 1, IDLE_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), getObjectRect(getBaseObj(BaseCharacter))->w,

@@ -8,12 +8,12 @@
 #include "Utils/include/Defines.h"
 #include "GameObject/Transform2D.h"
 #include "Physics/RigidBody2D.h"
+#include "Core/sdl_default_app_settings.h"
+#include "Utils/include/Defines.h"
 
 //TODO Move defines to respective header
 #define BODY_MASS 1.0f
 
-#define SPAWN_X 10
-#define SPAWN_Y 50
 
 /*------------- PRIVATE: -----------------------*/
 

@@ -4,6 +4,7 @@
 
 #include <stdint.h>
 #include "Managers/GameObjectManager.h"
+#include "Core/sdl_default_app_settings.h"
 
 /*------------- PRIVATE: -----------------------*/
 
@@ -46,14 +47,23 @@ void deleteObjectManager() {
 size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer) {
     ObjectPool *tmpPool = getObjectPool();
     size_t PositionTicket = 0;
+    int32_t PlatformSpawnX = 0;
+    int32_t PlatformSpawnY = 0;
     switch (ObjectType) {
         case BASIC_PLATFORM: {
             BasePlatform2D *tmpObject;
             srand(time(0));
-            initBasePlatform(&tmpObject, ASSETS_PATH "images/Platform.png", "Platform", 150, 20, 100, GfxRenderer, (rand()%6+1)*150.0, (rand()%65+10)*10.0);
+            do {
+                PlatformSpawnX = (rand() % 6 + 1) * 150.0;
+                PlatformSpawnY = (rand() % 65 + 10) * 10.0;
+            } while ((PlatformSpawnX < 0 || PlatformSpawnX > WINDOW_WIDTH - 150) ||
+                     (PlatformSpawnY < 0 || PlatformSpawnY > WINDOW_HEIGHT - 20));
+            initBasePlatform(&tmpObject, ASSETS_PATH "images/Platform.png", "Platform", 150, 20, 100, GfxRenderer,
+                             PlatformSpawnX, PlatformSpawnY);
             PositionTicket = tmpPool->StashObject(tmpObject, ObjectType);
             break;
         }
+
         case FALL_THROUGH_TRAP:
         case SPIKE_TRAP:
         case HEALING_POTION:
@@ -67,11 +77,11 @@ size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer) {
 }
 
 //TODO Add the remaining types of objects. For demo only base platform. Rewthink a bit how to not pass type, but just ID
-void* PulloutGameObject(size_t Position, uint8_t Type) {
+void *PulloutGameObject(size_t Position, uint8_t Type) {
     ObjectPool *tmpPool = getObjectPool();
     switch (Type) {
         case BASIC_PLATFORM: {
-            BasePlatform2D* tmpObject;
+            BasePlatform2D *tmpObject;
             tmpObject = tmpPool->TakeOutObject(Position);
             return tmpObject;
         }

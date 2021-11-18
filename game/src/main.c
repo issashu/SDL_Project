@@ -8,7 +8,7 @@
 int main() {
     GameStateManager* Manager = getGameStateManager();
     //FIXME Magic number fix once we have main menu
-    if(Manager->switchState(2)) {
+    if(Manager->switchState(3)) {
         return EXIT_FAILURE;
     }
     deinitGameStateManager();

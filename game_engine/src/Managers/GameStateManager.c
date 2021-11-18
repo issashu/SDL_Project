@@ -75,14 +75,13 @@ BOOL switchGameState(uint8_t State) {
         case NO_STATE:
         case MAIN_SCREEN:
             break;
-
         case MAIN_GAME:
             ExitStatus = mainGame();
             break;
-
         case EXIT_GAME:
             break;
-
+        case DEATH_SCREEN:
+            break;
         case ALL_STATES:
         default:
             GameState = EXIT_GAME;

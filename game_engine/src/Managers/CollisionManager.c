@@ -75,7 +75,6 @@ uint8_t ObjectsIntersectionSide(GameObject2D *FirstObject, GameObject2D *SecondO
     SDL_Rect *First = getObjectRect(FirstObject);
     SDL_Rect *Second = getObjectRect(SecondObject);
     SDL_Rect IntersectionRect = {.x =0, .y = 0, .w = 0, .h = 0};
-
     if (SDL_IntersectRect(First, Second, &IntersectionRect)) {
         if (IntersectionRect.w > IntersectionRect.h) {
             *Overlap = IntersectionRect.h;
@@ -95,4 +94,5 @@ uint8_t ObjectsIntersectionSide(GameObject2D *FirstObject, GameObject2D *SecondO
     }
     return NO_COLLISION;
 }
+
 

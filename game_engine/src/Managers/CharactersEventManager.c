@@ -199,6 +199,8 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case DEAD:
+            Force.set(&Force,0.0, 0.0);
+            DrawCharacter(DEAD, DeltaTime,BaseCharacter, GfxRenderer, Texture);
             break;
         case RUNNING_LEFT:
             Force.set(&Force, -2.0, 0.0);

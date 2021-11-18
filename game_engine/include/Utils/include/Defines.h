@@ -48,6 +48,7 @@ enum CollisionSides {
 enum GameStates {
     NO_STATE = 0,
     MAIN_SCREEN,
+    DEATH_SCREEN,
     MAIN_GAME,
     EXIT_GAME,
     ALL_STATES

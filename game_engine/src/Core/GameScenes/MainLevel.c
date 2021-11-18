@@ -16,8 +16,9 @@
 #include "Managers/TextureManager.h"
 #include "Managers/GameObjectManager.h"
 #include "Managers/GameStateManager.h"
-//TODO UNIFY engine includes in a single header to pass around for convenience, when needed
 
+//TODO UNIFY engine includes in a single header to pass around for convenience, when needed
+void collisionWithFloor(Character *Character);
 
 BOOL mainGame() {
     //LOAD GAME LOGIC
@@ -57,7 +58,7 @@ BOOL mainGame() {
     //TODO Decide what to do with the ticket numbers returned by the pool. Right now just pulling out in a sequence
     //Objects Pool Load
     BasePlatform2D *PlatformObject = NONE;
-    for (int32_t i =0; i<MAX_PLATFORMS; i++) {
+    for (int32_t i = 0; i < MAX_PLATFORMS; i++) {
         ObjectManager->StashObjectToPool(BASIC_PLATFORM, GfxRenderer);
     }
 
@@ -67,10 +68,10 @@ BOOL mainGame() {
     LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
 
     //Player Character Loader
-    PlatformObject = (BasePlatform2D*)ObjectManager->PulloutObject(1, BASIC_PLATFORM);
+    PlatformObject = (BasePlatform2D *) ObjectManager->PulloutObject(1, BASIC_PLATFORM);
     int32_t SpawnX = getObjectRect(getBaseObject(PlatformObject))->x;
     int32_t SpawnY = getObjectRect(getBaseObject(PlatformObject))->y;
-    initPlayerActor(&Player, "John Doe", GfxRenderer, SpawnX+10, SpawnY-10);
+    initPlayerActor(&Player, "John Doe", GfxRenderer, SpawnX + 10, SpawnY - SPRITE_HEIGHT);
     initCamera2D(&MainCamera, WINDOW_WIDTH, WINDOW_HEIGHT, GfxRenderer, NULL, 0, 0);
     setCameraPosition(&MainCamera, 0, 0);
     ViewPortTexture = getCameraTexture(MainCamera);
@@ -102,14 +103,15 @@ BOOL mainGame() {
         }
 
         //OBJECTS UPDATE:
-        for (int32_t ObjectKey=1; ObjectKey<MAX_PLATFORMS; ObjectKey++){
-            PlatformObject = (BasePlatform2D*)ObjectManager->PulloutObject(ObjectKey, BASIC_PLATFORM);
+        for (int32_t ObjectKey = 1; ObjectKey < MAX_PLATFORMS; ObjectKey++) {
+            PlatformObject = (BasePlatform2D *) ObjectManager->PulloutObject(ObjectKey, BASIC_PLATFORM);
             DrawSingleObject(getBaseObject(PlatformObject), &GfxRenderer,
                              getObjectTexture(getBaseObject(PlatformObject)), NONE);
         }
 
         //PLAYER UPDATE:
         CharacterEventManager->handleCharacterEvent(&isRunning, getBaseChar(Player), NONE);
+        collisionWithFloor(getBaseChar(Player));
         CharacterEventManager->updateCharacter(getBaseChar(Player), &DeltaTime, &GfxRenderer,
                                                getObjectTexture(getBaseObj(getBaseChar(Player))));
 
@@ -117,15 +119,16 @@ BOOL mainGame() {
         //COLLISIONS AND PHYSICS UPDATE:
         GameObject2D *FirstObj = getBaseObj(getBaseChar(Player));
         int32_t Overlap = 0;
-        for (int32_t i= 0; i<1; i++) {
+        //TODO Set to multiple platform, once this is fixed
+        for (int32_t i = 0; i < 1; i++) {
             GameObject2D *SecondObj = getBaseObject(PlatformObject);
             CollisionSide = CollisionManager->getIntersactionSide(FirstObj, SecondObj, &Overlap);
             switch (CollisionSide) {
                 case NO_COLLISION:
                     break;
                 case SIDE_UP:
-                    updateBody2DTransform(&FirstObj,getObjectRect(FirstObj)->x,
-                                          getObjectRect(FirstObj)->y-Overlap);
+                    updateBody2DTransform(&FirstObj, getObjectRect(FirstObj)->x,
+                                          getObjectRect(FirstObj)->y - Overlap);
                     setAirborne(&FirstObj, FALSE);
                     break;
                 case SIDE_LEFT:
@@ -171,4 +174,13 @@ BOOL mainGame() {
     SDLUnloader(GfxRenderer, AppWindow, NULL);
 
     return EXIT_SUCCESS;
+}
+
+void collisionWithFloor(Character *Character) {
+    int32_t CharY = getObjectRect(getBaseObj(Character))->y;
+    int32_t CharHeight = getObjectRect(getBaseObj(Character))->h;
+    int32_t FloorHeight = WINDOW_HEIGHT;
+    if ((CharY + CharHeight) >= FloorHeight) {
+        setState(Character, DEAD);
+    }
 }

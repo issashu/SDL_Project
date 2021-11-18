@@ -10,6 +10,7 @@
 #include "Physics/RigidBody2D.h"
 #include "Utils/include/Defines.h"
 #include "Managers/TextureManager.h"
+#include "Core/sdl_default_app_settings.h"
 
 /*------------- PRIVATE: -----------------------*/
 struct GameObject {
@@ -42,10 +43,9 @@ void initObject(GameObject2D **self, uint8_t PositionInPool, int32_t Width, int3
     (*self)->ObjectRadius = Width * HALF;
     (*self)->PositionInObjectPool = PositionInPool;
     //TODO CHeck if it crashes on NULL TexturePath
-    if(TexturePath != NONE) {
+    if (TexturePath != NONE) {
         (*self)->ObjTexture = SDL_CreateTextureFromSurface(GfxRenderer, IMG_Load(TexturePath));
-    }
-    else {
+    } else {
         (*self)->ObjTexture = NONE;
     }
     (*self)->isHFlipped = FALSE;
@@ -69,7 +69,7 @@ SDL_Rect *getObjectRect(GameObject2D *self) {
     return &self->ObjectRect;
 }
 
-SDL_Texture * getObjectTexture(GameObject2D *self) {
+SDL_Texture *getObjectTexture(GameObject2D *self) {
     return self->ObjTexture;
 }
 
@@ -121,7 +121,7 @@ void setAirborne(GameObject2D **self, BOOL flag) {
     (*self)->isAirborne = flag;
 }
 
-void setObjectTexture (GameObject2D **self, SDL_Texture *Texture) {
+void setObjectTexture(GameObject2D **self, SDL_Texture *Texture) {
     (*self)->ObjTexture = Texture;
 }
 
@@ -132,8 +132,20 @@ void updateBody2DTransform(GameObject2D **self, float NewX, float NewY) {
 
 void updateObject(GameObject2D **self, float DeltaTime, Vector2D *Force, Vector2D *Friction) {
     updatePosition(&(*self)->body2D, DeltaTime, Force, Friction);
+
     (*self)->ObjectRect.x = (int) getTransformX((*self)->body2D);
+    if ((*self)->ObjectRect.x >= WINDOW_WIDTH - 96) {
+        (*self)->ObjectRect.x = WINDOW_WIDTH - 96;
+    } else if ((*self)->ObjectRect.x <= 0) {
+        (*self)->ObjectRect.x = 0;
+    }
+
     (*self)->ObjectRect.y = (int) getTransformY((*self)->body2D);
+    if ((*self)->ObjectRect.y >= WINDOW_HEIGHT - 84) {
+        (*self)->ObjectRect.y = WINDOW_HEIGHT - 84;
+    } else if (((*self)->ObjectRect.x <= 0)) {
+        (*self)->ObjectRect.x = 0;
+    }
 }
 
 

@@ -58,10 +58,10 @@ typedef enum CharacterStates{
     CROUCHING,
     CRAWLING_RIGHT,
     CRAWLING_LEFT,
-    DEAD,
     RUNNING_LEFT,
     RUNNING_RIGHT,
-    ATTACKING
+    ATTACKING,
+    DEAD = 38
 } StateFlags;
 
 //TODO Make sure that base class structures are always first
