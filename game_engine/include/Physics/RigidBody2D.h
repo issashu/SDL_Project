@@ -11,8 +11,8 @@ typedef struct RigidBody2D RigidBody2D;
 
 void initRigidBody2D(RigidBody2D **self, float SpawnX, float SpawnY);
 void deinitRigidBody2D(RigidBody2D **self);
-inline float getMass(RigidBody2D *self);
-inline float getGravity(RigidBody2D *self);
+UNUSED inline float getMass(RigidBody2D *self);
+UNUSED inline float getGravity(RigidBody2D *self);
 float getTransformX(RigidBody2D *self);
 float getTransformY(RigidBody2D *self);
 void setTransformX(RigidBody2D **self, float NewX);
