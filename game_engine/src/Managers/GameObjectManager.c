@@ -3,6 +3,7 @@
 //
 
 #include <stdint.h>
+#include <time.h>
 #include "Managers/GameObjectManager.h"
 #include "Core/sdl_default_app_settings.h"
 

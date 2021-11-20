@@ -17,6 +17,7 @@
 #include "Managers/TextureManager.h"
 #include "Managers/GameObjectManager.h"
 #include "Managers/GameStateManager.h"
+#include <time.h>
 
 //TODO UNIFY engine includes in a single header to pass around for convenience, when needed
 void collisionWithFloor(Character *Character, uint8_t *isRunning);
@@ -184,6 +185,9 @@ BOOL mainGame() {
 
     //Remember that vector free has been modified to first remove all objects. Do not double free them!!
     deinitPlayerActor(&Player);
+    for (int32_t index = 0; index < MAX_ENEMIES; index++) {
+        deinitNPCActor(&Enemies[index]);
+    }
     deinitCamera2D(&MainCamera);
     deinitCollisionManager();
     deleteObjectManager();
