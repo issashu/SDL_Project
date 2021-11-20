@@ -45,7 +45,7 @@ enum animFrames {
     JUMP_FRAMES = 14,
     ROLL_FRAMES = 10,
     CRAWL_FRAMES = 8,
-    DIE_FRAMES = 5,
+    DIE_FRAMES = 11,
     ATTACK_FRAMES = 6
 };
 
@@ -61,6 +61,7 @@ typedef enum CharacterStates{
     RUNNING_LEFT,
     RUNNING_RIGHT,
     ATTACKING,
+    ALL_ALIVE_STATES,
     DEAD = 38
 } StateFlags;
 

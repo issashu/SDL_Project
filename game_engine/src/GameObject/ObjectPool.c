@@ -82,7 +82,6 @@ void* pullObject(uint8_t position) {
               BasePlatform2D* tmpObject = getElementVector(&ObjectContainer, position-1);
               return tmpObject;
             }
-
             case FALL_THROUGH_TRAP:
                 break;
             case SPIKE_TRAP:

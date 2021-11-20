@@ -10,7 +10,7 @@
 
 static GameObjectManager *self = NONE;
 
-size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer);
+size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer, uint32_t ObjectID);
 
 void *PulloutGameObject(size_t Position, uint8_t Type);
 
@@ -44,7 +44,7 @@ void deleteObjectManager() {
 
 //TODO Find a less naive implementation (type agnostic). Work for now, since we only have platforms
 //TODO Think about initialising textures separately, so we don't expose renderer here
-size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer) {
+size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer, uint32_t ObjectID) {
     ObjectPool *tmpPool = getObjectPool();
     size_t PositionTicket = 0;
     int32_t PlatformSpawnX = 0;
@@ -52,14 +52,13 @@ size_t StashGameObjects(uint8_t ObjectType, SDL_Renderer *GfxRenderer) {
     switch (ObjectType) {
         case BASIC_PLATFORM: {
             BasePlatform2D *tmpObject;
-            srand(time(0));
             do {
                 PlatformSpawnX = (rand() % 6 + 1) * 150.0;
                 PlatformSpawnY = (rand() % 65 + 10) * 10.0;
             } while ((PlatformSpawnX < 0 || PlatformSpawnX > WINDOW_WIDTH - 150) ||
                      (PlatformSpawnY < 0 || PlatformSpawnY > WINDOW_HEIGHT - 20));
             initBasePlatform(&tmpObject, ASSETS_PATH "images/Platform.png", "Platform", 150, 20, 100, GfxRenderer,
-                             PlatformSpawnX, PlatformSpawnY);
+                             PlatformSpawnX, PlatformSpawnY, ObjectID);
             PositionTicket = tmpPool->StashObject(tmpObject, ObjectType);
             break;
         }
@@ -122,7 +121,7 @@ void resetGameObject(void *object, uint8_t ObjectType, STRING TexturePath, STRIN
     switch (ObjectType) {
         case BASIC_PLATFORM:
             object = (BasePlatform2D *) object;
-            initBasePlatform(object, TexturePath, Tag, Width, Height, Health, GfxRenderer, 0, 0);
+            initBasePlatform(object, TexturePath, Tag, Width, Height, Health, GfxRenderer, 0, 0, 0);
             break;
         case FALL_THROUGH_TRAP:
             break;
@@ -136,7 +135,7 @@ void resetGameObject(void *object, uint8_t ObjectType, STRING TexturePath, STRIN
             break;
         case GENERIC_GAME_OBJECT:
             object = (GameObject2D *) object;
-            initBasePlatform(object, TexturePath, Tag, Width, Height, Health, GfxRenderer, 0, 0);
+            initBasePlatform(object, TexturePath, Tag, Width, Height, Health, GfxRenderer, 0, 0, 0);
             break;
         default:
             break;

@@ -11,6 +11,7 @@ struct BasePlatform2D {
     GameObject2D *BaseObject;
     STRING TexturePath;
     STRING Tag;
+    uint32_t ID;
     int32_t Width;
     int32_t Height;
     int32_t Health;
@@ -21,14 +22,15 @@ struct BasePlatform2D {
 
 void
 initBasePlatform(BasePlatform2D **self, char *TexturePath, char *Tag, int32_t Width, int32_t Height, int32_t Health,
-                 SDL_Renderer *GfxRenderer, float SpawnX, float SpawnY) {
+                 SDL_Renderer *GfxRenderer, float SpawnX, float SpawnY, uint32_t PlatformID) {
     *self = (BasePlatform2D *) malloc(sizeof(struct BasePlatform2D));
     (*self)->TexturePath = TexturePath;
     (*self)->Tag = Tag;
+    (*self)->ID = PlatformID;
     (*self)->Width = Width;
     (*self)->Height = Height;
     (*self)->Health = Health;
-    initObject(&(*self)->BaseObject, 0, (*self)->Width, (*self)->Height, GfxRenderer, (*self)->TexturePath, SpawnX, SpawnY);
+    initObject(&(*self)->BaseObject, PlatformID, (*self)->Width, (*self)->Height, GfxRenderer, (*self)->TexturePath, SpawnX, SpawnY);
 }
 
 void deinitBasePlatform(BasePlatform2D **self) {

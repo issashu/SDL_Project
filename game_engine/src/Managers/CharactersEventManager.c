@@ -43,43 +43,40 @@ void deleteCharacterHandler() {
 /*------------- IMPLEMENTATION: -----------------------*/
 void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI) {
 //Player character does not send a default event; AI characters will.
-//FIXME FIX the logic below to reflect between player and AI
-    if (gameEventAI == NONE) {
-        SDL_Event gameEvent;
-        const u_int8_t *gameKeyStates = NONE;
-        while (SDL_PollEvent(&gameEvent)) {
-            switch (gameEvent.type) {
-                case SDL_QUIT:
-                    *isRunning = FALSE;
-                    break;
-
-                case SDL_CONTROLLERBUTTONDOWN:
-                case SDL_KEYDOWN:
-                    gameKeyStates = SDL_GetKeyboardState(NULL);
-                    keyboardEvent(isRunning, BaseCharacter, gameKeyStates);
-                    break;
-
-                case SDL_CONTROLLERBUTTONUP:
-                case SDL_KEYUP:
-                    setState(BaseCharacter, IDLE_STATE);
-                    break;
-
-                case SDL_MOUSEBUTTONDOWN:
-                case SDL_MOUSEMOTION:
-                case SDL_MOUSEBUTTONUP:
-                case SDL_MOUSEWHEEL:
-                case SDL_MOUSEWHEEL_FLIPPED:
-                case SDL_MOUSEWHEEL_NORMAL:
-                    break;
-
-                default:
-                    break;
-            }
+    const u_int8_t *gameKeyStates = NONE;
+    SDL_Event gameEvent;
+    while (SDL_PollEvent(&gameEvent)) {
+        if (gameEventAI != NONE) {
+            gameEvent.type = gameEventAI->type;
         }
-    } else {
-        return;
-    }
+        switch (gameEvent.type) {
+            case SDL_QUIT:
+                *isRunning = FALSE;
+                break;
 
+            case SDL_CONTROLLERBUTTONDOWN:
+            case SDL_KEYDOWN:
+                gameKeyStates = SDL_GetKeyboardState(NULL);
+                keyboardEvent(isRunning, BaseCharacter, gameKeyStates);
+                break;
+
+            case SDL_CONTROLLERBUTTONUP:
+            case SDL_KEYUP:
+                setState(BaseCharacter, IDLE_STATE);
+                break;
+
+            case SDL_MOUSEBUTTONDOWN:
+            case SDL_MOUSEMOTION:
+            case SDL_MOUSEBUTTONUP:
+            case SDL_MOUSEWHEEL:
+            case SDL_MOUSEWHEEL_FLIPPED:
+            case SDL_MOUSEWHEEL_NORMAL:
+               break;
+
+            default:
+               break;
+        }
+    }
 }
 
 void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *gameKeyStates) {
@@ -148,10 +145,9 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             }
             if (Force.X != 0) {
                 Force.X += (-Force.X) * (*DeltaTime);
-                printf("%.1f\n", (double) Force.X);
             }
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
-            DrawCharacter(IDLE_STATE, DeltaTime, BaseCharacter, GfxRenderer, Texture);
+            DrawCharacter(rand()%ALL_ALIVE_STATES+1, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case JUMPING_UP:
             Force.set(&Force, 0.2, JUMP_FORCE);
@@ -165,6 +161,7 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             Force.set(&Force, -2.0, JUMP_FORCE);
             for (uint32_t timer = 0; timer < JUMP_FRAMES; timer++) {
                 moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
+                setHorrizFlip(getBaseObj(BaseCharacter), TRUE);
                 DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             }
             SDL_PushEvent(&tempEvent);
@@ -172,6 +169,7 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
         case JUMPING_RIGHT:
             Force.set(&Force, 2.0, JUMP_FORCE);
             for (uint32_t timer = 0; timer < JUMP_FRAMES; timer++) {
+                setHorrizFlip(getBaseObj(BaseCharacter), FALSE);
                 moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
                 DrawCharacter(SDL_SCANCODE_UP, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             }
@@ -190,16 +188,20 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             break;
         case CRAWLING_LEFT:
             Force.set(&Force, -1.0, 0.0);
+            setHorrizFlip(getBaseObj(BaseCharacter), TRUE);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case CRAWLING_RIGHT:
             Force.set(&Force, 1.0, 0.0);
+            setHorrizFlip(getBaseObj(BaseCharacter), FALSE);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(SDL_SCANCODE_DOWN, DeltaTime, BaseCharacter, GfxRenderer, Texture);
             break;
         case DEAD:
-            Force.set(&Force,0.0, 0.0);
+            //FIXME Play once only and quit
+            Force.set(&Force,0.0, -2.0);
+            moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(DEAD, DeltaTime,BaseCharacter, GfxRenderer, Texture);
             break;
         case RUNNING_LEFT:

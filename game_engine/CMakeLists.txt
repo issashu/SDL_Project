@@ -32,13 +32,16 @@ add_library(${PROJECT_NAME}
         # HEADER FILES HERE
         ${_HEADERS_DIR}/Actors/BaseCharacter.h
         ${_HEADERS_DIR}/Actors/PlayerCharacter.h
+        ${_HEADERS_DIR}/Actors/EnemyCharacter.h
 
         ${_HEADERS_DIR}/Core/Camera2D.h
         ${_HEADERS_DIR}/Core/GameEngineCore.h
         ${_HEADERS_DIR}/Core/sdl_default_app_settings.h
         ${_HEADERS_DIR}/Core/sdl_methods.h
 
+        ${_HEADERS_DIR}/Core/GameScenes/DeathScreen.h
         ${_HEADERS_DIR}/Core/GameScenes/MainLevel.h
+        ${_HEADERS_DIR}/Core/GameScenes/TitleScreen.h
 
         ${_HEADERS_DIR}/GameObject/GameObject2D.h
         ${_HEADERS_DIR}/GameObject/ObjectPool.h
@@ -53,6 +56,7 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Managers/CollisionManager.h
         ${_HEADERS_DIR}/Managers/GameObjectManager.h
         ${_HEADERS_DIR}/Managers/GameStateManager.h
+        ${_HEADERS_DIR}/Managers/NPCManager.h
         ${_HEADERS_DIR}/Managers/TextureManager.h
         ${_HEADERS_DIR}/Managers/WindowManager.h
 
@@ -68,15 +72,19 @@ add_library(${PROJECT_NAME}
         ${_HEADERS_DIR}/Utils/include/Defines.h
 
         # SOURCE FILES HERE
-        ${_SOURCES_DIR}/Core/sdl_methods.c
         ${_SOURCES_DIR}/Actors/BaseCharacter.c
+        ${_SOURCES_DIR}/Actors/EnemyCharacter.c
         ${_SOURCES_DIR}/Actors/PlayerCharacter.c
 
         ${_SOURCES_DIR}/Core/Camera2D.c
         ${_SOURCES_DIR}/Core/GameEngineCore.c
         ${_SOURCES_DIR}/Core/sdl_methods.c
 
+        ${_SOURCES_DIR}/Core/GameScenes/DeathScreen.c
         ${_SOURCES_DIR}/Core/GameScenes/MainLevel.c
+        ${_SOURCES_DIR}/Core/sdl_methods.c
+        ${_SOURCES_DIR}/Core/GameScenes/TitleScreen.c
+
 
         ${_SOURCES_DIR}/GameObject/GameObject2D.c
         ${_SOURCES_DIR}/GameObject/ObjectPool.c
@@ -91,6 +99,7 @@ add_library(${PROJECT_NAME}
         ${_SOURCES_DIR}/Managers/CollisionManager.c
         ${_SOURCES_DIR}/Managers/GameObjectManager.c
         ${_SOURCES_DIR}/Managers/GameStateManager.c
+        ${_SOURCES_DIR}/Managers/NPCManager.c
         ${_SOURCES_DIR}/Managers/TextureManager.c
         ${_SOURCES_DIR}/Managers/WindowManager.c
 
@@ -101,7 +110,7 @@ add_library(${PROJECT_NAME}
 
         ${_SOURCES_DIR}/Utils/src/containers/Vector.c
         ${_SOURCES_DIR}/Utils/src/vfx_tools/shapes.c
-        src/Core/GameScenes/TitleScreen.c include/Core/GameScenes/TitleScreen.h src/Core/GameScenes/DeathScreen.c src/Core/GameScenes/DeathScreen.h)
+        )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         ASSETS_PATH="${ASSETS_PATH}"

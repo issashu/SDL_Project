@@ -9,10 +9,8 @@
 #include "GameObject/ObjectPool.h"
 #include "GameObject/Platforms/BasePlatform2D.h"
 
-//TODO Apply singleton
-
 typedef struct ObjectManager {
-    size_t(*StashObjectToPool)(uint8_t, SDL_Renderer*);
+    size_t(*StashObjectToPool)(uint8_t, SDL_Renderer*, uint32_t);
     void*(*PulloutObject)(size_t, uint8_t);
     void(*DeleteObject)(uint8_t);
     void(*ResetObject)(void*, uint8_t, STRING, STRING, int32_t, int32_t, int32_t, SDL_Renderer*);

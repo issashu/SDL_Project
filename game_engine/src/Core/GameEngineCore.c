@@ -75,7 +75,6 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
             break;
 
         case SDL_SCANCODE_DOWN:
-
             drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, CROUCH - 1, CROUCH_FRAMES - 1,
                           getAnimationSpeed(BaseCharacter), getObjectRect(getBaseObj(BaseCharacter))->w,
                           getObjectRect(getBaseObj(BaseCharacter))->h,
@@ -97,11 +96,15 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
                           getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
             break;
 
-        case DEAD:
-            drawAnimation(GfxRenderer,getObjectRect(getBaseObj(BaseCharacter)),Texture, DIE - 1, DIE_FRAMES - 1,
-                          getAnimationSpeed(BaseCharacter), getObjectRect(getBaseObj(BaseCharacter))->w,
+        case DEAD: {
+            UNUSED uint8_t Alpha = 255;
+            SDL_RenderClear(*GfxRenderer);
+            SDL_SetRenderDrawColor(*GfxRenderer, 0, 0, 0, 0);
+            drawAnimation(GfxRenderer, getObjectRect(getBaseObj(BaseCharacter)), Texture, DIE - 1, DIE_FRAMES - 1,
+                          250, getObjectRect(getBaseObj(BaseCharacter))->w,
                           getObjectRect(getBaseObj(BaseCharacter))->h,
                           getHorrizFlip(getBaseObj(BaseCharacter)), *DeltaTime);
+        }
             break;
 
         default:
