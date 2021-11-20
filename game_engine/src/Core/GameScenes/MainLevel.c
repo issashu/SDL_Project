@@ -58,7 +58,7 @@ BOOL mainGame() {
     LoadImageLayer(&Background0, 0, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background1, 1, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
     LoadImageLayer(&Background2, 2, 2, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
-    LoadImageLayer(&Background3, 3, 3, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
+    LoadImageLayer(&Background3, 3, 4, WINDOW_WIDTH, WINDOW_HEIGHT, 1, TRUE, FALSE, NONE);
 
     //Characters struct
     NPCActor *Enemies[MAX_ENEMIES];
@@ -117,7 +117,7 @@ BOOL mainGame() {
             DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
                         getTexturesContainer(Background2), textureIdx);
         }
-        for (int32_t textureIdx = 0; textureIdx < 3; textureIdx++) {
+        for (int32_t textureIdx = 0; textureIdx < 4; textureIdx++) {
             DrawObjects(MainCamera, &GfxRenderer, &ViewPortTexture, NONE,
                         getTexturesContainer(Background3), textureIdx);
         }
@@ -134,7 +134,7 @@ BOOL mainGame() {
         CharacterEventManager->handleCharacterEvent(&isRunning, getBaseChar(Player), NONE);
         collisionWithFloor(getBaseChar(Player), &isRunning);
         CharacterEventManager->updateCharacter(getBaseChar(Player), &DeltaTime, &GfxRenderer,
-                                               getObjectTexture(getBaseObj(getBaseChar(Player))));
+                                               getObjectTexture(getBaseObj(getBaseChar(Player))), &isRunning);
 
 
         //ENEMY EVENTS UPDATE

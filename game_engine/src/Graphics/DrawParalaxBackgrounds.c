@@ -21,7 +21,7 @@
  * Loading of textures done quick and dirty, until a better way to load consecutive files from a directory is researched
  * */
 
-static STRING Layer[4][3];
+static STRING Layer[4][4];
 
 void loadLayerPaths() {
     Layer[0][0] = ASSETS_PATH "images/Background/Layer_0_0.png";
@@ -36,6 +36,7 @@ void loadLayerPaths() {
     Layer[3][0] = ASSETS_PATH "images/Background/Layer_3_0.png";
     Layer[3][1] = ASSETS_PATH "images/Background/Layer_3_1.png";
     Layer[3][2] = ASSETS_PATH "images/Background/Layer_3_2.png";
+    Layer[3][3] = ASSETS_PATH "images/Background/Layer_3_3.png";
 }
 
 void LoadImageLayer(ImageLayer **BackgroundSet, int32_t LayerIndex, int32_t ImageCount, int32_t Width, int32_t Height,

@@ -13,10 +13,9 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
 
 void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI);
 
-void updateCharacterActor(Character *BaseCharacter,
-                          const float *DeltaTime,
-                          SDL_Renderer **GfxRenderer,
-                          SDL_Texture *Texture);
+void
+updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer, SDL_Texture *Texture,
+                     BOOL *isRunning);
 
 static CharacterEventHandler *self = NONE;
 
@@ -124,9 +123,11 @@ void keyboardEvent(BOOL *isRunning, Character *BaseCharacter, const u_int8_t *ga
     }
 }
 
-void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer,
-                          SDL_Texture *Texture) {
+void
+updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer, SDL_Texture *Texture,
+                     BOOL *isRunning) {
     static BOOL isInit = FALSE;
+    static uint8_t TimeInterval = 0;
     SDL_Event tempEvent;
     tempEvent.type = SDL_KEYUP;
     static Vector2D Force;
@@ -200,9 +201,16 @@ void updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_
             break;
         case DEAD:
             //FIXME Play once only and quit
-            Force.set(&Force,0.0, -2.0);
+            Force.set(&Force,0.0, -1.3);
             moveCharacter(BaseCharacter, DeltaTime, &Force, &Friction);
             DrawCharacter(DEAD, DeltaTime,BaseCharacter, GfxRenderer, Texture);
+            if (TimeInterval == 58){
+                *isRunning = FALSE;
+                SDL_RenderClear(*GfxRenderer);
+            }
+            else {
+                TimeInterval++;
+            }
             break;
         case RUNNING_LEFT:
             Force.set(&Force, -2.0, 0.0);

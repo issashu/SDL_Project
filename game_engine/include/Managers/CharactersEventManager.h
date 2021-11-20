@@ -15,16 +15,15 @@
 
 typedef struct CharactersEventManager{
     void (*handleCharacterEvent)(BOOL*, Character*, SDL_Event*);
-    void (*updateCharacter)(Character*, const float*, SDL_Renderer**, SDL_Texture*);
+    void (*updateCharacter)(Character*, const float*, SDL_Renderer**, SDL_Texture*, BOOL*);
 } CharacterEventHandler;
 
 CharacterEventHandler* getCharacterEventHandler();
 void deleteCharacterHandler();
 
 void characterEventHandler(BOOL *isRunning, Character *BaseCharacter, SDL_Event *gameEventAI);
-void updateCharacterActor(Character *BaseCharacter,
-                          const float *DeltaTime,
-                          SDL_Renderer **GfxRenderer,
-                          SDL_Texture *Texture);
+void
+updateCharacterActor(Character *BaseCharacter, const float *DeltaTime, SDL_Renderer **GfxRenderer, SDL_Texture *Texture,
+                     BOOL *isRunning);
 
 #endif //SDL_GAME_CHARACTERSEVENTMANAGER_H
