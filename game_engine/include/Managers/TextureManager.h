@@ -5,8 +5,8 @@
 #ifndef SDL_GAME_TEXTUREMANAGER_H
 #define SDL_GAME_TEXTUREMANAGER_H
 
-#include "utils/defines.h"
-#include "utils/containers/Vector.h"
+#include "Utils/include/Defines.h"
+#include "Utils/include/containers/Vector.h"
 
 //TODO Apply singleton by:
 // 1. Make the manager into struct.

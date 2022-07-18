@@ -6,7 +6,7 @@
 #define SDL_GAME_PLAYERCHARACTER_H
 
 #include "Actors/BaseCharacter.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 
 typedef struct PlayerCharacter playerActor;
 

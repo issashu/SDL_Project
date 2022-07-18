@@ -6,16 +6,7 @@
 #define SDL_GAME_COLLISIONMANAGER_H
 
 #include "GameObject/GameObject2D.h"
-#include "utils/defines.h"
-
-enum CollisionSides {
-    NO_COLLISION = 0,
-    SIDE_UP,
-    SIDE_RIGHT,
-    SIDE_DOWN,
-    SIDE_LEFT,
-    ALL_SIDES
-};
+#include "Utils/include/Defines.h"
 
 typedef struct CollisionManager {
     BOOL (*CheckCollision)(GameObject2D *, GameObject2D *);

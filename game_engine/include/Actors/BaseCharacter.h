@@ -8,7 +8,7 @@
 #include <stdint.h>
 
 #include "Physics/Vector2D.h"
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "GameObject/GameObject2D.h"
 
 /*
@@ -45,7 +45,7 @@ enum animFrames {
     JUMP_FRAMES = 14,
     ROLL_FRAMES = 10,
     CRAWL_FRAMES = 8,
-    DIE_FRAMES = 5,
+    DIE_FRAMES = 11,
     ATTACK_FRAMES = 6
 };
 
@@ -58,10 +58,11 @@ typedef enum CharacterStates{
     CROUCHING,
     CRAWLING_RIGHT,
     CRAWLING_LEFT,
-    DEAD,
     RUNNING_LEFT,
     RUNNING_RIGHT,
-    ATTACKING
+    ATTACKING,
+    ALL_ALIVE_STATES,
+    DEAD = 38
 } StateFlags;
 
 //TODO Make sure that base class structures are always first

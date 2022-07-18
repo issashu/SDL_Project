@@ -10,7 +10,7 @@
 #include "Actors/BaseCharacter.h"
 #include "Actors/PlayerCharacter.h"
 #include "Core/Camera2D.h"
-#include "utils/containers/Vector.h"
+#include "Utils/include/containers/Vector.h"
 
 
 int8_t SDLLoader(SDL_Renderer **GfxRenderer, SDL_Window **AppWindow);
@@ -19,6 +19,7 @@ void DrawCharacter(int32_t Event, const float *DeltaTime, Character *BaseCharact
                    SDL_Texture *Texture);
 void DrawObjects(Camera *Camera, SDL_Renderer **GfxRenderer, SDL_Texture **Texture, SDL_Rect *SrcTextureRect,
                  struct Vector *TexturesContainer, int32_t TextureIndex);
+void DrawSingleObject(GameObject2D *object, SDL_Renderer **GfxRenderer, SDL_Texture *Texture, SDL_Rect *SrcTextureRect);
 
 
 #endif //SDL_GAME_GAMEENGINECORE_H

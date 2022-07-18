@@ -6,7 +6,7 @@
 #define SDL_GAME_BASEPLATFORM2D_H
 
 #include <stdint.h>
-#include "utils/defines.h"
+#include "Utils/include/Defines.h"
 #include "Graphics/GraphicsRenderer2D.h"
 #include "GameObject/GameObject2D.h"
 
@@ -14,7 +14,7 @@ typedef struct BasePlatform2D BasePlatform2D;
 
 void
 initBasePlatform(BasePlatform2D **self, char *TexturePath, char *Tag, int32_t Width, int32_t Height, int32_t Health,
-                 SDL_Renderer *GfxRenderer, float SpawnX, float SpawnY);
+                 SDL_Renderer *GfxRenderer, float SpawnX, float SpawnY, uint32_t PlatformID);
 void deinitBasePlatform(BasePlatform2D **self);
 STRING getTexturePath(BasePlatform2D *self);
 STRING getTag(BasePlatform2D *self);
